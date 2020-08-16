@@ -1,0 +1,310 @@
+/* 
+  Localizable.strings
+  Aqarzelo
+
+  Created by Hossam on 8/15/20.
+  Copyright © 2020 Hossam. All rights reserved.
+*/
+
+
+"lang" = "en";
+
+
+//WelcomeVC
+
+"current location" = "current location";
+"What do you want the application \n to open on the map ?" = "What do you want the application \n to open on the map ?";
+"AQAR ZELO" = "AQAR ZELO";
+"Go location" = "Go location";
+
+
+//login vc
+"Login..." = "Login...";
+"Login" =  "Login";
+"enter your email or telephone" = "enter your email or telephone";
+"your email or telephone" = "your email or telephone";
+"enter your password" = "enter your password";
+"Password" = "Password";
+"Forget Password ?" = "Forget Password ?";
+"LOGIN" = "LOGIN";
+"OR LOGIN WITH" = "OR LOGIN WITH";
+"Don't have an account ? " = "Don't have an account ? ";
+"Sign up" = "Sign up";
+"Invalid Email or Phone" = "Invalid Email or Phone";
+"password must have 8 character" = "password must have 8 character";
+
+//register vc
+"Create your \n account" = "Create your \n account";
+"username" = "username";
+"Phone" = "Phone";
+"Email" = "Email";
+"Confirm Password" = "Confirm Password";
+"OR SIGN UP WITH" = "OR SIGN UP WITH";
+"Invalid Username" = "Invalid Username";
+"Invalid Phone number" = "Invalid Phone number";
+"Invalid Email" = "Invalid Email";
+"Passowrd should be same" = "Passowrd should be same";
+"password must have 8 character" = "password must have 8 character";
+
+//forget pass vc
+
+"Invalid Phone number" = "Invalid Phone number";
+"Confirm" = "Confirm";
+"Waiting..." = "Waiting...";
+"Password reset successfully"="Password reset successfully";
+"Resend SMS..."="Resend SMS...";
+
+//reset code sms
+
+"Invalid SMS Code" = "Invalid SMS Code";
+"Don't receive an sms code ? " = "Don't receive an sms code ? ";
+"Resend" = "Resend";
+"SMS code" = "SMS code";
+"Looding..." = "Looding...";
+
+
+//loction vc
+
+"No data avaible......" = "No data avaible......";
+"Information" = "Information";
+"You must log in first" = "You must log in first";
+"Error" = "Error";
+"No Internet Connection" = "No Internet Connection";
+"OK" = "OK";
+"Confirmation" = "Confirmation";
+"The post was created successfully" = "The post was created successfully";
+
+// ChooseLocationVC
+
+"You Must Log In First..."="You Must Log In First...";
+"Done" = "Done";
+"Location Picker" = "Location Picker";
+"Please press long to pick up location" = "Please press long to pick up location";
+
+//FilterVC
+
+"Submit" = "Submit";
+"Space" = "Space";
+"Price Per Meter." = "Price Per Meter.";
+"Num Bathrooms" = "Num Bathrooms";
+"Num Rooms" = "Num Rooms";
+"Category" = "Category";
+"Sale" = "Sale";
+"Rent" = "Rent";
+"Type" = "Type";
+"Area" = "Area";
+"City" = "City";
+"Rooms"="Rooms";
+"Baths"="Baths";
+// AqarDetailsInfoVC
+
+"New" = "New";
+"Unavaible" = "Unavaible";
+"Enter Message"="Enter Message";
+
+// AddPostVC
+
+"         Camera " = "         Camera ";
+"Upload master photo " = "Upload master photo ";
+"The first photo is master seen" = "The first photo is master seen";
+"The maximum upload limit \n for photos is 20" = "The maximum upload limit \n for photos is 20";
+"Cancel" = "Cancel";
+"Information" = "Information";
+"You Must Log In First" = "You Must Log In First";
+"Create Post" = "Create Post";
+"Error" = "Error";
+"Yes" = "Yes";
+
+//  ListOfPhotoCollectionVC
+"Wait until imagee uploaded..." = "Wait until imagee uploaded...";
+"Next" = "Next";
+"Create Post" = "Create Post";
+"Master Photo Can't Be Removed" = "Master Photo Can't Be Removed";
+
+// MainCreatePostVC
+"Next" = "Next";
+
+// FavoriteCollectionVC
+
+"Favorite" = "Favorite";
+"Notifications" = "Notifications";ß
+
+// PostMessagesCollectionVC
+
+"Messages" = "Messages";
+"Search ..." = "Search ...";
+"Friends" = "Friends";
+"Messages" = "Messages";
+
+// UserSettingsVC
+"HI, " = "HI, ";
+"LogOut" = "LogOut";
+"Contact Us" = "Contact Us";
+"Help" = "Help";
+"Languages" = "Languages";
+"Chat" = "Chat";
+"Edit Profile" = "Edit Profile";
+"Change Password" = "Change Password";
+"Profile" = "Profile";
+"General" = "General";
+"Notifications" = "Notifications";
+"Setting" = "Setting";
+"Warring" = "Warring";
+"Update Profile ?" = "Update Profile ?";
+"Preview" = "Preview";
+"Updated successfully..." = "Updated successfully...";
+"Update" = "Update";
+"Do You Want To Update Your Profile Information?" = "Do You Want To Update Your Profile Information?";
+"enter your New password" = "enter your New password";
+"New Password" = "New Password";
+"Old Passowrd" = "Old Passowrd";
+"No Posts Was Found"="No Posts Was Found";
+"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.";
+"All fields should be filled..."="All fields should be filled...";
+
+//chooselocationvc
+
+"Please press long to pick up location" = "Please press long to pick up location";
+"Location Picker" = "Location Picker";
+"Are You Sure You Want To Log Out?" = "Are You Sure You Want To Log Out?";
+"Sign Out Successfully..." = "Sign Out Successfully...";
+
+// EditProfileVC
+
+"Email address" = "Email address";
+"Phone number" = "Phone number";
+"Website" = "Website";
+"Address" = "Address";
+"Save" = "Save";
+"Profile Picture" = "Profile Picture";
+"Edit" = "Edit";
+"Cover Picture" = "Cover Picture";
+"Enter your email" = "Enter your email";
+"Enter your Phone" = "Enter your Phone";
+"Enter your facebook" = "Enter your facebook";
+"Enter your address" = "Enter your address";
+"Enter your website" = "Enter your website";
+
+//userprofilevc
+
+"Posts" = "Posts";
+"Details" = "Details";
+
+//MainCreatePostVC
+"Make Post"="Make Post";
+"Update Post" = "Update Post";
+"letter" = "letter";
+"Describe" = "Describe";
+"0 / 250" = "0 / 250";
+"Enter Text" = "Enter Text";
+
+"Owner type" =  "Owner type";
+"What's  the owner type ?" = "What's  the owner type ?";
+
+"Payment method" = "Payment method";
+"How to pay ?" = "How to pay ?";
+"Cash" = "Cash";
+"Installment" = "Installment";
+
+" Garden" = " Garden";
+" Parking" = " Parking";
+" Furnished" = " Furnished";
+"More" = "More";
+"Is The Property Finished ?" = "Is The Property Finished ?";
+"No" = "No";
+"Yes" = "Yes";
+"Finished" = "Finished";
+
+
+"Map" = "Map";
+"Select the location from the map" = "Select the location from the map";
+"Location" = "Location";
+
+"Select City" = "Select City";
+"Choose the city" = "Choose the city";
+"City" = "City";
+
+"Select Area" = "Select Area";
+"Choose the Area" = "Choose the Area";
+"Area" = "Area";
+
+"What is the property number ?" = "What is the property number ?";
+"Building number" = "Building number";
+
+"enter date" = "enter date";
+"What is the creation date ?" = "What is the creation date ?";
+"Year of Building" = "Year of Building";
+
+"What is the property floor number ?" = "What is the property floor number ?";
+"Floor number" = "Floor number";
+
+
+"50 letter" = "50 letter";
+"Enter Message" ="Enter Message";
+"Title" = "Title";
+
+"   Chalet  " = "   Chalet  ";
+"  Office  " = "  Office  ";
+"Doublex" = "Doublex";
+"   Villa   " = "   Villa   ";
+"  Towar   " = "  Towar   ";
+"   Land    " = "   Land    ";
+" Appartment  " = " Appartment  ";
+"Home" = "Home";
+"What kind of real estate category?" =  "What kind of real estate category?";
+"Category" = "Category";
+
+"Rent" = "Rent";
+"Sale" = "Sale";
+"What type of property offer ?" = "What type of property offer ?";
+"Sale or rent" = "Sale or rent";
+
+"in meter" ="in meter";
+"enter price" = "enter price";
+"Space" = "Space";
+
+
+"How many baths ?" = "How many baths ?";
+"Bathrooms number"="Bathrooms number";
+
+"How many rooms ?"="How many rooms ?";
+"Rooms number"="Rooms number";
+
+"Total Price"="Total Price";
+"Price"="Price";
+
+"Per meter"="Per meter";
+"Price Per Meter"="Price Per Meter";
+
+
+"Description" = "Description";
+"Related posts"="Related posts";
+"Analysis"="Analysis";
+"Avg Prices"="Avg Prices";
+
+"EGY"="EGY";
+"K"="K";
+"Reviews"="Reviews";
+
+"Language"="Language";
+"Change Your Current Language"="Change Your Current Language";
+
+"You Can't Chat With Yourself"="You Can't Chat With Yourself";
+
+"Wait until Upload image..."="Wait until Upload image...";
+
+
+"cash"="cash";
+"installment"="installment";
+"lux"="lux";
+"super_lux"="super_lux";
+"extra_super_lux"="extra_super_lux";
+"semi_finished"="semi_finished";
+"without_finished"="without_finished";
+"sale"="sale";
+"rent"="rent";
+"owner"="owner";
+"mediator"="mediator";
+"developer"="developer";
+
+"No Results!"="No Results!";

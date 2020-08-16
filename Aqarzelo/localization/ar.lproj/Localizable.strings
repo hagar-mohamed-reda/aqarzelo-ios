@@ -1,0 +1,321 @@
+/* 
+  Localizable.strings
+  Aqarzelo
+
+  Created by Hossam on 8/15/20.
+  Copyright © 2020 Hossam. All rights reserved.
+*/
+
+"lang" = "ar";
+
+
+//WelcomeVC
+
+"current location" = " الموقع الحالي ";
+"What do you want the application \n to open on the map ?" = " ما الموقع الذي تريد فتح التطبيق \n عليه؟  ";
+"AQAR ZELO" = "AQAR ZELO";
+"Go location" = " اختر موقع ";
+
+//login vc
+"Login..." = "تسجيل الدخول";
+"Login" =  "تسجيل الدخول";
+"enter your email or telephone" = "البريد الإلكتروني أو رقم الهاتف";
+"your email or telephone" = "البريد الإلكتروني أو رقم الهاتف";
+"enter your password" = "كلمة المرور";
+"Password" = "كلمة المرور";
+"Forget Password ?" = "هل نسيت كلمة المرور ?";
+"LOGIN" = " تسجيل الدخول";
+"OR LOGIN WITH" = " أو اشترك مع ";
+"Don't have an account ? " = "ليس لديك حساب ? ";
+"Sign up" = "الاشتراك";
+"Invalid Email or Phone" = "البريد الإلكتروني أو رقم الهاتف غير صحيح";
+"password must have 8 character" = " كلمة المرور يجب ان تحتوي علي ٨ كلمات";
+
+//register vc
+"Create your \n account" = "انشئ \n حيساب";
+"username" = "اسم المستخدم";
+"Phone" = " رقم الهاتف";
+"Email" = "البريد الإلكتروني";
+"Confirm Password" = "تأكيد كلمة المرور";
+"OR SIGN UP WITH" = "أو اشترك مع";
+"Invalid Username" = "اسم المستخدم غير صحيح";
+"Invalid Phone number" = "رقم الهاتف غير صحيح";
+"Invalid Email" = " البريد الإلكتروني غير صحيح";
+"Passowrd should be same" = "يجب مطابقة كلمة المرور";
+"password must have 8 character" = " كلمة المرور";
+
+
+
+//forget pass vc
+
+"Invalid Phone number" = "رقم الهاتف غير صحيح";
+"Confirm" = "تاكيد";
+"Waiting..." = "انتظر من فضلك.....";
+"Password reset successfully"="تم تعديل الباسورد بنجاح";
+"Resend SMS..."="اعاده ارسال رساله...";
+
+//reset code sms
+
+"Invalid SMS Code" = "الكود النصي غيدر صحيح";
+"Don't receive an sms code ? " = "لم تحصل علي كود نصي ? ";
+"Resend" = "اعد الارسال";
+"SMS code" = "الكود النصي";
+"Looding..." = "برجاء الانتظار٫٫٫";
+
+//loction vc
+
+"No data avaible......" = "لا يوجد بيانات للعرض......";
+"Information" = "معلومات";
+"You must log in first" = "يجب تسجيل الدخول اولا";
+"Error" = "حطا";
+"No Internet Connection" = "لا يوجد اتصال بالانترنت";
+"OK" = "حسنا";
+"Confirmation" = "تاكيد";
+"The post was created successfully" = "تم انشاه البوست بنجاح";
+
+// ChooseLocationVC
+
+"Done" = "حسنا";
+"Location Picker" = "تحديد الموقع";
+"Please press long to pick up location" = "برجاه الضغط مطولا لايجاد الموقع";
+"You Must Log In First..." = "يجب تسجيل الدخول اولا٫٫٫";
+
+
+//FilterVC
+
+"Submit" = "تأكيد";
+"Space" = "المساحه";
+"Price Per Meter." = "السعر بالمتر.";
+"Num Bathrooms" = "عدد الحمامات";
+"Num Rooms" = "عدد الغرف";
+"Category" = "النوع";
+"Sale" = "شرا؛";
+"Rent" = "اسجار";
+"Type" = "النوع";
+"Area" = "المنطقه";
+"City" = "المدينه";
+
+// AqarDetailsInfoVC
+
+"New" = "جديد";
+"Unavaible" = "غير متاح";
+"Enter Message"="ادخل الرسالة";
+
+// AddPostVC
+
+"         Camera " = "         الكاميرا ";
+"Upload master photo " = "تحميل الصورة الرئيسيه";
+"The first photo is master seen" = "الصورة الأولى هي الرئيسيه";
+"The maximum upload limit \n for photos is 20" = "الحد الأقصى لتحميل \n الصور هو 20";
+"Cancel" = " إلغاء ";
+"Information" = "معلومات";
+"You Must Log In First" = "يجب تسجيل الدخول اولا";
+"Create Post" = "عمل منشور جديد" ;
+"Error" = "خطا";
+"Yes" = "نعم";
+
+//  ListOfPhotoCollectionVC
+"Wait until imagee uploaded..." = "من فضلك انتظر حتي يتم رفع الصورة٫٫٫";
+"Next" = "التالي";
+"Master Photo Can't Be Removed" = "الصوره الاساسيه لا يمكن الزالتها";
+
+// MainCreatePostVC
+
+// FavoriteCollectionVC
+
+"Favorite" = "المفضله";
+"Notifications" = " الإشعارات ";
+
+// PostMessagesCollectionVC
+
+"Messages" = "الرسايل";
+"Search ..." = "بحث ...";
+"Friends" = "الاصدقاء";
+"Messages" = " الرسائل ";
+
+// UserSettingsVC
+
+"Confirm New Password" = " تأكيد كلمة المرور ";
+"HI, " = " مرحبًا ";
+"LogOut" = "تسجيل الخروج";
+"Contact Us" = "الاتصال بنا";
+"Help" = "المساعده";
+"Languages" = "اللغه";
+"Chat" = "دردشه";
+"Profile" = " الملف الشخصي ";
+"Edit Profile" = " تحديث الملف الشخصي";
+"General" = "عام";
+"Setting" = "الاعدادت";
+"Warring" = "تحير";
+"Update Profile ?" = " تحديث الملف الشخصي؟ ";
+"Preview" = "عرض";
+"Updated successfully..." = "تم التعديل بنجاح...";
+"Update" = "تعديل";
+"Do You Want To Update Your Profile Information?" = "هل تريد تعديل معلوماتك الاساسيه?";
+"enter your New password" = "اكتب الباسورد الجديي";
+"New Password" = "الباسورد الجديد";
+"Old Passowrd" = "الباسورد القديم";
+"Follow us" = "تابعنا";
+"Contact us" = " اتصل بنا ";
+"Change Password" = " تغيير كلمة المرور ";
+"No Posts Was Found"= "لا يوجد منشورات مرفوعة";
+"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." = "لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من";
+
+"All fields should be filled..."="يجب ملئ جميع الحقول٫٫٫";
+//chooselocationvc
+
+"Please press long to pick up location" = "من فضلك اضغط ضغطه مطوله لاختيار موقع";
+"Location Picker" = " اختيار الوقع ";
+"Are You Sure You Want To Log Out?" = " هل أنت متأكد من رغبتك في تسجيل الخروج؟ ";
+"Sign Out Successfully..." = " لقد تم تسجيل خروجك ";
+
+
+// EditProfileVC
+
+"Email address" = "البريد الإلكتروني ";
+"Phone number" = " رقم الهاتف ";
+"Website" = " موقع الويب ";
+"Address" = " العنوان ";
+"Save" = " حفظ ";
+"Profile Picture" = " صورة الملف الشخصي ";
+"Edit" = " تعديل ";
+"Cover Picture" = " صورة الغلاف ";
+"Enter your email" = " البريد الإلكتروني ";
+"Enter your Phone" = " رقم الهاتف ";
+"Enter your facebook" = "Enter your facebook";
+"Enter your address" = " العنوان ";
+"Enter your website" = " موقع الويب ";
+
+//userprofilevc
+
+"Posts" = " المشاركات ";
+"Details" = " التفاصيل ";
+
+
+//MainCreatePostVC
+"Make Post" = "عمل منشور";
+"Update Post" = "تعديل المنشور";
+
+"letter" = "حرف";
+"Describe" = " الوصف ";
+"0 / 250" = "0 / 250";
+"Enter Text" = "ادخل النص";
+
+"Owner type" =  " نوع المالك ";
+"What's  the owner type ?" = " نوع المالك ";
+
+"Payment method" = " طريقة الدفع ";
+"How to pay ?" = " طريقة الدفع ";
+"Cash" = "كاش";
+"Installment" = " تقسيط ";
+
+" Garden" = "  حديقة ";
+" Parking" = "  وقوف السيارات ";
+" Furnished" = " غير مفروشة";
+"More" = " المزيد من الخيارات ";
+"Is The Property Finished ?" = " هل انتهت الملكية؟ ";
+"No" = " لا ";
+"Yes" = " نعم ";
+"Finished" = " انتهى ";
+
+
+"Map" = " الخريطة ";
+"Select the location from the map" = " حدد الموقع من الخريطة ";
+"Location" = "الموقع";
+
+"Select City" = "المدينة";
+"Choose the city" = "المدينة";
+"City" = "المدينة";
+
+"Select Area" = "المنطقة";
+"Choose the Area" = "المنطقة";
+"Area" = "المنطقة";
+
+"What is the property number ?" = " ما هو رقم العقار؟ ";
+"Building number" = " رقم المبنى ";
+
+"enter date" = " سنة البناء ";
+"What is the creation date ?" = " ما هو تاريخ البناء؟ ";
+"Year of Building" = " سنة البناء ";
+
+"What is the property floor number ?" = " ما هو رقم طابق الملكية؟ ";
+"Floor number" = " رقم الطابق ";
+
+
+"50 letter" = "٥٠ حرف";
+"Enter Message" ="ادخل الرساله";
+"Title" = " عنوان المنشور";
+
+"   Chalet  " = "   Chalet  ";
+"  Office  " = "  Office  ";
+"Doublex" = "Doublex";
+"   Villa   " = "   Villa   ";
+"  Towar   " = "  Towar   ";
+"   Land    " = "   Land    ";
+" Appartment  " = " Appartment  ";
+"Home" = "Home";
+"What kind of real estate category?" =  " ما نوع الفئة العقارية؟ ";
+"Category" = "الفئة";
+
+"Rent" = "الإيجار";
+"Sale" = "البيع";
+"What type of property offer ?" = "ما نوع العرض المتاح؟";
+"Sale or rent" = "شراء او ايجار";
+
+"in meter" ="بالمتر";
+"enter price" = "ادخل السعر";
+"Space" = "المساحة";
+"Rooms"="غرفة";
+"Baths"="حمامات";
+
+"How many baths ?" = "عدد الحمامات؟";
+"Bathrooms number"="عدد الحمامات";
+
+"How many rooms ?"="عدد الغرف؟";
+"Rooms number"="عدد الغرف";
+
+"Total Price"="السعر النهائي";
+"Price"="السعر";
+
+"Per meter"="بالمتر";
+"Price Per Meter"="السعر في المتر";
+
+
+
+"Description" = "الوصف";
+"Related posts"="منشورات تابعة";
+"Analysis"="المعاينات";
+"Avg Prices"="متوسط الاسعار";
+
+"EGY"="مصري";
+"K"="K";
+"Reviews"="Reviews";
+
+
+"Change Your Current Language"="هل تريد تغيير لغة البرنامج";
+"Language"="لغتك المفضلة";
+
+
+"You Can't Chat With Yourself"="لا يمكن الدردشة مع نفسك";
+
+"Wait until Upload image..."="من فضلك انتظر لعملية رفع الصورة٫٫٫";
+
+
+"cash"="نقدا";
+"installment"="تقسيط";
+"lux"="لوكس";
+"super_lux"="سوبر لوكس ";
+"extra_super_lux"="اكسترا سوبر لوكس ";
+"semi_finished"="متشطبه";
+"without_finished"="بدون تشطيب";
+"sale"="شراء";
+"rent"="تاجير";
+"owner"="المالك";
+"mediator"="الوسيط";
+"developer"="المطور";
+"Update..." = "تعديل٫٫٫";
+
+"Display"="عرض";
+"Delete"="حذف";
+
+"No Results!"="!لا توجد نتائج";
