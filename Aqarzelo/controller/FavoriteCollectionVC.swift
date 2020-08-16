@@ -81,6 +81,7 @@ class FavoriteCollectionVC: BaseCollectionVC {
     override func viewWillDisappear(_ animated: Bool) {
            super.viewWillDisappear(animated)
            SVProgressHUD.dismiss()
+        print(123)
        }
     
     override func viewWillAppear(_ animated: Bool) {
