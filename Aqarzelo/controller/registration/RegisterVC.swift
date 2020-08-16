@@ -73,6 +73,11 @@ class RegisterVC: UIViewController {
         statusBarBackgroundColor()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+              super.viewWillDisappear(animated)
+              SVProgressHUD.dismiss()
+          }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHide(true)

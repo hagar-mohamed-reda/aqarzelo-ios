@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         window = UIWindow()
         window?.makeKeyAndVisible()
         //                 checkLoginState()
-        window?.rootViewController = HomeTabBarVC()//UINavigationController(rootViewController: TestVC())
+        window?.rootViewController = HomeTabBarVC()//UINavigationController(rootViewController: FilterVC())
         //        window?.rootViewController = UINavigationController(rootViewController: MainCreatePostVC()
         //        window?.rootViewController = UINavigationController(rootViewController: UserSettingsVC())//MainCreatePostVC(token: "17e798c152737ecb6084a124186c0d0900abd3f5506e50c68c56f0e151763fba"))//FilterVC()//HomeTabBarVC()//FilterVC()//HomeTabBarVC()//UINavigationController(rootViewController: LoginVC())//UserSettingTableVC()//UINavigationController(rootViewController: ListOfPhotoCollectionVC())
         
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         userDefaults.set(true, forKey: UserDefaultsConstants.isAllCachedHome)
         
         userDefaults.synchronize()
-        window?.rootViewController = HomeTabBarVC()
+        window?.rootViewController = WelcomeVC()
     }
     
     
@@ -149,6 +149,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         userDefaults.set(false, forKey: UserDefaultsConstants.isFavoriteFetched)
         userDefaults.set(false, forKey: UserDefaultsConstants.isNotificationsFetched)
         userDefaults.set(false, forKey: UserDefaultsConstants.isAllUserPostsDetailsFetched)
+        userDefaults.set(true, forKey: UserDefaultsConstants.fetchRecommendPosts)
+        userDefaults.set(true, forKey: UserDefaultsConstants.fetchUserInfoAndLocation)
+
         
         
         userDefaults.synchronize()

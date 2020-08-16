@@ -99,6 +99,11 @@ class EditProfileVC: UIViewController {
         loadUserData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+              super.viewWillDisappear(animated)
+              SVProgressHUD.dismiss()
+          }
+    
     func loadUserData()  {
         finalEmail = currentUser.email
         phone = currentUser.phone

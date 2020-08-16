@@ -60,6 +60,11 @@ class EditUserPostVC: BaseViewController {
         statusBarBackgroundColor()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+              super.viewWillDisappear(animated)
+              SVProgressHUD.dismiss()
+          }
+    
     fileprivate func setupObservers()  {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleUploadNextProgress), name: .uoloadNextProgress, object: nil)

@@ -50,6 +50,11 @@ class ForgetPasswordVC: UIViewController {
         tabBarController?.tabBar.isHide(true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+              super.viewWillDisappear(animated)
+              SVProgressHUD.dismiss()
+          }
+    
     //MARK:-User methods
     
     

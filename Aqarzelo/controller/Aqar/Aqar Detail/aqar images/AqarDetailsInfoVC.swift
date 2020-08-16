@@ -209,6 +209,11 @@ class AqarDetailsInfoVC: UIViewController {
         hideStatusBarBackground()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+              super.viewWillDisappear(animated)
+              SVProgressHUD.dismiss()
+          }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

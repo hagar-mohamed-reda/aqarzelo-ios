@@ -63,7 +63,6 @@
 		9FDDB78E24E9914200AF8817 /* CustomFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB78D24E9914200AF8817 /* CustomFilterView.swift */; };
 		9FDDB79024E991A800AF8817 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB78F24E991A800AF8817 /* RangeSlider.swift */; };
 		9FE26F8724E87C3C008889AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE26F8624E87C3C008889AB /* AppDelegate.swift */; };
-		9FE26F8924E87C3C008889AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE26F8824E87C3C008889AB /* SceneDelegate.swift */; };
 		9FE26F8B24E87C3C008889AB /* CustomMainAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE26F8A24E87C3C008889AB /* CustomMainAlertVC.swift */; };
 		9FE26F8E24E87C3C008889AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FE26F8C24E87C3C008889AB /* Main.storyboard */; };
 		9FE26F9024E87C3E008889AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE26F8F24E87C3E008889AB /* Assets.xcassets */; };
@@ -278,7 +277,6 @@
 		9FDDB78F24E991A800AF8817 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		9FE26F8324E87C3C008889AB /* Aqarzelo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aqarzelo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE26F8624E87C3C008889AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9FE26F8824E87C3C008889AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9FE26F8A24E87C3C008889AB /* CustomMainAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMainAlertVC.swift; sourceTree = "<group>"; };
 		9FE26F8D24E87C3C008889AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9FE26F8F24E87C3E008889AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -676,6 +674,7 @@
 		9FE26F8524E87C3C008889AB /* Aqarzelo */ = {
 			isa = PBXGroup;
 			children = (
+				9FE26F8624E87C3C008889AB /* AppDelegate.swift */,
 				9FDDB71424E98E3F00AF8817 /* helpers */,
 				9FE26FD724E88083008889AB /* view */,
 				9FE26FC124E87F88008889AB /* view model */,
@@ -683,8 +682,6 @@
 				9FE26FA624E87CF3008889AB /* localization */,
 				9FE26FA124E87CBF008889AB /* constants */,
 				9FE26F9C24E87C8C008889AB /* caching */,
-				9FE26F8624E87C3C008889AB /* AppDelegate.swift */,
-				9FE26F8824E87C3C008889AB /* SceneDelegate.swift */,
 				9FE26F9B24E87C60008889AB /* model */,
 				9FE2700F24E882CA008889AB /* controller */,
 				9FE26F8C24E87C3C008889AB /* Main.storyboard */,
@@ -1569,7 +1566,6 @@
 				9FE2700524E88202008889AB /* BaseSendMessageModel.swift in Sources */,
 				9FDDB74824E98F5B00AF8817 /* DiscriptionAqarView.swift in Sources */,
 				9FE270B924E8870A008889AB /* FirstCreatePriceCell.swift in Sources */,
-				9FE26F8924E87C3C008889AB /* SceneDelegate.swift in Sources */,
 				9FE2709B24E886A7008889AB /* AqarRecommendHorizentalCell.swift in Sources */,
 				9FDDB74F24E98F7D00AF8817 /* AqarDetailTopView.swift in Sources */,
 				9FDDB79024E991A800AF8817 /* RangeSlider.swift in Sources */,

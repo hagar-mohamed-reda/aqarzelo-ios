@@ -63,7 +63,7 @@ class LocationVC: UIViewController {
     lazy var customNoInternetView:CustomNoInternetView = {
         let v = CustomNoInternetView()
         v.setupAnimation(name: "4970-unapproved-cross")
-
+        
         v.okButton.addTarget(self, action: #selector(handleOk), for: .touchUpInside)
         return v
     }()
@@ -131,6 +131,11 @@ class LocationVC: UIViewController {
         statusBarBackgroundColor()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -139,53 +144,54 @@ class LocationVC: UIViewController {
         
         
         
-        //        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
-        //            let welcome = WelcomeVC()
-        //            welcome.modalPresentationStyle = .fullScreen
-        //            present(welcome, animated: true)
-        //        }else    {
-        
-        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-            currentUser=cacheCurrentUserCodabe.storedValue
-        }
-        
-        if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-            currentUser=nil
-        }
-        
-        if userDefaults.bool(forKey: UserDefaultsConstants.isAllCachedHome) {
-            fetchRecoomedPosts()
-        }else{}
-        
-        
-        
-        if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
-            aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
-            present(customMainAlertVC, animated: true)
-        }else {}
-        
-        if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
-            aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
-            present(customMainAlertVC, animated: true)
-        }else {}
-        
-        if !ConnectivityInternet.isConnectedToInternet {
-            customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
-            self.present(customMainAlertVC, animated: true)
-        }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
-            //            getUserLocation()
-            fetchUserProfile()
-        }else if ConnectivityInternet.isConnectedToInternet && !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts) {
-            fetchRecoomedPosts()
-            customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-            self.customAlerLoginView.problemsView.play()
-
-            customAlerLoginView.problemsView.loopMode = .loop
-            self.present(customMainAlertVC, animated: true)
+        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
+            let welcome = WelcomeVC()
+            welcome.modalPresentationStyle = .fullScreen
+            present(welcome, animated: true)
+        }else    {
+            
+            if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+                currentUser=cacheCurrentUserCodabe.storedValue
+            }
+            
+            if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+                currentUser=nil
+            }
+            
+            if userDefaults.bool(forKey: UserDefaultsConstants.isAllCachedHome) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts) {
+                fetchRecoomedPosts()
+            }else{}
             
             
-        }else {
-            //                checkUserLogin()
+            
+            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
+                aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
+                present(customMainAlertVC, animated: true)
+            }else {}
+            
+            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
+                aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
+                present(customMainAlertVC, animated: true)
+            }else {}
+            
+            if !ConnectivityInternet.isConnectedToInternet {
+                customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
+                self.present(customMainAlertVC, animated: true)
+            }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
+                //            getUserLocation()
+                fetchUserProfile()
+            }else if ConnectivityInternet.isConnectedToInternet && !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts)  {
+                fetchRecoomedPosts()
+                customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+                self.customAlerLoginView.problemsView.play()
+                
+                customAlerLoginView.problemsView.loopMode = .loop
+                self.present(customMainAlertVC, animated: true)
+                
+                
+            }else {
+                //                checkUserLogin()
+            }
         }
         
         //                }
@@ -367,7 +373,7 @@ class LocationVC: UIViewController {
     }
     
     fileprivate func refreshCollectionView() {
-        userDefaults.set(false, forKey: UserDefaultsConstants.isAllCachedHome)
+        userDefaults.set(false, forKey: UserDefaultsConstants.fetchRecommendPosts)
         userDefaults.synchronize()
         SVProgressHUD.dismiss()
         self.activeViewsIfNoData()
