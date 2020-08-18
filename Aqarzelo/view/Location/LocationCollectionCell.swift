@@ -48,6 +48,8 @@ class LocationCollectionCell: BaseCollectionCell {
     
     override func setupViews() {
         backgroundColor = .white
+        layer.cornerRadius=16
+        clipsToBounds=true
         [locationTitleLabel,locationDistanceLabel].forEach({$0.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left})
         let ss = stack(locationTitleLabel,locationDistanceLabel).withMargins(.init(top: 0, left: 16, bottom: 8, right: 16))
         
@@ -56,9 +58,9 @@ class LocationCollectionCell: BaseCollectionCell {
     
     override var isSelected: Bool {
         didSet {
-            backgroundColor = isSelected ?  ColorConstant.mainBackgroundColor : .white
+            backgroundColor = isSelected ?  #colorLiteral(red: 0.2816769481, green: 0.634985745, blue: 0.6430925131, alpha: 1) : .white
             transform = isSelected ?  CGAffineTransform(scaleX: 1, y: 1.2) : .identity
-            locationTitleLabel.textColor = isSelected ? .white : .black
+            [locationTitleLabel,locationDistanceLabel].forEach({$0.textColor = isSelected ? .white : .black })
             layoutIfNeeded()
         }
     }

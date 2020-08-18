@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         userDefaults.set(true, forKey: UserDefaultsConstants.isAllCachedHome)
         
         userDefaults.synchronize()
-        window?.rootViewController = WelcomeVC()
+        window?.rootViewController = HomeTabBarVC()
     }
     
     

@@ -49,6 +49,8 @@ class LocationVC: UIViewController {
     }()
     lazy var customAlerLoginView:CustomAlertForLoginView = {
         let v = CustomAlertForLoginView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        
         v.loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         v.signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return v
@@ -84,13 +86,13 @@ class LocationVC: UIViewController {
         v.userImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowUser)))
         return v
     }()
+    
     lazy var    customMarkerLocationView:CustomMarkerLocationView = {
         let v = CustomMarkerLocationView(backgroundColor: .clear)
         v.constrainHeight(constant: 80)
         v.constrainWidth(constant: 80)
         return v
     }()
-    
     
     lazy var discriptionAqarView:DiscriptionAqarView = {
         let v = DiscriptionAqarView()
@@ -130,6 +132,8 @@ class LocationVC: UIViewController {
         getUserLocation()
         statusBarBackgroundColor()
     }
+    
+   
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -176,6 +180,9 @@ class LocationVC: UIViewController {
             
             if !ConnectivityInternet.isConnectedToInternet {
                 customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
+                self.customNoInternetView.problemsView.play()
+                
+                self.customNoInternetView.problemsView.loopMode = .loop
                 self.present(customMainAlertVC, animated: true)
             }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
                 //            getUserLocation()
@@ -461,6 +468,7 @@ class LocationVC: UIViewController {
         customConfirmationView.detailInformationLabel.text = text
         //        addCustomViewInCenter(views: customConfirmationView, height: 200)
         customMainAlertVC.addCustomViewInCenter(views: customConfirmationView, height: 200)
+        
         self.present(customMainAlertVC, animated: true)
         userDefaults.set(false, forKey: UserDefaultsConstants.isPostUpdated)
         userDefaults.synchronize()
@@ -597,13 +605,13 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 16
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 5 * 8  ) / 2
+        let width = (view.frame.width - 5 * 16  ) / 2
         return .init(width: width   , height: 170)
         //        return .init(width: view.frame.width , height: 150)
     }
@@ -620,7 +628,6 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
-            self.activeViewsIfNoData()
             self.activeViewsIfNoData()
             self.refreshData(base: base)
         }

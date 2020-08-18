@@ -167,7 +167,7 @@ class AqarDetailsInfoVC: UIViewController {
     lazy var subView:UIView = {
         let v = UIView(backgroundColor: .white)
         
-        v.constrainHeight(constant: 100)
+        v.constrainHeight(constant: 160)
         v.isHide(true)
         return v
     }()
@@ -191,7 +191,7 @@ class AqarDetailsInfoVC: UIViewController {
     fileprivate let cellIds = "cellIds"
     
     override func viewDidLayoutSubviews() {
-        subView.addGradientBackground(firstColor: #colorLiteral(red: 0.4169815183, green: 0.83258003, blue: 0.6895253658, alpha: 1), secondColor: #colorLiteral(red: 0.4569166303, green: 0.8946051002, blue: 0.7911534905, alpha: 1))
+        subView.addGradientBackground(firstColor: #colorLiteral(red: 0.8280106187, green: 0.8881947994, blue: 0.8735718727, alpha: 1), secondColor: #colorLiteral(red: 0.3111050725, green: 0.7003450394, blue: 0.717197597, alpha: 1))
     }
     
 //    override var prefersStatusBarHidden: Bool {
@@ -209,10 +209,7 @@ class AqarDetailsInfoVC: UIViewController {
         hideStatusBarBackground()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+ 
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -231,6 +228,8 @@ class AqarDetailsInfoVC: UIViewController {
         super.viewWillDisappear(animated)
         statusBarBackgroundColor()
         UIApplication.shared.isStatusBarHidden = false
+        SVProgressHUD.dismiss()
+
     }
     
     //MARK:-User methods

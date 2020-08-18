@@ -34,16 +34,13 @@ class CustomLocationView:  CustomBaseView{
         let i = GMSMapView()
         i.isUserInteractionEnabled=true
         i.isMyLocationEnabled=true
-//        i.layer.cornerRadius = 16
-//        i.clipsToBounds = true
-//        i.padding = UIEdgeInsets(top: 0, left: 0, bottom:100, right: 0)
         
         return i
     }()
     lazy var subView:UIView = {
         let v = UIView(backgroundColor: #colorLiteral(red: 0.4169815183, green: 0.83258003, blue: 0.6895253658, alpha: 1))
-        v.constrainHeight(constant: 100)
-        v.isHide(true)
+        v.constrainHeight(constant: 160)
+//        v.isHide(true)
         return v
     }()
     lazy var collectionView:UICollectionView = {
@@ -53,11 +50,15 @@ class CustomLocationView:  CustomBaseView{
         c.register(LocationCollectionCell.self, forCellWithReuseIdentifier: cellId)
         c.constrainHeight(constant: 220)
         c.backgroundColor = .clear
+        c.isPagingEnabled=true
+        c.showsHorizontalScrollIndicator=false
         return c
     }()
     
     override func layoutSubviews() {
-        subView.addGradientBackground(firstColor: #colorLiteral(red: 0.4169815183, green: 0.83258003, blue: 0.6895253658, alpha: 1), secondColor: #colorLiteral(red: 0.4569166303, green: 0.8946051002, blue: 0.7911534905, alpha: 1))
+        super.layoutSubviews()
+        subView.addGradientBackground(firstColor: #colorLiteral(red: 0.5746171474, green: 0.8099581003, blue: 0.824129343, alpha: 1), secondColor: #colorLiteral(red: 0.3111050725, green: 0.7003450394, blue: 0.717197597, alpha: 1))
+
     }
     
     override func setupViews() {

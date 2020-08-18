@@ -96,10 +96,7 @@ class FilterVC: UIViewController {
         //       rangeSlider.frame = CGRect(x: margin, y: margin + topLayoutGuide.length + 170, width: width, height: 31.0)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +134,8 @@ class FilterVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
+        SVProgressHUD.dismiss()
+
     }
     
     //MARK:-User methods

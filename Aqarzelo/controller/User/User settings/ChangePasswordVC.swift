@@ -50,10 +50,7 @@ class ChangePasswordVC: UIViewController {
         statusBarBackgroundColor()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+  
     
     //MARK: - override methods
     
@@ -68,6 +65,8 @@ class ChangePasswordVC: UIViewController {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
         self.navigationController?.isNavigationBarHidden = false
+        SVProgressHUD.dismiss()
+
         //        self.navigationController?.isNavigationBarHidden = false
     }
     
