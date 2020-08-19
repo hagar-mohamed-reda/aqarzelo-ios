@@ -268,7 +268,12 @@ class AqarDetailsInfoVC: UIViewController {
     }
     
     fileprivate func showHighlightTapped(index: Int,text: String)  {
-        UIApplication.getMainTabBarController()?.viewControllers?[index].tabBarItem.badgeValue = text
+//        let tabBarItem = UIApplication.getMainTabBarController()?.tabBar.items?[index]
+////        UIApplication.getMainTabBarController()?.viewControllers?[index].tabBarItem.badgeValue = text
+//        DispatchQueue.main.async(execute: {
+//            tabBarItem?.badgeValue = text
+//        })
+        UIApplication.getMainTabBarController()?.viewControllers?[index].navigationController?.tabBarItem.badgeValue = text
     }
     
     fileprivate func setupViews()  {
@@ -501,7 +506,7 @@ class AqarDetailsInfoVC: UIViewController {
             cacheFavoriteAqarsCodabe.save(dd ?? [aqarModel])
 
             DispatchQueue.main.async {
-                           self.showHighlightTapped(index: 2, text: texy.localized)
+                           self.showHighlightTapped(index: 3, text: texy.localized)
                 userDefaults.set(true, forKey: UserDefaultsConstants.favoriteArray)
 
 //                           userDefaults.set(arras, forKey: UserDefaultsConstants.favoriteArray)

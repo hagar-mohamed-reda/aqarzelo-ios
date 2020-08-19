@@ -47,6 +47,7 @@ class FirstCreateBathsNumberCell: BaseCollectionCell {
         let v = CustomAddMinusView()
         v.isHide(true)
         v.constrainHeight(constant: 40)
+        v.constrainWidth(constant: (frame.width - 32 )/2)
         v.minusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMinusOne)))
         v.plusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAddOne)))
         return v
@@ -64,7 +65,7 @@ class FirstCreateBathsNumberCell: BaseCollectionCell {
         [categoryLabel,questionLabel].forEach{($0.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left)}
         
         let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
-        let dd = hstack(customAddMinusView,UIView())
+        let dd = hstack(customAddMinusView)
         
         let second = stack(categoryLabel,questionLabel,dd,UIView(),spacing:8)
         

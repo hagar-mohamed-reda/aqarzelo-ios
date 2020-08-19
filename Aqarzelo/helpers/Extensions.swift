@@ -158,7 +158,12 @@ extension UIApplication {
     
     
         static func getMainTabBarController() -> HomeTabBarVC? {
-            return shared.keyWindow?.rootViewController as? HomeTabBarVC
+            if #available(iOS 13, *) {
+                return UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController as? HomeTabBarVC
+                   } else {
+                return UIApplication.shared.keyWindow?.rootViewController as? HomeTabBarVC
+                   }
+//            return shared.keyWindow?.rootViewController as? HomeTabBarVC
         }
     
 }
@@ -180,6 +185,16 @@ extension UICollectionView{
         }
     }
     
+}
+
+extension UIWindow {
+    static var key: UIWindow? {
+        if #available(iOS 13, *) {
+            return UIApplication.shared.windows.first { $0.isKeyWindow }
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
 }
 
 extension UIView{

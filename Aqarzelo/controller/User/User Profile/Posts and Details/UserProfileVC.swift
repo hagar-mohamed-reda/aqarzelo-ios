@@ -291,13 +291,13 @@ class UserProfileVC: UIViewController {
         subViewUserImage.anchor(top: userBackgroundImageView.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: -60, left: 0, bottom: 0, right: 0))
         //        logoProfileImageView.anchor(top: userProfileImageView.bottomAnchor, leading: nil, bottom: nil, trailing: userProfileImageView.trailingAnchor,padding: .init(top: -40, left: 0, bottom: 0, right: -8))
         
-        userNameLabel.anchor(top: subViewUserImage.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        userNameLabel.anchor(top: subViewUserImage.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 8, left: 0, bottom: 0, right: 0))
         
         NSLayoutConstraint.activate([
             userProfileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             
             postsDetailsView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            postsDetailsView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50)
+            postsDetailsView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 58)
         ])
         userEditProfileImageView.anchor(top: postsDetailsView.topAnchor, leading: postsDetailsView.trailingAnchor, bottom: nil, trailing: nil,padding: .init(top: 0, left: 0, bottom: 0, right: 0))
         

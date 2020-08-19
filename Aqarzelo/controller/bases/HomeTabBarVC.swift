@@ -120,8 +120,9 @@ class HomeTabBarVC: UITabBarController {
             
             location,
             cart ,
-            love,
             notification,
+            love,
+            
             
             
             

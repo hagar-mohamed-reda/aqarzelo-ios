@@ -22,7 +22,7 @@ class FavoriteCollectionCell: BaseCollectionCell {
             
             self.locationDistanceLabel.text = "\(price) K, \(space) M"
             guard let urlString = aqar.images.first?.image,let url = URL(string: urlString) else { return  }
-            self.locationImageView.sd_setImage(with: url,placeholderImage: #imageLiteral(resourceName: "58889593bc2fc2ef3a1860c1"))
+            self.locationImageView.sd_setImage(with: url,placeholderImage: #imageLiteral(resourceName: "WhatsApp Image 2020-07-25 at 05.50.46"))
             
             
         }

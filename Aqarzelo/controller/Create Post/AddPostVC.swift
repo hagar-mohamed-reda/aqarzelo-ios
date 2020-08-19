@@ -82,6 +82,8 @@ class AddPostVC: UIViewController {
             userDefaults.synchronize()
         }
         
+        tabBarController?.tabBar.isHidden = false
+               hidedCustomWhiteViewTabBar(hide: false)
     }
     
     //MARK:-User methods

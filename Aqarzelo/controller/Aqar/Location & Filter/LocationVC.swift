@@ -82,6 +82,7 @@ class LocationVC: UIViewController {
         v.mapView.delegate = self
         v.collectionView.delegate = self
         v.collectionView.dataSource = self
+        v.collectionView.isPagingEnabled=true
         //        v.closeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleClose)))
         v.userImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowUser)))
         return v
