@@ -11,6 +11,12 @@ import UIKit
 
 class UserDefaultsConstants {
     
+    //for dropdown
+       static let cityCahcedValue="cityCahcedValue"
+       static let areaCahcedValue="areaCahcedValue"
+       static let categoryCahcedValue="categoryCahcedValue"
+       static let typeCahcedValue="typeCahcedValue"
+    
     static let isAllUserPostsDetailsFetched="isAllUserPostsDetailsFetched"
     static let isFavoriteFetched="isFavoriteFetched"
     static let isNotificationsFetched="isNotificationsFetched"

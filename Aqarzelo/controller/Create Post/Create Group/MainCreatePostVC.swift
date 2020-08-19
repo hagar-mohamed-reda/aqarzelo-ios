@@ -366,7 +366,7 @@ class MainCreatePostVC: UIViewController {
     }
     
     func goToHomeTabe()  {
-        if let home = UIApplication.shared.keyWindow?.rootViewController as? HomeTabBarVC {
+        if let home = UIWindow.key?.rootViewController as? HomeTabBarVC {
             home.selectedIndex = 0
             present(home, animated: true)
         }

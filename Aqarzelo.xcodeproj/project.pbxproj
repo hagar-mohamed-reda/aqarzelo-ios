@@ -688,7 +688,6 @@
 			isa = PBXGroup;
 			children = (
 				9FE26F8624E87C3C008889AB /* AppDelegate.swift */,
-				9FDDB71424E98E3F00AF8817 /* helpers */,
 				9FE26FD724E88083008889AB /* view */,
 				9FE26FC124E87F88008889AB /* view model */,
 				9FE26FA724E87D00008889AB /* services */,
@@ -700,6 +699,7 @@
 				9FE26F8C24E87C3C008889AB /* Main.storyboard */,
 				9FE26F8F24E87C3E008889AB /* Assets.xcassets */,
 				9FE26F9124E87C3E008889AB /* LaunchScreen.storyboard */,
+				9FDDB71424E98E3F00AF8817 /* helpers */,
 				9FE26F9A24E87C4D008889AB /* support files */,
 			);
 			path = Aqarzelo;

@@ -15,38 +15,71 @@ import MOLH
 class CustomFilterView:CustomBaseView {
     
     
- lazy var mainDrop1View:UIView =  makeMainSubViewWithAppendView(vv: [cityDrop])
-    
-    
-    lazy var cityDrop:DropDown = {
-        let i = returnMainDropDown(plcae: "City".localized)
+    lazy var mainDrop1View:UIView =  makeMainSubViewWithAppendView(vv: [cityDrop,cityImage])
+    lazy var cityDrop = UILabel(text: "City".localized, font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var cityImage:UIImageView = {
+        let i = UIImageView(image: UIImage(named: "arrow-pointing-downwards(1)"))
+        i.contentMode = .scaleAspectFit
+
         return i
     }()
-    lazy var mainDrop2View:UIView =  makeMainSubViewWithAppendView(vv: [areaDrop])
     
-    lazy var areaDrop:DropDown = {
-        let i = returnMainDropDown(plcae: "Area".localized)
-        i.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
-        
-        i.constrainHeight(constant: 50)
+    lazy var mainDrop2View:UIView =  makeMainSubViewWithAppendView(vv: [areaDrop,areaImage])
+    lazy var areaDrop = UILabel(text: "Area".localized, font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var areaImage:UIImageView = {
+        let i = UIImageView(image: UIImage(named: "arrow-pointing-downwards(1)"))
+        i.contentMode = .scaleAspectFit
         return i
     }()
-    lazy var mainDrop3View:UIView =  makeMainSubViewWithAppendView(vv: [TypeDrop])
     
-    lazy var TypeDrop:DropDown = {
-        let i = returnMainDropDown(plcae: "Type".localized)
-        i.optionArray = ["Sale".localized, "Rent".localized]
+    lazy var mainDrop3View:UIView =  makeMainSubViewWithAppendView(vv: [catDrop,catImage])
+    lazy var catDrop = UILabel(text: "Category".localized, font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var catImage:UIImageView = {
+        let i = UIImageView(image: UIImage(named: "arrow-pointing-downwards(1)"))
+        i.contentMode = .scaleAspectFit
+
         return i
     }()
-    lazy var mainDrop4View:UIView =  makeMainSubViewWithAppendView(vv: [categoryDrop])
     
-    lazy var categoryDrop:DropDown = {
-        let i = returnMainDropDown(plcae: "Category".localized)
-        i.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
-        
-        
+    lazy var mainDrop4View:UIView =  makeMainSubViewWithAppendView(vv: [typeDrop,typeImage])
+    lazy var typeDrop = UILabel(text: "Type".localized, font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var typeImage:UIImageView = {
+        let i = UIImageView(image: UIImage(named: "arrow-pointing-downwards(1)"))
+        i.contentMode = .scaleAspectFit
+
         return i
     }()
+    
+    
+//    lazy var cityDrop:DropDown = {
+//        let i = returnMainDropDown(plcae: "City".localized)
+//        return i
+//    }()
+//    lazy var mainDrop2View:UIView =  makeMainSubViewWithAppendView(vv: [areaDrop])
+//
+//    lazy var areaDrop:DropDown = {
+//        let i = returnMainDropDown(plcae: "Area".localized)
+//        i.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+//
+//        i.constrainHeight(constant: 50)
+//        return i
+//    }()
+//    lazy var mainDrop3View:UIView =  makeMainSubViewWithAppendView(vv: [TypeDrop])
+//
+//    lazy var TypeDrop:DropDown = {
+//        let i = returnMainDropDown(plcae: "Type".localized)
+//        i.optionArray = ["Sale".localized, "Rent".localized]
+//        return i
+//    }()
+//    lazy var mainDrop4View:UIView =  makeMainSubViewWithAppendView(vv: [categoryDrop])
+//
+//    lazy var categoryDrop:DropDown = {
+//        let i = returnMainDropDown(plcae: "Category".localized)
+//        i.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+//
+//
+//        return i
+//    }()
     lazy var numRoomsLabel = UILabel(text: "Num Rooms".localized, font: .systemFont(ofSize: 16), textColor: .black,textAlignment: MOLHLanguage.isRTLLanguage() ? .right : .left)
     lazy var numOfBathsView:UIView = {
         let v = UIView(backgroundColor: #colorLiteral(red: 0.9659802318, green: 0.9661383033, blue: 0.9659466147, alpha: 1))
@@ -184,29 +217,24 @@ return mainStackView
         }else {
             priceStack = getStack(views: minimumPriceLabel,maxPriceLabel, spacing: 8, distribution: .fillEqually, axis: .horizontal)
             spaceStack = getStack(views: minimumSpaceLabel,maxSpaceLabel, spacing: 8, distribution: .fillEqually, axis: .horizontal)
-            //            [minimumPriceLabel,minimumSpaceLabel].forEach({$0.textAlignment = .right})
-            //            [maxPriceLabel,maxSpaceLabel].forEach({$0.textAlignment = .left})
             
         }
-        //        backgroundColor = ColorConstant.mainBackgroundColor
-        
-        
-        
-        
-        //        let dropStack = getStack(views: cityDrop,areaDrop,categoryDrop,TypeDrop, spacing: 16, distribution: .fillEqually, axis: .vertical)
-        
-//        let mainStackView = getStack(views: dropStack,totalStack,total2Stack,seperatorView,priceLabel,priceSlider,priceStack,spaceLabel,spaceSlider,spaceStack, spacing: 24, distribution: .fill, axis: .vertical)
   
 
       //  priceSlider,priceStack,spaceLabel,spaceSlider,spaceStack
         
         addSubViews(views: mainStackView,submitButton,priceLabel,priceSlider,priceStack,spaceLabel,spaceSlider,spaceStack)
         
-        makeThis(xx: mainDrop1View, cc: cityDrop)
-        makeThis(xx: mainDrop2View, cc: areaDrop)
+        makeThissss(xx: mainDrop1View, cc: cityDrop, img: cityImage)
+               makeThissss(xx: mainDrop2View, cc: areaDrop, img: areaImage)
+               makeThissss(xx: mainDrop3View, cc: catDrop, img: catImage)
+               makeThissss(xx: mainDrop4View, cc: typeDrop, img: typeImage)
         
-        makeThis(xx: mainDrop3View, cc: TypeDrop)
-        makeThis(xx: mainDrop4View, cc: categoryDrop)
+//        makeThis(xx: mainDrop1View, cc: cityDrop)
+//        makeThis(xx: mainDrop2View, cc: areaDrop)
+//
+//        makeThis(xx: mainDrop3View, cc: TypeDrop)
+//        makeThis(xx: mainDrop4View, cc: categoryDrop)
         
         //        addSubViews(views: mainStackView,submitButton)
         //        addSubViews(views: mainStackView,submitButton)

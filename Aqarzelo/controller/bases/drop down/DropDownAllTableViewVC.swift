@@ -18,6 +18,7 @@ class DropDownAllTableViewVC: UITableViewController {
     var typeDataSource = [String]()
     var selectedData:String = ""
     var types = "city"
+    var selectedItem = ""
     
     
     var handleCheckedIndex:((String,String,Int)->())?
@@ -35,6 +36,7 @@ class DropDownAllTableViewVC: UITableViewController {
         tableView.allowsMultipleSelection = false
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
         tableView.showsVerticalScrollIndicator=false
+        tableView.tableFooterView = UIView()
     }
 }
 
@@ -49,22 +51,22 @@ extension DropDownAllTableViewVC{
         let ss =  types == "city"  ?  cityDataSource[indexPath.row] : types == "area" ? areaDataSource[indexPath.row] : types == "cat" ? categoryDataSource[indexPath.row] : typeDataSource[indexPath.row]
         
         cell.textLabel?.text = ss
-        let xx:String
+       
         if types == "city" {
-             xx = userDefaults.string(forKey: UserDefaultsConstants.cityCahcedValue) ?? ""
+             selectedItem = userDefaults.string(forKey: UserDefaultsConstants.cityCahcedValue) ?? ""
               }else if types == "area" {
-            xx = userDefaults.string(forKey: UserDefaultsConstants.areaCahcedValue) ?? ""
+            selectedItem = userDefaults.string(forKey: UserDefaultsConstants.areaCahcedValue) ?? ""
               }else if types == "cat" {
-            xx = userDefaults.string(forKey: UserDefaultsConstants.categoryCahcedValue) ?? ""
+            selectedItem = userDefaults.string(forKey: UserDefaultsConstants.categoryCahcedValue) ?? ""
               }else if types == "type" {
-            xx = userDefaults.string(forKey: UserDefaultsConstants.typeCahcedValue) ?? ""
+            selectedItem = userDefaults.string(forKey: UserDefaultsConstants.typeCahcedValue) ?? ""
         }else {
-            xx = ""
+            selectedItem = ""
         }
         
         
 
-        if xx == ss {
+        if selectedItem == ss {
             cell.accessoryType = .checkmark
         }else{
             cell.accessoryType = .none

@@ -19,6 +19,10 @@ extension UIView{
         xx.hstack(cc).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
  }
     
+    func makeThissss(xx:UIView,cc:UIView,img:UIImageView)  {
+              xx.hstack(cc,UIView(),img).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
+       }
+    
     func makeMainSubViewWithAppendView(vv:[UIView]) ->UIView {
            let l = UIView(backgroundColor: .white)
            l.layer.cornerRadius = 8

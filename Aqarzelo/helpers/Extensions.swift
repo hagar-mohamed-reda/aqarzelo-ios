@@ -15,7 +15,7 @@ import MOLH
 extension UIViewController {
     
     func showOrHideCustomTabBar(hide:Bool)  {
-        let home = UIApplication.shared.keyWindow?.rootViewController as? HomeTabBarVC
+        let home = UIWindow.key?.rootViewController as? HomeTabBarVC
 //        home?.customTabBarView.isHide(hide)
     }
     
@@ -141,7 +141,7 @@ extension UICollectionViewCell {
 
 //MARK: - UIApplication Extension
 extension UIApplication {
-    class func topViewController(viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func topViewController(viewController: UIViewController? = UIWindow.key?.rootViewController) -> UIViewController? {
         if let nav = viewController as? UINavigationController {
             return topViewController(viewController: nav.visibleViewController)
         }
@@ -161,7 +161,7 @@ extension UIApplication {
             if #available(iOS 13, *) {
                 return UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController as? HomeTabBarVC
                    } else {
-                return UIApplication.shared.keyWindow?.rootViewController as? HomeTabBarVC
+                return UIWindow.key?.rootViewController as? HomeTabBarVC
                    }
 //            return shared.keyWindow?.rootViewController as? HomeTabBarVC
         }
@@ -292,9 +292,9 @@ extension UIViewController{
     func statusBarBackgroundColor() {
            if #available(iOS 13, *)
            {
-               let statusBar = UIView(frame: (UIApplication.shared.keyWindow?.windowScene?.statusBarManager?.statusBarFrame)!)
+               let statusBar = UIView(frame: (UIWindow.key?.windowScene?.statusBarManager?.statusBarFrame)!)
             statusBar.backgroundColor =  #colorLiteral(red: 0.2301297784, green: 0.5344927907, blue: 0.5495229959, alpha: 1)
-               UIApplication.shared.keyWindow?.addSubview(statusBar)
+               UIWindow.key?.addSubview(statusBar)
            } else {
                // ADD THE STATUS BAR AND SET A CUSTOM COLOR
                let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
@@ -305,6 +305,6 @@ extension UIViewController{
        }
     
     func hideStatusBarBackground() {
-         UIApplication.shared.keyWindow?.subviews.forEach({$0.backgroundColor = .clear})
+         UIWindow.key?.subviews.forEach({$0.backgroundColor = .clear})
     }
 }
