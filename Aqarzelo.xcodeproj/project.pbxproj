@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C373ECE1BC57B7F6BC86767 /* Pods_Aqarzelo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519E04DD8D8FDF679056F215 /* Pods_Aqarzelo.framework */; };
+		9FD04E4024EDB2910077884A /* DropDownAllTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */; };
+		9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */; };
 		9FDDB71D24E98E7300AF8817 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71524E98E6B00AF8817 /* Extensions.swift */; };
 		9FDDB71E24E98E7300AF8817 /* ExtensionUivewwwwwww.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71624E98E6C00AF8817 /* ExtensionUivewwwwwww.swift */; };
 		9FDDB71F24E98E7300AF8817 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71724E98E6E00AF8817 /* ViewControllers.swift */; };
@@ -221,6 +223,8 @@
 
 /* Begin PBXFileReference section */
 		519E04DD8D8FDF679056F215 /* Pods_Aqarzelo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aqarzelo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownAllTableViewVC.swift; sourceTree = "<group>"; };
+		9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCityAndAreaTableViewVC.swift; sourceTree = "<group>"; };
 		9FDDB71524E98E6B00AF8817 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9FDDB71624E98E6C00AF8817 /* ExtensionUivewwwwwww.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUivewwwwwww.swift; sourceTree = "<group>"; };
 		9FDDB71724E98E6E00AF8817 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
@@ -465,6 +469,15 @@
 				CACADD2DC40895DADE73CEBB /* Pods-Aqarzelo.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9FD04E3E24EDB2730077884A /* drop down */ = {
+			isa = PBXGroup;
+			children = (
+				9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */,
+				9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */,
+			);
+			path = "drop down";
 			sourceTree = "<group>";
 		};
 		9FDDB71424E98E3F00AF8817 /* helpers */ = {
@@ -899,6 +912,7 @@
 		9FE2703024E8840A008889AB /* bases */ = {
 			isa = PBXGroup;
 			children = (
+				9FD04E3E24EDB2730077884A /* drop down */,
 				9FE26F8A24E87C3C008889AB /* CustomMainAlertVC.swift */,
 				9FE2701024E88309008889AB /* BaseCollectionVC.swift */,
 				9FE2701224E88317008889AB /* BaseViewController.swift */,
@@ -1516,6 +1530,7 @@
 				9FDDB74A24E98F5B00AF8817 /* CustomAddMinusView.swift in Sources */,
 				9FE2702F24E88405008889AB /* NotificationCollectionVC.swift in Sources */,
 				9FDDB73624E98EF200AF8817 /* CustomChangeLanguageView.swift in Sources */,
+				9FD04E4024EDB2910077884A /* DropDownAllTableViewVC.swift in Sources */,
 				9FE2704224E8845B008889AB /* AppDetailBottomCollectionVC.swift in Sources */,
 				9FE2704824E8846E008889AB /* AqarDetailsInfoVC.swift in Sources */,
 				9FE26FF924E881A4008889AB /* BasePostModel.swift in Sources */,
@@ -1598,6 +1613,7 @@
 				9FE26FA324E87CD4008889AB /* ColorConstant.swift in Sources */,
 				9FDDB73D24E98EF200AF8817 /* CustomEmptyNoDataView.swift in Sources */,
 				9FE270EB24E88811008889AB /* ChatMessageCell.swift in Sources */,
+				9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */,
 				9FE2708724E8857D008889AB /* EditProfileVC.swift in Sources */,
 				9FE2705324E884A9008889AB /* ChooseLocationVC.swift in Sources */,
 				9FDDB74624E98F5B00AF8817 /* CustomHighlightedCollectionView.swift in Sources */,
