@@ -54,7 +54,23 @@ class MainCreatePostVC: UIViewController {
         return v
     }()
     
-    
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+           let t = CustomMainAlertVC()
+           t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+           t.modalTransitionStyle = .crossDissolve
+           t.modalPresentationStyle = .overCurrentContext
+           return t
+       }()
+    lazy var dropDownTableViewVC:DropDownAllTableViewVC = {
+          let v = DropDownAllTableViewVC()
+          v.view.layer.cornerRadius = 8
+          v.view.clipsToBounds=true
+          v.handleCheckedIndex = {[unowned self] types,select,index in
+              self.checkSelectedDropDown(types,select,index)
+              self.removeTransparentView()
+          }
+          return v
+      }()
     lazy var middleFirstPostCollection:CreateFirstListCollectionVC = {
         let vc = CreateFirstListCollectionVC()
         vc.view.isHide(false)
@@ -451,6 +467,16 @@ class MainCreatePostVC: UIViewController {
             goToNextVC()
         }
     }
+    
+    @objc func handleDismiss()  {
+           dismiss(animated: true, completion: nil)
+           UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+//               self.transparentView.alpha = 0
+               self.dropDownTableViewVC.view.removeFromSuperview()
+               //            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+           }, completion: nil)
+           //        [customNoInternetView,transparentView].forEach({$0.})
+       }
     
     @objc fileprivate  func  handleBack()  {
         navigationController?.popViewController(animated: true)

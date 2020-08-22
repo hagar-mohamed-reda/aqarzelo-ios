@@ -174,42 +174,10 @@
             filePath = "Aqarzelo/controller/Create Post/Create Group/MainCreatePostVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
+            startingLineNumber = "448"
+            endingLineNumber = "448"
             landmarkName = "makeNewPost()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E8D5A0CA-5848-49EA-8399-D3A3B7764823 - 81f35c874dd4b9df"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Aqarzelo.MainCreatePostVC.makeNewPost() -&gt; ()"
-                  moduleName = "Aqarzelo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hossam/Documents/xcode%20projects/syphinx/new%20aqar%2015:8:2020/Aqarzelo/Aqarzelo/controller/Create%20Post/Create%20Group/MainCreatePostVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "432"
-                  endingLineNumber = "432"
-                  offsetFromSymbolStart = "7707">
-               </Location>
-               <Location
-                  uuid = "E8D5A0CA-5848-49EA-8399-D3A3B7764823 - c0c909d149b5f339"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Aqarzelo.BaseAddAqarModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Aqarzelo.MainCreatePostVC.makeNewPost() -&gt; ()"
-                  moduleName = "Aqarzelo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hossam/Documents/xcode%20projects/syphinx/new%20aqar%2015:8:2020/Aqarzelo/Aqarzelo/controller/Create%20Post/Create%20Group/MainCreatePostVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "434"
-                  endingLineNumber = "434"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

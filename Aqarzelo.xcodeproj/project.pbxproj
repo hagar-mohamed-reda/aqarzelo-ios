@@ -688,13 +688,13 @@
 			isa = PBXGroup;
 			children = (
 				9FE26F8624E87C3C008889AB /* AppDelegate.swift */,
-				9FE26FD724E88083008889AB /* view */,
-				9FE26FC124E87F88008889AB /* view model */,
 				9FE26FA724E87D00008889AB /* services */,
 				9FE26FA624E87CF3008889AB /* localization */,
 				9FE26FA124E87CBF008889AB /* constants */,
 				9FE26F9C24E87C8C008889AB /* caching */,
+				9FE26FC124E87F88008889AB /* view model */,
 				9FE26F9B24E87C60008889AB /* model */,
+				9FE26FD724E88083008889AB /* view */,
 				9FE2700F24E882CA008889AB /* controller */,
 				9FE26F8C24E87C3C008889AB /* Main.storyboard */,
 				9FE26F8F24E87C3E008889AB /* Assets.xcassets */,
