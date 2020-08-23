@@ -51,12 +51,17 @@ class SecondCreateCityCell: BaseCollectionCell {
         return l
     }()
     
-    lazy var mainDrop1View:UIView =  makeMainSubViewWithAppendView(vv: [cityDrop,cityImage])
-       lazy var cityDrop = UILabel(text: "City".localized, font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var mainDrop1View:UIView =  {
+        
+       let v = makeMainSubViewWithAppendView(vv: [cityDrop,cityImage])
+        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleOpenDrops)))
+        return v
+    }()
+        lazy var cityDrop = UILabel(text: "City".localized, font: .systemFont(ofSize: 16), textColor: .black)
        lazy var cityImage:UIImageView = {
            let i = UIImageView(image: UIImage(named: "arrow-pointing-downwards(1)"))
            i.contentMode = .scaleAspectFit
-           
+
            return i
        }()
     
@@ -79,8 +84,12 @@ class SecondCreateCityCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((Int?,Bool)->Void)?
-    
+    var handleOpenDropDown:((CGRect)->Void)?
+
     override func setupViews() {
+        mainDrop1View.isUserInteractionEnabled=true
+        
+
         categoryLabel.constrainHeight(constant: 30)
         backgroundColor = .white
         
@@ -99,4 +108,8 @@ class SecondCreateCityCell: BaseCollectionCell {
         showHidingViews(views: categoryQuestionLabel,cityDrop, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3938"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }
+    
+    @objc  func handleOpenDrops()  {
+        handleOpenDropDown?(cityDrop.frame)
+       }
 }

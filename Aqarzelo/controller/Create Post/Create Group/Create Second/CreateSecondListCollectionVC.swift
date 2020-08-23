@@ -39,6 +39,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     var handleOpenMaps:(()->Void)?
     var delgate:CreateSecondListCollectionVCProtocol?
     var secondCcreatePostVviewModel = SecondCcreatePostVviewModel() //view model
+//    var handleOpenDropDown:((CGRect)->Void)?
     
     var handleNextVC:((Bool,Double?,Double?,Int?, Int?,String?,String?,Int?)->Void)?
     //    var area_id,buildNum,floorNum:Int?
@@ -52,6 +53,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupCollections()
         setupSecondCcreatePostVviewModelObserver()
         statusBarBackgroundColor()
@@ -111,6 +113,9 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
                 self.secondCcreatePostVviewModel.city = openNext ? String(tx ?? 1) : String()
                 self.enableSecondCell(openNext, index: 2)
             }
+//            cell.handleOpenDropDown = {[unowned self] frame in
+//                self.handleOpenDropDown?(frame)
+//            }
             return cell
         } else if indexPath.item == 2 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellAreaId, for: indexPath) as! SecondCreateAreaCell
@@ -298,6 +303,8 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+ 
     
 }
 

@@ -64,6 +64,28 @@ class PostMessagesCollectionVC: BaseCollectionVC {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+                   // Define the initial state (Before the animation)
+                   cell.alpha = 0
+
+                   // Define the final state (After the animation)
+                   UIView.animate(withDuration: 0.5, animations: { cell.alpha = 1 })
+                   
+                   
+           //        // Define the initial state (Before the animation)
+           //        let rotationAngleInRadians = 90.0 * CGFloat(Double.pi/180.0)
+           //        let rotationTransform = CATransform3DMakeRotation(rotationAngleInRadians, 0, 0, 1)
+           //        cell.layer.transform = rotationTransform
+           //
+           //        // Define the final state (After the animation)
+           //        UIView.animate(withDuration: 1.0, animations: { cell.layer.transform = CATransform3DIdentity })
+                   
+                   
+           //        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
+           //        UIView.animate(withDuration: 0.5, animations: { cell.layer.transform = rotationTransform })
+
+       }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let estimatedCellSize = PostMessagesCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 10000))
         estimatedCellSize.textMessageLabel.text = messagesArray[indexPath.item].comment

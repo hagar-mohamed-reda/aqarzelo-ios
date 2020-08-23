@@ -54,26 +54,11 @@ class MainCreatePostVC: UIViewController {
         return v
     }()
     
-    lazy var customMainAlertVC:CustomMainAlertVC = {
-           let t = CustomMainAlertVC()
-           t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-           t.modalTransitionStyle = .crossDissolve
-           t.modalPresentationStyle = .overCurrentContext
-           return t
-       }()
-    lazy var dropDownTableViewVC:DropDownAllTableViewVC = {
-          let v = DropDownAllTableViewVC()
-          v.view.layer.cornerRadius = 8
-          v.view.clipsToBounds=true
-          v.handleCheckedIndex = {[unowned self] types,select,index in
-              self.checkSelectedDropDown(types,select,index)
-              self.removeTransparentView()
-          }
-          return v
-      }()
+    
     lazy var middleFirstPostCollection:CreateFirstListCollectionVC = {
         let vc = CreateFirstListCollectionVC()
         vc.view.isHide(false)
+        //         vc.view.isHide(true)
         vc.handleNextVC = { [unowned self] (isOpen,title,category_id,type,spaceNum,roomNum,bathNum,priceMeter,totalPrice) in
             isOpen ? self.makeFirstOperation(title, category_id, type, spaceNum,roomNum, bathNum, priceMeter, totalPrice, isOpen) : self.enableButton(isOpen, .white, second: false, third: false, last: false)
         }
@@ -85,13 +70,14 @@ class MainCreatePostVC: UIViewController {
         let vc =  CreateSecondListCollectionVC()
         vc.delgate = self
         vc.view.isHide(true)
+        //        vc.handleOpenDropDown = {[unowned self] frame in
+        //            self.handleOpenDropDown(frame)
+        //        }
         vc.handleNextVC = { [unowned self] (isOpen,lat,long,city,area,address,year,floor) in
             isOpen ? self.makeSecondOperation(lat, long, city, area, address, floor, year, isOpen) : self.enableButton(isOpen, .white, second: true, third: false, last: false)
         }
         return vc
     }()// second
-    
-    
     lazy  var middleThirdPostCollection:CreateThirddListCollectionVC = {
         let vc = CreateThirddListCollectionVC() // third
         vc.view.isHide(true)
@@ -330,12 +316,12 @@ class MainCreatePostVC: UIViewController {
     
     fileprivate  func setupNavigation()  {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
         navigationItem.title = "Create Post".localized
         let img:UIImage = (MOLHLanguage.isRTLLanguage() ?  UIImage(named:"back button-2") : #imageLiteral(resourceName: "back button-2")) ?? #imageLiteral(resourceName: "back button-2")
-             
-             navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
     }
     
     func putDefaultDatas(aqar:AqarModel)  {
@@ -467,16 +453,6 @@ class MainCreatePostVC: UIViewController {
             goToNextVC()
         }
     }
-    
-    @objc func handleDismiss()  {
-           dismiss(animated: true, completion: nil)
-           UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-//               self.transparentView.alpha = 0
-               self.dropDownTableViewVC.view.removeFromSuperview()
-               //            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-           }, completion: nil)
-           //        [customNoInternetView,transparentView].forEach({$0.})
-       }
     
     @objc fileprivate  func  handleBack()  {
         navigationController?.popViewController(animated: true)
