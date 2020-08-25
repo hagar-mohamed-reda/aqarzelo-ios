@@ -84,6 +84,6 @@ class MessagesServices {
             } catch let error {
                 completion(nil,nil, error)
             }
-            }.resume()
+        }.resume()
     }
 }

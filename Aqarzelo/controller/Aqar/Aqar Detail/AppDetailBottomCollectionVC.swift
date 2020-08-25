@@ -17,6 +17,7 @@ class AppDetailBottomCollectionVC: UICollectionViewController, UICollectionViewD
     //        v.constrainHeight(constant: 220)
     //        return v
     //    }()
+    var lastContentOffset:CGFloat = 0
     
     fileprivate let cellDiscriptionId = "cellDiscriptionId"
     fileprivate let cellInfoId = "cellInfoId"
@@ -175,30 +176,7 @@ class AppDetailBottomCollectionVC: UICollectionViewController, UICollectionViewD
         }
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if aqarsArray.isEmpty {
-            handleShowHoghlightedView?(true);return
-        }
-        
-        // for detech scroll vaules
-        
-        if (100...200).contains(scrollView.contentOffset.y){
-            handleShowHoghlightedView?(false)
-        }else if (201...300).contains(scrollView.contentOffset.y){
-            handleShowHoghlightedView?(true)
-        }else if (301...400).contains(scrollView.contentOffset.y){
-            handleShowHoghlightedView?(false)
-        }else if (401...500).contains(scrollView.contentOffset.y){
-            handleShowHoghlightedView?(true)
-        }else if (501...600).contains(scrollView.contentOffset.y){
-            handleShowHoghlightedView?(false)
-        }else if (601...700).contains(scrollView.contentOffset.y){
-            handleShowHoghlightedView?(true)
-        }else {
-            handleShowHoghlightedView?(true)
-        }
-        
-    }
+    
     
     func setupCollections() {
         collectionView.backgroundColor = #colorLiteral(red: 0.9523469806, green: 0.9524837136, blue: 0.9523171782, alpha: 1)
@@ -218,4 +196,39 @@ class AppDetailBottomCollectionVC: UICollectionViewController, UICollectionViewD
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension AppDetailBottomCollectionVC {
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if aqarsArray.isEmpty {
+            handleShowHoghlightedView?(true);return
+        }
+        let delta = scrollView.contentOffset.y - lastContentOffset
+        
+        handleShowHoghlightedView?(delta < 0 ? true : false)
+        lastContentOffset = scrollView.contentOffset.y
+        //        if (100...200).contains(scrollView.contentOffset.y){
+        //            handleShowHoghlightedView?(false)
+        //        }else if (201...300).contains(scrollView.contentOffset.y){
+        //            handleShowHoghlightedView?(true)
+        //        }else if (301...400).contains(scrollView.contentOffset.y){
+        //            handleShowHoghlightedView?(false)
+        //        }else if (401...500).contains(scrollView.contentOffset.y){
+        //            handleShowHoghlightedView?(true)
+        //        }else if (501...600).contains(scrollView.contentOffset.y){
+        //            handleShowHoghlightedView?(false)
+        //        }else if (601...700).contains(scrollView.contentOffset.y){
+        //            handleShowHoghlightedView?(true)
+        //        }else {
+        //            handleShowHoghlightedView?(true)
+        //        }
+        
+    }
+    
+    func scrollViewDidBeginDragging(_ scrollView: UIScrollView) {
+        // Where lastContentOffset is a class variable of type CGFloat
+        lastContentOffset = scrollView.contentOffset.y
+    }
+    
 }

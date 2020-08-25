@@ -32,7 +32,7 @@ class RegistrationServices {
         let postString = "phone=\(phone)&password=\(password)"
         RegistrationServices.registerationPostMethodGeneric(postString: postString, url: url, completion: completion)
     }
-
+    
     func forgetPassword(phone:String,completion:@escaping (BaseUserSecondModel?,Error?)->Void)  { ////baseusermodel
         let urlString = "http://aqarzelo.com/public/api/user/forget-password".toSecrueHttps()
         guard  let url = URL(string: urlString) else { return  }
@@ -83,12 +83,12 @@ class RegistrationServices {
     func loginWithExternal(name:String,photo:String,email:String,completion:@escaping (BaseUserSecondModel?,Error?)->Void ) { //baseusermodel
         let urlString = "http://aqarzelo.com/public/api/user/external/login".toSecrueHttps()
         guard  let url = URL(string: urlString) else { return  }
-//        let parameters: [String: Any] = [
-//            "email" : email,
-//            "name" : name,
-//            "is_external" : true,
-//            "photo":photo
-//        ]
+        //        let parameters: [String: Any] = [
+        //            "email" : email,
+        //            "name" : name,
+        //            "is_external" : true,
+        //            "photo":photo
+        //        ]
         
         let postString = "is_external=true&email=\(email)&name=\(name)"
         RegistrationServices.registerationPostMethodGeneric(postString: postString, url: url, completion: completion)
@@ -102,7 +102,7 @@ class RegistrationServices {
         RegistrationServices.registerationPostMethodGeneric(postString: postString, url: url, completion: completion)
     }
     
-  static func registerationPostMethodGeneric<T:Codable>(postString:String,url:URL,completion:@escaping (T?,Error?)->Void)  {
+    static func registerationPostMethodGeneric<T:Codable>(postString:String,url:URL,completion:@escaping (T?,Error?)->Void)  {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -121,7 +121,7 @@ class RegistrationServices {
             } catch let error {
                 completion(nil,error)
             }
-            }.resume()
+        }.resume()
     }
     
     static func registerationGetMethodGenerics<T:Codable>(urlString:String,completion:@escaping (T?,Error?)->Void)  {
@@ -139,7 +139,7 @@ class RegistrationServices {
             } catch let error {
                 completion(nil, error)
             }
-            }.resume()
+        }.resume()
     }
     
 }
