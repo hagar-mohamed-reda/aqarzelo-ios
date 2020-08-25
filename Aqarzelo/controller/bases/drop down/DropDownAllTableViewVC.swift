@@ -51,21 +51,21 @@ extension DropDownAllTableViewVC{
         let ss =  types == "city"  ?  cityDataSource[indexPath.row] : types == "area" ? areaDataSource[indexPath.row] : types == "cat" ? categoryDataSource[indexPath.row] : typeDataSource[indexPath.row]
         
         cell.textLabel?.text = ss
-       
+        
         if types == "city" {
-             selectedItem = userDefaults.string(forKey: UserDefaultsConstants.cityCahcedValue) ?? ""
-              }else if types == "area" {
+            selectedItem = userDefaults.string(forKey: UserDefaultsConstants.cityCahcedValue) ?? ""
+        }else if types == "area" {
             selectedItem = userDefaults.string(forKey: UserDefaultsConstants.areaCahcedValue) ?? ""
-              }else if types == "cat" {
+        }else if types == "cat" {
             selectedItem = userDefaults.string(forKey: UserDefaultsConstants.categoryCahcedValue) ?? ""
-              }else if types == "type" {
+        }else if types == "type" {
             selectedItem = userDefaults.string(forKey: UserDefaultsConstants.typeCahcedValue) ?? ""
         }else {
             selectedItem = ""
         }
         
         
-
+        
         if selectedItem == ss {
             cell.accessoryType = .checkmark
         }else{
@@ -85,7 +85,7 @@ extension DropDownAllTableViewVC{
         let xx = userDefaults.string(forKey: key) ?? ""
         
         if xx==dd  {
-//            userDefaults.removeObject(forKey: key)
+            //            userDefaults.removeObject(forKey: key)
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
         }else {
             userDefaults.set(dd, forKey: key)
@@ -93,7 +93,7 @@ extension DropDownAllTableViewVC{
         }
         userDefaults.synchronize()
         handleCheckedIndex?(types,dd,indexPath.row+1)
-     }
+    }
     
     override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

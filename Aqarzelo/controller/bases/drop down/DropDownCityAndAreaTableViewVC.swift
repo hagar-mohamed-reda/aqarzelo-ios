@@ -10,7 +10,7 @@ import UIKit
 
 class DropDownCityAndAreaTableViewVC: UITableViewController {
     
- var cityDataSource = [String]()
+    var cityDataSource = [String]()
     var areaDataSource = [String]()
     var selectedData:String = ""
     var types = "city"
@@ -47,8 +47,8 @@ extension DropDownCityAndAreaTableViewVC{
         cell.textLabel?.text = ss
         let xx:String
         if types == "city" {
-             xx = userDefaults.string(forKey: UserDefaultsConstants.cityCahcedValue) ?? ""
-              }else if types == "area" {
+            xx = userDefaults.string(forKey: UserDefaultsConstants.cityCahcedValue) ?? ""
+        }else if types == "area" {
             xx = userDefaults.string(forKey: UserDefaultsConstants.areaCahcedValue) ?? ""
             
         }else {
@@ -56,7 +56,7 @@ extension DropDownCityAndAreaTableViewVC{
         }
         
         
-
+        
         if xx == ss {
             cell.accessoryType = .checkmark
         }else{
@@ -76,7 +76,7 @@ extension DropDownCityAndAreaTableViewVC{
         let xx = userDefaults.string(forKey: key) ?? ""
         
         if xx==dd  {
-//            userDefaults.removeObject(forKey: key)
+            //            userDefaults.removeObject(forKey: key)
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
         }else {
             userDefaults.set(dd, forKey: key)
@@ -84,7 +84,7 @@ extension DropDownCityAndAreaTableViewVC{
         }
         userDefaults.synchronize()
         handleCheckedIndex?(types,dd,indexPath.row+1)
-     }
+    }
     
     override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

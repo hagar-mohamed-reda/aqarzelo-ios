@@ -70,7 +70,6 @@
 		9FE26F9024E87C3E008889AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE26F8F24E87C3E008889AB /* Assets.xcassets */; };
 		9FE26F9324E87C3E008889AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FE26F9124E87C3E008889AB /* LaunchScreen.storyboard */; };
 		9FE26F9E24E87C9B008889AB /* LocalJSONStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE26F9D24E87C9B008889AB /* LocalJSONStore.swift */; };
-		9FE26FA024E87CAA008889AB /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE26F9F24E87CAA008889AB /* StorageType.swift */; };
 		9FE26FA324E87CD4008889AB /* ColorConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE26FA224E87CD4008889AB /* ColorConstant.swift */; };
 		9FE26FA524E87CE3008889AB /* UserDefaultsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE26FA424E87CE3008889AB /* UserDefaultsConstants.swift */; };
 		9FE26FA924E87D0D008889AB /* RegistrationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE26FA824E87D0D008889AB /* RegistrationServices.swift */; };
@@ -287,7 +286,6 @@
 		9FE26F9224E87C3E008889AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FE26F9424E87C3E008889AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FE26F9D24E87C9B008889AB /* LocalJSONStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJSONStore.swift; sourceTree = "<group>"; };
-		9FE26F9F24E87CAA008889AB /* StorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
 		9FE26FA224E87CD4008889AB /* ColorConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstant.swift; sourceTree = "<group>"; };
 		9FE26FA424E87CE3008889AB /* UserDefaultsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConstants.swift; sourceTree = "<group>"; };
 		9FE26FA824E87D0D008889AB /* RegistrationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationServices.swift; sourceTree = "<group>"; };
@@ -743,7 +741,6 @@
 			isa = PBXGroup;
 			children = (
 				9FE26F9D24E87C9B008889AB /* LocalJSONStore.swift */,
-				9FE26F9F24E87CAA008889AB /* StorageType.swift */,
 			);
 			path = caching;
 			sourceTree = "<group>";
@@ -1467,7 +1464,6 @@
 				9FDDB72024E98E7300AF8817 /* ExtensionValidation.swift in Sources */,
 				9FDDB72324E98E7300AF8817 /* AnyTypeCodable.swift in Sources */,
 				9FDDB76424E9904F00AF8817 /* CustomAddPostView.swift in Sources */,
-				9FE26FA024E87CAA008889AB /* StorageType.swift in Sources */,
 				9FE26FB724E87D75008889AB /* MessagesServices.swift in Sources */,
 				9FE2700E24E88243008889AB /* BaseAddAqarModel.swift in Sources */,
 				9FE26FF024E8814E008889AB /* BaseImageModel.swift in Sources */,
@@ -1793,6 +1789,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5RTZJMVRS2;
 				INFOPLIST_FILE = "$(SRCROOT)/Aqarzelo/support files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1812,6 +1809,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5RTZJMVRS2;
 				INFOPLIST_FILE = "$(SRCROOT)/Aqarzelo/support files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

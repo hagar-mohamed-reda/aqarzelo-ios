@@ -100,9 +100,9 @@ class EditProfileVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
     
     func loadUserData()  {
         finalEmail = currentUser.email
@@ -126,12 +126,12 @@ class EditProfileVC: UIViewController {
     
     func setupNavigation()  {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
         navigationItem.title = "Edit Profile".localized
         let img:UIImage = (MOLHLanguage.isRTLLanguage() ?  UIImage(named:"back button-2") : #imageLiteral(resourceName: "back button-2")) ?? #imageLiteral(resourceName: "back button-2")
-             
-             navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
     }
     
     func changeButtonState(sender:UIButton)  {
@@ -177,7 +177,7 @@ class EditProfileVC: UIViewController {
     }
     
     fileprivate func updateUserProfiles() {
-//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         
         SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Looding....".localized)
@@ -217,7 +217,7 @@ class EditProfileVC: UIViewController {
     @objc func handleNext()  {
         customMainAlertVC.addCustomViewInCenter(views: customUpadteUserVview, height: 180)
         self.customUpadteUserVview.problemsView.play()
-
+        
         customUpadteUserVview.problemsView.loopMode = .loop
         self.present(self.customMainAlertVC, animated: true)
     }

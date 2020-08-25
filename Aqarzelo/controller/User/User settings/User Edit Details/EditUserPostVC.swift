@@ -61,9 +61,9 @@ class EditUserPostVC: BaseViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
     
     fileprivate func setupObservers()  {
         
@@ -73,12 +73,12 @@ class EditUserPostVC: BaseViewController {
     
     override func setupNavigation() {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
         navigationItem.title = "Edit Post".localized
         let img:UIImage = (MOLHLanguage.isRTLLanguage() ?  UIImage(named:"back button-2") : #imageLiteral(resourceName: "back button-2")) ?? #imageLiteral(resourceName: "back button-2")
-             
-             navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
     }
     
     override func setupViews() {
@@ -212,7 +212,7 @@ extension EditUserPostVC: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         collectionView.noDataFound(photosFinishedArray.count, text: "No Data Added Yet".localized)
-
+        
         return   photosFinishedArray.count
     }
     

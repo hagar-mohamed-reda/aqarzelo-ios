@@ -112,7 +112,7 @@ class AppDetailBottomCollectionVC: UICollectionViewController, UICollectionViewD
     
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    
+        
         let phone = userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) ? aqarModel.phone : starifyNumber(number: aqarModel.phone)
         
         
@@ -180,6 +180,7 @@ class AppDetailBottomCollectionVC: UICollectionViewController, UICollectionViewD
             handleShowHoghlightedView?(true);return
         }
         
+        // for detech scroll vaules
         
         if (100...200).contains(scrollView.contentOffset.y){
             handleShowHoghlightedView?(false)

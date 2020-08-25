@@ -55,18 +55,18 @@ class HelpVC: UIViewController {
         NSLayoutConstraint.activate([
             logoImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -120),
             logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            ])
+        ])
         discriptionLabel.anchor(top: logoImage.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 32, left: 32, bottom: 0, right: 32))
     }
     
     fileprivate  func setupNavigation()  {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
         navigationItem.title = "Help".localized
         let img:UIImage = (MOLHLanguage.isRTLLanguage() ?  UIImage(named:"back button-2") : #imageLiteral(resourceName: "back button-2")) ?? #imageLiteral(resourceName: "back button-2")
-             
-             navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
     }
     
     //TODO:-Handle methods

@@ -36,8 +36,8 @@ class ZoomUserImageVC: UIViewController {
         }
     }
     fileprivate let img:UIImage!
-//    let panaromaView = CTPanoramaView()
-
+    //    let panaromaView = CTPanoramaView()
+    
     init(img:UIImage) {
         self.img = img
         super.init(nibName: nil, bundle: nil)
@@ -71,7 +71,7 @@ class ZoomUserImageVC: UIViewController {
     
     func setupNavigation()  {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
         let label = UILabel(text: "Preview".localized, font: .systemFont(ofSize: 20), textColor: .white)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: label)
@@ -87,22 +87,22 @@ class ZoomUserImageVC: UIViewController {
     }
     
     func load360Image()  {
-//        guard let photos=photos, let url = URL(string: photos.image) else {return}
-////        let ss = photos.imageUrl?.toSecrueHttps()
-////               guard let myURL = URL(string:"https://aqarzelo.com/public/panorama?image=\(ss)".toSecrueHttps()) else {return}
-////        guard let img = img ,let url = URL(string: img.image) else { return  }
-//              mainImageView.sd_setImage(with: url,placeholderImage: #imageLiteral(resourceName: "58889593bc2fc2ef3a1860c1"))
-              
-//              mainImageView.isHide(false)
-//
-//              panaromaView.image=img//mainImageView.image ?? #imageLiteral(resourceName: "58889593bc2fc2ef3a1860c1")
+        //        guard let photos=photos, let url = URL(string: photos.image) else {return}
+        ////        let ss = photos.imageUrl?.toSecrueHttps()
+        ////               guard let myURL = URL(string:"https://aqarzelo.com/public/panorama?image=\(ss)".toSecrueHttps()) else {return}
+        ////        guard let img = img ,let url = URL(string: img.image) else { return  }
+        //              mainImageView.sd_setImage(with: url,placeholderImage: #imageLiteral(resourceName: "58889593bc2fc2ef3a1860c1"))
+        
+        //              mainImageView.isHide(false)
+        //
+        //              panaromaView.image=img//mainImageView.image ?? #imageLiteral(resourceName: "58889593bc2fc2ef3a1860c1")
         
         guard let photos=photos else {return}
         mainWebView.isHide(false)
         mainImageView.isHide(true)
-
-        let ss = photos.imageUrl?.toSecrueHttps()
-        guard let myURL = URL(string:"https://aqarzelo.com/public/panorama?image=\(ss)".toSecrueHttps()) else {return}
+        
+        
+        guard let ss = photos.imageUrl?.toSecrueHttps(), let myURL = URL(string:"https://aqarzelo.com/public/panorama?image=\(ss)".toSecrueHttps()) else {return}
         let myRequest = URLRequest(url: myURL)
         mainWebView.load(myRequest)
     }
@@ -115,7 +115,7 @@ class ZoomUserImageVC: UIViewController {
                 mainWebView.isHide(true)
                 mainImageView.isHide(false)
             }else {
-                  guard let photos = photos else { return  }
+                guard let photos = photos else { return  }
                 mainImageView.image = photos.image ?? UIImage()
                 mainWebView.isHide(true)
                 mainImageView.isHide(false)

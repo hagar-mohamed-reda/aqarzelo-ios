@@ -23,6 +23,6 @@ class BaseViewController: UIViewController {
     }
     
     func setupNavigation()  {
-       
+        
     }
 }

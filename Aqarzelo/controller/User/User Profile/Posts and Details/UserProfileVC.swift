@@ -12,7 +12,7 @@ import MOLH
 
 class UserProfileVC: UIViewController {
     
- 
+    
     
     lazy var fixedGeight = (view.frame.height - 128 ) / 2
     lazy var userBackgroundImageView: UIImageView = {
@@ -24,29 +24,29 @@ class UserProfileVC: UIViewController {
     }()
     
     lazy var backImageView:UIImageView = {
-           let i =  UIImageView(image:  MOLHLanguage.isRTLLanguage() ?  #imageLiteral(resourceName: "left-arrow") : #imageLiteral(resourceName: "back button-2"))
-              return i
-          }()
-       lazy var bView:UIView = {
-           let v = UIView(backgroundColor: .lightGray)
-           v.constrainWidth(constant: 40)
-           v.constrainHeight(constant: 40)
-           v.layer.cornerRadius = 20
-           v.layer.borderWidth = 3
-           v.layer.borderColor = UIColor.black.cgColor
-           v.clipsToBounds = true
-           v.addSubview(backImageView)
-           backImageView.fillSuperview()
-           v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBack)))
-           return v
-       }()
+        let i =  UIImageView(image:  MOLHLanguage.isRTLLanguage() ?  #imageLiteral(resourceName: "left-arrow") : #imageLiteral(resourceName: "back button-2"))
+        return i
+    }()
+    lazy var bView:UIView = {
+        let v = UIView(backgroundColor: .lightGray)
+        v.constrainWidth(constant: 40)
+        v.constrainHeight(constant: 40)
+        v.layer.cornerRadius = 20
+        v.layer.borderWidth = 3
+        v.layer.borderColor = UIColor.black.cgColor
+        v.clipsToBounds = true
+        v.addSubview(backImageView)
+        backImageView.fillSuperview()
+        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBack)))
+        return v
+    }()
     
     lazy var  subViewUserImage:UIView = {
         let subView = UIView(backgroundColor: .clear)
         subView.addSubViews(views: userEditProfileImageView)
         subView.hstack(userProfileImageView)
-                  subView.constrainWidth(constant: 120)
-                  subView.constrainHeight(constant: 120)
+        subView.constrainWidth(constant: 120)
+        subView.constrainHeight(constant: 120)
         subView.layer.borderWidth = 6
         subView.layer.borderColor = UIColor.white.cgColor
         subView.layer.cornerRadius = 60
@@ -54,7 +54,7 @@ class UserProfileVC: UIViewController {
         
         return subView
     }()
-          
+    
     
     lazy var userProfileImageView: UIImageView = {
         let i = UIImageView(backgroundColor: .gray)
@@ -115,7 +115,7 @@ class UserProfileVC: UIViewController {
         return v
     }()
     
-   @objc func didPullToRefresh()  {
+    @objc func didPullToRefresh()  {
         self.fetchUserData()
     }
     
@@ -132,16 +132,16 @@ class UserProfileVC: UIViewController {
     var user:UserModel?  {
         didSet{
             guard let user=user else{return}
-             self.putUserData(users:user)
+            self.putUserData(users:user)
         }
     }
-//    init(user:UserModel) {
-//        self.user = user
-//        self.reloadData = true
-//
-//        super.init(nibName: nil, bundle: nil)
-//        self.makeAnimation()
-//    }
+    //    init(user:UserModel) {
+    //        self.user = user
+    //        self.reloadData = true
+    //
+    //        super.init(nibName: nil, bundle: nil)
+    //        self.makeAnimation()
+    //    }
     var reloadData = false
     
     
@@ -158,7 +158,7 @@ class UserProfileVC: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = true
-         self.makeAnimation()
+        self.makeAnimation()
         if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
             user=cacheCurrentUserCodabe.storedValue
         }
@@ -167,7 +167,7 @@ class UserProfileVC: UIViewController {
         }
         
         
-
+        
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -200,7 +200,7 @@ class UserProfileVC: UIViewController {
         self.userPosts.removeAll()
         var group3: [AqarModel]?
         
-//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         //        guard let api_Key = user.apiToken
         SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Looding...".localized)
@@ -210,17 +210,17 @@ class UserProfileVC: UIViewController {
         
         
         dispatchQueue.async {
-//            UserServices.shared.getUserData(apiKey: self.user.apiToken) {[unowned self] (base, err) in
-//                if let error = err {
-//                    SVProgressHUD.showError(withStatus: error.localizedDescription)
-//                    self.activeViewsIfNoData();return
-//                }
-//                guard let users = base?.data else{SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ?  base?.messageAr : base?.messageEn ); return}
-//
-//                self.putUserData(users:users)
-//                semaphore.signal()
-//            }
-//            semaphore.wait()
+            //            UserServices.shared.getUserData(apiKey: self.user.apiToken) {[unowned self] (base, err) in
+            //                if let error = err {
+            //                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+            //                    self.activeViewsIfNoData();return
+            //                }
+            //                guard let users = base?.data else{SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ?  base?.messageAr : base?.messageEn ); return}
+            //
+            //                self.putUserData(users:users)
+            //                semaphore.signal()
+            //            }
+            //            semaphore.wait()
             
             UserServices.shared.getUserPosts(apiKeys: user.apiToken, completon: { (base, err) in
                 if let error = err {
@@ -314,7 +314,7 @@ class UserProfileVC: UIViewController {
     
     func deletePost(post:AqarModel,index:Int)  {
         guard let user = user else { return  }
-
+        
         UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Looding....".localized)
@@ -337,7 +337,7 @@ class UserProfileVC: UIViewController {
     
     func updatePost(aqar:AqarModel)  {
         guard let user = user else { return  }
-
+        
         let list = ListOfPhotoCollectionVC( currentUserToken: user.apiToken)
         list.aqar = aqar
         navigationController?.pushViewController(list, animated: true)
@@ -345,7 +345,7 @@ class UserProfileVC: UIViewController {
     
     func displayPost(aqar: AqarModel)  {
         guard let user = user else { return  }
-
+        
         let detailAqar = AqarDetailsInfoVC(aqar: aqar)
         //        detailAqar.aqarsArray = aqarsArray
         detailAqar.userToken = user.apiToken
@@ -403,7 +403,7 @@ class UserProfileVC: UIViewController {
     @objc fileprivate func handleEditProfile()  {
         print(654)
         guard let user = user else { return  }
-
+        
         showOrHideCustomTabBar(hide: true)
         let edit = EditProfileVC(user: user)
         edit.delgate = self
@@ -414,9 +414,9 @@ class UserProfileVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    //    required init?(coder aDecoder: NSCoder) {
+    //        fatalError("init(coder:) has not been implemented")
+    //    }
 }
 
 extension UserProfileVC: UserPostsCollectionVCProtocol {

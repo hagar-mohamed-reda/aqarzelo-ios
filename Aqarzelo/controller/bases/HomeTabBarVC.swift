@@ -22,17 +22,7 @@ class HomeTabBarVC: UITabBarController {
         //        roundedView.layer.borderColor = UIColor.lightGray.cgColor
         return roundedView
     }()
-    func image(fromLayer layer: CALayer) -> UIImage {
-        UIGraphicsBeginImageContext(layer.frame.size)
-        
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-        
-        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        
-        return outputImage!
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +39,6 @@ class HomeTabBarVC: UITabBarController {
         self.delegate = self
         tabBar.addSubview(cornerView)
         cornerView.fillSuperview(padding: .init(top: 8, left: 12, bottom: 8, right: 12))//16
-        addCustomTabBarView()
         setupTabBar()
         setupViewControllers()
         //        UINavigationBar.appearance().barTintColor  = #colorLiteral(red: 0.1800859272, green: 0.6703509688, blue: 0.6941409707, alpha: 1)
@@ -94,14 +83,6 @@ class HomeTabBarVC: UITabBarController {
     
     //MARK:-User methods
     
-    fileprivate func addCustomTabBarView() {
-        
-        
-        
-        
-    }
-    
-    
     fileprivate func setupTabBar() {
         self.viewDidLayoutSubviews()
     }
@@ -122,11 +103,7 @@ class HomeTabBarVC: UITabBarController {
             cart ,
             notification,
             love,
-            
-            
-            
-            
-        ]
+         ]
         guard let items = tabBar.items else { return }
         var myDefaultFontSize: CGFloat = -8
         
@@ -154,6 +131,18 @@ class HomeTabBarVC: UITabBarController {
     
     fileprivate func remvoeView(_ views:UIView) {
         views.removeFromSuperview()
+    }
+    
+   fileprivate func image(fromLayer layer: CALayer) -> UIImage {
+        UIGraphicsBeginImageContext(layer.frame.size)
+        
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        
+        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return outputImage!
     }
     
     //TODO:-Handle methods

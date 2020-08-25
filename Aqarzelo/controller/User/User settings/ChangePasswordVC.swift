@@ -28,7 +28,7 @@ class ChangePasswordVC: UIViewController {
     lazy var customNoInternetView:CustomNoInternetView = {
         let v = CustomNoInternetView()
         v.setupAnimation(name: "4970-unapproved-cross")
-
+        
         v.okButton.addTarget(self, action: #selector(handleOk), for: .touchUpInside)
         return v
     }()
@@ -50,7 +50,7 @@ class ChangePasswordVC: UIViewController {
         statusBarBackgroundColor()
     }
     
-  
+    
     
     //MARK: - override methods
     
@@ -66,7 +66,7 @@ class ChangePasswordVC: UIViewController {
         tabBarController?.tabBar.isHidden = false
         self.navigationController?.isNavigationBarHidden = false
         SVProgressHUD.dismiss()
-
+        
         //        self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -88,7 +88,7 @@ class ChangePasswordVC: UIViewController {
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
-             self.activeViewsIfNoData()
+            self.activeViewsIfNoData()
             guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn);return}
             SVProgressHUD.showSuccess(withStatus: "Updated successfully...".localized)
             self.activeViewsIfNoData()
@@ -105,12 +105,12 @@ class ChangePasswordVC: UIViewController {
     
     func setupNavigation()  {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
         navigationItem.title = "Change Password".localized
         let img:UIImage = (MOLHLanguage.isRTLLanguage() ?  #imageLiteral(resourceName: "left-arrow") : #imageLiteral(resourceName: "back button-2")) ?? #imageLiteral(resourceName: "back button-2")
-             
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
     }
     
     func makeAlert(title:String,message:String)  {
@@ -132,12 +132,12 @@ class ChangePasswordVC: UIViewController {
             self.changeButtonState(enable: isValid, vv: self.customChangePassword.submitButton)
             
         }
-       
+        
         customChangePassword.changePpasswordViewModel.bindableIsLogging.bind(observer: {  [unowned self] (isReg) in
             if isReg == true {
                 UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
                 SVProgressHUD.setForegroundColor(UIColor.green)
-
+                
                 SVProgressHUD.show(withStatus: "Update...".localized)
                 
             }else {
@@ -159,7 +159,7 @@ class ChangePasswordVC: UIViewController {
         if !ConnectivityInternet.isConnectedToInternet {
             customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
             self.customNoInternetView.problemsView.play()
-
+            
             customNoInternetView.problemsView.loopMode = .loop
             self.present(self.customMainAlertVC, animated: true)
         }else {
@@ -180,7 +180,7 @@ class ChangePasswordVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-   
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

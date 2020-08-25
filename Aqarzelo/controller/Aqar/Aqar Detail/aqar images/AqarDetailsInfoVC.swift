@@ -58,8 +58,8 @@ class AqarDetailsInfoVC: UIViewController {
     
     lazy var backImageView:UIImageView = {
         let i =  UIImageView(image:  MOLHLanguage.isRTLLanguage() ?  #imageLiteral(resourceName: "left-arrow") : #imageLiteral(resourceName: "back button-2"))
-           return i
-       }()
+        return i
+    }()
     lazy var bView:UIView = {
         let v = UIView(backgroundColor: .lightGray)
         v.constrainWidth(constant: 40)
@@ -194,9 +194,9 @@ class AqarDetailsInfoVC: UIViewController {
         subView.addGradientBackground(firstColor: #colorLiteral(red: 0.8280106187, green: 0.8881947994, blue: 0.8735718727, alpha: 1), secondColor: #colorLiteral(red: 0.3111050725, green: 0.7003450394, blue: 0.717197597, alpha: 1))
     }
     
-//    override var prefersStatusBarHidden: Bool {
-//        return true
-//    }
+    //    override var prefersStatusBarHidden: Bool {
+    //        return true
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -209,14 +209,14 @@ class AqarDetailsInfoVC: UIViewController {
         hideStatusBarBackground()
     }
     
- 
+    
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     
- 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHide(true)
@@ -229,7 +229,7 @@ class AqarDetailsInfoVC: UIViewController {
         statusBarBackgroundColor()
         UIApplication.shared.isStatusBarHidden = false
         SVProgressHUD.dismiss()
-
+        
     }
     
     //MARK:-User methods
@@ -268,11 +268,11 @@ class AqarDetailsInfoVC: UIViewController {
     }
     
     fileprivate func showHighlightTapped(index: Int,text: String)  {
-//        let tabBarItem = UIApplication.getMainTabBarController()?.tabBar.items?[index]
-////        UIApplication.getMainTabBarController()?.viewControllers?[index].tabBarItem.badgeValue = text
-//        DispatchQueue.main.async(execute: {
-//            tabBarItem?.badgeValue = text
-//        })
+        //        let tabBarItem = UIApplication.getMainTabBarController()?.tabBar.items?[index]
+        ////        UIApplication.getMainTabBarController()?.viewControllers?[index].tabBarItem.badgeValue = text
+        //        DispatchQueue.main.async(execute: {
+        //            tabBarItem?.badgeValue = text
+        //        })
         UIApplication.getMainTabBarController()?.viewControllers?[index].navigationController?.tabBarItem.badgeValue = text
     }
     
@@ -341,9 +341,9 @@ class AqarDetailsInfoVC: UIViewController {
         self.aqarDetailTopView.textView.resignFirstResponder()
     }
     
-   
     
-   
+    
+    
     
     //TODO:-Handle methods
     
@@ -488,7 +488,7 @@ class AqarDetailsInfoVC: UIViewController {
             
             var texy = "New".localized
             var favorite = false
-//            var varrrss = [Int]()
+            //            var varrrss = [Int]()
             
             //cahce aqars
             var dd = cacheFavoriteAqarsCodabe.storedValue
@@ -501,55 +501,55 @@ class AqarDetailsInfoVC: UIViewController {
                 texy = "New".localized
                 favorite = true
                 dd?.append(self.aqarModel)
-
+                
             }
             cacheFavoriteAqarsCodabe.save(dd ?? [aqarModel])
-
+            
             DispatchQueue.main.async {
-                           self.showHighlightTapped(index: 3, text: texy.localized)
+                self.showHighlightTapped(index: 3, text: texy.localized)
                 userDefaults.set(true, forKey: UserDefaultsConstants.favoriteArray)
-
-//                           userDefaults.set(arras, forKey: UserDefaultsConstants.favoriteArray)
-                           userDefaults.synchronize()
-                           self.aqarDetailTopView.favoriteImageView.image =  favorite ? #imageLiteral(resourceName: "Group 3923-10") : #imageLiteral(resourceName: "Group 3923s")
-                           self.view.layoutIfNeeded()
-                       }
+                
+                //                           userDefaults.set(arras, forKey: UserDefaultsConstants.favoriteArray)
+                userDefaults.synchronize()
+                self.aqarDetailTopView.favoriteImageView.image =  favorite ? #imageLiteral(resourceName: "Group 3923-10") : #imageLiteral(resourceName: "Group 3923s")
+                self.view.layoutIfNeeded()
+            }
             
             
-//            if  userDefaults.value(forKey: UserDefaultsConstants.favoriteArray) as? [Int] == nil {
-//                varrrss.append(aqarModel.id)
-//                texy = "New".localized
-//                favorite = true
-//                userDefaults.set(varrrss, forKey: UserDefaultsConstants.favoriteArray)
-//                userDefaults.synchronize()
-//
-//                DispatchQueue.main.async {
-//                    self.showHighlightTapped(index: 3, text: texy.localized)
-//                    //                userDefaults.set(arras, forKey: UserDefaultsConstants.favoriteArray)
-//                    //                userDefaults.synchronize()
-//                    self.aqarDetailTopView.favoriteImageView.image =  favorite ? #imageLiteral(resourceName: "Group 3923-10") : #imageLiteral(resourceName: "Group 3923s")
-//                    self.view.layoutIfNeeded()
-//                }
-//                return
-//            }
-//
-//            guard var arras = userDefaults.value(forKey: UserDefaultsConstants.favoriteArray) as? [Int] else {return}
-//            if arras.contains(aqarModel.id) {
-//                arras.remove(object: aqarModel.id)
-//                texy = "Removed".localized
-//                favorite = false
-//            }else {
-//                arras.append(aqarModel.id)
-//                texy = "New".localized
-//                favorite = true
-//            }
-//            DispatchQueue.main.async {
-//                self.showHighlightTapped(index: 3, text: texy.localized)
-//                userDefaults.set(arras, forKey: UserDefaultsConstants.favoriteArray)
-//                userDefaults.synchronize()
-//                self.aqarDetailTopView.favoriteImageView.image =  favorite ? #imageLiteral(resourceName: "Group 3923-10") : #imageLiteral(resourceName: "Group 3923s")
-//                self.view.layoutIfNeeded()
-//            }
+            //            if  userDefaults.value(forKey: UserDefaultsConstants.favoriteArray) as? [Int] == nil {
+            //                varrrss.append(aqarModel.id)
+            //                texy = "New".localized
+            //                favorite = true
+            //                userDefaults.set(varrrss, forKey: UserDefaultsConstants.favoriteArray)
+            //                userDefaults.synchronize()
+            //
+            //                DispatchQueue.main.async {
+            //                    self.showHighlightTapped(index: 3, text: texy.localized)
+            //                    //                userDefaults.set(arras, forKey: UserDefaultsConstants.favoriteArray)
+            //                    //                userDefaults.synchronize()
+            //                    self.aqarDetailTopView.favoriteImageView.image =  favorite ? #imageLiteral(resourceName: "Group 3923-10") : #imageLiteral(resourceName: "Group 3923s")
+            //                    self.view.layoutIfNeeded()
+            //                }
+            //                return
+            //            }
+            //
+            //            guard var arras = userDefaults.value(forKey: UserDefaultsConstants.favoriteArray) as? [Int] else {return}
+            //            if arras.contains(aqarModel.id) {
+            //                arras.remove(object: aqarModel.id)
+            //                texy = "Removed".localized
+            //                favorite = false
+            //            }else {
+            //                arras.append(aqarModel.id)
+            //                texy = "New".localized
+            //                favorite = true
+            //            }
+            //            DispatchQueue.main.async {
+            //                self.showHighlightTapped(index: 3, text: texy.localized)
+            //                userDefaults.set(arras, forKey: UserDefaultsConstants.favoriteArray)
+            //                userDefaults.synchronize()
+            //                self.aqarDetailTopView.favoriteImageView.image =  favorite ? #imageLiteral(resourceName: "Group 3923-10") : #imageLiteral(resourceName: "Group 3923s")
+            //                self.view.layoutIfNeeded()
+            //            }
             
         }
     }
