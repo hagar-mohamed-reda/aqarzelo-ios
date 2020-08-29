@@ -15,7 +15,7 @@ class AqarDetailHeaderCell: UICollectionReusableView {
         didSet{
             guard let aqar = aqar else { return }
 
-            contactNumber = aqar.contactPhone
+            contactNumber = "0115999999"//aqar.contactPhone
         }
     }
     

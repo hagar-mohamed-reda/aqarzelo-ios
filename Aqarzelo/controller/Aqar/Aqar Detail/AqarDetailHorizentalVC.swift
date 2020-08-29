@@ -87,8 +87,8 @@ class AqarDetailHorizentalVC:     UICollectionViewController, UICollectionViewDe
     
     
     fileprivate func setuptimer() {
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self , selector:
-            #selector(startScrolling), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 20, target: self , selector:
+            #selector(startScrolling), userInfo: nil, repeats: true) //10
         
     }
     

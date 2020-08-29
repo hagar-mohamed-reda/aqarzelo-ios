@@ -47,7 +47,7 @@ class AqarDetailMapCell: BaseCollectionCell {
     override func setupViews() {
         backgroundColor = .white
         
-        stack(mapView)
+        stack(mapView).withMargins(.init(top: 0, left: 16, bottom: 0, right: 16))
         //        stack(customLocationWithCollection.view)
     }
 }
