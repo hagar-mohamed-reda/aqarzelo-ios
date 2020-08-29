@@ -20,14 +20,36 @@ class CustomAddMinusView: UIView {
         im.contentMode = .scaleAspectFit
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAddOne)))
         im.clipsToBounds = true
+//        im.constrainWidth(constant: 10)
+
         return im
     }()
     lazy var background2ImageView:UIImageView = {
         let im = UIImageView(image: UIImage(named: "Ellipse 10"))
-        im.constrainHeight(constant: 60)
-        
-//        im.clipsToBounds = true
+//        im.constrainHeight(constant: 50)
+       
+                im.constrainHeight(constant: 50)
+               im.constrainWidth(constant: 80)
+        im.contentMode = .scaleToFill
+//               im.clipsToBounds = true
+//               im.layer.cornerRadius = dd/2
+//               im.clipsToBounds=true
         return im
+    }()
+//    lazy var background2ImageView:UIView = {
+//         let im = UIView(backgroundColor: #colorLiteral(red: 0.4343734086, green: 0.8606870174, blue: 0.7011793256, alpha: 1))
+//        let dd = mainStack.frame.width/2
+//         im.constrainHeight(constant: 50)
+//        im.constrainWidth(constant: dd)
+//        im.layer.cornerRadius = dd/2
+//        im.clipsToBounds=true
+//         return im
+//     }()
+    lazy var mainStack:UIStackView = {
+        let d = getStack(views: minusImageView,background2ImageView,plusImageView, spacing: 0, distribution: .fill, axis: .horizontal)
+//       let d =         hstack(minusImageView,background2ImageView,plusImageView,distribution:.fill).withMargins( .init(top: 0, left: 16, bottom: 0, right: 16))
+
+        return d
     }()
     lazy var numberOfItemsLabel = UILabel(text: "\(count)", font: .systemFont(ofSize: 16), textColor: .white,textAlignment: .center)
     lazy var minusImageView:UIImageView = {
@@ -36,6 +58,7 @@ class CustomAddMinusView: UIView {
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMinusOne)))
         im.clipsToBounds = true
         im.contentMode = .scaleAspectFit
+//        im.constrainWidth(constant: 10)
         return im
     }()
     
@@ -51,18 +74,7 @@ class CustomAddMinusView: UIView {
         setupViews()
     }
     
-   @objc func handlePanned(gesture:UIPanGestureRecognizer)  {
-    let translationY = gesture.translation(in: self).y
-    print(translationY)
-    switch gesture.state {
-    case .changed:
-        handelChanged(gesture: gesture)
-    case .ended:
-       handleEnded(gesture: gesture)
-    default:
-    ()
-    }
-    }
+  
     
     func handleEnded(gesture:UIPanGestureRecognizer)  {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
@@ -99,8 +111,11 @@ class CustomAddMinusView: UIView {
     func setupViews()  {
         backgroundColor = #colorLiteral(red: 0.9591651559, green: 0.9593221545, blue: 0.9591317773, alpha: 1)
         background2ImageView.addSubview(numberOfItemsLabel)
-        [plusImageView,minusImageView].forEach({$0.constrainWidth(constant: 40)})
-        hstack(minusImageView,background2ImageView,plusImageView,distribution:.fillProportionally).withMargins( .init(top: 0, left: 16, bottom: 0, right: 16))
+        [plusImageView,minusImageView].forEach({$0.constrainWidth(constant: 30)})
+//        hstack(minusImageView,background2ImageView,plusImageView,distribution:.fill).withMargins( .init(top: 0, left: 16, bottom: 0, right: 16))
+         hstack(minusImageView,background2ImageView,plusImageView,distribution:.fill).withMargins( .init(top: 0, left: 16, bottom: 0, right: 16))
+//        addSubview(mainStack)
+//        mainStack.fillSuperview()
         numberOfItemsLabel.centerInSuperview()
     }
     
@@ -109,6 +124,19 @@ class CustomAddMinusView: UIView {
         numberOfItemsLabel.text = "\(count)"
         handleAddClousre?(count)
     }
+    
+    @objc func handlePanned(gesture:UIPanGestureRecognizer)  {
+       let translationY = gesture.translation(in: self).y
+       print(translationY)
+       switch gesture.state {
+       case .changed:
+           handelChanged(gesture: gesture)
+       case .ended:
+          handleEnded(gesture: gesture)
+       default:
+       ()
+       }
+       }
     
     @objc func handleMinusOne()  {
         count = max( 0,count-1)

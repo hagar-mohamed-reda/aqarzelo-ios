@@ -51,35 +51,35 @@ class SecondCreateCityCell: BaseCollectionCell {
         return l
     }()
     
-    lazy var mainDrop1View:UIView =  {
-        
-       let v = makeMainSubViewWithAppendView(vv: [cityDrop,cityImage])
-        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleOpenDrops)))
-        return v
-    }()
-        lazy var cityDrop = UILabel(text: "City".localized, font: .systemFont(ofSize: 16), textColor: .black)
-       lazy var cityImage:UIImageView = {
-           let i = UIImageView(image: UIImage(named: "arrow-pointing-downwards(1)"))
-           i.contentMode = .scaleAspectFit
-
-           return i
-       }()
-    
-//    lazy var cityDrop:DropDown = {
-//        let i = returnMainDropDown(plcae: "Select City".localized)
-//        if let arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
-//            i.optionArray = arr
-//        }
-//        i.constrainHeight(constant: 40)
-//        i.constrainWidth(constant: frame.width - 128)
-//        i.isHide(true)
+//    lazy var mainDrop1View:UIView =  {
 //
-//        i.didSelect(completion: {[unowned self] (choosed, index, id) in
-//            self.handleTextContents?(index,true)
-//        })
-//
-//        return i
+//       let v = makeMainSubViewWithAppendView(vv: [cityDrop,cityImage])
+//        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleOpenDrops)))
+//        return v
 //    }()
+//        lazy var cityDrop = UILabel(text: "City".localized, font: .systemFont(ofSize: 16), textColor: .black)
+//       lazy var cityImage:UIImageView = {
+//           let i = UIImageView(image: UIImage(named: "arrow-pointing-downwards(1)"))
+//           i.contentMode = .scaleAspectFit
+//
+//           return i
+//       }()
+    
+    lazy var cityDrop:DropDown = {
+        let i = returnMainDropDown(plcae: "Select City".localized)
+        if let arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
+            i.optionArray = arr
+        }
+        i.constrainHeight(constant: 40)
+        i.constrainWidth(constant: frame.width - 128)
+        i.isHide(true)
+
+        i.didSelect(completion: {[unowned self] (choosed, index, id) in
+            self.handleTextContents?(index,true)
+        })
+
+        return i
+    }()
     
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
@@ -87,7 +87,7 @@ class SecondCreateCityCell: BaseCollectionCell {
     var handleOpenDropDown:((CGRect)->Void)?
 
     override func setupViews() {
-        mainDrop1View.isUserInteractionEnabled=true
+//        mainDrop1View.isUserInteractionEnabled=true
         
 
         categoryLabel.constrainHeight(constant: 30)
@@ -96,10 +96,10 @@ class SecondCreateCityCell: BaseCollectionCell {
         [categoryLabel,categoryQuestionLabel].forEach{($0.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left)}
         
         let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
-//        let dd = hstack(cityDrop,UIView())
-        makeThissss(xx: mainDrop1View, cc: cityDrop, img: cityImage)
+        let dd = hstack(cityDrop,UIView())
+//        makeThissss(xx: mainDrop1View, cc: cityDrop, img: cityImage)
 
-        let second = stack(categoryLabel,categoryQuestionLabel,mainDrop1View,UIView(),spacing:8)
+        let second = stack(categoryLabel,categoryQuestionLabel,dd,UIView(),spacing:8)
         
         hstack(ss,second,UIView(),spacing:16).withMargins(.init(top: 0, left: 36, bottom: 0, right: 8))
     }
