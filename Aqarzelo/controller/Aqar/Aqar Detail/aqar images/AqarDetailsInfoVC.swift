@@ -61,7 +61,7 @@ class AqarDetailsInfoVC: UIViewController {
         return i
     }()
     lazy var bView:UIView = {
-        let v = UIView(backgroundColor: .lightGray)
+        let v = UIView(backgroundColor: .clear)
         v.constrainWidth(constant: 40)
         v.constrainHeight(constant: 40)
         v.layer.cornerRadius = 20

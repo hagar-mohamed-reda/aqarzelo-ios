@@ -28,7 +28,7 @@ class UserProfileVC: UIViewController {
         return i
     }()
     lazy var bView:UIView = {
-        let v = UIView(backgroundColor: .lightGray)
+        let v = UIView(backgroundColor: .clear) //lightGray
         v.constrainWidth(constant: 40)
         v.constrainHeight(constant: 40)
         v.layer.cornerRadius = 20
