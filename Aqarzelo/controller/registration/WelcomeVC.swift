@@ -220,14 +220,16 @@ class WelcomeVC: UIViewController {
         
         self.addTransform()
         
-        UIView.animate(withDuration: 0.7, delay: 0.6 * 1.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
+        //delay: 0.6 * 1.3
+        
+        UIView.animate(withDuration: 0.7, delay: 0.7, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
             self.goToNextVC()
 //            [self.mainWelcomeView.infoLabel,self.mainWelcomeView.currentLocationButton,self.mainWelcomeView.goLocationButton].forEach({$0.transform = .identity})
         })
     }
     
     func goToNextVC()  {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+4) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {//+4
 [self.mainWelcomeView.infoLabel,self.mainWelcomeView.currentLocationButton,self.mainWelcomeView.goLocationButton].forEach({$0.transform = .identity})        }
         
     }
@@ -236,9 +238,9 @@ class WelcomeVC: UIViewController {
         var rotationAnimation = CABasicAnimation()
         rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
         rotationAnimation.toValue = NSNumber(value: (Double.pi))
-        rotationAnimation.duration = 1.0
+        rotationAnimation.duration = 0.5 //1
         rotationAnimation.isCumulative = true
-        rotationAnimation.repeatCount = 4.0
+        rotationAnimation.repeatCount = 2.0//4.0
         mainWelcomeView.logoImageView.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
     
