@@ -31,8 +31,9 @@ class ContactUsVC: UIViewController {
     lazy var logoImage:UIImageView = {
         let i = UIImageView(image: #imageLiteral(resourceName: "2427280"))
         i.translatesAutoresizingMaskIntoConstraints = false
+        i.contentMode = .scaleToFill
         //        i.constrainHeight(constant: 800)
-        i.constrainHeight(constant: 250)
+//        i.constrainHeight(constant: 250)
         
         i.clipsToBounds = true
         return i
@@ -65,7 +66,7 @@ class ContactUsVC: UIViewController {
         i.clipsToBounds = true
         return i
     }()
-    lazy var telphoneLabel = UILabel(text: "01123904214" , font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var telphoneLabel = UILabel(text: "01157891967" , font: .systemFont(ofSize: 16), textColor: .black)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +120,7 @@ class ContactUsVC: UIViewController {
         followLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: imageStack.topAnchor, trailing: view.trailingAnchor,padding: .init(top: 0, left: 0, bottom: 16, right: 0))
         imageStack.centerInSuperview(size: .init(width: view.frame.width - 64, height: 40))
         contactLabel.anchor(top: imageStack.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 32, left: 0, bottom: 0, right: 0))
-        mainGroup.anchor(top: contactLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 32, left: 64, bottom: 0, right: 64))
+        mainGroup.anchor(top: contactLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 32, left: 32, bottom: 0, right: 32))
     }
     
     fileprivate func setupNavigation()  {
