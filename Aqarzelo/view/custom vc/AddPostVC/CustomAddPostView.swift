@@ -51,11 +51,11 @@ class CustomAddPostView: UIView {
         //        mainImage.addSubViews(views: logoImageView,maximumLabel,bottomStack)
         mainImage.addSubViews(views: logoImageView,bottomStack)
         
-        logoImageView.centerInSuperview()
-        //        logoImageView.anchor(top: nil, leading: nil, bottom: maximumLabel.topAnchor, trailing: nil,padding: .init(top: 0, left: 0, bottom: 8, right: 0))
+//        logoImageView.centerInSuperview()
+        logoImageView.anchor(top: bottomStack.topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: -48, left: 0, bottom: 8, right: 0))
         
         //        maximumLabel.anchor(top: logoImageView.bottomAnchor, leading: leadingAnchor, bottom: bottomStack.topAnchor, trailing: trailingAnchor,padding: .init(top: 24, left: 48, bottom: 24, right: 48))
-        bottomStack.anchor(top: logoImageView.bottomAnchor, leading: mainImage.leadingAnchor, bottom: nil, trailing: mainImage.trailingAnchor,padding: .init(top: 20, left: 48, bottom: 48, right: 48))
+        bottomStack.anchor(top: nil, leading: mainImage.leadingAnchor, bottom: mainImage.bottomAnchor, trailing: mainImage.trailingAnchor,padding: .init(top: 20, left: 48, bottom: 48, right: 48))
         
         NSLayoutConstraint.activate([logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])

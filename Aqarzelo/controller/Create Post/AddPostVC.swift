@@ -69,6 +69,7 @@ class AddPostVC: UIViewController {
         setupViews()
         setupNavigation()
         statusBarBackgroundColor()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,10 +90,10 @@ class AddPostVC: UIViewController {
     //MARK:-User methods
     
     fileprivate func setupViews()  {
-        view.backgroundColor = ColorConstant.mainBackgroundColor
+        view.backgroundColor = #colorLiteral(red: 0.3486061692, green: 0.7345923781, blue: 0.6780440807, alpha: 1) // #colorLiteral(red: 0.2015180886, green: 0.811791122, blue: 0.7185178995, alpha: 1)//ColorConstant.mainBackgroundColor
         
         view.addSubview(customAddPostView)
-        customAddPostView.fillSuperview(padding: .init(top: -16, left: -32, bottom: 0, right: -32))
+        customAddPostView.fillSuperview(padding: .init(top: 0, left: -32, bottom: 60, right: -32))//-16
     }
     
     fileprivate func setupNavigation() {
