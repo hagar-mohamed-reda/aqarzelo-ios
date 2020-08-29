@@ -69,6 +69,8 @@ class UserSettingsVC: UIViewController {
                 self.customNoInternetView.problemsView.play()
                 
                 self.customNoInternetView.problemsView.loopMode = .loop
+                self.timerForAlerting.invalidate()
+                self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
                 self.present(self.customMainAlertVC, animated: true)
             }else{
                 if self.checkIfNotLogin() {
@@ -81,7 +83,8 @@ class UserSettingsVC: UIViewController {
                         self.customAlerLoginView.problemsView.play()
                         
                         self.customAlerLoginView.problemsView.loopMode = .loop
-                        
+                        self.timerForAlerting.invalidate()
+                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
                         self.present(self.customMainAlertVC, animated: true)
                     }
                 }
@@ -118,11 +121,14 @@ class UserSettingsVC: UIViewController {
         return t
     }()
     
+    var timerForAlerting = Timer()
+    
     var baseSetttingData: BaseSettingModel?
     fileprivate let cellId="cellId"
     fileprivate let cellNotifyId = "cellNotifyId"
     fileprivate var isLogin = false
     fileprivate var isDataFetched = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -241,6 +247,15 @@ class UserSettingsVC: UIViewController {
     }
     
     
+    @objc  func fireTimer(timer:Timer)  {
+        if  let userInfo = timerForAlerting.userInfo as? [String: String]   {
+            
+            removeViewWithAnimation(vvv: customNoInternetView)
+            removeViewWithAnimation(vvv: customAlerLoginView)
+            
+            customMainAlertVC.dismiss(animated: true)
+        }
+    }
     
     @objc fileprivate  func handleEnglishLanguage(sender:UIButton)  {
         resetAppLanguage(false)
@@ -409,6 +424,8 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
             self.customNoInternetView.problemsView.play()
             
             customNoInternetView.problemsView.loopMode = .loop
+            self.timerForAlerting.invalidate()
+            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
             self.present(customMainAlertVC, animated: true)
         }else {
             
@@ -435,7 +452,8 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
                         self.customAlerLoginView.problemsView.play()
                         
                         customAlerLoginView.problemsView.loopMode = .loop
-                        
+                        self.timerForAlerting.invalidate()
+                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
                         self.present(self.customMainAlertVC, animated: true)
                     }
                 }else if indexPath.row == 1 { //change password
@@ -448,7 +466,8 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
                         self.customAlerLoginView.problemsView.play()
                         
                         customAlerLoginView.problemsView.loopMode = .loop
-                        
+                        self.timerForAlerting.invalidate()
+                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
                         self.present(self.customMainAlertVC, animated: true)
                     }
                 }

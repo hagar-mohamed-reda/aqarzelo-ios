@@ -121,6 +121,8 @@ class LocationVC: UIViewController {
     var adsArray = [AdsModel]()
     
     var isCloseNavAppear: Int = 0
+    var timerForAlerting  = Timer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,7 +136,7 @@ class LocationVC: UIViewController {
         statusBarBackgroundColor()
     }
     
-   
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -184,6 +186,8 @@ class LocationVC: UIViewController {
                 self.customNoInternetView.problemsView.play()
                 
                 self.customNoInternetView.problemsView.loopMode = .loop
+                timerForAlerting.invalidate()
+                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
                 self.present(customMainAlertVC, animated: true)
             }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
                 //            getUserLocation()
@@ -194,6 +198,8 @@ class LocationVC: UIViewController {
                 self.customAlerLoginView.problemsView.play()
                 
                 customAlerLoginView.problemsView.loopMode = .loop
+                timerForAlerting.invalidate()
+                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
                 self.present(customMainAlertVC, animated: true)
                 
                 
@@ -208,6 +214,16 @@ class LocationVC: UIViewController {
     
     //MARK:-User methods
     
+    
+    @objc  func fireTimer(timer:Timer)  {
+        if  let userInfo = timerForAlerting.userInfo as? [String: String]   {
+            
+            removeViewWithAnimation(vvv: customNoInternetView)
+            removeViewWithAnimation(vvv: customAlerLoginView)
+            
+            customMainAlertVC.dismiss(animated: true)
+        }
+    }
     
     fileprivate func handleOpenAqar(_ aqar:AqarModel)  {
         

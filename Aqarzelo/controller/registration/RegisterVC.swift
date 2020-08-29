@@ -353,11 +353,17 @@ extension RegisterVC:UIScrollViewDelegate {
         let x = scrollView.contentOffset.y
         let screenHeight = UIScreen.main.bounds.size.height
         let ss:CGFloat
-        if screenHeight < 800 {
-            ss = 130
-        }else {
-            ss = 60
-        }
+        
+        ss = screenHeight < 600  ? 300 : screenHeight < 600 ? 200 :  screenHeight < 800 ? 130 : 60
+        
+//        if screenHeight < 600 {
+//            ss = 300
+//        }  else if screenHeight < 800 {
+//            ss = 130
+//        }else {
+//            ss = 60
+//        }
+        
         if x < 0 {
             scrollView.contentOffset.y =  0
         }else if x > ss {

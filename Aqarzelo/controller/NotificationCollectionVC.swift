@@ -54,6 +54,7 @@ class NotificationCollectionVC: BaseCollectionVC {
         v.signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return v
     }()
+    var timerForAlerting = Timer()
     
     fileprivate let cellId = "cellId"
     fileprivate let cellHeaderId = "cellHeaderId"
@@ -91,7 +92,8 @@ class NotificationCollectionVC: BaseCollectionVC {
             self.customNoInternetView.problemsView.play()
             
             customNoInternetView.problemsView.loopMode = .loop
-            
+            self.timerForAlerting.invalidate()
+                                             self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
             self.present(self.customMainAlertVC, animated: true)
         }else if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
             userDefaults.bool(forKey: UserDefaultsConstants.isNotificationsFetched) ? () : loadNotifications()
@@ -100,7 +102,8 @@ class NotificationCollectionVC: BaseCollectionVC {
             self.customAlerLoginView.problemsView.play()
             
             customAlerLoginView.problemsView.loopMode = .loop
-            
+            self.timerForAlerting.invalidate()
+                                   self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
             self.present(self.customMainAlertVC, animated: true)
         }
         tabBarController?.tabBar.isHide(false)
@@ -224,6 +227,17 @@ class NotificationCollectionVC: BaseCollectionVC {
     }
     
     //TODO:-Hnadle methods
+    
+    @objc  func fireTimer(timer:Timer)  {
+           if  let userInfo = timerForAlerting.userInfo as? [String: String]   {
+               
+               removeViewWithAnimation(vvv: customNoInternetView)
+               removeViewWithAnimation(vvv: customAlerLoginView)
+               
+               customMainAlertVC.dismiss(animated: true)
+           }
+       }
+    
     //remove popup view
     @objc func handleDismiss()  {
         dismiss(animated: true, completion: nil)

@@ -55,6 +55,7 @@ class FavoriteCollectionVC: BaseCollectionVC {
         v.signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return v
     }()
+    var timerForAlerting = Timer()
     
     fileprivate let cellId = "cellId"
     var favoriteArray: [AqarModel]?  {
@@ -92,7 +93,8 @@ class FavoriteCollectionVC: BaseCollectionVC {
             self.customNoInternetView.problemsView.play()
             
             customNoInternetView.problemsView.loopMode = .loop
-            
+            self.timerForAlerting.invalidate()
+            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
             self.present(self.customMainAlertVC, animated: true)
         }else if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
             userDefaults.bool(forKey: UserDefaultsConstants.isFavoriteFetched) ? () : loadFavorites()
@@ -101,6 +103,8 @@ class FavoriteCollectionVC: BaseCollectionVC {
             self.customNoInternetView.problemsView.play()
             
             customAlerLoginView.problemsView.loopMode = .loop
+            self.timerForAlerting.invalidate()
+            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
             self.present(self.customMainAlertVC, animated: true)
         }
         tabBarController?.tabBar.isHide(false)
@@ -117,26 +121,26 @@ class FavoriteCollectionVC: BaseCollectionVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-                   // Define the initial state (Before the animation)
-                   cell.alpha = 0
-
-                   // Define the final state (After the animation)
-                   UIView.animate(withDuration: 0.5, animations: { cell.alpha = 1 })
-                   
-                   
-           //        // Define the initial state (Before the animation)
-           //        let rotationAngleInRadians = 90.0 * CGFloat(Double.pi/180.0)
-           //        let rotationTransform = CATransform3DMakeRotation(rotationAngleInRadians, 0, 0, 1)
-           //        cell.layer.transform = rotationTransform
-           //
-           //        // Define the final state (After the animation)
-           //        UIView.animate(withDuration: 1.0, animations: { cell.layer.transform = CATransform3DIdentity })
-                   
-                   
-           //        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
-           //        UIView.animate(withDuration: 0.5, animations: { cell.layer.transform = rotationTransform })
-
-       }
+        // Define the initial state (Before the animation)
+        cell.alpha = 0
+        
+        // Define the final state (After the animation)
+        UIView.animate(withDuration: 0.5, animations: { cell.alpha = 1 })
+        
+        
+        //        // Define the initial state (Before the animation)
+        //        let rotationAngleInRadians = 90.0 * CGFloat(Double.pi/180.0)
+        //        let rotationTransform = CATransform3DMakeRotation(rotationAngleInRadians, 0, 0, 1)
+        //        cell.layer.transform = rotationTransform
+        //
+        //        // Define the final state (After the animation)
+        //        UIView.animate(withDuration: 1.0, animations: { cell.layer.transform = CATransform3DIdentity })
+        
+        
+        //        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
+        //        UIView.animate(withDuration: 0.5, animations: { cell.layer.transform = rotationTransform })
+        
+    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FavoriteCollectionCell
@@ -202,6 +206,17 @@ class FavoriteCollectionVC: BaseCollectionVC {
     }
     
     //MARK:-handle methods
+    
+    @objc  func fireTimer(timer:Timer)  {
+        if  let userInfo = timerForAlerting.userInfo as? [String: String]   {
+            
+            removeViewWithAnimation(vvv: customNoInternetView)
+            removeViewWithAnimation(vvv: customAlerLoginView)
+            
+            customMainAlertVC.dismiss(animated: true)
+        }
+    }
+    
     //remove popup view
     @objc func handleDismiss()  {
         dismiss(animated: true, completion: nil)

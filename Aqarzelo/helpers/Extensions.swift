@@ -83,7 +83,6 @@ extension UIViewController {
                 vvv.removeFromSuperview()
             }
         }
-       
     }
     
     func changeButtonsPropertyWhenSelected(_ sender: UIButton,vv:UIButton) {
