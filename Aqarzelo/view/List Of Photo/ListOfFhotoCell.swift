@@ -19,6 +19,34 @@ class ListOfFhotoCell: BaseCollectionCell {
         }
     }
     
+    var photoSecond:SecondPhotoModel? {
+        didSet {
+            
+            guard let photo = photoSecond else { return }
+            //            photoImageView.image = photo.image
+            //            namePhotoLabel.text = photo.imageName
+            namePhotoLabel.text = photo.name
+            
+            if photo.size > 1000 {
+                let value = round(photo.size / 1000)
+                
+                sizePhotoLabel.text = "\(value) MB"
+            }else {
+                sizePhotoLabel.text = "\(round(photo.size)) KB"
+            }
+            
+            if  photo.image != nil {
+                photoImageView.image = photo.image
+            }else {
+                guard let url = URL(string: photo.imageUrl ?? "") else {return}
+                photoImageView.sd_setImage(with: url)
+            }
+        }
+    }
+    
+    var img = UIImage()
+    var is360Image = false
+    var imageUrl = ""
     
     var photo:PhotoModel? {
         didSet {
@@ -43,7 +71,7 @@ class ListOfFhotoCell: BaseCollectionCell {
     var image:ImageModel?{
         didSet {
             guard let image = image else { return }
-
+            
             if isFinishedUpload {
                 let urlString = image.image ; guard let url = URL(string: urlString) else {return}
                 photoImageView.sd_setImage(with: url)

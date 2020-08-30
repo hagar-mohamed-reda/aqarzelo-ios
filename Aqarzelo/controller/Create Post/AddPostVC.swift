@@ -224,12 +224,13 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         let photoModel = PhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false,isMasterPhoto: true, id: 1, imageUrl: nil, is360: 0)
         
         showOrHideCustomTabBar(hide: true)
-        let listOfPhoto = ListOfPhotoCollectionVC( currentUserToken: userToekn ?? "")
+        let listOfPhoto = ListOfPhotoMainVC(currentUserToken:  userToekn ?? "") //ListOfPhotoCollectionVC( currentUserToken: userToekn ?? "")
         //        let listOfPhoto = ListOfPhotoCollectionVC(photo: photoModel, currentUserToken: userToekn ?? "")
         userDefaults.set(false, forKey: UserDefaultsConstants.isFirstMasterPhotoUpload)
         userDefaults.set(false, forKey: UserDefaultsConstants.isFinishedGetUploadPhotos)
         userDefaults.set(false, forKey: UserDefaultsConstants.isSecondPhotoUploading)
         userDefaults.synchronize()
+        listOfPhoto.choosenImage = pushedImage
         listOfPhoto.processToUploadMasterPhoto(photo: photoModel)
         navigationController?.pushViewController(listOfPhoto, animated: true)
         dismiss(animated: true)

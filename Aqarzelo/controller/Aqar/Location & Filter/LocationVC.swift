@@ -151,11 +151,11 @@ class LocationVC: UIViewController {
         
         
         
-        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
-            let welcome = WelcomeVC()
-            welcome.modalPresentationStyle = .fullScreen
-            present(welcome, animated: true)
-        }else    {
+//        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
+//            let welcome = WelcomeVC()
+//            welcome.modalPresentationStyle = .fullScreen
+//            present(welcome, animated: true)
+//        }else    {
             
             if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
                 currentUser=cacheCurrentUserCodabe.storedValue
@@ -206,7 +206,7 @@ class LocationVC: UIViewController {
             }else {
                 //                checkUserLogin()
             }
-        }
+//        }
         
         //                }
     }

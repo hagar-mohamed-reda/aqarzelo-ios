@@ -19,3 +19,14 @@ struct PhotoModel {
     let is360:Int
     
 }
+
+struct SecondPhotoModel {
+    
+    var image:UIImage?
+    let name:String
+    let size:Double
+    var isUploaded,isMasterPhoto:Bool
+    var imageUrl:String?
+    let is360:Int
+    
+}

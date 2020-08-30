@@ -12,7 +12,30 @@ import SDWebImage
 
 class ListOfPhotoMaseterCell: BaseCollectionCell {
     
-    
+    var photoSecond:SecondPhotoModel? {
+            didSet {
+                
+                guard let photo = photoSecond else { return }
+                //            photoImageView.image = photo.image
+    //            namePhotoLabel.text = photo.imageName
+                namePhotoLabel.text = photo.name
+
+                if photo.size > 1000 {
+                    let value = round(photo.size / 1000)
+                    
+                    sizePhotoLabel.text = "\(value) MB"
+                }else {
+                    sizePhotoLabel.text = "\(round(photo.size)) KB"
+                }
+                
+                if  photo.image != nil {
+                    photoImageView.image = photo.image
+  }else {
+                    guard let url = URL(string: photo.imageUrl ?? "") else {return}
+                    photoImageView.sd_setImage(with: url)
+                }
+            }
+        }
   
     
     var photo:PhotoModel? {
@@ -36,6 +59,9 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
             }
         }
     }
+    
+    var img = UIImage()
+    
     
     lazy var logoImageView:UIImageView = {
         let i = UIImageView(image: #imageLiteral(resourceName: "home(1)"))

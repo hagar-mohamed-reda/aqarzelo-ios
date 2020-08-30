@@ -11,6 +11,9 @@ import UIKit
 
 class UserDefaultsConstants {
     
+    static let isStillImageUpload="isStillImageUpload"
+
+    
     //for dropdown
        static let cityCahcedValue="cityCahcedValue"
        static let areaCahcedValue="areaCahcedValue"

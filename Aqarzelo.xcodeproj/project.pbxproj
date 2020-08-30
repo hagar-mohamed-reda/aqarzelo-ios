@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C373ECE1BC57B7F6BC86767 /* Pods_Aqarzelo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519E04DD8D8FDF679056F215 /* Pods_Aqarzelo.framework */; };
+		9F970C4A24FC3A2800448E7E /* ListOfPhotoMainSecVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */; };
+		9FB2437624FC13C0004F43FB /* ListOfPhotoMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */; };
 		9FD04E4024EDB2910077884A /* DropDownAllTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */; };
 		9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */; };
 		9FDDB71D24E98E7300AF8817 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71524E98E6B00AF8817 /* Extensions.swift */; };
@@ -222,6 +224,8 @@
 
 /* Begin PBXFileReference section */
 		519E04DD8D8FDF679056F215 /* Pods_Aqarzelo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aqarzelo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainSecVC.swift; sourceTree = "<group>"; };
+		9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainVC.swift; sourceTree = "<group>"; };
 		9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownAllTableViewVC.swift; sourceTree = "<group>"; };
 		9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCityAndAreaTableViewVC.swift; sourceTree = "<group>"; };
 		9FDDB71524E98E6B00AF8817 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -467,6 +471,16 @@
 				CACADD2DC40895DADE73CEBB /* Pods-Aqarzelo.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9FB2437724FC13C4004F43FB /* lis */ = {
+			isa = PBXGroup;
+			children = (
+				9FE2705724E884C1008889AB /* ListOfPhotoCollectionVC.swift */,
+				9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */,
+				9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */,
+			);
+			path = lis;
 			sourceTree = "<group>";
 		};
 		9FD04E3E24EDB2730077884A /* drop down */ = {
@@ -1000,7 +1014,7 @@
 			children = (
 				9FE2705A24E884C6008889AB /* Create Group */,
 				9FE2705624E884C0008889AB /* AddPostVC.swift */,
-				9FE2705724E884C1008889AB /* ListOfPhotoCollectionVC.swift */,
+				9FB2437724FC13C4004F43FB /* lis */,
 			);
 			path = "Create Post";
 			sourceTree = "<group>";
@@ -1493,6 +1507,7 @@
 				9FE270F124E88840008889AB /* NotificationHeaderCell.swift in Sources */,
 				9FE2705424E884A9008889AB /* ChooseLocationSecondPostVC.swift in Sources */,
 				9FDDB73724E98EF200AF8817 /* CustomConfirmationView.swift in Sources */,
+				9FB2437624FC13C0004F43FB /* ListOfPhotoMainVC.swift in Sources */,
 				9FE2708924E8857D008889AB /* EditUserPostVC.swift in Sources */,
 				9FE270FE24E88868008889AB /* UserEditPictureTableCell.swift in Sources */,
 				9FE2705924E884C1008889AB /* ListOfPhotoCollectionVC.swift in Sources */,
@@ -1504,6 +1519,7 @@
 				9FE2703624E88427008889AB /* WelcomeVC.swift in Sources */,
 				9FE270E324E887AA008889AB /* ListOfPhotoMaseterCell.swift in Sources */,
 				9FE2709324E88694008889AB /* AqarDetailAveragePriceCell.swift in Sources */,
+				9F970C4A24FC3A2800448E7E /* ListOfPhotoMainSecVC.swift in Sources */,
 				9FE270D724E8872E008889AB /* ThirdCreateDescribeCell.swift in Sources */,
 				9FDDB76524E9904F00AF8817 /* CustomAddPostListOfPhotoView.swift in Sources */,
 				9FE2709724E88694008889AB /* AqarDetailDiscriptionCell.swift in Sources */,

@@ -144,6 +144,47 @@ class PostServices{
         })
     }
     
+    func uploadOtherImagesss(index:Int,photoModel:SecondPhotoModel,token:String,completion:  @escaping (BaseUploadImageModel?, Error?) -> ())  {
+        typealias imageUploadCompleteTuple = (title:String,filUrl:String)
+        
+        let pageURL = "http://aqarzelo.com/public/api/post/add-image?api_token=\(token)".toSecrueHttps()
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            if let imageData = photoModel.image?.pngData() {
+                let name = UUID().uuidString
+                multipartFormData.append(imageData, withName: "photo", fileName: "\(name).png", mimeType: "image/png")
+            }
+            
+        }, to: pageURL, method: .post, headers: nil,
+           encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                    NotificationCenter.default.post(name: .uoloadNextProgress, object: nil, userInfo: ["image":photoModel.image,"name":photoModel.name,"size":photoModel.size,"progress":progress.fractionCompleted,"index":index])
+                })
+                
+                upload.responseJSON { response in
+                    NotificationCenter.default.post(name: .uploadNextComplete, object: imageUploadCompleteTuple.self, userInfo: nil)
+                    //print response.result
+                    print(response.result)
+                    guard let data = response.data else {return}
+                    //
+                    do {
+                        let objects = try JSONDecoder().decode(BaseUploadImageModel.self, from: data)
+                        // success
+                        completion(objects,nil)
+                    } catch let error {
+                        completion(nil,error)
+                    }
+                    
+                }
+            case .failure(let encodingError):
+                print("error:\(encodingError)")
+            }
+        })
+    }
+    
     func uploadOtherImagess(index:Int,photoModel:PhotoModel,token:String,completion:  @escaping (BaseUploadImageModel?, Error?) -> ())  {
         typealias imageUploadCompleteTuple = (title:String,filUrl:String)
         
