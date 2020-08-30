@@ -97,6 +97,51 @@ class PostServices{
         //        fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
+    func uploadImagessss(photoModel:SecondPhotoModel,token:String,completion:  @escaping (BaseUploadImageModel?, Error?) -> ())  {
+           typealias imageUploadCompleteTuple = (title:String,filUrl:String)
+           //        let pageURL = "http://aqarzelo.com/public/api/post/add-image".toSecrueHttps()
+           let pageURL = "http://aqarzelo.com/public/api/post/add-image?api_token=\(token)".toSecrueHttps()
+           
+           let parameters = [
+               "api_token": token
+           ]
+           //        let pageURL = "http://aqarzelo.com/public/api/post/add-image".toSecrueHttps()
+           Alamofire.upload(multipartFormData: { multipartFormData in
+               
+               if let photo =    photoModel.image?.pngData() {
+                   multipartFormData.append(photo, withName: "photo", fileName: "swift_file.png", mimeType: "image/png")
+               }
+               
+           }, to: pageURL, method: .post, headers: nil,
+              encodingCompletion: { encodingResult in
+               switch encodingResult {
+               case .success(let upload, _, _):
+                   
+                   upload.uploadProgress(closure: { (progress) in
+                       //Print progress
+                       NotificationCenter.default.post(name: .uoloadProgress, object: nil, userInfo: ["image":photoModel.image,"name":photoModel.name,"size":photoModel.size,"progress":progress.fractionCompleted])
+                   })
+                   
+                   upload.responseJSON { response in
+                       NotificationCenter.default.post(name: .uploadComplete, object: imageUploadCompleteTuple.self, userInfo: nil)
+                       //print response.result
+                       print(response.result)
+                       guard let data = response.data else {return}
+                       //
+                       do {
+                           let objects = try JSONDecoder().decode(BaseUploadImageModel.self, from: data)
+                           // success
+                           completion(objects,nil)
+                       } catch let error {
+                           completion(nil,error)
+                       }
+                       
+                   }
+               case .failure(let encodingError):
+                   completion(nil,encodingError)
+               }
+           })
+       }
     
     func uploadImagess(photoModel:PhotoModel,token:String,completion:  @escaping (BaseUploadImageModel?, Error?) -> ())  {
         typealias imageUploadCompleteTuple = (title:String,filUrl:String)
@@ -165,7 +210,7 @@ class PostServices{
                 })
                 
                 upload.responseJSON { response in
-                    NotificationCenter.default.post(name: .uploadNextComplete, object: imageUploadCompleteTuple.self, userInfo: nil)
+                    NotificationCenter.default.post(name: .uploadNextComplete, object: imageUploadCompleteTuple.self, userInfo:[ "index":index])
                     //print response.result
                     print(response.result)
                     guard let data = response.data else {return}

@@ -699,7 +699,7 @@ extension LocationVC: CLLocationManagerDelegate{
                                               longitude:longitude, zoom: 16.5)//16.5
         customLocationView.mapView.camera = camera
         //                customLocationView.mapView.animate(toZoom: 16.5)
-        customLocationView.mapView.setMinZoom(4, maxZoom: 8)
+        customLocationView.mapView.setMinZoom(2, maxZoom: 13)//8 //4
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -384,8 +384,8 @@ class MainCreatePostVC: UIViewController {
                 let moreGarden = more == 2 ? 1 : 0
                 let moreParking = more == 1 ? 1 : 0
                 
-                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-                
+//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+                SVProgressHUD.setForegroundColor(UIColor.green)
                 SVProgressHUD.show(withStatus: "Please Wait......".localized)
                 
                 PostServices.shared.updatePost(api_token: currentUserToken, title: aqar.title, description: p, category_id: aqar.categoryID, city_id: aqar.cityID, area_id: aqar.areaID, type: aqar.type, lat:  f, lng:  g, owner_type: aqar.ownerType, space: s, price_per_meter: r, payment_method: aqar.paymentMethod, finishing_type: aqar.finishingType, bedroom_number: cc, bathroom_number: rr, floor_number: xx, has_garden: moreGarden, has_parking: moreParking, has_furnished: moreFurn, build_date:aqar.buildDate ?? "" ,totalPrice:Double(aqar.price),postId: aqar.id) {[unowned self] (base, err) in
@@ -427,8 +427,8 @@ class MainCreatePostVC: UIViewController {
         let moreGarden = postMoreTag == 2 ? 1 : 0
         let moreParking = postMoreTag == 1 ? 1 : 0
         
-        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        
+//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Please Wait......".localized)
         
         PostServices.shared.addTotalPost(api_token: currentUserToken, title: postTitle , description: postDiscribe, category_id: postCategory_id, city_id: postCity_id, area_id: postArea_id, type: postType , lat:  postLat , lng:  postLng, owner_type: postOwnerType, space: Double(postSpaceNum), price_per_meter: postPriceMeter, payment_method: postPayment, finishing_type: postFiniashed, bedroom_number: postBedNum, bathroom_number: postBathNum, floor_number: postFloor, has_garden: moreGarden, has_parking: moreParking, has_furnished: moreFurn, build_date: postYear,totalPrice:postTotalPrice) { (base, err) in

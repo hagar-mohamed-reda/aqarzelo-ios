@@ -221,16 +221,18 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         }
         pushedImage = jpegSize > 30000 ? pushedImage.resized(toWidth: 1300) : pushedImage
         
-        let photoModel = PhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false,isMasterPhoto: true, id: 1, imageUrl: nil, is360: 0)
-        
+//        let photoModel = PhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false,isMasterPhoto: true, id: 1, imageUrl: nil, is360: 0)
+        let photoModel = SecondPhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false, isMasterPhoto: true, imageUrl: nil, is360: 0)
+//            PhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false,isMasterPhoto: true, id: 1, imageUrl: nil, is360: 0)
+
         showOrHideCustomTabBar(hide: true)
-        let listOfPhoto = ListOfPhotoMainVC(currentUserToken:  userToekn ?? "") //ListOfPhotoCollectionVC( currentUserToken: userToekn ?? "")
+        let listOfPhoto = ListOfPhotoMainSecVC(currentUserToken:  userToekn ?? "") //ListOfPhotoCollectionVC( currentUserToken: userToekn ?? "")
         //        let listOfPhoto = ListOfPhotoCollectionVC(photo: photoModel, currentUserToken: userToekn ?? "")
         userDefaults.set(false, forKey: UserDefaultsConstants.isFirstMasterPhotoUpload)
         userDefaults.set(false, forKey: UserDefaultsConstants.isFinishedGetUploadPhotos)
         userDefaults.set(false, forKey: UserDefaultsConstants.isSecondPhotoUploading)
         userDefaults.synchronize()
-        listOfPhoto.choosenImage = pushedImage
+        listOfPhoto.pushedImage = pushedImage
         listOfPhoto.processToUploadMasterPhoto(photo: photoModel)
         navigationController?.pushViewController(listOfPhoto, animated: true)
         dismiss(animated: true)

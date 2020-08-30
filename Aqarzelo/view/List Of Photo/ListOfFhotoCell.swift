@@ -153,42 +153,71 @@ class ListOfFhotoCell: BaseCollectionCell {
         let mainStack = stack(top,pStack,bott)
         
         
+        if photoSecond?.isMasterPhoto ?? false {
+                   hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
+               }
+               else  if  userDefaults.bool(forKey: UserDefaultsConstants.isFinishedGetUploadPhotos) && !userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) {
+                   deleteButton.isHide(false)
+                   let ss = hstack(UIView(),deleteButton)
+                   stack(photoImageView)
+                   stack(UIView(),stack(UIView(),ss))
+                   
+               }
+               else if userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) && photoSecond?.isUploaded == false  {
+                   hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
+                   
+               }else if userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) && photoSecond?.isUploaded == false {
+                   hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
+                   //            trueImageView.centerInSuperview()
+                   [progressLabel,namePhotoLabel,sizePhotoLabel,progressPhoto].forEach({$0.isHide(false)})
+               }
+               else {
+                   hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
+                   //            trueImageView.centerInSuperview()
+                   [progressLabel,namePhotoLabel,sizePhotoLabel,progressPhoto].forEach({$0.isHide(false)})
+               }
+               trueImageView.centerInSuperview()
+               logo360ImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 16, left: 16, bottom: 0, right: 0))
         
-        if photo?.isMasterPhoto ?? false {
-            hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
-        }
-        else  if  userDefaults.bool(forKey: UserDefaultsConstants.isFinishedGetUploadPhotos) && !userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) {
-            deleteButton.isHide(false)
-            let ss = hstack(UIView(),deleteButton)
-            stack(photoImageView)
-            stack(UIView(),stack(UIView(),ss))
-            
-        }
-        else if userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) && photo?.isUploaded == false  {
-            hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
-            
-        }else if userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) && photo?.isUploaded == false {
-            hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
-            //            trueImageView.centerInSuperview()
-            [progressLabel,namePhotoLabel,sizePhotoLabel,progressPhoto].forEach({$0.isHide(false)})
-        }
-        else {
-            hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
-            //            trueImageView.centerInSuperview()
-            [progressLabel,namePhotoLabel,sizePhotoLabel,progressPhoto].forEach({$0.isHide(false)})
-        }
-        trueImageView.centerInSuperview()
-        logo360ImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 16, left: 16, bottom: 0, right: 0))
+//        if photo?.isMasterPhoto ?? false {
+//            hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
+//        }
+//        else  if  userDefaults.bool(forKey: UserDefaultsConstants.isFinishedGetUploadPhotos) && !userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) {
+//            deleteButton.isHide(false)
+//            let ss = hstack(UIView(),deleteButton)
+//            stack(photoImageView)
+//            stack(UIView(),stack(UIView(),ss))
+//
+//        }
+//        else if userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) && photo?.isUploaded == false  {
+//            hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
+//
+//        }else if userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) && photo?.isUploaded == false {
+//            hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
+//            //            trueImageView.centerInSuperview()
+//            [progressLabel,namePhotoLabel,sizePhotoLabel,progressPhoto].forEach({$0.isHide(false)})
+//        }
+//        else {
+//            hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
+//            //            trueImageView.centerInSuperview()
+//            [progressLabel,namePhotoLabel,sizePhotoLabel,progressPhoto].forEach({$0.isHide(false)})
+//        }
+//        trueImageView.centerInSuperview()
+//        logo360ImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 16, left: 16, bottom: 0, right: 0))
         
     }
     
     
     
     @objc func handleClose()  {
-        handleInteruptUpload?(index,photo?.id ?? 0)
+//        handleInteruptUpload?(index,photoSecond?.id ?? 0)
+//        handleInteruptUpload?(index,photo?.id ?? 0)
+
     }
     
     @objc func handleDelete()  {
-        handleRemovedImage?(index,photo?.id ?? 0)
+//        handleRemovedImage?(index,photoSecond?.id ?? 0)
+//        handleRemovedImage?(index,photo?.id ?? 0)
+
     }
 }
