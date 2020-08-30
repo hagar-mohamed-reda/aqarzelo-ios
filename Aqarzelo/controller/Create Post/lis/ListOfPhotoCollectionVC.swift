@@ -160,7 +160,7 @@ class ListOfPhotoCollectionVC: UIViewController {
         photoMasterArray.insert(photo, at: 0)
         
         var group1:  [ImageModel]?
-        
+        SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Looding...".localized)
         let semaphore = DispatchSemaphore(value: 0)
         
@@ -206,7 +206,7 @@ class ListOfPhotoCollectionVC: UIViewController {
     func getAllImagesNotMaster()  {
         var group1: [ImageModel]?
         
-        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Looding...".localized)
         let semaphore = DispatchSemaphore(value: 0)
         

@@ -26,7 +26,7 @@ class ListOfPhotoMainSecVC: UIViewController {
         b.isEnabled = false
         b.constrainHeight(constant: 50)
         b.isEnabled = false
-        //        b.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+                b.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return b
     }()
     
@@ -73,8 +73,11 @@ class ListOfPhotoMainSecVC: UIViewController {
     }
     
     fileprivate let currentUserToken:String!
-    init(currentUserToken:String) {
+    fileprivate let isFromUpdatePost:Bool!
+
+    init(currentUserToken:String,isFromUpdatePost:Bool) {
         self.currentUserToken = currentUserToken
+        self.isFromUpdatePost=isFromUpdatePost
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -272,7 +275,7 @@ class ListOfPhotoMainSecVC: UIViewController {
                 navigationController?.pushViewController(zoom, animated: true)
             }else{
                 if  let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? ListOfPhotoMaseterCell {
-                    let zoom = ZoomUserImageVC(img:   cell.img)
+                    let zoom = ZoomUserImageVC(img:   pushedImage)
                     navigationController?.pushViewController(zoom, animated: true)
                     
                 }
@@ -383,6 +386,18 @@ class ListOfPhotoMainSecVC: UIViewController {
         }
     }
     
+    fileprivate func goToMainUpdatedPost()  {
+          let createMainPost = MainCreatePostVC(token: currentUserToken)
+          createMainPost.aqar = aqar
+          navigationController?.pushViewController(createMainPost, animated: true)
+      }
+    
+    fileprivate func goToMainCreatePost()  {
+          let createMainPost = MainCreatePostVC(token: currentUserToken)
+              createMainPost.aqar = aqar
+          navigationController?.pushViewController(createMainPost, animated: true)
+      }
+    
      @objc func handleUploadNextProgress(notify: Notification){
             userDefaults.set(false, forKey: UserDefaultsConstants.isImageUploaded)
             userDefaults.set(false, forKey: UserDefaultsConstants.isStillImageUpload)
@@ -485,18 +500,9 @@ class ListOfPhotoMainSecVC: UIViewController {
         
         if aqar != nil {
             self.creatMainSnackBar(message: "Wait until Upload image...".localized)
-//            if  isUploadNextImage  {
                 navigationController?.popViewController(animated: true)
-//            }else {
-//                self.creatMainSnackBar(message: "Wait until Upload image...".localized)
-//            }
         }else {
             navigationController?.popViewController(animated: true)
-//            if userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) && userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) || isUploadNextImage && userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) {
-//                navigationController?.popViewController(animated: true)
-//            }else {
-//                self.creatMainSnackBar(message: "Wait until Upload image...".localized)
-//            }
         }
     }
     
@@ -507,6 +513,28 @@ class ListOfPhotoMainSecVC: UIViewController {
        @objc func take360Photo()  {
               createAlertForChoposingImage(ind: 1)
           }
+    
+    @objc fileprivate func handleNext()  {
+           
+           if aqar != nil {
+               if  isFromUpdatePost  {
+                   goToMainUpdatedPost()
+                   //                navigationController?.popViewController(animated: true)
+               }else {
+                   self.creatMainSnackBar(message: "Wait until Upload image...".localized)
+               }
+           }else {
+            if userDefaults.bool(forKey: UserDefaultsConstants.isStillImageUpload) {
+                
+            
+//               if userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) && userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) || !isFromUpdatePost && userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) {
+                   goToMainCreatePost()
+                   //                navigationController?.popViewController(animated: true)
+               }else {
+                   self.creatMainSnackBar(message: "Wait until Upload image...".localized)
+               }
+           }
+       }
        
         
 }

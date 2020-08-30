@@ -338,7 +338,7 @@ class UserProfileVC: UIViewController {
     func updatePost(aqar:AqarModel)  {
         guard let user = user else { return  }
         
-        let list = ListOfPhotoCollectionVC( currentUserToken: user.apiToken)
+        let list = ListOfPhotoMainSecVC(currentUserToken:  user.apiToken, isFromUpdatePost: true)//ListOfPhotoCollectionVC( currentUserToken: user.apiToken)
         list.aqar = aqar
         navigationController?.pushViewController(list, animated: true)
     }

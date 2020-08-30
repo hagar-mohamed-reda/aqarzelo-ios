@@ -176,7 +176,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "434"
                   endingLineNumber = "434"
-                  offsetFromSymbolStart = "7707">
+                  offsetFromSymbolStart = "7736">
                </Location>
                <Location
                   uuid = "E8D5A0CA-5848-49EA-8399-D3A3B7764823 - c0c909d149b5f339"
@@ -446,8 +446,8 @@
             filePath = "Aqarzelo/controller/Create Post/AddPostVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -510,8 +510,8 @@
             filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "handleUploadNextProgress(notify:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +526,8 @@
             filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
             landmarkName = "handleUploadNextComplete(notify:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -542,9 +542,121 @@
             filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "handleUploadNextComplete(notify:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D93E45C9-2CA1-44B2-A450-C70DD9EE5E51"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "goToZoomImage(index:section:img:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ADDBF035-DC84-427D-BB58-EBB723106391"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "goToZoomImage(index:section:img:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "36140DE7-4CDA-417B-B1EA-AE8FFC461D03"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "addImagesUploaded(image:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77CC09BC-DF81-413F-A626-786D9C3C3F6A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/view/List Of Photo/ListOfFhotoCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "setupViews()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "77CC09BC-DF81-413F-A626-786D9C3C3F6A - 118b8a8156696306"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.ListOfFhotoCell.setupViews() -&gt; ()"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/xcode%20projects/syphinx/new%20aqar%2015:8:2020/Aqarzelo/Aqarzelo/view/List%20Of%20Photo/ListOfFhotoCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "5705">
+               </Location>
+               <Location
+                  uuid = "77CC09BC-DF81-413F-A626-786D9C3C3F6A - 4dfa1531967f5a87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.UIView) -&gt; () in Aqarzelo.ListOfFhotoCell.setupViews() -&gt; ()"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/xcode%20projects/syphinx/new%20aqar%2015:8:2020/Aqarzelo/Aqarzelo/view/List%20Of%20Photo/ListOfFhotoCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C43B13A5-4B5D-4A61-A49F-C0D9A177FD69"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "reloadMainData(group1:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

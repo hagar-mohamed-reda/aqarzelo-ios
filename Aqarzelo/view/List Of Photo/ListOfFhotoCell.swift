@@ -165,7 +165,8 @@ class ListOfFhotoCell: BaseCollectionCell {
                }
                else if userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) && photoSecond?.isUploaded == false  {
                    hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
-                   
+                   [progressLabel,namePhotoLabel,sizePhotoLabel,progressPhoto].forEach({$0.isHide(false)})
+
                }else if userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) && photoSecond?.isUploaded == false {
                    hstack(photoImageView,mainStack,spacing: 16).withMargins(.init(top: 8, left: 8, bottom: 8, right: 8))
                    //            trueImageView.centerInSuperview()

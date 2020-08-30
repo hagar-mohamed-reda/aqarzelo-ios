@@ -34,7 +34,7 @@ class AddPostVC: UIViewController {
     lazy var customAlerLoginView:CustomMustLogInView = {
         let v = CustomMustLogInView()
         v.setupAnimation(name: "15179-confirm-popup")
-
+        
         v.okButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         v.cancelButton.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
         return v
@@ -42,7 +42,7 @@ class AddPostVC: UIViewController {
     lazy var customNoInternetView:CustomNoInternetView = {
         let v = CustomNoInternetView()
         v.setupAnimation(name: "4970-unapproved-cross")
-
+        
         v.okButton.addTarget(self, action: #selector(handleRemovecustomNoInternetView), for: .touchUpInside)
         return v
     }()
@@ -52,6 +52,11 @@ class AddPostVC: UIViewController {
         pi.delegate = self
         pi.allowsEditing = true
         return pi
+    }()
+    lazy var customConfirmationView:CustomConfirmationView = {
+        let v = CustomConfirmationView()
+        v.okImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemovecustomConfirmationView)))
+        return v
     }()
     
     var pushedImage:UIImage!
@@ -84,10 +89,31 @@ class AddPostVC: UIViewController {
         }
         
         tabBarController?.tabBar.isHidden = false
-               hidedCustomWhiteViewTabBar(hide: false)
+        hidedCustomWhiteViewTabBar(hide: false)
+        
+        if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
+            aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
+            present(customMainAlertVC, animated: true)
+        }else {}
+        
+        if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
+            aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
+            present(customMainAlertVC, animated: true)
+        }else {}
+        
     }
     
     //MARK:-User methods
+    
+    func aaddCustomConfirmationView(text:String) {
+        customConfirmationView.detailInformationLabel.text = text
+        //        addCustomViewInCenter(views: customConfirmationView, height: 200)
+        customMainAlertVC.addCustomViewInCenter(views: customConfirmationView, height: 200)
+        
+        self.present(customMainAlertVC, animated: true)
+        userDefaults.set(false, forKey: UserDefaultsConstants.isPostUpdated)
+        userDefaults.synchronize()
+    }
     
     fileprivate func setupViews()  {
         view.backgroundColor = #colorLiteral(red: 0.3486061692, green: 0.7345923781, blue: 0.6780440807, alpha: 1) // #colorLiteral(red: 0.2015180886, green: 0.811791122, blue: 0.7185178995, alpha: 1)//ColorConstant.mainBackgroundColor
@@ -98,7 +124,7 @@ class AddPostVC: UIViewController {
     
     fileprivate func setupNavigation() {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
         navigationItem.title = "Create Post".localized
     }
     
@@ -133,12 +159,18 @@ class AddPostVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc  func handleRemovecustomConfirmationView()  {
+        removeViewWithAnimation(vvv: customConfirmationView)
+        customMainAlertVC.dismiss(animated: true)
+    }
+    
+    
     @objc fileprivate func handleChooseImage()  {
         
         if !checkIfUserLoginBefore() {
             customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
             self.customAlerLoginView.problemsView.play()
-
+            
             customAlerLoginView.problemsView.loopMode = .loop
             self.present(customMainAlertVC, animated: true)
         }
@@ -157,7 +189,7 @@ class AddPostVC: UIViewController {
         if !checkIfUserLoginBefore() {
             customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
             self.customAlerLoginView.problemsView.play()
-
+            
             customAlerLoginView.problemsView.loopMode = .loop
             
             self.present(customMainAlertVC, animated: true)
@@ -190,7 +222,8 @@ class AddPostVC: UIViewController {
     
     
     @objc fileprivate func handleCancel()  {
-        remvoeView(customAlerLoginView)
+        removeViewWithAnimation(vvv: customAlerLoginView)
+        removeViewWithAnimation(vvv: customConfirmationView)
         customMainAlertVC.dismiss(animated: true)
     }
 }
@@ -221,12 +254,12 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         }
         pushedImage = jpegSize > 30000 ? pushedImage.resized(toWidth: 1300) : pushedImage
         
-//        let photoModel = PhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false,isMasterPhoto: true, id: 1, imageUrl: nil, is360: 0)
+        //        let photoModel = PhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false,isMasterPhoto: true, id: 1, imageUrl: nil, is360: 0)
         let photoModel = SecondPhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false, isMasterPhoto: true, imageUrl: nil, is360: 0)
-//            PhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false,isMasterPhoto: true, id: 1, imageUrl: nil, is360: 0)
-
+        //            PhotoModel(image: pushedImage, name: imageName, size: imageSize, isUploaded: false,isMasterPhoto: true, id: 1, imageUrl: nil, is360: 0)
+        
         showOrHideCustomTabBar(hide: true)
-        let listOfPhoto = ListOfPhotoMainSecVC(currentUserToken:  userToekn ?? "") //ListOfPhotoCollectionVC( currentUserToken: userToekn ?? "")
+        let listOfPhoto = ListOfPhotoMainSecVC(currentUserToken:  userToekn ?? "", isFromUpdatePost: false) //ListOfPhotoCollectionVC( currentUserToken: userToekn ?? "")
         //        let listOfPhoto = ListOfPhotoCollectionVC(photo: photoModel, currentUserToken: userToekn ?? "")
         userDefaults.set(false, forKey: UserDefaultsConstants.isFirstMasterPhotoUpload)
         userDefaults.set(false, forKey: UserDefaultsConstants.isFinishedGetUploadPhotos)

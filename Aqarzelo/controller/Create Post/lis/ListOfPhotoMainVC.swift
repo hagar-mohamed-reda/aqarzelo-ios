@@ -441,7 +441,7 @@ class ListOfPhotoMainVC:  UIViewController{
     
     fileprivate func goToMainCreatePost()  {
         let createMainPost = MainCreatePostVC(token: currentUserToken)
-        //    createMainPost.aqar = aqar
+            createMainPost.aqar = aqar
         navigationController?.pushViewController(createMainPost, animated: true)
     }
     

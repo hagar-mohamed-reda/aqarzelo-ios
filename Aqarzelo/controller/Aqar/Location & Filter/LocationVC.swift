@@ -171,15 +171,15 @@ class LocationVC: UIViewController {
             
             
             
-            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
-                aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
-                present(customMainAlertVC, animated: true)
-            }else {}
-            
-            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
-                aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
-                present(customMainAlertVC, animated: true)
-            }else {}
+//            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
+//                aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
+//                present(customMainAlertVC, animated: true)
+//            }else {}
+//            
+//            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
+//                aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
+//                present(customMainAlertVC, animated: true)
+//            }else {}
             
             if !ConnectivityInternet.isConnectedToInternet {
                 customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
