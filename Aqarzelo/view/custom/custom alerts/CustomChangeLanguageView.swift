@@ -38,6 +38,7 @@ class CustomChangeLanguageView: CustomBaseView {
     }()
     
     override func setupViews() {
+//        errorInfoLabel.constrainHeight(constant: 60)
         //        layer.cornerRadius = 16
         //        clipsToBounds = true
         let buttonStack = getStack(views: englishButton,arabicButton, spacing: 16, distribution: .fillEqually, axis: .horizontal)
@@ -48,7 +49,7 @@ class CustomChangeLanguageView: CustomBaseView {
         subView.addSubViews(views: seperatorView,errorLabel,errorInfoLabel)
         
         NSLayoutConstraint.activate([errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-                                     errorInfoLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
+//                                     errorInfoLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
             ])
         //        subView.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: mainView.trailingAnchor,padding: .init(top: 0, left: 0, bottom: 30, right: 0))
         
@@ -56,7 +57,7 @@ class CustomChangeLanguageView: CustomBaseView {
         
         errorLabel.anchor(top:topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
         seperatorView.anchor(top: errorLabel.bottomAnchor, leading: subView.leadingAnchor, bottom: nil, trailing: subView.trailingAnchor,padding: .init(top: 8, left: 0, bottom: 0, right: 0))
-        errorInfoLabel.anchor(top: seperatorView.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        errorInfoLabel.anchor(top: seperatorView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 16, left: 8, bottom: 0, right: 8))
         
         //        buttonStack.anchor(top: nil, leading: subView.leadingAnchor, bottom: subView.bottomAnchor, trailing: subView.trailingAnchor,padding: .init(top: 0, left: 16, bottom: -40, right: 16))
         

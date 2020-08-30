@@ -97,7 +97,7 @@ class AqarDetailHorizentalVC:     UICollectionViewController, UICollectionViewDe
     fileprivate func setupViews()  {
         view.addSubViews(views: pageControl)
         
-        pageControl.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: nil,padding: .init(top: 0, left: 0, bottom: 16, right: 0))//32
+        pageControl.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: nil,padding: .init(top: 0, left: 0, bottom: 24, right: 0))//32
         pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     

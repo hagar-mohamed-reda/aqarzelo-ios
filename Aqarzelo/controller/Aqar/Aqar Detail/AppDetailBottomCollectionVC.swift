@@ -114,8 +114,8 @@ class AppDetailBottomCollectionVC: UICollectionViewController, UICollectionViewD
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let phone = userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) ? aqarModel.phone : starifyNumber(number: aqarModel.phone)
-        
+        let phone = userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) ? "0115999999"  : starifyNumber(number: aqarModel.phone)
+        //aqarModel.phone
         
         let title = titleNamesArray[indexPath.section]
         
