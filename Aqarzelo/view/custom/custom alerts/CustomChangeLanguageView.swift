@@ -13,12 +13,12 @@ import MOLH
 class CustomChangeLanguageView: CustomBaseView {
     
     
-    lazy var englishButton = createButtons(title: "English", bgColor: #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1), bColor: #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1), tColor: .white)
-    lazy var arabicButton = createButtons(title: "عربي", bgColor: .white, bColor: #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1), tColor: .black)
+    lazy var englishButton = createButtons(title: "English".localized, bgColor: #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1), bColor: #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1), tColor: .white)
+    lazy var arabicButton = createButtons(title: "عربي".localized, bgColor: .white, bColor: #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1), tColor: .black)
     
     
     lazy var errorLabel = UILabel(text: "Language".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: MOLHLanguage.isRTLLanguage() ? .right : .left)
-    lazy var errorInfoLabel = UILabel(text: "Change Your Current Language".localized, font: .systemFont(ofSize: 20), textColor: .black)
+    lazy var errorInfoLabel = UILabel(text: "Change Your Current Language".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: MOLHLanguage.isRTLLanguage() ? .right : .left,numberOfLines: 2)
     lazy var seperatorView:UIView = {
         let v = UIView(backgroundColor: .black)
         v.constrainHeight(constant: 1)
