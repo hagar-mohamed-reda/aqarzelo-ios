@@ -256,12 +256,12 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
             }
         case 2:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? SecondCreateCityCell {
-                cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.cityDrop)
+                cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.mainDrop1View)
             }
             
         case 3:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? SecondCreateAreaCell {
-                cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.areaDrop)
+                cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.mainDrop1View)
             }
         case 4:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? SecondCreateAddressCell {

@@ -21,9 +21,9 @@ class SecondCreateAreaCell: BaseCollectionCell {
             iconImageView.isUserInteractionEnabled = true
             self.getAreaAccordingToCityId(index: aqar.cityID)
             areaDrop.selectedIndex = aqar.areaID
-            if  let foo = areaNumberArray.firstIndex(of: aqar.areaID){
+            if  let foo = areaIDSArray.firstIndex(of: aqar.areaID){
             
-            let xx = areaNameArray[foo]
+            let xx = areaArray[foo]
             
             areaDrop.text = xx
             }
@@ -56,10 +56,10 @@ class SecondCreateAreaCell: BaseCollectionCell {
     var cityId:Int?{
         didSet {
             guard let cityId = cityId else { return  }
-
-            if cityId == 0 {
-                return
-            }
+//
+//            if cityId == 0 {
+//                return
+//            }
             getAreaAccordingToCityId(index: cityId)
         }
     }
@@ -86,14 +86,22 @@ class SecondCreateAreaCell: BaseCollectionCell {
         //        l.constrainHeight(constant: 20)
         return l
     }()
+    lazy var mainDrop1View:UIView =  {
+
+            let v = makeMainSubViewWithAppendView(vv: [areaDrop])
+           v.hstack(areaDrop).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
+           v.isHide(true)
+           v.constrainWidth(constant: frame.width - 120)
+             return v
+         }()
     lazy var areaDrop:DropDown = {
         let i = returnMainDropDown(plcae: "Select Area".localized)
-        i.constrainWidth(constant: frame.width - 128)
+//        i.constrainWidth(constant: frame.width - 128)
         i.constrainHeight(constant: 40)
-        i.isHide(true)
+//        i.isHide(true)
         
         i.didSelect(completion: {[unowned self] (choosed, index, id) in
-            self.handleTextContents?(self.areaNumberArray[index],true)
+            self.handleTextContents?(self.areaIDSArray[index],true)
         })
         
         return i
@@ -103,41 +111,115 @@ class SecondCreateAreaCell: BaseCollectionCell {
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((Int?,Bool)->Void)?
     
-    var areaNumberArray = [Int]()
-    var areaNameArray = [String]()
-    
+//    var areaNumberArray = [Int]()
+//    var areaNameArray = [String]()
+//    var areaArray = [String]()
+    var cityArray = [String]() //["one","two","three","sdfdsfsd"]
+       var areaArray = [String]()
+       
+       var cityIDSArray = [Int]() //["one","two","three","sdfdsfsd"]
+       var areaIDSArray = [Int]()
+
     fileprivate func getAreaAccordingToCityId(index:Int)  {
-        areaNumberArray.removeAll()
-        areaNameArray.removeAll()
+//        areaNumberArray.removeAll()
+//        areaNameArray.removeAll()
         
-        if let cityIdArra = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let areaIdArra = userDefaults.value(forKey: UserDefaultsConstants.areaIdsArrays) as? [Int],let areaIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int],let areasStringArray =  MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String] : userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String]  {
+        areaIDSArray.removeAll()
+        areaArray.removeAll()
+        
+        if let  cityIdArra = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let areaIdArra = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int],let areaIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaIdsArrays) as? [Int],let areasStringArray =  MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String] : userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String]  {
             //            self.areaNumberArray = cityIdArra
             
-            let areas = cityIdArra[index]
-            let areasFilteredArray = areaIdArray.indexes(of: areas)
+            let areas = self.cityIDSArray[index]
+            
+            let areasFilteredArray = areaIdArra.indexes(of: areas)
             areasFilteredArray.forEach { (s) in
-                areaNumberArray.append(areaIdArra[s])
+                areaIDSArray.append(areaIdArra[s])
             }
             areasFilteredArray.forEach { (indexx) in
                 
                 
-                areaNameArray.append( areasStringArray[index])
+                areaArray.append( areasStringArray[indexx])
                 
             }
             
-            self.areaDrop.optionArray = areaNameArray
+            self.areaDrop.optionArray = areaArray
             
             DispatchQueue.main.async {
                 self.layoutIfNeeded()
             }
         }
+        
+//        if let cityIdArra = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let areaIdArra = userDefaults.value(forKey: UserDefaultsConstants.areaIdsArrays) as? [Int],let areaIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int],let areasStringArray =  MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String] : userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String]  {
+//            //            self.areaNumberArray = cityIdArra
+//
+//            let areas = cityIdArra[index]
+//            let areasFilteredArray = areaIdArray.indexes(of: areas)
+//            areasFilteredArray.forEach { (s) in
+//                areaNumberArray.append(areaIdArra[s])
+//            }
+//            areasFilteredArray.forEach { (indexx) in
+//
+//
+//                areaNameArray.append( areasStringArray[index])
+//
+//            }
+//
+//            self.areaDrop.optionArray = areaNameArray
+//
+//            DispatchQueue.main.async {
+//                self.layoutIfNeeded()
+//            }
+//        }
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        fetchData()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    fileprivate func fetchData()  {
+           
+           fetchEnglishData(isArabic: MOLHLanguage.isRTLLanguage())
+       }
+    
+    fileprivate func fetchEnglishData(isArabic:Bool) {
+           if isArabic {
+               
+               
+               if  let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let degreeNames = userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String] , let degreeIds =  userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]  {
+                                
+                   self.cityArray = cityArray
+                          self.areaArray = degreeNames
+                          self.cityIDSArray = cityIds
+                          areaIDSArray = degreeIds
+               }
+           }else {
+               if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let degreeNames = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String] , let degreeIds =  userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]  {
+                  
+                 self.cityArray = cityArray
+                                         self.areaArray = degreeNames
+                                         self.cityIDSArray = cityIds
+                                         areaIDSArray = degreeIds
+                   
+               }
+           }
+           self.areaDrop.optionArray = areaArray
+           DispatchQueue.main.async {
+               self.layoutIfNeeded()
+           }
+       }
+    
     
     override func setupViews() {
         
         backgroundColor = .white
         let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
-        let dd = hstack(areaDrop,UIView())
+        let dd = hstack(mainDrop1View,UIView())
         
         [categoryLabel,categoryQuestionLabel].forEach{($0.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left)}
         
@@ -147,7 +229,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
-        showHidingViews(views: categoryQuestionLabel,areaDrop, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3933"), seperator: seperatorView)
+        showHidingViews(views: categoryQuestionLabel,mainDrop1View, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3933"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }
 }

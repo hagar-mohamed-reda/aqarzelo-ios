@@ -51,19 +51,14 @@ class SecondCreateCityCell: BaseCollectionCell {
         return l
     }()
     
-//    lazy var mainDrop1View:UIView =  {
-//
-//       let v = makeMainSubViewWithAppendView(vv: [cityDrop,cityImage])
-//        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleOpenDrops)))
-//        return v
-//    }()
-//        lazy var cityDrop = UILabel(text: "City".localized, font: .systemFont(ofSize: 16), textColor: .black)
-//       lazy var cityImage:UIImageView = {
-//           let i = UIImageView(image: UIImage(named: "arrow-pointing-downwards(1)"))
-//           i.contentMode = .scaleAspectFit
-//
-//           return i
-//       }()
+    lazy var mainDrop1View:UIView =  {
+
+         let v = makeMainSubViewWithAppendView(vv: [cityDrop])
+        v.hstack(cityDrop).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
+        v.isHide(true)
+        v.constrainWidth(constant: frame.width - 120)
+          return v
+      }()
     
     lazy var cityDrop:DropDown = {
         let i = returnMainDropDown(plcae: "Select City".localized)
@@ -71,8 +66,8 @@ class SecondCreateCityCell: BaseCollectionCell {
             i.optionArray = arr
         }
         i.constrainHeight(constant: 40)
-        i.constrainWidth(constant: frame.width - 128)
-        i.isHide(true)
+//        v.constrainWidth(constant: frame.width - 128)
+//        i.isHide(true)
 
         i.didSelect(completion: {[unowned self] (choosed, index, id) in
             self.handleTextContents?(index,true)
@@ -96,7 +91,7 @@ class SecondCreateCityCell: BaseCollectionCell {
         [categoryLabel,categoryQuestionLabel].forEach{($0.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left)}
         
         let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
-        let dd = hstack(cityDrop,UIView())
+        let dd = hstack(mainDrop1View,UIView())
 //        makeThissss(xx: mainDrop1View, cc: cityDrop, img: cityImage)
 
         let second = stack(categoryLabel,categoryQuestionLabel,dd,UIView(),spacing:8)
@@ -105,11 +100,11 @@ class SecondCreateCityCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
-        showHidingViews(views: categoryQuestionLabel,cityDrop, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3938"), seperator: seperatorView)
+        showHidingViews(views: categoryQuestionLabel,mainDrop1View, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3938"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }
     
     @objc  func handleOpenDrops()  {
-        handleOpenDropDown?(cityDrop.frame)
+        handleOpenDropDown?(mainDrop1View.frame)
        }
 }

@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         window = UIWindow()
         window?.makeKeyAndVisible()
         //                 checkLoginState()
-        window?.rootViewController = HomeTabBarVC()//UINavigationController(rootViewController: ListOfPhotoMainSecVC(currentUserToken: "4833071ce2713892515cea7783f66a340972f0a1578c098acc678a6ad010583a"))
+        window?.rootViewController = UINavigationController(rootViewController: MainCreatePostVC(token: ""))
         //        window?.rootViewController = UINavigationController(rootViewController: MainCreatePostVC()
         //        window?.rootViewController = UINavigationController(rootViewController: UserSettingsVC())//MainCreatePostVC(token: "17e798c152737ecb6084a124186c0d0900abd3f5506e50c68c56f0e151763fba"))//FilterVC()//HomeTabBarVC()//FilterVC()//HomeTabBarVC()//UINavigationController(rootViewController: LoginVC())//UserSettingTableVC()//UINavigationController(rootViewController: ListOfPhotoCollectionVC())
         
