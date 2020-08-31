@@ -31,35 +31,9 @@ class SecondCreateAreaCell: BaseCollectionCell {
         }
     }
     
-    func getIndexFrom(aqar:Int)  {
-        if let areaIdArra = userDefaults.value(forKey: UserDefaultsConstants.areaIdsArrays) as? [Int],let areaIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int],let areasStringArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String]  {
-            //            self.areaNumberArray = cityIdArra
-            
-            //            let areas = areaIdArray.indexes(of: index)
-            //            areasFilteredArray.forEach { (s) in
-            //                areaNumberArray.append(areaIdArra[s])
-            //            }
-            //            areasFilteredArray.forEach { (index) in
-            //
-            //                areaNameArray.append(areasStringArray[index])
-            //
-            //            }
-            //
-            //            self.areaDrop.optionArray = areaNameArray
-            //
-            //            DispatchQueue.main.async {
-            //                self.layoutIfNeeded()
-            //            }
-        }
-    }
-    
     var cityId:Int?{
         didSet {
             guard let cityId = cityId else { return  }
-//
-//            if cityId == 0 {
-//                return
-//            }
             getAreaAccordingToCityId(index: cityId)
         }
     }
@@ -83,7 +57,6 @@ class SecondCreateAreaCell: BaseCollectionCell {
     lazy var categoryQuestionLabel:UILabel =  {
         let l = UILabel(text: "Choose the Area".localized, font: .systemFont(ofSize: 18), textColor: .black)
         l.isHide(true)
-        //        l.constrainHeight(constant: 20)
         return l
     }()
     lazy var mainDrop1View:UIView =  {
@@ -96,9 +69,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
          }()
     lazy var areaDrop:DropDown = {
         let i = returnMainDropDown(plcae: "Select Area".localized)
-//        i.constrainWidth(constant: frame.width - 128)
         i.constrainHeight(constant: 40)
-//        i.isHide(true)
         
         i.didSelect(completion: {[unowned self] (choosed, index, id) in
             self.handleTextContents?(self.areaIDSArray[index],true)
@@ -111,9 +82,6 @@ class SecondCreateAreaCell: BaseCollectionCell {
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((Int?,Bool)->Void)?
     
-//    var areaNumberArray = [Int]()
-//    var areaNameArray = [String]()
-//    var areaArray = [String]()
     var cityArray = [String]() //["one","two","three","sdfdsfsd"]
        var areaArray = [String]()
        
@@ -121,9 +89,6 @@ class SecondCreateAreaCell: BaseCollectionCell {
        var areaIDSArray = [Int]()
 
     fileprivate func getAreaAccordingToCityId(index:Int)  {
-//        areaNumberArray.removeAll()
-//        areaNameArray.removeAll()
-        
         areaIDSArray.removeAll()
         areaArray.removeAll()
         
@@ -149,28 +114,6 @@ class SecondCreateAreaCell: BaseCollectionCell {
                 self.layoutIfNeeded()
             }
         }
-        
-//        if let cityIdArra = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let areaIdArra = userDefaults.value(forKey: UserDefaultsConstants.areaIdsArrays) as? [Int],let areaIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int],let areasStringArray =  MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String] : userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String]  {
-//            //            self.areaNumberArray = cityIdArra
-//
-//            let areas = cityIdArra[index]
-//            let areasFilteredArray = areaIdArray.indexes(of: areas)
-//            areasFilteredArray.forEach { (s) in
-//                areaNumberArray.append(areaIdArra[s])
-//            }
-//            areasFilteredArray.forEach { (indexx) in
-//
-//
-//                areaNameArray.append( areasStringArray[index])
-//
-//            }
-//
-//            self.areaDrop.optionArray = areaNameArray
-//
-//            DispatchQueue.main.async {
-//                self.layoutIfNeeded()
-//            }
-//        }
     }
     
     override init(frame: CGRect) {
