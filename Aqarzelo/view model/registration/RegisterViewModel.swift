@@ -19,18 +19,20 @@ class RegisterViewModel {
     var password:String? {didSet {checkFormValidity()}}
     var confirmPassword:String? {didSet {checkFormValidity()}}
     var phone:String? {didSet {checkFormValidity()}}
+    var commericalNumber:String? {didSet {checkFormValidity()}}
     var usernasme:String? {didSet {checkFormValidity()}}
-    
+    var isUser = false {didSet {checkFormValidity()}}
+
     func performRegister(completion:@escaping (BaseRegisterModel?,Error?)->Void)  {
         guard let email = email,let password = password,let username = usernasme,let phone = phone
             else { return  }
         bindableIsResgiter.value = true
+        isUser ? RegistrationServices.shared.registerUser(name: username, email: email, phone: phone, password: password, completion: completion)  : RegistrationServices.shared.registerUser(name: username, email: email, phone: phone, password: password, completion: completion)
         
-        RegistrationServices.shared.registerUser(name: username, email: email, phone: phone, password: password, completion: completion)
     }
     
     func checkFormValidity() {
-        let isFormValid = email?.isEmpty == false && password?.isEmpty == false && confirmPassword?.isEmpty == false && confirmPassword == password &&  phone?.isEmpty == false && usernasme?.isEmpty == false
+        let isFormValid = email?.isEmpty == false && password?.isEmpty == false && confirmPassword?.isEmpty == false && confirmPassword == password &&  phone?.isEmpty == false && usernasme?.isEmpty == false && isUser == false || commericalNumber?.isEmpty == false && email?.isEmpty == false && password?.isEmpty == false && confirmPassword?.isEmpty == false && confirmPassword == password &&  phone?.isEmpty == false && usernasme?.isEmpty == false && isUser == true 
         
         bindableIsFormValidate.value = isFormValid
         

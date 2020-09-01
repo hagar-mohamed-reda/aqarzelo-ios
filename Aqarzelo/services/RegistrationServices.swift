@@ -33,6 +33,13 @@ class RegistrationServices {
         RegistrationServices.registerationPostMethodGeneric(postString: postString, url: url, completion: completion)
     }
     
+    func loginCompany(phone:String,password:String,completion:@escaping (BaseUserSecondModel?,Error?)->Void)  {
+           let urlString = "http://aqarzelo.com/public/api/company/login".toSecrueHttps()
+           guard  let url = URL(string: urlString) else { return  }
+           let postString = "phone=\(phone)&password=\(password)"
+           RegistrationServices.registerationPostMethodGeneric(postString: postString, url: url, completion: completion)
+       }
+    
     func forgetPassword(phone:String,completion:@escaping (BaseUserSecondModel?,Error?)->Void)  { ////baseusermodel
         let urlString = "http://aqarzelo.com/public/api/user/forget-password".toSecrueHttps()
         guard  let url = URL(string: urlString) else { return  }

@@ -220,6 +220,7 @@
 		9FE2710024E88868008889AB /* UserEditingBackgroundTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE270FC24E88868008889AB /* UserEditingBackgroundTableCell.swift */; };
 		9FE2710424E8887A008889AB /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2710224E88879008889AB /* UserDetailCell.swift */; };
 		9FE2710524E8887A008889AB /* UserPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2710324E8887A008889AB /* UserPostsCell.swift */; };
+		9FFA424B24FEA3F100EF862E /* TintedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -440,6 +441,7 @@
 		9FE270FC24E88868008889AB /* UserEditingBackgroundTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEditingBackgroundTableCell.swift; sourceTree = "<group>"; };
 		9FE2710224E88879008889AB /* UserDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
 		9FE2710324E8887A008889AB /* UserPostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsCell.swift; sourceTree = "<group>"; };
+		9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintedSegmentedControl.swift; sourceTree = "<group>"; };
 		A8953DA5FEB4182F22DA9FFB /* Pods-Aqarzelo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aqarzelo.debug.xcconfig"; path = "Target Support Files/Pods-Aqarzelo/Pods-Aqarzelo.debug.xcconfig"; sourceTree = "<group>"; };
 		CACADD2DC40895DADE73CEBB /* Pods-Aqarzelo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aqarzelo.release.xcconfig"; path = "Target Support Files/Pods-Aqarzelo/Pods-Aqarzelo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -568,6 +570,7 @@
 				9FDDB75924E98FB900AF8817 /* CustomSelectedButton.swift */,
 				9FDDB75624E98FB300AF8817 /* CustomTabBar.swift */,
 				9FDDB75724E98FB500AF8817 /* CustomTextField.swift */,
+				9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1490,6 +1493,7 @@
 				9FE2704924E8846E008889AB /* ShowSeperateAqarImagesCV.swift in Sources */,
 				9FE270EC24E88811008889AB /* PostMessagesCell.swift in Sources */,
 				9FE270ED24E88811008889AB /* MessageCollectionCell.swift in Sources */,
+				9FFA424B24FEA3F100EF862E /* TintedSegmentedControl.swift in Sources */,
 				9FE2707824E88542008889AB /* UserProfileVC.swift in Sources */,
 				9FE2710524E8887A008889AB /* UserPostsCell.swift in Sources */,
 				9FE270A624E886D5008889AB /* BaseCollectionCell.swift in Sources */,

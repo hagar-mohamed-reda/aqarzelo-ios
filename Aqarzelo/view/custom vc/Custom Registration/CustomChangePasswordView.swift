@@ -20,6 +20,16 @@ class CustomChangePasswordView: CustomBaseView {
         return v
     }()
     
+    lazy var userCompSegmentedView:TintedSegmentedControl = {
+           let items = ["User".localized,"Company".localized]
+           let view = TintedSegmentedControl(items: items)
+           view.layer.cornerRadius = 24
+           view.clipsToBounds=true
+           view.selectedSegmentIndex=0
+           view.constrainHeight(constant: 50)
+        view.addTarget(self, action: #selector(handleUserComp), for: .valueChanged)
+           return view
+       }()
     
     lazy var oldPasswordTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
@@ -109,13 +119,16 @@ class CustomChangePasswordView: CustomBaseView {
         [ newPasswordTextField,oldPasswordTextField,confirmNewPasswordTextField].forEach({$0.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)})
         let mainStack = getStack(views: oldPasswordTextField,newPasswordTextField,confirmNewPasswordTextField, spacing: 16, distribution: .fillEqually, axis: .vertical)
         mainStack.translatesAutoresizingMaskIntoConstraints = false
-        addSubViews(views: mainView,mainStack,submitButton)
+        addSubViews(views: mainView,userCompSegmentedView,mainStack,submitButton)
         
         NSLayoutConstraint.activate([
             mainStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            userCompSegmentedView.centerXAnchor.constraint(equalTo: centerXAnchor),
             mainStack.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         mainView.fillSuperview()
+        userCompSegmentedView.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 40, left: 0, bottom: 0, right: 0))
+
         mainStack.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         
         submitButton.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 40, right: 16))
@@ -184,5 +197,9 @@ class CustomChangePasswordView: CustomBaseView {
             }
         }
     }
+    
+    @objc func handleUserComp(sender:UISegmentedControl)  {
+       changePpasswordViewModel.isUser =   sender.selectedSegmentIndex == 0 ? false : true
+       }
     
 }

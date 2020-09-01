@@ -19,7 +19,8 @@ class ChangePpasswordViewModel {
     var newPassword:String? {didSet {checkFormValidity()}}
     var confirmNewPassword:String? {didSet {checkFormValidity()}}
     var apiToken:String? {didSet {checkFormValidity()}}
-    
+    var isUser = false {didSet {checkFormValidity()}}
+
     func performLogging(completion:@escaping (BaseUserSecondModel?,Error?)->Void)  {
         guard let old = oldPass,let newPass = newPassword,let apiToken = apiToken
             else { return  }

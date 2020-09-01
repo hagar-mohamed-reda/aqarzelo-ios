@@ -24,6 +24,16 @@ class CustomRegisterView: UIView {
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
+    lazy var userCompSegmentedView:TintedSegmentedControl = {
+        let items = ["User".localized,"Company".localized]
+        let view = TintedSegmentedControl(items: items)
+        view.layer.cornerRadius = 24
+        view.clipsToBounds=true
+        view.selectedSegmentIndex=0
+        view.constrainHeight(constant: 50)
+        view.addTarget(self, action: #selector(handleUserComp), for: .valueChanged)
+        return view
+    }()
     lazy var usernameTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
         t.placeholder = "username".localized
@@ -41,6 +51,17 @@ class CustomRegisterView: UIView {
         t.title = "Phone".localized
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        return t
+    }()
+    lazy var commercialNumberTextField:SkyFloatingLabelTextField = {
+        let t = SkyFloatingLabelTextField()
+        t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.placeholder = "Commerical Number".localized
+        t.keyboardType = UIKeyboardType.numberPad
+        t.title = "Commerical Number".localized
+        t.placeholderColor = .white
+        t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.isHide(true)
         return t
     }()
     lazy var emailTextField:SkyFloatingLabelTextFieldWithIcon = {
@@ -125,8 +146,8 @@ class CustomRegisterView: UIView {
         b.setTitleColor(.black, for: .normal)
         b.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         b.backgroundColor = .white
-
-//        b.backgroundColor = #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1)
+        
+        //        b.backgroundColor = #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1)
         b.constrainHeight(constant: 50)
         b.layer.borderWidth = 4
         b.layer.borderColor = #colorLiteral(red: 0.2534725964, green: 0.8196641803, blue: 0.6812620759, alpha: 1).cgColor
@@ -163,9 +184,9 @@ class CustomRegisterView: UIView {
             emailTextField,
             passwordTextField,
             confirmPasswordTextField,usernameTextField,
-            phoneTextField
+            phoneTextField,commercialNumberTextField
             ].forEach({$0.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)})
-        let mainStack = getStack(views: usernameTextField,phoneTextField,emailTextField,passwordTextField,confirmPasswordTextField, spacing: 16, distribution: .fillEqually, axis: .vertical)
+        let mainStack = getStack(views: usernameTextField,phoneTextField,commercialNumberTextField,emailTextField,passwordTextField,confirmPasswordTextField, spacing: 16, distribution: .fillEqually, axis: .vertical)
         
         //        let buttonStack = getStack(views: facebookImageView,googleImagView, spacing: 8, distribution: .fillEqually, axis: .horizontal)
         let buttonStack:UIStackView
@@ -175,10 +196,11 @@ class CustomRegisterView: UIView {
             // Fallback on earlier versions
             buttonStack = getStack(views: facebookImageView,googleImagView, spacing: 8, distribution: .fillEqually, axis: .horizontal)
         }
-        addSubViews(views: mainImageView,backImageView,createLabel,mainStack,buttonStack,orLabel,signUpButton)
+        addSubViews(views: mainImageView,backImageView,createLabel,userCompSegmentedView,mainStack,buttonStack,orLabel,signUpButton)
         
         NSLayoutConstraint.activate([
             createLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            userCompSegmentedView.centerXAnchor.constraint(equalTo: centerXAnchor),
             buttonStack.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
             
         ])
@@ -186,7 +208,9 @@ class CustomRegisterView: UIView {
         mainImageView.fillSuperview()
         backImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 60, left: 16, bottom: 0, right: 0))
         createLabel.anchor(top: mainImageView.topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 80, left: 0, bottom: 0, right: 0))
-        mainStack.anchor(top: createLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 40, left: 32, bottom: 0, right: 32))
+        userCompSegmentedView.anchor(top: createLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        
+        mainStack.anchor(top: createLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 60, left: 32, bottom: 0, right: 32))
         
         signUpButton.anchor(top: nil, leading: leadingAnchor, bottom: orLabel.topAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 24, right: 16))
         orLabel.anchor(top: buttonStack.topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: -32, left: 0, bottom: 0, right: 0))
@@ -231,7 +255,17 @@ class CustomRegisterView: UIView {
                     floatingLabelTextField.errorMessage = ""
                 }
                 
-            }else if text == emailTextField {
+            }else if text == commercialNumberTextField {
+                if  (texts.count < 4 ) {
+                    floatingLabelTextField.errorMessage = "Invalid commerical number".localized
+                    registerViewModel.commericalNumber = nil
+                }
+                else {
+                    registerViewModel.commericalNumber = texts
+                    floatingLabelTextField.errorMessage = ""
+                }
+                
+            } else if text == emailTextField {
                 if !texts.isValidEmail {
                     floatingLabelTextField.errorMessage = "Invalid Email".localized
                     registerViewModel.email = nil
@@ -264,4 +298,13 @@ class CustomRegisterView: UIView {
         }
     }
     
+    @objc func handleUserComp(sender:UISegmentedControl)  {
+        let x = sender.selectedSegmentIndex
+        
+        registerViewModel.isUser =   x == 0 ? false : true
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            self.commercialNumberTextField.isHide(x == 0 ? true : false)
+        })
+        
+    }
 }
