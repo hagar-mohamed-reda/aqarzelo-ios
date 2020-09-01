@@ -98,9 +98,9 @@ class HomeTabBarVC: UITabBarController {
         tabBar.barTintColor = #colorLiteral(red: 0.9966195226, green: 0.9997286201, blue: 0.9998206496, alpha: 1)
         
         viewControllers = [
-            cart ,
+           
             location,
-            
+             cart ,
             notification,
             love,
          ]

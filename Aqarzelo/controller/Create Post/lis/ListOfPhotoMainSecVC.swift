@@ -25,7 +25,7 @@ class ListOfPhotoMainSecVC: UIViewController {
         b.clipsToBounds = true
         b.isEnabled = false
         b.constrainHeight(constant: 50)
-        b.isEnabled = false
+        b.isEnabled = true
                 b.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return b
     }()
@@ -403,7 +403,7 @@ class ListOfPhotoMainSecVC: UIViewController {
             userDefaults.set(false, forKey: UserDefaultsConstants.isStillImageUpload)
 
             userDefaults.synchronize()
-            nextButton.isEnabled = false
+            nextButton.isEnabled = true//false
             guard let userInfo = notify.userInfo as? [String:Any] else { return  }
             guard let index = userInfo["index"] as? Int else { return  }
             guard let progress = userInfo["progress"] as? Double else { return  }
@@ -470,7 +470,7 @@ class ListOfPhotoMainSecVC: UIViewController {
             userDefaults.set(false, forKey: UserDefaultsConstants.isImageUploaded)
             userDefaults.set(false, forKey: UserDefaultsConstants.isStillImageUpload)
             userDefaults.synchronize()
-             nextButton.isEnabled = false
+             nextButton.isEnabled = true//false
             guard let userInfo = notify.userInfo as? [String:Any] else { return  }
             //        guard let name = userInfo["name"] as? String else { return  }
             guard let progress = userInfo["progress"] as? Double else { return  }
