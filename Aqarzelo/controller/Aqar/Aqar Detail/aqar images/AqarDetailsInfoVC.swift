@@ -36,8 +36,8 @@ class AqarDetailsInfoVC: UIViewController {
         return t
     }()
     
-    lazy var customStarView:CustomStarView = {
-        let v = CustomStarView()
+    lazy var customStarView:CustomStarViews = {
+        let v = CustomStarViews()
         v.closeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveStars)))
         v.doneButton.addTarget(self, action: #selector(handleDone), for: .touchUpInside)
         return v
@@ -102,7 +102,7 @@ class AqarDetailsInfoVC: UIViewController {
                 self.customAlerLoginView.problemsView.loopMode = .loop
                 self.present(self.customMainAlertVC, animated: true)
             }else {
-                self.customMainAlertVC.addCustomViewInCenter(views:self.customStarView , height: 200)
+                self.customMainAlertVC.addCustomViewInCenter(views:self.customStarView , height: 250)
                 self.present(self.customMainAlertVC, animated: true, completion: nil)
             }
         }

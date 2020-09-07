@@ -104,9 +104,9 @@ class ContactUsVC: UIViewController {
         view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1)//ColorConstant.mainBackgroundColor
         let imageStack = getStack(views: UIView(),twitterImage,facebookImage,youtubImage,UIView(), spacing: 8, distribution: .fillEqually, axis: .horizontal)
         
-        let group = MOLHLanguage.isRTLLanguage() ?  getStack(views: emailImageView,emailLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),emailLabel,emailImageView, spacing: 8, distribution: .fill, axis: .horizontal)
+        let group = !MOLHLanguage.isRTLLanguage() ?  getStack(views: emailImageView,emailLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),emailLabel,emailImageView, spacing: 8, distribution: .fill, axis: .horizontal)
         
-        let group2 = MOLHLanguage.isRTLLanguage() ?  getStack(views: telephoneImageView,telphoneLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),telphoneLabel,telephoneImageView, spacing: 8, distribution: .fill, axis: .horizontal)
+        let group2 = !MOLHLanguage.isRTLLanguage() ?  getStack(views: telephoneImageView,telphoneLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),telphoneLabel,telephoneImageView, spacing: 8, distribution: .fill, axis: .horizontal)
         
         let mainGroup = getStack(views: group,group2, spacing: 8, distribution: .fillEqually, axis: .vertical)
         

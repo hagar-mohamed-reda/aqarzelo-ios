@@ -25,7 +25,8 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
         let refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = UIColor.white
         refreshControl.tintColor = UIColor.black
-        
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+
         return refreshControl
         
     }()

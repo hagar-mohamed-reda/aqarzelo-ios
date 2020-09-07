@@ -828,8 +828,8 @@
             filePath = "Aqarzelo/controller/Messaages/SecondMessagesCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -860,9 +860,9 @@
             filePath = "Aqarzelo/controller/Messaages/SecondMessagesCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "didPullToRefresh()"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "handleRemoveTitleView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -876,8 +876,8 @@
             filePath = "Aqarzelo/controller/Messaages/SecondMessagesCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -17,6 +17,8 @@ class PostMessagesCollectionVC: BaseCollectionVC {
         let refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = UIColor.white
         refreshControl.tintColor = UIColor.black
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+
         return refreshControl
         
     }()
@@ -153,7 +155,6 @@ class PostMessagesCollectionVC: BaseCollectionVC {
         collectionView.backgroundColor = .white
         collectionView.register(PostMessagesCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.showsVerticalScrollIndicator=false
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         collectionView.alwaysBounceVertical=true
         collectionView.refreshControl = refreshControl
     }
