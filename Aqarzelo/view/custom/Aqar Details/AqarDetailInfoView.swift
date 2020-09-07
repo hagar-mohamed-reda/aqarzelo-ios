@@ -44,7 +44,7 @@ class AqarDetailInfoView:UIView {
         }
     }
     
-    let imagesIcons:[UIImage] = [#imageLiteral(resourceName: "bed"),#imageLiteral(resourceName: "bathtub"),#imageLiteral(resourceName: "paint-roller"),#imageLiteral(resourceName: "carpet"),#imageLiteral(resourceName: "standing-up-man-"),#imageLiteral(resourceName: "parked-car"),#imageLiteral(resourceName: "shopping-cart (1)"),#imageLiteral(resourceName: "credit-cards-payment"),#imageLiteral(resourceName: "bed"),#imageLiteral(resourceName: "bathtub"),#imageLiteral(resourceName: "paint-roller"),#imageLiteral(resourceName: "carpet"),#imageLiteral(resourceName: "Group 3951").withRenderingMode(.alwaysTemplate)] //#imageLiteral(resourceName: "Group 3951")
+    let imagesIcons:[UIImage] = [#imageLiteral(resourceName: "bed"),#imageLiteral(resourceName: "bathtub"),#imageLiteral(resourceName: "paint-roller"),#imageLiteral(resourceName: "carpet"),#imageLiteral(resourceName: "standing-up-man-"),#imageLiteral(resourceName: "parked-car"),#imageLiteral(resourceName: "shopping-cart (1)"),#imageLiteral(resourceName: "credit-cards-payment"),#imageLiteral(resourceName: "bed"),#imageLiteral(resourceName: "bathtub"),#imageLiteral(resourceName: "paint-roller"),#imageLiteral(resourceName: "carpet"),#imageLiteral(resourceName: "Group 3951")] //#imageLiteral(resourceName: "Group 3951")
     
     
     lazy var logosImagesView:[UIImageView] = {

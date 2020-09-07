@@ -17,8 +17,8 @@ class CustomAqarsView: UIView {
         didSet{
             guard let aqar = aqar else { return  }
 
-            let urlString2 = aqar.user.coverURL
-            guard let urlString = aqar.images.first?.src,let url = URL(string: urlString), let url2 = URL(string: urlString) else {return}
+            
+            guard let urlString2 = aqar.user?.coverURL, let urlString = aqar.images.first?.src,let url = URL(string: urlString), let url2 = URL(string: urlString2) else {return}
             aqarImageView.sd_setImage(with: url)
             aqarLogoImage.sd_setImage(with: url2)
             locationTitleLabel.text = aqar.title

@@ -66,7 +66,7 @@ class AqarDetailsInfoVC: UIViewController {
         v.constrainHeight(constant: 40)
         v.layer.cornerRadius = 20
         v.layer.borderWidth = 3
-        v.layer.borderColor = UIColor.black.cgColor
+        v.layer.borderColor = UIColor.gray.cgColor
         v.clipsToBounds = true
         v.addSubview(backImageView)
         backImageView.fillSuperview()
@@ -77,8 +77,8 @@ class AqarDetailsInfoVC: UIViewController {
     lazy var logoImageView:UIImageView = {
         let i = UIImageView()
         
-        let urlString = aqarModel.user.coverURL
-        if let url = URL(string: urlString) {
+        
+        if let urlString = aqarModel.user?.coverURL, let url = URL(string: urlString) {
             i.sd_setImage(with: url)
         }
         i.isUserInteractionEnabled = true
@@ -374,7 +374,7 @@ class AqarDetailsInfoVC: UIViewController {
             self.present(customMainAlertVC, animated: true)
         }else {
             
-            if aqarModel.user.apiToken == userToken {
+            if aqarModel.user?.apiToken == userToken {
                 self.customMainAlertVC.addCustomViewInCenter(views: customErrorView, height: 200)
                 self.customErrorView.problemsView.play()
                 customErrorView.problemsView.loopMode = .loop
@@ -384,8 +384,8 @@ class AqarDetailsInfoVC: UIViewController {
                 
                 showOrHideCustomTabBar(hide: true)
                 let messages = ChatLogCollectionVC(userId: aqarModel.userID , token: userToken)
-                messages.targetUesrName = aqarModel.user.name
-                messages.targetUesrPhotoUrl = aqarModel.user.photoURL
+                messages.targetUesrName = aqarModel.user?.name
+                messages.targetUesrPhotoUrl = aqarModel.user?.photoURL
                 navigationController?.pushViewController(messages, animated: true)
             }
         }

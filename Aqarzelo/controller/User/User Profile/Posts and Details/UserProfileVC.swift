@@ -33,7 +33,7 @@ class UserProfileVC: UIViewController {
         v.constrainHeight(constant: 40)
         v.layer.cornerRadius = 20
         v.layer.borderWidth = 3
-        v.layer.borderColor = UIColor.black.cgColor
+        v.layer.borderColor = UIColor.gray.cgColor
         v.clipsToBounds = true
         v.addSubview(backImageView)
         backImageView.fillSuperview()

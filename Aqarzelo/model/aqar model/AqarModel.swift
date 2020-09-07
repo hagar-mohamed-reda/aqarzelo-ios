@@ -41,7 +41,7 @@ struct AqarModel:Codable {
     let contactPhone: String
     let userReview: [UserReview]
     let favourite: String
-    let user: CompanyClass
+    var user: CompanyClass?
     
     enum CodingKeys: String, CodingKey {
         case id, title
@@ -181,7 +181,7 @@ class CompanyClass: Codable {
     let isExternal: Int?
     let photoURL: String
     let coverURL: String
-    let company: CompanyClass?
+    var company: CompanyClass?
     let serviceID: Int?
     var commercialNo: String?
     
