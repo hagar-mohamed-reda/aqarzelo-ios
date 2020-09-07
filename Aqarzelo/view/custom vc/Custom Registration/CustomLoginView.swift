@@ -23,16 +23,7 @@ class CustomLoginView: UIView {
         i.isUserInteractionEnabled = true
         return i
     }()
-    lazy var userCompSegmentedView:TintedSegmentedControl = {
-           let items = ["User".localized,"Company".localized]
-           let view = TintedSegmentedControl(items: items)
-           view.layer.cornerRadius = 24
-           view.clipsToBounds=true
-           view.selectedSegmentIndex=0
-           view.constrainHeight(constant: 50)
-        view.addTarget(self, action: #selector(handleUserComp), for: .valueChanged)
-           return view
-       }()
+  
     lazy var loginLabel:UILabel = {
         let l = UILabel(text: "Login".localized, font: .systemFont(ofSize: 29), textColor: .white)
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -160,9 +151,8 @@ class CustomLoginView: UIView {
         let createStack = getStack(views: createAccountLabel,createAccountButton, spacing: 0, distribution: .fill, axis: .horizontal)
         let subStack = getStack(views: emailTextField,passwordTextField,forgetStack, spacing: 16, distribution: .fillEqually, axis: .vertical)
         
-        addSubViews(views: mainImageView,backImageView,loginLabel,userCompSegmentedView,subStack,loginButton,orLabel,buttonStack,createStack)
+        addSubViews(views: mainImageView,backImageView,loginLabel,subStack,loginButton,orLabel,buttonStack,createStack)
         NSLayoutConstraint.activate([
-            userCompSegmentedView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loginLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             //
             subStack.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -175,7 +165,6 @@ class CustomLoginView: UIView {
         mainImageView.fillSuperview()
         backImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 60, left: 16, bottom: 0, right: 0))
         loginLabel.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 80, left: 0, bottom: 0, right: 0))
-        userCompSegmentedView.anchor(top: loginLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
 
         
         subStack.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 0, left: 32, bottom: 0, right: 32))
@@ -221,7 +210,5 @@ class CustomLoginView: UIView {
         sender.setImage(xx, for: .normal)
     }
     
-   @objc func handleUserComp(sender:UISegmentedControl)  {
-    loginViewModel.isUser =   sender.selectedSegmentIndex == 0 ? false : true
-    }
+  
 }

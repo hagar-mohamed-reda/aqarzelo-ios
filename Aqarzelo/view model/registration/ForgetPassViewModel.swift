@@ -15,7 +15,6 @@ class ForgetPassViewModel {
     
     //variables
     var email:String? {didSet {checkFormValidity()}}
-    var isUser = false {didSet {checkFormValidity()}}
 
     func performForget(completion:@escaping (BaseUserSecondModel?,Error?)->Void)  {
         guard let email = email

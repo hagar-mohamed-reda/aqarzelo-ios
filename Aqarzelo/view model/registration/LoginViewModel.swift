@@ -16,14 +16,13 @@ class LoginViewModel {
     //variables
     var email:String? {didSet {checkFormValidity()}}
     var password:String? {didSet {checkFormValidity()}}
-    var isUser = false {didSet {checkFormValidity()}}
     
     
     func performLogging(completion:@escaping (BaseUserSecondModel?,Error?)->Void)  {
         guard let email = email,let password = password
            else { return  }
         bindableIsLogging.value = true
-        isUser ? RegistrationServices.shared.loginCompany(phone: email, password: password, completion: completion) : RegistrationServices.shared.loginUser(phone: email, password: password, completion: completion)
+        RegistrationServices.shared.loginUser(phone: email, password: password, completion: completion)
         
     }
     

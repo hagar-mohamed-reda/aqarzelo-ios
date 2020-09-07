@@ -20,7 +20,6 @@ class ForgetPassConfirmViewModel {
     var confirmPassword:String? {didSet {checkFormValidity()}}
     var phone:String? {didSet {checkFormValidity()}}
     var apiToken:String? {didSet {checkFormValidity()}}
-    var isUser = false {didSet {checkFormValidity()}}
 
     func performConfirmation(completion:@escaping (BaseUserSecondModel?,Error?)->Void)  {
         guard let smsCode = smsCode,let password = password,let phone = phone,let apiToken = apiToken else {return}

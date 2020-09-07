@@ -24,16 +24,6 @@ class CustomRegisterView: UIView {
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
-    lazy var userCompSegmentedView:TintedSegmentedControl = {
-        let items = ["User".localized,"Company".localized]
-        let view = TintedSegmentedControl(items: items)
-        view.layer.cornerRadius = 24
-        view.clipsToBounds=true
-        view.selectedSegmentIndex=0
-        view.constrainHeight(constant: 50)
-        view.addTarget(self, action: #selector(handleUserComp), for: .valueChanged)
-        return view
-    }()
     lazy var usernameTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
         t.placeholder = "username".localized
@@ -196,11 +186,10 @@ class CustomRegisterView: UIView {
             // Fallback on earlier versions
             buttonStack = getStack(views: facebookImageView,googleImagView, spacing: 8, distribution: .fillEqually, axis: .horizontal)
         }
-        addSubViews(views: mainImageView,backImageView,createLabel,userCompSegmentedView,mainStack,buttonStack,orLabel,signUpButton)
+        addSubViews(views: mainImageView,backImageView,createLabel,mainStack,buttonStack,orLabel,signUpButton)
         
         NSLayoutConstraint.activate([
             createLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            userCompSegmentedView.centerXAnchor.constraint(equalTo: centerXAnchor),
             buttonStack.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
             
         ])
@@ -208,7 +197,6 @@ class CustomRegisterView: UIView {
         mainImageView.fillSuperview()
         backImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 60, left: 16, bottom: 0, right: 0))
         createLabel.anchor(top: mainImageView.topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 80, left: 0, bottom: 0, right: 0))
-        userCompSegmentedView.anchor(top: createLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
         
         mainStack.anchor(top: createLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 60, left: 32, bottom: 0, right: 32))
         

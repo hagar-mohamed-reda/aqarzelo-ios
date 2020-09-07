@@ -22,16 +22,7 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
-    lazy var userCompSegmentedView:TintedSegmentedControl = {
-           let items = ["User".localized,"Company".localized]
-           let view = TintedSegmentedControl(items: items)
-           view.layer.cornerRadius = 24
-           view.clipsToBounds=true
-           view.selectedSegmentIndex=0
-           view.constrainHeight(constant: 50)
-        view.addTarget(self, action: #selector(handleUserComp), for: .valueChanged)
-           return view
-       }()
+   
     lazy var confirmButton:UIButton = {
         let b = UIButton()
         b.setTitle("Confirm".localized, for: .normal)
@@ -132,19 +123,17 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         let mainStack = getStack(views: smsTextField,passwordTextField,confirmPasswordTextField, spacing: 16, distribution: .fillEqually, axis: .vertical)
         let resendStack = getStack(views: resendLabel,resendSMSButton, spacing: 0, distribution: .fill, axis: .horizontal)
         
-        addSubViews(views: mainImageView,backImageView,createLabel,userCompSegmentedView,mainStack,confirmButton,resendStack)
+        addSubViews(views: mainImageView,backImageView,createLabel,mainStack,confirmButton,resendStack)
         
         NSLayoutConstraint.activate([
             createLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             mainStack.centerXAnchor.constraint(equalTo: centerXAnchor),
             mainStack.centerYAnchor.constraint(equalTo: centerYAnchor),
-            userCompSegmentedView.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
         
         mainImageView.fillSuperview()
         backImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 60, left: 16, bottom: 0, right: 0))
         createLabel.anchor(top: nil, leading: nil, bottom: mainStack.topAnchor, trailing: nil,padding: .init(top: 0, left: 0, bottom: 80, right: 0))
-        userCompSegmentedView.anchor(top: createLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
         mainStack.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 0, left: 32, bottom: 0, right: 32))
         resendStack.anchor(top: mainStack.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 16, left: 16, bottom: 16, right: 0))
         confirmButton.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 32, right: 16))
@@ -199,7 +188,5 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         }
     }
     
-    @objc func handleUserComp(sender:UISegmentedControl)  {
-       forgetPassConfirmViewModel.isUser =   sender.selectedSegmentIndex == 0 ? false : true
-       }
+    
 }

@@ -17,16 +17,6 @@ class CustomForgetPasswordView: UIView {
         let i = UIImageView(image: #imageLiteral(resourceName: "1"))
         return i
     }()
-    lazy var userCompSegmentedView:TintedSegmentedControl = {
-           let items = ["User".localized,"Company".localized]
-           let view = TintedSegmentedControl(items: items)
-           view.layer.cornerRadius = 24
-           view.clipsToBounds=true
-           view.selectedSegmentIndex=0
-           view.constrainHeight(constant: 50)
-        view.addTarget(self, action: #selector(handleUserComp), for: .valueChanged)
-           return view
-       }()
     lazy var confirmButton:UIButton = {
         let b = UIButton()
         b.setTitle("Confirm".localized, for: .normal)
@@ -75,15 +65,13 @@ class CustomForgetPasswordView: UIView {
     func setupViews()  {
         
         
-        addSubViews(views: mainImageView,backImageView,userCompSegmentedView,phoneTextField,confirmButton)
+        addSubViews(views: mainImageView,backImageView,phoneTextField,confirmButton)
         mainImageView.fillSuperview()
         backImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 60, left: 16, bottom: 0, right: 0))
-        userCompSegmentedView.anchor(top: backImageView.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
 
         phoneTextField.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         NSLayoutConstraint.activate([
             phoneTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            userCompSegmentedView.centerXAnchor.constraint(equalTo: centerXAnchor),
             phoneTextField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -40)
             ])
         confirmButton.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 32, right: 16))
@@ -106,9 +94,5 @@ class CustomForgetPasswordView: UIView {
           }
           
       }
-    
-    @objc func handleUserComp(sender:UISegmentedControl)  {
-       forgetPassViewModel.isUser =   sender.selectedSegmentIndex == 0 ? false : true
-       }
   
 }
