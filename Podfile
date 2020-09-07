@@ -22,7 +22,7 @@ target 'Aqarzelo' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'MOLH'
-  pod 'Cosmos', '~> 21.0'
+#  pod 'Cosmos', '~> 21.0'
   
   # Pods for Google Sign In
   pod 'GoogleSignIn'
