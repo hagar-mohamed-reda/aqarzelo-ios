@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2C373ECE1BC57B7F6BC86767 /* Pods_Aqarzelo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519E04DD8D8FDF679056F215 /* Pods_Aqarzelo.framework */; };
+		9F686A182506C6A600D39FA3 /* CustomLoginViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F686A172506C6A600D39FA3 /* CustomLoginViews.swift */; };
 		9F970C4A24FC3A2800448E7E /* ListOfPhotoMainSecVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */; };
 		9FA7D2D025069FD300EF4166 /* CustomStarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */; };
 		9FB2437624FC13C0004F43FB /* ListOfPhotoMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */; };
 		9FD04E4024EDB2910077884A /* DropDownAllTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */; };
 		9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */; };
+		9FDBDC162506C19D003D596D /* FloatingLabeledTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDBDC152506C19D003D596D /* FloatingLabeledTextFields.swift */; };
 		9FDDB71D24E98E7300AF8817 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71524E98E6B00AF8817 /* Extensions.swift */; };
 		9FDDB71E24E98E7300AF8817 /* ExtensionUivewwwwwww.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71624E98E6C00AF8817 /* ExtensionUivewwwwwww.swift */; };
 		9FDDB71F24E98E7300AF8817 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71724E98E6E00AF8817 /* ViewControllers.swift */; };
@@ -226,11 +228,13 @@
 
 /* Begin PBXFileReference section */
 		519E04DD8D8FDF679056F215 /* Pods_Aqarzelo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aqarzelo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F686A172506C6A600D39FA3 /* CustomLoginViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViews.swift; sourceTree = "<group>"; };
 		9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainSecVC.swift; sourceTree = "<group>"; };
 		9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStarViews.swift; sourceTree = "<group>"; };
 		9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainVC.swift; sourceTree = "<group>"; };
 		9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownAllTableViewVC.swift; sourceTree = "<group>"; };
 		9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCityAndAreaTableViewVC.swift; sourceTree = "<group>"; };
+		9FDBDC152506C19D003D596D /* FloatingLabeledTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabeledTextFields.swift; sourceTree = "<group>"; };
 		9FDDB71524E98E6B00AF8817 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9FDDB71624E98E6C00AF8817 /* ExtensionUivewwwwwww.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUivewwwwwww.swift; sourceTree = "<group>"; };
 		9FDDB71724E98E6E00AF8817 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
@@ -477,6 +481,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9F686A162506C68C00D39FA3 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				9FDDB77524E990A400AF8817 /* CustomLoginView.swift */,
+				9F686A172506C6A600D39FA3 /* CustomLoginViews.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 		9FA7D2CE25069F5100EF4166 /* stars */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +516,15 @@
 				9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */,
 			);
 			path = "drop down";
+			sourceTree = "<group>";
+		};
+		9FDBDC142506C15B003D596D /* textfileds */ = {
+			isa = PBXGroup;
+			children = (
+				9FDDB75724E98FB500AF8817 /* CustomTextField.swift */,
+				9FDBDC152506C19D003D596D /* FloatingLabeledTextFields.swift */,
+			);
+			path = textfileds;
 			sourceTree = "<group>";
 		};
 		9FDDB71424E98E3F00AF8817 /* helpers */ = {
@@ -580,7 +602,7 @@
 				9FDDB75824E98FB700AF8817 /* CustomSearchMessageView.swift */,
 				9FDDB75924E98FB900AF8817 /* CustomSelectedButton.swift */,
 				9FDDB75624E98FB300AF8817 /* CustomTabBar.swift */,
-				9FDDB75724E98FB500AF8817 /* CustomTextField.swift */,
+				9FDBDC142506C15B003D596D /* textfileds */,
 				9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */,
 			);
 			path = "Custom Views";
@@ -644,7 +666,7 @@
 				9FDDB77324E990A000AF8817 /* CustomChangePasswordView.swift */,
 				9FDDB77224E9909E00AF8817 /* CustomForgetPasswordConfirmationView.swift */,
 				9FDDB77624E990A500AF8817 /* CustomForgetPasswordView.swift */,
-				9FDDB77524E990A400AF8817 /* CustomLoginView.swift */,
+				9F686A162506C68C00D39FA3 /* login */,
 				9FDDB77424E990A200AF8817 /* CustomRegisterView.swift */,
 			);
 			path = "Custom Registration";
@@ -1499,6 +1521,7 @@
 				9FE270F624E88858008889AB /* BaseSettingCell.swift in Sources */,
 				9FE270A824E886D5008889AB /* BaseTableViewCell.swift in Sources */,
 				9FE2706A24E884FE008889AB /* ChatLogCollectionVC.swift in Sources */,
+				9F686A182506C6A600D39FA3 /* CustomLoginViews.swift in Sources */,
 				9FE270B824E8870A008889AB /* FirstCreatePostCategoryCell.swift in Sources */,
 				9FE2701324E88317008889AB /* BaseViewController.swift in Sources */,
 				9FE2704924E8846E008889AB /* ShowSeperateAqarImagesCV.swift in Sources */,
@@ -1548,6 +1571,7 @@
 				9FE26FCA24E87FF6008889AB /* ThirdCcreatePostVviewModel.swift in Sources */,
 				9FE2705F24E884D2008889AB /* CreateFirstListCollectionVC.swift in Sources */,
 				9FDDB73924E98EF200AF8817 /* CustomUpdateSserProfileView.swift in Sources */,
+				9FDBDC162506C19D003D596D /* FloatingLabeledTextFields.swift in Sources */,
 				9FE270C724E8871D008889AB /* SecondCreateAddressCell.swift in Sources */,
 				9FE26FE924E88112008889AB /* BaseUploadImageModel.swift in Sources */,
 				9FE26F8B24E87C3C008889AB /* CustomMainAlertVC.swift in Sources */,
