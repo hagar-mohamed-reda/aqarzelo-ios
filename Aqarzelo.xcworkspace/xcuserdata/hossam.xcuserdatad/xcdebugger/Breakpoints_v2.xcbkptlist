@@ -162,6 +162,38 @@
             endingLineNumber = "441"
             landmarkName = "makeNewPost()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E8D5A0CA-5848-49EA-8399-D3A3B7764823 - 18be7390032c5428"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.MainCreatePostVC.makeNewPost() -&gt; ()"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/xcode%20projects/syphinx/new%20aqar%2015:8:2020/last%206:9:2020/Aqarzelo/Aqarzelo/controller/Create%20Post/Create%20Group/MainCreatePostVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "441"
+                  endingLineNumber = "441"
+                  offsetFromSymbolStart = "7736">
+               </Location>
+               <Location
+                  uuid = "E8D5A0CA-5848-49EA-8399-D3A3B7764823 - 598426c6074d1ece"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Aqarzelo.BaseAddAqarModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Aqarzelo.MainCreatePostVC.makeNewPost() -&gt; ()"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/xcode%20projects/syphinx/new%20aqar%2015:8:2020/last%206:9:2020/Aqarzelo/Aqarzelo/controller/Create%20Post/Create%20Group/MainCreatePostVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "443"
+                  endingLineNumber = "443"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -351,10 +351,10 @@ class MainCreatePostVC: UIViewController {
             userDefaults.set(true, forKey: UserDefaultsConstants.isPostUpdated)
             userDefaults.set(false, forKey: UserDefaultsConstants.isNextButtonPostUpdated)
             var ss = cacheFavoriteAqarsCodabe.storedValue
-//            let dd = ss.
+            //            let dd = ss.
             ss?.removeAll(where: {$0.id == aqar?.id })
-            cacheFavoriteAqarsCodabe.save(ss)
-//            ss?.remove(at:
+            cacheFavoriteAqarsCodabe.save(ss!)
+            //            ss?.remove(at:
             
             userDefaults.synchronize()
         }else {
@@ -391,7 +391,7 @@ class MainCreatePostVC: UIViewController {
                 let moreGarden = more == 2 ? 1 : 0
                 let moreParking = more == 1 ? 1 : 0
                 
-//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+                //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
                 SVProgressHUD.setForegroundColor(UIColor.green)
                 SVProgressHUD.show(withStatus: "Please Wait......".localized)
                 
@@ -434,7 +434,7 @@ class MainCreatePostVC: UIViewController {
         let moreGarden = postMoreTag == 2 ? 1 : 0
         let moreParking = postMoreTag == 1 ? 1 : 0
         
-//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Please Wait......".localized)
         
