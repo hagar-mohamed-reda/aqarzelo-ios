@@ -350,11 +350,18 @@ class MainCreatePostVC: UIViewController {
         if isUpdate {
             userDefaults.set(true, forKey: UserDefaultsConstants.isPostUpdated)
             userDefaults.set(false, forKey: UserDefaultsConstants.isNextButtonPostUpdated)
+            var ss = cacheFavoriteAqarsCodabe.storedValue
+//            let dd = ss.
+            ss?.removeAll(where: {$0.id == aqar?.id })
+            cacheFavoriteAqarsCodabe.save(ss)
+//            ss?.remove(at:
+            
             userDefaults.synchronize()
         }else {
             userDefaults.set(true, forKey: UserDefaultsConstants.isPostMaded)
             userDefaults.set(false, forKey: UserDefaultsConstants.isNextButtonPostMaded)
             userDefaults.set(false, forKey: UserDefaultsConstants.isNextButtonPostUpdated)
+            
             userDefaults.synchronize()
         }
         SVProgressHUD.dismiss()
