@@ -50,7 +50,7 @@ class ChooseLocationVC: UIViewController {
     
     fileprivate func setupNavigation()  {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
+        
         let label = UILabel(text: "Location Picker".localized, font: .systemFont(ofSize: 20), textColor: .white)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: label)

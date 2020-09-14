@@ -95,7 +95,7 @@ class WelcomeVC: UIViewController {
         DispatchQueue.main.sync {
             
             
-//            SVProgressHUD.dismiss()
+            //            SVProgressHUD.dismiss()
             
             group1?.forEach({ (city) in
                 cityNameData.append(city.nameEn)
@@ -146,7 +146,7 @@ class WelcomeVC: UIViewController {
         var group3 : [CityModel]?
         
         
-//        SVProgressHUD.show(withStatus: "Looding....".localized)
+        //        SVProgressHUD.show(withStatus: "Looding....".localized)
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -174,7 +174,7 @@ class WelcomeVC: UIViewController {
             })
             semaphore.wait()
             
-           
+            
             
             semaphore.signal()
             self.reloadMainData(group1: group1,group2: group2,group3:group3)
@@ -224,13 +224,13 @@ class WelcomeVC: UIViewController {
         
         UIView.animate(withDuration: 0.7, delay: 0.7, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: .curveEaseInOut, animations: {
             self.goToNextVC()
-//            [self.mainWelcomeView.infoLabel,self.mainWelcomeView.currentLocationButton,self.mainWelcomeView.goLocationButton].forEach({$0.transform = .identity})
+            //            [self.mainWelcomeView.infoLabel,self.mainWelcomeView.currentLocationButton,self.mainWelcomeView.goLocationButton].forEach({$0.transform = .identity})
         })
     }
     
     func goToNextVC()  {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {//+4
-[self.mainWelcomeView.infoLabel,self.mainWelcomeView.currentLocationButton,self.mainWelcomeView.goLocationButton].forEach({$0.transform = .identity})        }
+            [self.mainWelcomeView.infoLabel,self.mainWelcomeView.currentLocationButton,self.mainWelcomeView.goLocationButton].forEach({$0.transform = .identity})        }
         
     }
     

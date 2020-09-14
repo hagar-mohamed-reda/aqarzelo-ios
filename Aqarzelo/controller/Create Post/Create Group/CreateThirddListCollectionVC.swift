@@ -19,8 +19,8 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
     
     var handleNextVC:((Bool,String?,String?,String?, String?,Int?)->Void)?
     var thirdCcreatePostVviewModel = ThirdCcreatePostVviewModel() //view model
-//    var moreSelected:Int?
-//    var discribe,ownerType,payment,finishedType:String?
+    //    var moreSelected:Int?
+    //    var discribe,ownerType,payment,finishedType:String?
     
     var aqar:AqarModel? {
         didSet{
@@ -29,9 +29,9 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             thirdCcreatePostVviewModel.ownerType = "\(aqar.ownerType)"
             thirdCcreatePostVviewModel.payment = aqar.paymentMethod
             thirdCcreatePostVviewModel.finshed = aqar.finishingType
-//            thirdCcreatePostVviewModel.city = "\(aqar.cityID)"
-//            thirdCcreatePostVviewModel.fllorNum = aqar.floorNumber
-//            thirdCcreatePostVviewModel.address = ""
+            //            thirdCcreatePostVviewModel.city = "\(aqar.cityID)"
+            //            thirdCcreatePostVviewModel.fllorNum = aqar.floorNumber
+            //            thirdCcreatePostVviewModel.address = ""
         }
     }
     
@@ -59,7 +59,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             cell.index = 0
             cell.aqar = aqar
             cell.handleTextContents = { [unowned self] (details,openNext) in
-//                self.discribe = details
+                //                self.discribe = details
                 self.thirdCcreatePostVviewModel.describe = openNext ? details : String()
                 self.enableSecondsCell(openNext, index: 1  )
             }
@@ -74,7 +74,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             }
             
             cell.handleTextContents = {[unowned self] (tx,openNext) in
-//                self.ownerType = tx
+                //                self.ownerType = tx
                 self.thirdCcreatePostVviewModel.ownerType = openNext ? tx : String()
                 self.enableThirdsCell(openNext, index: 2)
             }
@@ -88,7 +88,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             }
             
             cell.handleTextContents = {[unowned self] (tx,openNext) in
-//                self.payment = tx
+                //                self.payment = tx
                 self.thirdCcreatePostVviewModel.payment = openNext ? tx : String()
                 self.enableForthsCell(openNext, index: 3)
             }
@@ -116,7 +116,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
         
         cell.handleTextContents = { [unowned self] (tag,openNext) in
             print(tag)
-//            self.moreSelected = tag
+            //            self.moreSelected = tag
             self.thirdCcreatePostVviewModel.more = openNext ? String(tag) : String()
         }
         return cell
@@ -230,7 +230,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
     
     override func setupCollection() {
         collectionView.showsVerticalScrollIndicator=false
-
+        
         collectionView.backgroundColor = .white
         collectionView.contentInset.top = 8
         collectionView.register(ThirdCreateDescribeCell.self, forCellWithReuseIdentifier: cellDescribeId)

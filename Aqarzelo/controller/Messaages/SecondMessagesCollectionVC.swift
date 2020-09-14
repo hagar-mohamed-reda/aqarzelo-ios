@@ -15,18 +15,18 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
     
     
     
-//    lazy var mainView:UIView = {
-//        let i = UIView(backgroundColor: .white)
-//        i.layer.cornerRadius = 16
-//        i.clipsToBounds = true
-//        return i
-//    }()
+    //    lazy var mainView:UIView = {
+    //        let i = UIView(backgroundColor: .white)
+    //        i.layer.cornerRadius = 16
+    //        i.clipsToBounds = true
+    //        return i
+    //    }()
     lazy var refreshControl:UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = UIColor.white
         refreshControl.tintColor = UIColor.black
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-
+        
         return refreshControl
         
     }()
@@ -61,7 +61,7 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
     fileprivate let cellHeaderId = "cellHeaderId"
     
     var isOpen:Bool = false
-//    var usersArrayIds = [UserIdsModel]()
+    //    var usersArrayIds = [UserIdsModel]()
     var filterArray = [UserIdsModel]()
     var usersArray : [UserIdsModel]? {
         didSet {
@@ -83,7 +83,7 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
         super.viewDidLoad()
         setupNavigation()
         statusBarBackgroundColor()
-                fetchUsers()
+        fetchUsers()
     }
     
     
@@ -105,8 +105,8 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
         }
         
         if !userDefaults.bool(forKey: UserDefaultsConstants.isSecondMessagedCached) {
-                   usersArray = nil
-               }
+            usersArray = nil
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -115,7 +115,7 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
             return  filterArray.count
         }else {
             guard let usersArray = usersArray else { return 0 }
-
+            
             collectionView.noDataFound(usersArray.count, text: "No Data Added Yet".localized)
             return  usersArray.count
         }
@@ -123,31 +123,31 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-                   // Define the initial state (Before the animation)
-                   cell.alpha = 0
-
-                   // Define the final state (After the animation)
-                   UIView.animate(withDuration: 0.5, animations: { cell.alpha = 1 })
-                   
-                   
-           //        // Define the initial state (Before the animation)
-           //        let rotationAngleInRadians = 90.0 * CGFloat(Double.pi/180.0)
-           //        let rotationTransform = CATransform3DMakeRotation(rotationAngleInRadians, 0, 0, 1)
-           //        cell.layer.transform = rotationTransform
-           //
-           //        // Define the final state (After the animation)
-           //        UIView.animate(withDuration: 1.0, animations: { cell.layer.transform = CATransform3DIdentity })
-                   
-                   
-           //        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
-           //        UIView.animate(withDuration: 0.5, animations: { cell.layer.transform = rotationTransform })
-
-       }
+        // Define the initial state (Before the animation)
+        cell.alpha = 0
+        
+        // Define the final state (After the animation)
+        UIView.animate(withDuration: 0.5, animations: { cell.alpha = 1 })
+        
+        
+        //        // Define the initial state (Before the animation)
+        //        let rotationAngleInRadians = 90.0 * CGFloat(Double.pi/180.0)
+        //        let rotationTransform = CATransform3DMakeRotation(rotationAngleInRadians, 0, 0, 1)
+        //        cell.layer.transform = rotationTransform
+        //
+        //        // Define the final state (After the animation)
+        //        UIView.animate(withDuration: 1.0, animations: { cell.layer.transform = CATransform3DIdentity })
+        
+        
+        //        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
+        //        UIView.animate(withDuration: 0.5, animations: { cell.layer.transform = rotationTransform })
+        
+    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MessageCollectionCell
         guard let usersArray = usersArray else { return UICollectionViewCell() }
-
+        
         let user = isOpen ? filterArray[indexPath.item] : usersArray[indexPath.item]
         //        let message = messagesArray[indexPath.item]
         
@@ -187,7 +187,7 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
         collectionView.backgroundColor = .white
         collectionView.register(MessageHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: cellHeaderId)
         collectionView.register(MessageCollectionCell.self, forCellWithReuseIdentifier: cellId)
-//        collectionView.alwaysBounceHorizontal=true
+        //        collectionView.alwaysBounceHorizontal=true
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         collectionView.layer.cornerRadius = 24
@@ -222,7 +222,7 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
     }
     
     func reloadDatas()  {
-
+        
         usersArray = Array(dictUsers.values)
         usersArray = usersArray?.sorted(by: {$0.name > $1.name})
         cacheMessagesUserCodabe.save(usersArray!)
@@ -235,7 +235,7 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
             //            self.refreshControl.beginRefreshing()
             //            self.refreshControl.endRefreshing()
             self.collectionView.reloadData()
-//            self.collectionView.collectionViewLayout.invalidateLayout()
+            //            self.collectionView.collectionViewLayout.invalidateLayout()
             
         }
     }
@@ -313,21 +313,21 @@ extension SecondMessagesCollectionVC: UITextViewDelegate {
             let text = customSearchMessageView.textView.text!.lowercased()
             filterUsers(text: text)
         }else {
-             view.endEditing(true)
+            view.endEditing(true)
             filterArray.removeAll()
         }
-                DispatchQueue.main.async {
-        self.collectionView.reloadData()
-                }
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
         
     }
     
     func filterUsers(text:String)  {
         guard let usersArray = usersArray else { return () }
-
+        
         let tst = text.lowercased()
         filterArray = usersArray.filter({$0.name.lowercased().range(of: tst )  != nil}).sorted(by: {$0.name.compare($1.name) == .orderedAscending})
-
+        
     }
 }
 

@@ -28,7 +28,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             firstCcreatePostVviewModel.pricePer = aqar.pricePerMeter
             firstCcreatePostVviewModel.totalPrice = "\(aqar.price)"
             firstCcreatePostVviewModel.space = "\(aqar.space)"
- firstCcreatePostVviewModel.title = aqar.title
+            firstCcreatePostVviewModel.title = aqar.title
             firstCcreatePostVviewModel.sell = aqar.type
         }
     }

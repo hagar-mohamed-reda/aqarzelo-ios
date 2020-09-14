@@ -373,7 +373,7 @@ class FilterVC: UIViewController {
     @objc  func handleTypess()  {
         showDropDownMenu(customFilterView.mainDrop4View, type: "type")
         dropDownTableViewVC.view.isHide(false)
-}
+    }
     
     @objc  func handleCitys()  {
         showDropDownMenu(customFilterView.mainDrop1View, type: "city")

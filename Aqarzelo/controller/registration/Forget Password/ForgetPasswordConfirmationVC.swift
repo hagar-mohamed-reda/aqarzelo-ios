@@ -33,7 +33,7 @@ class ForgetPasswordConfirmationVC: UIViewController {
     lazy var customNoInternetView:CustomNoInternetView = {
         let v = CustomNoInternetView()
         v.setupAnimation(name: "4970-unapproved-cross")
-
+        
         v.okButton.addTarget(self, action: #selector(handleOk), for: .touchUpInside)
         return v
     }()
@@ -66,9 +66,9 @@ class ForgetPasswordConfirmationVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

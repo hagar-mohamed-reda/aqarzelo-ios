@@ -48,7 +48,7 @@ class RegisterVC: UIViewController {
     lazy var customNoInternetView:CustomNoInternetView = {
         let v = CustomNoInternetView()
         v.setupAnimation(name: "4970-unapproved-cross")
-
+        
         v.okButton.addTarget(self, action: #selector(handleOk), for: .touchUpInside)
         return v
     }()
@@ -74,9 +74,9 @@ class RegisterVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -356,13 +356,13 @@ extension RegisterVC:UIScrollViewDelegate {
         
         ss = screenHeight < 600  ? 300 : screenHeight < 600 ? 200 :  screenHeight < 800 ? 130 : 60
         
-//        if screenHeight < 600 {
-//            ss = 300
-//        }  else if screenHeight < 800 {
-//            ss = 130
-//        }else {
-//            ss = 60
-//        }
+        //        if screenHeight < 600 {
+        //            ss = 300
+        //        }  else if screenHeight < 800 {
+        //            ss = 130
+        //        }else {
+        //            ss = 60
+        //        }
         
         if x < 0 {
             scrollView.contentOffset.y =  0

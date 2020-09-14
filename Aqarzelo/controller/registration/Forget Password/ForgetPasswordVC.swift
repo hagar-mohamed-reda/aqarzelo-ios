@@ -30,7 +30,7 @@ class ForgetPasswordVC: UIViewController {
     lazy var customNoInternetView:CustomNoInternetView = {
         let v = CustomNoInternetView()
         v.setupAnimation(name: "4970-unapproved-cross")
-
+        
         v.okButton.addTarget(self, action: #selector(handleOk), for: .touchUpInside)
         return v
     }()
@@ -51,9 +51,9 @@ class ForgetPasswordVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
     
     //MARK:-User methods
     
@@ -70,7 +70,7 @@ class ForgetPasswordVC: UIViewController {
             if isReg == true {
                 UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
                 SVProgressHUD.setForegroundColor(UIColor.green)
-
+                
                 SVProgressHUD.show(withStatus: "Waiting...".localized)
                 
             }else {

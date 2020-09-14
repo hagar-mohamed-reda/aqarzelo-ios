@@ -66,7 +66,7 @@ class LoginVC: UIViewController {
     lazy var customNoInternetView:CustomNoInternetView = {
         let v = CustomNoInternetView()
         v.setupAnimation(name: "4970-unapproved-cross")
-
+        
         v.okButton.addTarget(self, action: #selector(handleOk), for: .touchUpInside)
         return v
     }()
@@ -85,9 +85,9 @@ class LoginVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-              super.viewWillDisappear(animated)
-              SVProgressHUD.dismiss()
-          }
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -254,7 +254,7 @@ extension LoginVC:  GIDSignInDelegate {
         let fullName = user.profile.name ?? ""
         let email = user.profile.email ?? ""
         
-       makeOtherRegisterExternal(fullName: fullName, email: email)
+        makeOtherRegisterExternal(fullName: fullName, email: email)
         
     }
     
@@ -264,20 +264,20 @@ extension LoginVC:  GIDSignInDelegate {
     
     func makeOtherRegisterExternal(fullName:String,email:String)  {
         RegistrationServices.shared.loginWithExternal(name: fullName, photo: "", email: email) {[unowned self] (base, error) in
-                   if let err=error{
-                       SVProgressHUD.showError(withStatus: err.localizedDescription)
-                       self.activeViewsIfNoData();return
-                   }
-                   
-                   SVProgressHUD.dismiss()
-                   self.activeViewsIfNoData()
-                   guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+            if let err=error{
+                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.activeViewsIfNoData();return
+            }
+            
+            SVProgressHUD.dismiss()
+            self.activeViewsIfNoData()
+            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
             self.saveToken(token: token.apiToken)
-                   
-                   DispatchQueue.main.async {
-                       self.goToMainTab(token)
-                   }
-               }
+            
+            DispatchQueue.main.async {
+                self.goToMainTab(token)
+            }
+        }
     }
 }
 
@@ -295,7 +295,7 @@ extension LoginVC: ASAuthorizationControllerDelegate{
             let ff = fullName?.givenName ?? ""
             
             makeOtherRegisterExternal(fullName: ff, email: email)
-
+            
             print(userIdentifier)
             
             
