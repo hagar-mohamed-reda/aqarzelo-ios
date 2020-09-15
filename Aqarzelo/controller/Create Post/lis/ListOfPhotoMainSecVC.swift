@@ -26,7 +26,7 @@ class ListOfPhotoMainSecVC: UIViewController {
         b.isEnabled = false
         b.constrainHeight(constant: 50)
         b.isEnabled = true
-                b.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        b.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return b
     }()
     
@@ -52,13 +52,17 @@ class ListOfPhotoMainSecVC: UIViewController {
     }()
     
     var mainImageView:UIImage!
-
+    
     var pushedImage:UIImage!
     var photosArray = [SecondPhotoModel]()
     var mainMasterPhoto: SecondPhotoModel?
     var imageSize = 0.0
     var imageType = 0
-
+    
+    var numberOfImageUpload = 0
+    var trackNumberUplodaedImages = 0
+    
+    
     var imageName = ""
     
     fileprivate let cellId="cellId"
@@ -74,7 +78,7 @@ class ListOfPhotoMainSecVC: UIViewController {
     
     fileprivate let currentUserToken:String!
     fileprivate let isFromUpdatePost:Bool!
-
+    
     init(currentUserToken:String,isFromUpdatePost:Bool) {
         self.currentUserToken = currentUserToken
         self.isFromUpdatePost=isFromUpdatePost
@@ -82,111 +86,111 @@ class ListOfPhotoMainSecVC: UIViewController {
     }
     
     override func viewDidLoad() {
-           super.viewDidLoad()
-           setupViews()
-           setupNavigation()
-           statusBarBackgroundColor()
-       }
-       
-       override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           setupObservers()
-           showOrHideCustomTabBar(hide: true)
-           tabBarController?.tabBar.isHide(true)
-           if mainMasterPhoto == nil {
-//               navigationController?.popViewController(animated: true)
-//                nextButton.isEnabled = false
-               
-           }else {
-           }
-       }
-       
-       
-       
-       override func viewWillDisappear(_ animated: Bool) {
-           super.viewWillDisappear(animated)
-           tabBarController?.tabBar.isHide(false)
-           showOrHideCustomTabBar(hide: false)
-           NotificationCenter.default.removeObserver(self)
-       }
+        super.viewDidLoad()
+        setupViews()
+        setupNavigation()
+        statusBarBackgroundColor()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupObservers()
+        showOrHideCustomTabBar(hide: true)
+        tabBarController?.tabBar.isHide(true)
+        if mainMasterPhoto == nil {
+            //               navigationController?.popViewController(animated: true)
+            //                nextButton.isEnabled = false
+            
+        }else {
+        }
+    }
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHide(false)
+        showOrHideCustomTabBar(hide: false)
+        NotificationCenter.default.removeObserver(self)
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func processToUploadMasterPhoto(photo:SecondPhotoModel)  {
-           photosArray.removeAll()
+        photosArray.removeAll()
         
-           var group1:  [ImageModel]?
-           SVProgressHUD.setForegroundColor(UIColor.green)
-           SVProgressHUD.show(withStatus: "Looding...".localized)
-           let semaphore = DispatchSemaphore(value: 0)
-           
-           let dispatchQueue = DispatchQueue.global(qos: .background)
-           
-           
-           dispatchQueue.async {
-               // using user location
-               UploadImagesServices.shared.getAllUserImages(api_token: self.currentUserToken) { (base, error) in
-                   if let error = error {
-                       SVProgressHUD.showError(withStatus: error.localizedDescription)
-                       self.activeViewsIfNoData()
-                       //                UIApplication.shared.endIgnoringInteractionEvents()
-                   }
-                   let ss = base?.data ?? []
-                   group1 = Array(ss.dropFirst())
-                   //                group1 =  Array(group1?.dropFirst()  )
-                   userDefaults.set(true, forKey: UserDefaultsConstants.isFinishedGetUploadPhotos)
-                   userDefaults.synchronize()
-                   semaphore.signal()
-               }
-               semaphore.wait()
-               
-               semaphore.signal()
-               self.reloadMainData(group1: group1)
-               semaphore.wait()
-               
-               //get ads
-               PostServices.shared.uploadImagessss(photoModel:photo , token: self.currentUserToken) { (base, error) in
-                   if let error = error {
-                       SVProgressHUD.showError(withStatus: error.localizedDescription)
-                       self.activeViewsIfNoData()
-                       //                UIApplication.shared.endIgnoringInteractionEvents()
-                   }
-                   userDefaults.set(true, forKey: UserDefaultsConstants.isFirstMasterPhotoUpload)
-                   userDefaults.synchronize()
-                   semaphore.signal()
-               }
-               semaphore.wait()
-           }
-       }
+        var group1:  [ImageModel]?
+        SVProgressHUD.setForegroundColor(UIColor.green)
+        SVProgressHUD.show(withStatus: "Looding...".localized)
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        let dispatchQueue = DispatchQueue.global(qos: .background)
+        
+        
+        dispatchQueue.async {
+            // using user location
+            UploadImagesServices.shared.getAllUserImages(api_token: self.currentUserToken) { (base, error) in
+                if let error = error {
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self.activeViewsIfNoData()
+                    //                UIApplication.shared.endIgnoringInteractionEvents()
+                }
+                let ss = base?.data ?? []
+                group1 = Array(ss.dropFirst())
+                //                group1 =  Array(group1?.dropFirst()  )
+                userDefaults.set(true, forKey: UserDefaultsConstants.isFinishedGetUploadPhotos)
+                userDefaults.synchronize()
+                semaphore.signal()
+            }
+            semaphore.wait()
+            
+            semaphore.signal()
+            self.reloadMainData(group1: group1)
+            semaphore.wait()
+            
+            //get ads
+            PostServices.shared.uploadImagessss(photoModel:photo , token: self.currentUserToken) { (base, error) in
+                if let error = error {
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self.activeViewsIfNoData()
+                    //                UIApplication.shared.endIgnoringInteractionEvents()
+                }
+                userDefaults.set(true, forKey: UserDefaultsConstants.isFirstMasterPhotoUpload)
+                userDefaults.synchronize()
+                semaphore.signal()
+            }
+            semaphore.wait()
+        }
+    }
     
     fileprivate func setupNavigation() {
-            self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
-            navigationItem.title = "Create Post".localized
-            let img:UIImage = (MOLHLanguage.isRTLLanguage() ?  UIImage(named:"back button-2") : #imageLiteral(resourceName: "back button-2")) ?? #imageLiteral(resourceName: "back button-2")
-                 
-                 navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
-    //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
-        }
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        navigationItem.title = "Create Post".localized
+        let img:UIImage = (MOLHLanguage.isRTLLanguage() ?  UIImage(named:"back button-2") : #imageLiteral(resourceName: "back button-2")) ?? #imageLiteral(resourceName: "back button-2")
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+    }
     
     fileprivate func setupViews()  {
-           view.backgroundColor = #colorLiteral(red: 0.3410083055, green: 0.7299206853, blue: 0.6936879754, alpha: 1)//ColorConstant.mainBackgroundColor
-           
-           view.addSubViews(views: collectionView,nextButton)
-           collectionView.fillSuperview(padding: .init(top: 16, left: 0, bottom: 0, right: 0))
-           nextButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 0, left: 16, bottom: 24, right: 16))
-       }
-       
-       fileprivate func setupObservers()  {
-           
-           NotificationCenter.default.addObserver(self, selector: #selector(handleUploadProgress), name: .uoloadProgress, object: nil)
-           NotificationCenter.default.addObserver(self, selector: #selector(handleUploadComplete), name: .uploadComplete, object: nil)
-           
-           NotificationCenter.default.addObserver(self, selector: #selector(handleUploadNextProgress), name: .uoloadNextProgress, object: nil)
-           NotificationCenter.default.addObserver(self, selector: #selector(handleUploadNextComplete), name: .uploadNextComplete, object: nil)
-       }
+        view.backgroundColor = #colorLiteral(red: 0.3410083055, green: 0.7299206853, blue: 0.6936879754, alpha: 1)//ColorConstant.mainBackgroundColor
+        
+        view.addSubViews(views: collectionView,nextButton)
+        collectionView.fillSuperview(padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        nextButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 0, left: 16, bottom: 24, right: 16))
+    }
+    
+    fileprivate func setupObservers()  {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUploadProgress), name: .uoloadProgress, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUploadComplete), name: .uploadComplete, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUploadNextProgress), name: .uoloadNextProgress, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUploadNextComplete), name: .uploadNextComplete, object: nil)
+    }
     
     func loadAllImages()  {
         guard let image = aqar.images.first  else {return}
@@ -253,6 +257,9 @@ class ListOfPhotoMainSecVC: UIViewController {
             let photo = SecondPhotoModel(image: nil, name: image.image, size: 0.0, isUploaded: true, isMasterPhoto: false, imageUrl: image.src, is360: image.is360 ?? 0)
             self.photosArray.append(photo)
         })
+        //tracking number of images
+        numberOfImageUpload=image.count
+        trackNumberUplodaedImages=image.count
     }
     
     func processToDeleteImage(index:Int,imageImdex:Int)   {
@@ -261,6 +268,7 @@ class ListOfPhotoMainSecVC: UIViewController {
                 SVProgressHUD.showError(withStatus: err.localizedDescription);return
             }
             self.photosArray.remove(at: index)
+            self.numberOfImageUpload = self.numberOfImageUpload-1
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.view.layoutIfNeeded()
@@ -292,13 +300,14 @@ class ListOfPhotoMainSecVC: UIViewController {
     }
     
     func createAlertForChoposingImage(ind:Int)  {
+        
         let alert = UIAlertController(title: "Choose Image".localized, message: "Choose image fROM ".localized, preferredStyle: .alert)
         let camera = UIAlertAction(title: "Camera".localized, style: .default) {[unowned self] (_) in
-          self.presentPhotoLibrary(source: .camera,imagePicked: ind)
-
+            self.presentPhotoLibrary(source: .camera,imagePicked: ind)
+            
         }
         let gallery = UIAlertAction(title: "Open From Gallery".localized, style: .default) {[unowned self] (_) in
-          self.presentPhotoLibrary(source: .photoLibrary,imagePicked: ind)
+            self.presentPhotoLibrary(source: .photoLibrary,imagePicked: ind)
         }
         let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel) { (_) in
             alert.dismiss(animated: true)
@@ -311,21 +320,21 @@ class ListOfPhotoMainSecVC: UIViewController {
     }
     
     fileprivate func presentPhotoLibrary(source:UIImagePickerController.SourceType,imagePicked:Int)  {
-           self.imageType = imagePicked
-           switch source {
-           case .camera:
-               if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                   self.picker.sourceType = .camera
-                   self.present(self.picker, animated: true, completion: nil)
-               }else {
-                   showError(message: "UNavaiable".localized)
-               }
-           default:
-               self.picker.sourceType = source
-               self.present(self.picker, animated: true, completion: nil)
-               
-           }
-       }
+        self.imageType = imagePicked
+        switch source {
+        case .camera:
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.picker.sourceType = .camera
+                self.present(self.picker, animated: true, completion: nil)
+            }else {
+                showError(message: "UNavaiable".localized)
+            }
+        default:
+            self.picker.sourceType = source
+            self.present(self.picker, animated: true, completion: nil)
+            
+        }
+    }
     
     fileprivate func uploadChoosedPhoto(_ img:UIImage,_ size:Double,_ name:String,_ picked:Int)  {
         
@@ -340,203 +349,209 @@ class ListOfPhotoMainSecVC: UIViewController {
     }
     
     fileprivate func uploadPhoto(_ photo:SecondPhotoModel,index:Int,picked:Int)  {
-           
-           
-           let semaphore = DispatchSemaphore(value: 0)
-           
-           let dispatchQueue = DispatchQueue.global(qos: .background)
-           
-           
-           dispatchQueue.async {
-               
-               semaphore.signal()
-               self.reloadDataAfterUploading()
-               semaphore.wait()
-               
-               PostServices.shared.uploadOtherImagesss(index:index ,photoModel: photo, token: self.currentUserToken) { (base, error) in
-                   if let error = error {
-                       SVProgressHUD.showError(withStatus: error.localizedDescription)
-                       self.activeViewsIfNoData()
-                       //                UIApplication.shared.endIgnoringInteractionEvents()
-                   }
-                   guard let base = base?.data else {return}
+        
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        let dispatchQueue = DispatchQueue.global(qos: .background)
+        
+        
+        dispatchQueue.async {
+            
+            semaphore.signal()
+            self.reloadDataAfterUploading()
+            semaphore.wait()
+            
+            PostServices.shared.uploadOtherImagesss(index:index ,photoModel: photo, token: self.currentUserToken) { (base, error) in
+                if let error = error {
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    self.activeViewsIfNoData()
+                    //                UIApplication.shared.endIgnoringInteractionEvents()
+                }
+                guard let base = base?.data else {return}
                 let photo = SecondPhotoModel(image: nil, name: base.image, size: photo.size, isUploaded: true, isMasterPhoto: false, imageUrl: nil, is360: picked)
-
-//                   self.nextPhoto = PhotoModel(image: UIImage(), name: base.image, size: photo.size, isUploaded: true, isMasterPhoto: false, id: base.id ?? 0, imageUrl: base.image, is360: picked)
-                   self.photosArray.removeLast()
-                   self.photosArray.append(photo)
-//                   self.isUploadNextImage = true
-                   semaphore.signal()
-               }
-               semaphore.wait()
-           }
-       }
+                
+                //                   self.nextPhoto = PhotoModel(image: UIImage(), name: base.image, size: photo.size, isUploaded: true, isMasterPhoto: false, id: base.id ?? 0, imageUrl: base.image, is360: picked)
+                self.photosArray.removeLast()
+                self.photosArray.append(photo)
+                //                   self.isUploadNextImage = true
+                semaphore.signal()
+            }
+            semaphore.wait()
+        }
+    }
     
     func reloadDataAfterUploading()  {
-           if  self.photosArray.count == 0 || self.photosArray.count == 1 {
-                DispatchQueue.main.async {
-               self.collectionView.reloadData()
-               }
-                          return}
-           else {
-           DispatchQueue.main.async {
-            self.collectionView.reloadData()
-            
+        if  self.photosArray.count == 0 || self.photosArray.count == 1 {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            return}
+        else {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                
             }
         }
     }
     
     fileprivate func goToMainUpdatedPost()  {
-          let createMainPost = MainCreatePostVC(token: currentUserToken)
-          createMainPost.aqar = aqar
-          navigationController?.pushViewController(createMainPost, animated: true)
-      }
+        let createMainPost = MainCreatePostVC(token: currentUserToken)
+        createMainPost.aqar = aqar
+        navigationController?.pushViewController(createMainPost, animated: true)
+    }
     
     fileprivate func goToMainCreatePost()  {
-          let createMainPost = MainCreatePostVC(token: currentUserToken)
-              createMainPost.aqar = aqar
-          navigationController?.pushViewController(createMainPost, animated: true)
-      }
+        let createMainPost = MainCreatePostVC(token: currentUserToken)
+        createMainPost.aqar = aqar
+        navigationController?.pushViewController(createMainPost, animated: true)
+    }
     
-     @objc func handleUploadNextProgress(notify: Notification){
-            userDefaults.set(false, forKey: UserDefaultsConstants.isImageUploaded)
-            userDefaults.set(false, forKey: UserDefaultsConstants.isStillImageUpload)
-
-            userDefaults.synchronize()
-            nextButton.isEnabled = true//false
-            guard let userInfo = notify.userInfo as? [String:Any] else { return  }
-            guard let index = userInfo["index"] as? Int else { return  }
-            guard let progress = userInfo["progress"] as? Double else { return  }
-            guard let size = userInfo["size"] as? Double else { return  }
-            guard let image = userInfo["image"] as? UIImage else { return  }
-            
-            guard let cell =  collectionView.cellForItem(at: IndexPath(item: index-1, section: 1)) as? ListOfFhotoCell else { return  }
-            DispatchQueue.main.async {
-                
-                
-                cell.progressPhoto.setProgress(Float(progress), animated: true) //=  Float(progress / size )
-                let unique = UUID().uuidString
-                
-                cell.namePhotoLabel.text =  userInfo["name"] as? String //?? unique
-                cell.progressLabel.text = "\(Int(progress * 100 ))%"
-                cell.progressLabel.isHidden = false
-                
-                cell.photoImageView.image = image
-                cell.logo360ImageView.isHide(cell.photoSecond?.is360 == 0 ? true : false)
-                cell.trueImageView.isHide(true)
-                if progress == 1 {
-                    cell.deleteButton.isHidden = false
-                    cell.closeButton.isHide(true)
-                    cell.progressLabel.isHidden = true
-//                    cell.trueImageView.isHide(false)
-                }
-            }
-        }
+    @objc func handleUploadNextProgress(notify: Notification){
+        userDefaults.set(false, forKey: UserDefaultsConstants.isImageUploaded)
+        userDefaults.set(false, forKey: UserDefaultsConstants.isStillImageUpload)
         
-        @objc func handleUploadNextComplete(notify: Notification)  {
-            nextButton.isEnabled = true
-
-            guard let userInfo = notify.userInfo as? [String:Any] ,let index = userInfo["index"] as? Int, let cell =  collectionView.cellForItem(at: IndexPath(item: index-1, section: 1)) as? ListOfFhotoCell else { return  }
-                   DispatchQueue.main.async {
-                       cell.trueImageView.isHide(false)
-                    self.nextButton.isEnabled = true
-
-                   }
+        userDefaults.synchronize()
+        nextButton.isEnabled = true//false
+        guard let userInfo = notify.userInfo as? [String:Any] else { return  }
+        guard let index = userInfo["index"] as? Int else { return  }
+        guard let progress = userInfo["progress"] as? Double else { return  }
+        guard let size = userInfo["size"] as? Double else { return  }
+        guard let image = userInfo["image"] as? UIImage else { return  }
+        
+        guard let cell =  collectionView.cellForItem(at: IndexPath(item: index-1, section: 1)) as? ListOfFhotoCell else { return  }
+        DispatchQueue.main.async {
             
-            userDefaults.set(true, forKey: UserDefaultsConstants.isImageUploaded)
-            userDefaults.set(true, forKey: UserDefaultsConstants.isSecondPhotoUploading)
-            userDefaults.set(true, forKey: UserDefaultsConstants.isStillImageUpload)
-
-    //        userDefaults.set(false, forKey: UserDefaultsConstants.isSecondPhotoUploading)
-            userDefaults.synchronize()
-        }
-    
-     @objc fileprivate func handleUploadComplete(notify: Notification){
-            guard let cell =  collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? ListOfPhotoMaseterCell else { return  }
-            DispatchQueue.main.async {
-                cell.trueImageView.isHide(false)
+            
+            cell.progressPhoto.setProgress(Float(progress), animated: true) //=  Float(progress / size )
+            let unique = UUID().uuidString
+            
+            cell.namePhotoLabel.text =  userInfo["name"] as? String //?? unique
+            cell.progressLabel.text = "\(Int(progress * 100 ))%"
+            cell.progressLabel.isHidden = false
+            
+            cell.photoImageView.image = image
+            cell.logo360ImageView.isHide(cell.photoSecond?.is360 == 0 ? true : false)
+            cell.trueImageView.isHide(true)
+            if progress == 1 {
+                cell.deleteButton.isHidden = false
+                cell.closeButton.isHide(true)
+                cell.progressLabel.isHidden = true
+                //                    cell.trueImageView.isHide(false)
             }
-             nextButton.isEnabled = true
-            userDefaults.set(true, forKey: UserDefaultsConstants.isImageUploaded)
-    //        userDefaults.set(false, forKey: UserDefaultsConstants.isSecondPhotoUploading)
-            userDefaults.set(true, forKey: UserDefaultsConstants.isSecondPhotoUploading)
-            userDefaults.set(true, forKey: UserDefaultsConstants.isStillImageUpload)
-
-            userDefaults.synchronize()
+        }
+    }
+    
+    @objc func handleUploadNextComplete(notify: Notification)  {
+        nextButton.isEnabled = true
+        
+        trackNumberUplodaedImages = trackNumberUplodaedImages+1
+        
+        guard let userInfo = notify.userInfo as? [String:Any] ,let index = userInfo["index"] as? Int, let cell =  collectionView.cellForItem(at: IndexPath(item: index-1, section: 1)) as? ListOfFhotoCell else { return  }
+        DispatchQueue.main.async {
+            cell.trueImageView.isHide(false)
+            self.nextButton.isEnabled = true
             
         }
         
-        @objc fileprivate func handleUploadProgress(notify: Notification){
-            userDefaults.set(false, forKey: UserDefaultsConstants.isImageUploaded)
-            userDefaults.set(false, forKey: UserDefaultsConstants.isStillImageUpload)
-            userDefaults.synchronize()
-             nextButton.isEnabled = true//false
-            guard let userInfo = notify.userInfo as? [String:Any] else { return  }
-            //        guard let name = userInfo["name"] as? String else { return  }
-            guard let progress = userInfo["progress"] as? Double else { return  }
-            guard let size = userInfo["size"] as? Double else { return  }
-            guard let image = userInfo["image"] as? UIImage else { return  }
-            guard let cell =  collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? ListOfPhotoMaseterCell else { return  }
-            DispatchQueue.main.async {
-                cell.progressPhoto.setProgress(Float(progress), animated: true) //=  Float(progress / size )
-                let unique = UUID().uuidString
-                
-                cell.namePhotoLabel.text =  userInfo["name"] as? String //?? unique
-                cell.progressLabel.text = "\(Int(progress * 100 ))%"
-                cell.progressLabel.isHidden = false
-                cell.logoImageView.isHide(false)
-                cell.trueImageView.isHide(true)
-                cell.photoImageView.image = image
-                if progress == 1 {
-                    cell.deleteButton.isHidden = false
-                    cell.closeButton.isHide(true)
-                    cell.progressLabel.isHidden = true
-//                    cell.trueImageView.isHide(false)
-                }
+        userDefaults.set(true, forKey: UserDefaultsConstants.isImageUploaded)
+        userDefaults.set(true, forKey: UserDefaultsConstants.isSecondPhotoUploading)
+        userDefaults.set(true, forKey: UserDefaultsConstants.isStillImageUpload)
+        
+        //        userDefaults.set(false, forKey: UserDefaultsConstants.isSecondPhotoUploading)
+        userDefaults.synchronize()
+    }
+    
+    @objc fileprivate func handleUploadComplete(notify: Notification){
+        guard let cell =  collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? ListOfPhotoMaseterCell else { return  }
+        DispatchQueue.main.async {
+            cell.trueImageView.isHide(false)
+        }
+        nextButton.isEnabled = true
+        userDefaults.set(true, forKey: UserDefaultsConstants.isImageUploaded)
+        //        userDefaults.set(false, forKey: UserDefaultsConstants.isSecondPhotoUploading)
+        userDefaults.set(true, forKey: UserDefaultsConstants.isSecondPhotoUploading)
+        userDefaults.set(true, forKey: UserDefaultsConstants.isStillImageUpload)
+        
+        userDefaults.synchronize()
+        trackNumberUplodaedImages = trackNumberUplodaedImages+1
+    }
+    
+    @objc fileprivate func handleUploadProgress(notify: Notification){
+        userDefaults.set(false, forKey: UserDefaultsConstants.isImageUploaded)
+        userDefaults.set(false, forKey: UserDefaultsConstants.isStillImageUpload)
+        userDefaults.synchronize()
+        nextButton.isEnabled = true//false
+        guard let userInfo = notify.userInfo as? [String:Any] else { return  }
+        //        guard let name = userInfo["name"] as? String else { return  }
+        guard let progress = userInfo["progress"] as? Double else { return  }
+        guard let size = userInfo["size"] as? Double else { return  }
+        guard let image = userInfo["image"] as? UIImage else { return  }
+        guard let cell =  collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? ListOfPhotoMaseterCell else { return  }
+        DispatchQueue.main.async {
+            cell.progressPhoto.setProgress(Float(progress), animated: true) //=  Float(progress / size )
+            let unique = UUID().uuidString
+            
+            cell.namePhotoLabel.text =  userInfo["name"] as? String //?? unique
+            cell.progressLabel.text = "\(Int(progress * 100 ))%"
+            cell.progressLabel.isHidden = false
+            cell.logoImageView.isHide(false)
+            cell.trueImageView.isHide(true)
+            cell.photoImageView.image = image
+            if progress == 1 {
+                cell.deleteButton.isHidden = false
+                cell.closeButton.isHide(true)
+                cell.progressLabel.isHidden = true
+                //                    cell.trueImageView.isHide(false)
             }
         }
+    }
     
     @objc fileprivate  func  handleBack()  {
         
         if aqar != nil {
             self.creatMainSnackBar(message: "Wait until Upload image...".localized)
-                navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)
         }else {
             navigationController?.popViewController(animated: true)
         }
     }
     
     @objc func takeNormalPhoto()  {
-           createAlertForChoposingImage(ind: 0)
-       }
-       
-       @objc func take360Photo()  {
-              createAlertForChoposingImage(ind: 1)
-          }
+        createAlertForChoposingImage(ind: 0)
+    }
+    
+    @objc func take360Photo()  {
+        createAlertForChoposingImage(ind: 1)
+    }
     
     @objc fileprivate func handleNext()  {
-           
-           if aqar != nil {
-               if  isFromUpdatePost  {
-                   goToMainUpdatedPost()
-                   //                navigationController?.popViewController(animated: true)
-               }else {
-                   self.creatMainSnackBar(message: "Wait until Upload image...".localized)
-               }
-           }else {
+        
+        if numberOfImageUpload != trackNumberUplodaedImages {
+            
+        }else {
+        
+        if aqar != nil {
+            if  isFromUpdatePost  {
+                goToMainUpdatedPost()
+                //                navigationController?.popViewController(animated: true)
+            }else {
+                self.creatMainSnackBar(message: "Wait until Upload image...".localized)
+            }
+        }else {
             if userDefaults.bool(forKey: UserDefaultsConstants.isStillImageUpload) {
                 
-            
-//               if userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) && userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) || !isFromUpdatePost && userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) {
-                   goToMainCreatePost()
-                   //                navigationController?.popViewController(animated: true)
-               }else {
-                   self.creatMainSnackBar(message: "Wait until Upload image...".localized)
-               }
-           }
-       }
-       
-        
+                
+                //               if userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) && userDefaults.bool(forKey: UserDefaultsConstants.isSecondPhotoUploading) || !isFromUpdatePost && userDefaults.bool(forKey: UserDefaultsConstants.isFirstMasterPhotoUpload) {
+                goToMainCreatePost()
+                //                navigationController?.popViewController(animated: true)
+            }else {
+                self.creatMainSnackBar(message: "Wait until Upload image...".localized)
+            }
+        }
+    }
+    }
+    
 }
 
 
@@ -582,7 +597,7 @@ extension ListOfPhotoMainSecVC: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+        
         if aqar != nil {
             goToZoomImage(index: indexPath.item,section:indexPath.section)
         }else {
@@ -646,6 +661,7 @@ extension ListOfPhotoMainSecVC: UIImagePickerControllerDelegate, UINavigationCon
             let fileName = url.lastPathComponent
             imageName = fileName
         }
+        self.numberOfImageUpload = numberOfImageUpload+1
         uploadChoosedPhoto(pushedImage,imageChoosen,imageName,imageType)
         //        self.isUploadNextImage = false
         dismiss(animated: true)
