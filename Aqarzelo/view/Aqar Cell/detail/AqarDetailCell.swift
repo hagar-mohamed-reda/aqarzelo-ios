@@ -28,7 +28,7 @@ class AqarDetailCell: BaseCollectionCell {
         didSet{
             guard let aqar = aqar else { return }
             
-            titleLabel.text = aqar.title
+            titleLabel.text = MOLHLanguage.isRTLLanguage() ? aqar.titleAr : aqar.title
             let price = Int(aqar.price / 1000)
             let space = aqar.space
             

@@ -37,7 +37,7 @@ class SecondCreateAddressCell: BaseCollectionCell {
         
         return v
     }()
-    lazy var titleLabel = UILabel(text: "Addrees".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: MOLHLanguage.isRTLLanguage() ? .right : .left)
+    lazy var titleLabel = UILabel(text: "Address".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: MOLHLanguage.isRTLLanguage() ? .right : .left)
     lazy var textView:UITextView = {
         let tx = UITextView()
         tx.addSubview(placeHolderLabel)

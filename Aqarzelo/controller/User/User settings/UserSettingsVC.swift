@@ -76,7 +76,7 @@ class UserSettingsVC: UIViewController {
                 if self.checkIfNotLogin() {
                     self.goToEditProfile()
                 }else {
-                    if v.userNameLabel.text == "LOGIN" {
+                    if v.userNameLabel.text == "LOGIN".localized {
                         self.goToLogin()
                     }else{
                         self.customMainAlertVC.addCustomViewInCenter(views: self.customAlerLoginView, height: 200)
@@ -172,7 +172,7 @@ class UserSettingsVC: UIViewController {
     fileprivate func fetchInfo(_ user:UserModel)  {
         guard let url = URL(string: user.photoURL) else{return}
         customTopUserView.userImageView.sd_setImage(with: url,placeholderImage: #imageLiteral(resourceName: "man-user").withRenderingMode(.alwaysTemplate))
-        customTopUserView.userNameLabel.text = "HI, ".localized + "\(user.name)"
+        customTopUserView.userNameLabel.text = "Hi, ".localized + "\(user.name)"
         //        customTopUserView.isLogin = true
     }
     

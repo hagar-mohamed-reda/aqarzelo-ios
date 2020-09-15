@@ -17,7 +17,7 @@ class LocationCollectionCell: BaseCollectionCell {
     var aqar:AqarModel? {
         didSet{
             guard let aqar = aqar else { return  }
-            locationTitleLabel.text = aqar.title
+            locationTitleLabel.text = MOLHLanguage.isRTLLanguage() ? aqar.titleAr :  aqar.title
             let price = Int(aqar.price / 1000)
             let space = Int(aqar.space.toInt() ?? 0/1000)
             
@@ -41,7 +41,7 @@ class LocationCollectionCell: BaseCollectionCell {
         return i
     }()
     
-    lazy var locationTitleLabel = UILabel(text: "Hotel", font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var locationTitleLabel = UILabel(text: "Hotel", font: .systemFont(ofSize: 14), textColor: .black)
     lazy var locationDistanceLabel = UILabel(text: "250 k, 1000 m", font: .systemFont(ofSize: 16), textColor: #colorLiteral(red: 0.820566833, green: 0.8206856251, blue: 0.8205407858, alpha: 1))
     
     

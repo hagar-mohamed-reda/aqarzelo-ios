@@ -11,7 +11,7 @@ import UIKit
 struct AqarModel:Codable {
     
     let id: Int
-    let title: String
+    let title,titleAr: String
     var datumDescription: String?
     var address: String?
     let lng, lat, phone, space: String
@@ -45,6 +45,7 @@ struct AqarModel:Codable {
     
     enum CodingKeys: String, CodingKey {
         case id, title
+        case titleAr="title_ar"
         case datumDescription = "description"
         case address, lng, lat, phone, space
         case pricePerMeter = "price_per_meter"

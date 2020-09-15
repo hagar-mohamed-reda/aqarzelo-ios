@@ -527,9 +527,9 @@ class ListOfPhotoMainSecVC: UIViewController {
     
     @objc fileprivate func handleNext()  {
         
-        if numberOfImageUpload != trackNumberUplodaedImages {
-            
-        }else {
+//        if numberOfImageUpload != trackNumberUplodaedImages {
+//
+//        }else {
         
         if aqar != nil {
             if  isFromUpdatePost  {
@@ -549,7 +549,7 @@ class ListOfPhotoMainSecVC: UIViewController {
                 self.creatMainSnackBar(message: "Wait until Upload image...".localized)
             }
         }
-    }
+//    }
     }
     
 }

@@ -136,7 +136,7 @@
 // UserSettingsVC
 
 "Confirm New Password" = " تأكيد كلمة المرور ";
-"HI, " = " مرحبًا ";
+"Hi, " = " مرحبًا ";
 "LogOut" = "تسجيل الخروج";
 "Contact Us" = "الاتصال بنا";
 "Help" = "المساعده";
@@ -319,3 +319,4 @@
 "Delete"="حذف";
 
 "No Results!"="!لا توجد نتائج";
+"enter space"="ادخل المساحة";"Invalid Space"="خطا في المعلومات";

@@ -69,7 +69,7 @@ class CustomLocationView:  CustomBaseView{
         
         mapView.fillSuperview(padding: .init(top: 0, left: 0, bottom: 0, right: 0))
         
-        collectionView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: -16, bottom: 0, right: -16))//24
+        collectionView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 8, bottom: 0, right: 8))//24
         subView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: -16, bottom: 24, right: -16))
     }
 }

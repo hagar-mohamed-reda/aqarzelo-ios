@@ -45,7 +45,7 @@ class FirstCreateSpaceCell: BaseCollectionCell {
         let t = SkyFloatingLabelTextField()
         t.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
         t.keyboardType = UIKeyboardType.numberPad
-        t.placeholder = "enter price".localized
+        t.placeholder = "enter space".localized
         t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)
         return t
     }()
@@ -88,7 +88,7 @@ class FirstCreateSpaceCell: BaseCollectionCell {
                 
                 if  texts.count == 0 {
                     handleTextContents?(Int(priceString) ?? 0,false)
-                    floatingLabelTextField.errorMessage = "Invalid Price".localized
+                    floatingLabelTextField.errorMessage = "Invalid Space".localized
                     
                 }
                 else {
