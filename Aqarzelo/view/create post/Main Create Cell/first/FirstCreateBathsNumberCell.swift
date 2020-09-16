@@ -47,7 +47,7 @@ class FirstCreateBathsNumberCell: BaseCollectionCell {
         let v = CustomAddMinusView()
         v.isHide(true)
         v.constrainHeight(constant: 40)
-        v.constrainWidth(constant: (frame.width - 32 )/2)
+        v.constrainWidth(constant: (frame.width - 48 )/2)
         v.minusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMinusOne)))
         v.plusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAddOne)))
         return v

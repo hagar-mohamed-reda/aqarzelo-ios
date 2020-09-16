@@ -16,7 +16,7 @@ class FavoriteCollectionCell: BaseCollectionCell {
     var aqar:AqarModel?{
         didSet{
             guard let aqar=aqar else{return}
-            self.locationTitleLabel.text = aqar.title
+            self.locationTitleLabel.text = MOLHLanguage.isRTLLanguage() ? aqar.titleAr : aqar.title
             let price = Int(aqar.price / 1000)
             let space = aqar.space
             
