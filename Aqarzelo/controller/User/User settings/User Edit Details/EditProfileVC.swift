@@ -135,7 +135,7 @@ class EditProfileVC: UIViewController {
     }
     
     func changeButtonState(sender:UIButton)  {
-        sender.backgroundColor = ColorConstant.mainBackgroundColor
+        sender.backgroundColor = #colorLiteral(red: 0.4301581085, green: 0.8535569906, blue: 0.6972886324, alpha: 1)//ColorConstant.mainBackgroundColor
         sender.setTitleColor(.white, for: .normal)
         customUpadteUserVview.cancelButton.backgroundColor = .white
         customUpadteUserVview.cancelButton.setTitleColor(.black, for: .normal)

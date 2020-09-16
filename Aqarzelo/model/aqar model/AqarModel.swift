@@ -365,7 +365,7 @@ struct BaseAqarModel: Codable {
     
     let status: Int
     let messageEn, messageAr: String
-    let data: [AqarModel]
+    var data: [AqarModel]?
     
     enum CodingKeys: String, CodingKey {
         case status

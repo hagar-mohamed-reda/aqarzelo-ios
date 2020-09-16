@@ -89,7 +89,7 @@ class FilterVC: UIViewController {
         
                 v.cityDrop.didSelect(completion: {[unowned self] (ss, index, id) in
                             self.getAreaAccordingToCityId(index: index)
-                            self.selectedCityId = index+1
+                    self.selectedCityId = self.getCityFromIndex(index)
         
                 })
                 v.areaDrop.didSelect(completion: { [unowned self] (selected, index, _) in
@@ -241,6 +241,31 @@ class FilterVC: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    fileprivate func getCityFromIndex(_ index:Int) -> Int {
+           var citName = [String]()
+           var cityId = [Int]()
+           
+           if MOLHLanguage.isRTLLanguage() {
+               
+               
+               
+               if let  cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
+                   
+                   citName = cityArray
+                   cityId = cityIds
+                   
+                   
+                   
+               }}else {
+               if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int] {
+                   citName = cityArray
+                   cityId = cityIds
+               }
+           }
+           
+           return cityId[index ]
+       }
     
     fileprivate func fetchData()  {
         

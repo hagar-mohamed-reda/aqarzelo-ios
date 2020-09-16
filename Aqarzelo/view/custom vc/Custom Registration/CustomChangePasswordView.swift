@@ -41,7 +41,7 @@ class CustomChangePasswordView: CustomBaseView {
     }()
     lazy var passwordOldBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
         b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASD), for: .touchUpInside)
         return b
@@ -66,7 +66,7 @@ class CustomChangePasswordView: CustomBaseView {
     }()
     lazy var passwordBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
         b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASDa), for: .touchUpInside)
         
@@ -74,7 +74,7 @@ class CustomChangePasswordView: CustomBaseView {
     }()
     lazy var passwordCOBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
         b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASDss), for: .touchUpInside)
         
@@ -145,19 +145,19 @@ class CustomChangePasswordView: CustomBaseView {
     
     @objc  func handleASD(sender:UIButton)  {
         oldPasswordTextField.isSecureTextEntry.toggle()
-        let xx = oldPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
+        let xx = oldPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     
     @objc  func handleASDa(sender:UIButton)  {
         newPasswordTextField.isSecureTextEntry.toggle()
-        let xx = newPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
+        let xx = newPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     
     @objc  func handleASDss(sender:UIButton)  {
         confirmNewPasswordTextField.isSecureTextEntry.toggle()
-        let xx = confirmNewPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
+        let xx = confirmNewPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     

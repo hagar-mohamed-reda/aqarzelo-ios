@@ -70,7 +70,7 @@ class CustomLoginView: UIView {
     lazy var passwordOldBTN:UIButton = {
         let b = UIButton(type: .custom)
         
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
         b.imageView?.contentMode = .scaleAspectFit
         b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASD), for: .touchUpInside)
@@ -214,7 +214,7 @@ class CustomLoginView: UIView {
     
     @objc func handleASD(sender:UIButton)  {
         passwordTextField.isSecureTextEntry.toggle()
-        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
+        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     

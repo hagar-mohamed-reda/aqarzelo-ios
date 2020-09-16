@@ -289,7 +289,7 @@ class LocationVC: UIViewController {
             SVProgressHUD.dismiss()
             if let group2 = group2,let group3 = group3 {
                 
-                self.aqarsArray = group2.data.count > 0 ? group2.data : group3.data
+                self.aqarsArray = (group2.data?.count ?? 0 > 0 ? group2.data : group3.data) ?? []
                 self.addMarkerInMapView()
                 userDefaults.set(false, forKey: UserDefaultsConstants.fetchUserInfoAndLocation)
                 userDefaults.synchronize()
@@ -653,11 +653,11 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
     
     func refreshData(base:BaseAqarModel?)  {
         guard let based = base else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-        if based.data.count <= 0 {
+        if based.data?.count ?? 0 <= 0 {
             SVProgressHUD.showInfo(withStatus: "No data available......".localized)
         }else {
             self.aqarsArray.removeAll()
-            self.aqarsArray = based.data
+            self.aqarsArray = based.data ?? []
         }
         //        if self.aqarsArray.count <= 0 {
         //
