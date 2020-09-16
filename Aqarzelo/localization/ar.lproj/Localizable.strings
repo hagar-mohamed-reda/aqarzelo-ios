@@ -21,7 +21,7 @@
 "Login" =  "تسجيل الدخول";
 "enter your email or telephone" = "البريد الإلكتروني أو رقم الهاتف";
 "your email or telephone" = "البريد الإلكتروني أو رقم الهاتف";
-"enter your password" = "كلمة المرور";
+"Enter your password" = "كلمة المرور";
 "Password" = "كلمة المرور";
 "Forget Password ?" = "هل نسيت كلمة المرور ?";
 "LOGIN" = " تسجيل الدخول";
@@ -29,11 +29,11 @@
 "Don't have an account ? " = "ليس لديك حساب ? ";
 "Sign up" = "الاشتراك";
 "Invalid Email or Phone" = "البريد الإلكتروني أو رقم الهاتف غير صحيح";
-"password must have 8 character" = " كلمة المرور يجب ان تحتوي علي ٨ كلمات";
+"Password must have 8 character" = " كلمة المرور يجب ان تحتوي علي ٨ كلمات";
 
 //register vc
 "Create your \n account" = "انشئ \n حيساب";
-"username" = "اسم المستخدم";
+"Username" = "اسم المستخدم";
 "Phone" = " رقم الهاتف";
 "Email" = "البريد الإلكتروني";
 "Confirm Password" = "تأكيد كلمة المرور";

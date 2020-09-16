@@ -32,6 +32,7 @@ class CustomChangePasswordView: CustomBaseView {
         t.errorColor = .white
         t.tintColor = .white
         t.selectedTitleColor = .white
+        t.titleColor = .white
         t.constrainHeight(constant: 50)
         passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordOldBTN
@@ -57,6 +58,7 @@ class CustomChangePasswordView: CustomBaseView {
         t.errorColor = .white
         t.tintColor = .white
         t.selectedTitleColor = .white
+        t.titleColor = .white
         passwordBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordBTN
         t.rightViewMode = .always
@@ -90,6 +92,7 @@ class CustomChangePasswordView: CustomBaseView {
         t.errorColor = .white
         t.tintColor = .white
         t.selectedTitleColor = .white
+        t.titleColor = .white
         passwordCOBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordCOBTN
         t.rightViewMode = .always
@@ -166,7 +169,7 @@ class CustomChangePasswordView: CustomBaseView {
             
             if text == oldPasswordTextField {
                 if (texts.count < 8 ) {
-                    floatingLabelTextField.errorMessage = "password must have 8 character".localized
+                    floatingLabelTextField.errorMessage = "Password must have 8 character".localized
                     changePpasswordViewModel.oldPass = nil
                 }
                 else {
@@ -176,7 +179,7 @@ class CustomChangePasswordView: CustomBaseView {
                 
             }else if text == newPasswordTextField {
                 if(texts.count < 8 ) {
-                    floatingLabelTextField.errorMessage = "password must have 8 character".localized
+                    floatingLabelTextField.errorMessage = "Password must have 8 character".localized
                     changePpasswordViewModel.newPassword = nil
                 }
                 else {

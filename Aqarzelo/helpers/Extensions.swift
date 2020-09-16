@@ -94,7 +94,7 @@ extension UIViewController {
     
     func changeButtonState(enable:Bool,vv:UIButton)  {
         if enable {
-            vv.backgroundColor = #colorLiteral(red: 0.2534725964, green: 0.8196641803, blue: 0.6812620759, alpha: 1)
+            vv.backgroundColor = #colorLiteral(red: 0.4301581085, green: 0.8535569906, blue: 0.6972886324, alpha: 1)
             vv.setTitleColor(.white, for: .normal)
         }else {
             vv.backgroundColor = .white

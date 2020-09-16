@@ -26,13 +26,14 @@ class CustomRegisterView: UIView {
     }()
     lazy var usernameTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
-        t.placeholder = "username".localized
-        t.title = "username".localized
+        t.placeholder = "Username".localized
+        t.title = "Username".localized
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
         t.errorColor = .white
+        t.titleColor = .white
         t.tintColor = .white
         t.selectedTitleColor = .white
         return t
@@ -46,9 +47,10 @@ class CustomRegisterView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-               t.errorColor = .white
-               t.tintColor = .white
-               t.selectedTitleColor = .white
+        t.errorColor = .white
+        t.tintColor = .white
+        t.titleColor = .white
+        t.selectedTitleColor = .white
         return t
     }()
     lazy var emailTextField:SkyFloatingLabelTextField = {
@@ -60,9 +62,10 @@ class CustomRegisterView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-               t.errorColor = .white
-               t.tintColor = .white
-               t.selectedTitleColor = .white
+        t.errorColor = .white
+        t.tintColor = .white
+        t.selectedTitleColor = .white
+        t.titleColor = .white
         t.constrainHeight(constant: 50)
         return t
     }()
@@ -70,15 +73,16 @@ class CustomRegisterView: UIView {
         let t = SkyFloatingLabelTextField()
         //        t.placeholder = "password"
         t.isSecureTextEntry = true
-        t.placeholder = "enter your password".localized
+        t.placeholder = "Enter your password".localized
         t.title = "Password".localized
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-               t.errorColor = .white
-               t.tintColor = .white
-               t.selectedTitleColor = .white
+        t.errorColor = .white
+        t.tintColor = .white
+        t.selectedTitleColor = .white
+        t.titleColor = .white
         passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordOldBTN
         t.rightViewMode = .always
@@ -102,9 +106,10 @@ class CustomRegisterView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-               t.errorColor = .white
-               t.tintColor = .white
-               t.selectedTitleColor = .white
+        t.errorColor = .white
+        t.tintColor = .white
+        t.selectedTitleColor = .white
+        t.titleColor = .white
         passwordAAAOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         //        button.addTarget(self, action: #selector(handleASDs), for: .touchUpInside)
         t.rightView =  passwordAAAOldBTN
@@ -141,7 +146,7 @@ class CustomRegisterView: UIView {
         b.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         b.backgroundColor = .white
         
-        //        b.backgroundColor = #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1)
+//                b.backgroundColor =
         b.constrainHeight(constant: 50)
         b.layer.borderWidth = 4
         b.layer.borderColor = #colorLiteral(red: 0.2534725964, green: 0.8196641803, blue: 0.6812620759, alpha: 1).cgColor
@@ -204,9 +209,13 @@ class CustomRegisterView: UIView {
         
         mainStack.anchor(top: createLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 60, left: 32, bottom: 0, right: 32))
         
-        signUpButton.anchor(top: nil, leading: leadingAnchor, bottom: orLabel.topAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 24, right: 16))
+        signUpButton.anchor(top: mainStack.bottomAnchor, leading: leadingAnchor, bottom: orLabel.topAnchor, trailing: trailingAnchor,padding: .init(top: 24, left: 48, bottom: 24, right: 48))
+//        signUpButton.anchor(top: nil, leading: leadingAnchor, bottom: orLabel.topAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 32, bottom: 24, right: 32))
+
         orLabel.anchor(top: buttonStack.topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: -32, left: 0, bottom: 0, right: 0))
-        buttonStack.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: nil,padding: .init(top: 0, left: 0, bottom: 40, right: 0))
+        buttonStack.anchor(top: signUpButton.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 24, left: 0, bottom: 40, right: 0))
+
+//        buttonStack.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: nil,padding: .init(top: 0, left: 0, bottom: 40, right: 0))
     }
     
     
@@ -259,7 +268,7 @@ class CustomRegisterView: UIView {
                 
             }else if text == passwordTextField {
                 if(texts.count < 8 ) {
-                    floatingLabelTextField.errorMessage = "password must have 8 character".localized
+                    floatingLabelTextField.errorMessage = "Password must have 8 character".localized
                     registerViewModel.password = nil
                 }
                 else {
@@ -280,5 +289,5 @@ class CustomRegisterView: UIView {
         }
     }
     
-   
+    
 }

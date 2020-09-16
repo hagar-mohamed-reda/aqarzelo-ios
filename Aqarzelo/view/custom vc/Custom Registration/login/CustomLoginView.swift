@@ -42,7 +42,7 @@ class CustomLoginView: UIView {
                       t.errorColor = .white
                       t.tintColor = .white
                       t.selectedTitleColor = .white
-        
+        t.titleColor = .white
         //        t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)
         t.constrainHeight(constant: 50)
         return t
@@ -52,13 +52,14 @@ class CustomLoginView: UIView {
         t.title = "Password".localized
         t.tintColor = .white
         t.placeholderColor = .white
-        t.placeholder = "enter your password".localized
+        t.placeholder = "Enter your password".localized
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
                       t.errorColor = .white
                       t.tintColor = .white
                       t.selectedTitleColor = .white
+        t.titleColor = .white
         t.isSecureTextEntry = true
         t.constrainHeight(constant: 50)
         passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
@@ -198,7 +199,7 @@ class CustomLoginView: UIView {
                 
             }else
                 if(texts.count < 8 ) {
-                    floatingLabelTextField.errorMessage = "password must have 8 character".localized
+                    floatingLabelTextField.errorMessage = "Password must have 8 character".localized
                     loginViewModel.password = nil
                 }
                 else {

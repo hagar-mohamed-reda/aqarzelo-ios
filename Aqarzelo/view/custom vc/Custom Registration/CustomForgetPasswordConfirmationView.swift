@@ -49,13 +49,14 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
                       t.errorColor = .white
                       t.tintColor = .white
                       t.selectedTitleColor = .white
+        t.titleColor = .white
         return t
     }()
     lazy var passwordTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
         //        t.placeholder = "password"
         t.isSecureTextEntry = true
-        t.placeholder = "enter your password".localized
+        t.placeholder = "Enter your password".localized
         t.title = "Password".localized
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
@@ -64,6 +65,7 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
                       t.errorColor = .white
                       t.tintColor = .white
                       t.selectedTitleColor = .white
+        t.titleColor = .white
         passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordOldBTN
         t.rightViewMode = .always
@@ -90,6 +92,7 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
                       t.errorColor = .white
                       t.tintColor = .white
                       t.selectedTitleColor = .white
+        t.titleColor = .white
         passwordAAAOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordAAAOldBTN
         t.rightViewMode = .always
@@ -179,7 +182,7 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
                 }
             }else if text == passwordTextField {
                 if(texts.count < 8 ) {
-                    floatingLabelTextField.errorMessage = "password must have 8 character"
+                    floatingLabelTextField.errorMessage = "Password must have 8 character"
                     forgetPassConfirmViewModel.password = nil
                 }
                 else {

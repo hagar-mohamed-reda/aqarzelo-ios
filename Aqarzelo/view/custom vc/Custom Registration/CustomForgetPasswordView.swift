@@ -44,6 +44,7 @@ class CustomForgetPasswordView: UIView {
                       t.errorColor = .white
                       t.tintColor = .white
                       t.selectedTitleColor = .white
+        t.titleColor = .white
         t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)
 
         return t

@@ -23,7 +23,7 @@
 "Login" =  "Login";
 "enter your email or telephone" = "enter your email or telephone";
 "your email or telephone" = "your email or telephone";
-"enter your password" = "enter your password";
+"Enter your password" = "Enter your password";
 "Password" = "Password";
 "Forget Password ?" = "Forget Password ?";
 "LOGIN" = "LOGIN";
@@ -31,11 +31,11 @@
 "Don't have an account ? " = "Don't have an account ? ";
 "Sign up" = "Sign up";
 "Invalid Email or Phone" = "Invalid Email or Phone";
-"password must have 8 character" = "password must have 8 character";
+"Password must have 8 character" = "Password must have 8 character";
 
 //register vc
 "Create your \n account" = "Create your \n account";
-"username" = "username";
+"Username" = "Username";
 "Phone" = "Phone";
 "Email" = "Email";
 "Confirm Password" = "Confirm Password";
@@ -44,7 +44,7 @@
 "Invalid Phone number" = "Invalid Phone number";
 "Invalid Email" = "Invalid Email";
 "Passowrd should be same" = "Passowrd should be same";
-"password must have 8 character" = "password must have 8 character";
+"Password must have 8 character" = "Password must have 8 character";
 
 //forget pass vc
 
