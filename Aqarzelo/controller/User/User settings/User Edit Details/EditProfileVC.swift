@@ -215,7 +215,7 @@ class EditProfileVC: UIViewController {
     }
     
     @objc func handleNext()  {
-        customMainAlertVC.addCustomViewInCenter(views: customUpadteUserVview, height: 180)
+        customMainAlertVC.addCustomViewInCenter(views: customUpadteUserVview, height: 220)
         self.customUpadteUserVview.problemsView.play()
         
         customUpadteUserVview.problemsView.loopMode = .loop

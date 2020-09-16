@@ -78,15 +78,18 @@ class CustomUpdateSserProfileView: CustomBaseView {
         addSubViews(views: mainView,subView,buttonStack)
         mainView.fillSuperview(padding: .init(top: 8, left: 0, bottom: 0, right: 0))
         
-        subView.addSubViews(views: errorLabel,errorInfoLabel)
+        subView.addSubViews(views: errorLabel,errorInfoLabel,problemsView)
         
         NSLayoutConstraint.activate([
-                                     errorInfoLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
+                                     errorInfoLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
+                                     problemsView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
+                                                problemsView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20),
             ])
          subView.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: mainView.trailingAnchor,padding: .init(top: 0, left: 0, bottom: 40, right: 0))
         
         errorLabel.anchor(top:topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 16, left: 16, bottom: 0, right: 0))
-       
+       problemsView.anchor(top:nil, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 8, left: 0, bottom: 0, right: 0))
+
         errorInfoLabel.anchor(top: subView.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: -32, left: 0, bottom: 0, right: 0))
         
         
