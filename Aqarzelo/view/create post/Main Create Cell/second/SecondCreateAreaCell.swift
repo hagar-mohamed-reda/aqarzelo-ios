@@ -19,14 +19,16 @@ class SecondCreateAreaCell: BaseCollectionCell {
             guard let aqar = aqar else { return  }
             iconImageView.image = #imageLiteral(resourceName: "Group 3933")
             iconImageView.isUserInteractionEnabled = true
-            self.getAreaAccordingToCityId(index: aqar.cityID)
+            areaDrop.text = MOLHLanguage.isRTLLanguage() ? aqar.area?.nameAr :  aqar.area?.nameEn
             areaDrop.selectedIndex = aqar.areaID
-            if  let foo = areaIDSArray.firstIndex(of: aqar.areaID){
-            
-            let xx = areaArray[foo]
-            
-            areaDrop.text = xx
-            }
+//            self.getAreaAccordingToCityId(index: aqar.cityID)
+//            areaDrop.selectedIndex = aqar.areaID
+//            if  let foo = areaIDSArray.firstIndex(of: aqar.areaID){
+//
+//            let xx = areaArray[foo]
+//
+//            areaDrop.text = xx
+//            }
             self.handleTextContents?(aqar.areaID,true)
         }
     }

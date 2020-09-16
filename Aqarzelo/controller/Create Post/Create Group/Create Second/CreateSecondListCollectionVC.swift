@@ -25,13 +25,22 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     var aqar:AqarModel? {
         didSet{
             guard let aqar = aqar else { return  }
+            
             secondCcreatePostVviewModel.lat = aqar.lat
             secondCcreatePostVviewModel.area = "\(aqar.areaID)"
             secondCcreatePostVviewModel.lng = aqar.lng
             secondCcreatePostVviewModel.buildDate = aqar.buildDate
             secondCcreatePostVviewModel.city = "\(aqar.cityID)"
             secondCcreatePostVviewModel.fllorNum = aqar.floorNumber
-            secondCcreatePostVviewModel.address = ""
+            secondCcreatePostVviewModel.address = aqar.address ?? ""
+            
+//            let city = getCityFromIndex(cc)
+//                       let area = getAreassFromIndex( aa)
+//                       areaDrop.text = area
+//                       areaDrop.selectedIndex = cc-1
+//                       cityDrop.selectedIndex = aa-1
+//                       cityDrop.text = city
+            
         }
     }
     

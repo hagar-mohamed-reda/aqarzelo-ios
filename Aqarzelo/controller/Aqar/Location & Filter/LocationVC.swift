@@ -310,7 +310,7 @@ class LocationVC: UIViewController {
     }
     
     fileprivate  func getUserPostsAndUserProfile()  {
-        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         
         
         var group2: BaseAqarModel?
@@ -634,7 +634,7 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
     }
     
     func searchForResults(categoryId:Int,citId: Int, areaId: Int, price1: Int, price2: Int, space1: Int, space2: Int, type: String, bedroom_number: Int, bathroom_number: Int)  {
-        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         // make search to find aqars
         SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Looding....".localized)

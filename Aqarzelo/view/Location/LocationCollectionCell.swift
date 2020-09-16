@@ -41,7 +41,7 @@ class LocationCollectionCell: BaseCollectionCell {
         return i
     }()
     
-    lazy var locationTitleLabel = UILabel(text: "Hotel", font: .systemFont(ofSize: 14), textColor: .black)
+    lazy var locationTitleLabel = UILabel(text: "Hotel", font: .systemFont(ofSize: 14), textColor: .black,numberOfLines: 2)
     lazy var locationDistanceLabel = UILabel(text: "250 k, 1000 m", font: .systemFont(ofSize: 16), textColor: #colorLiteral(red: 0.820566833, green: 0.8206856251, blue: 0.8205407858, alpha: 1))
     
     

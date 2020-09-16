@@ -46,7 +46,7 @@ class CustomAqarsView: UIView {
         i.constrainHeight(constant: 80)
         return i
     }()
-    lazy var locationTitleLabel = UILabel(text: "sdfs", font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var locationTitleLabel = UILabel(text: "sdfs", font: .systemFont(ofSize: 14), textColor: .black,numberOfLines: 2)
     lazy var locationDistanceLabel = UILabel(text: "sdfdsf", font: .systemFont(ofSize: 16), textColor: .lightGray)
     
     

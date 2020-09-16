@@ -19,10 +19,15 @@ class SecondCreateCityCell: BaseCollectionCell {
             iconImageView.image = #imageLiteral(resourceName: "Group 3938")
             iconImageView.isUserInteractionEnabled = true
 //            cityDrop.selectedIndex = aqar.cityID-1
-            
-            if let arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
-                       cityDrop.text = arr[aqar.cityID-1]
-                   }
+            cityDrop.text = MOLHLanguage.isRTLLanguage() ? aqar.city.nameAr :  aqar.city.nameEn
+            cityDrop.selectedIndex = aqar.cityID
+//            let cc = aqar.cityID
+//
+//                       let city = getCityFromIndex(cc)
+//            cityDrop.text = city
+//            if let arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
+//                       cityDrop.text = arr[aqar.cityID-1]
+//                   }
             
             
             handleTextContents?(aqar.cityID-1,true)
@@ -97,6 +102,33 @@ class SecondCreateCityCell: BaseCollectionCell {
         let second = stack(categoryLabel,categoryQuestionLabel,dd,UIView(),spacing:8)
         
         hstack(ss,second,UIView(),spacing:16).withMargins(.init(top: 0, left: 36, bottom: 0, right: 8))
+    }
+    
+    fileprivate func getCityFromIndex(_ index:Int) -> String {
+        var citName = [String]()
+        var cityId = [Int]()
+        
+        if MOLHLanguage.isRTLLanguage() {
+            
+            
+            
+            if let  cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
+                
+                citName = cityArray
+                cityId = cityIds
+                
+                
+                
+            }}else {
+            if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int] {
+                citName = cityArray
+                cityId = cityIds
+            }
+        }
+        let ss = cityId.filter{$0 == index}
+        let ff = ss.first ?? 1
+        
+        return citName[ff - 1 ]
     }
     
     @objc func handleShowViews()  {
