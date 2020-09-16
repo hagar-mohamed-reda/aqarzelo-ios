@@ -12,7 +12,7 @@ struct BaseRegisterModel: Codable {
     
     let status: Int
     let messageEn, messageAr: String
-    var data: UserModel?//UserRegisterDone?
+    var data: UserRegisterDone?
     
     enum CodingKeys: String, CodingKey {
         case status

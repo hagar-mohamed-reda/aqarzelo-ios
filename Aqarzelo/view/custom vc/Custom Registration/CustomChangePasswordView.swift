@@ -28,8 +28,12 @@ class CustomChangePasswordView: CustomBaseView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .black
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.textColor = .white
+        t.errorColor = .white
+        t.tintColor = .white
+        t.selectedTitleColor = .white
         t.constrainHeight(constant: 50)
-        passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordOldBTN
         t.rightViewMode = .always
         return t
@@ -49,7 +53,11 @@ class CustomChangePasswordView: CustomBaseView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .black
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        passwordBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        t.textColor = .white
+        t.errorColor = .white
+        t.tintColor = .white
+        t.selectedTitleColor = .white
+        passwordBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordBTN
         t.rightViewMode = .always
         return t
@@ -78,7 +86,11 @@ class CustomChangePasswordView: CustomBaseView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .black
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        passwordCOBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        t.textColor = .white
+        t.errorColor = .white
+        t.tintColor = .white
+        t.selectedTitleColor = .white
+        passwordCOBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordCOBTN
         t.rightViewMode = .always
         return t
@@ -115,7 +127,7 @@ class CustomChangePasswordView: CustomBaseView {
             mainStack.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         mainView.fillSuperview()
-
+        
         mainStack.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         
         submitButton.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 0, left: 16, bottom: 40, right: 16))
@@ -130,19 +142,19 @@ class CustomChangePasswordView: CustomBaseView {
     
     @objc  func handleASD(sender:UIButton)  {
         oldPasswordTextField.isSecureTextEntry.toggle()
-        let xx = oldPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility") : #imageLiteral(resourceName: "icons8-eye-64")
+        let xx = oldPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
         sender.setImage(xx, for: .normal)
     }
     
     @objc  func handleASDa(sender:UIButton)  {
         newPasswordTextField.isSecureTextEntry.toggle()
-        let xx = newPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility") : #imageLiteral(resourceName: "icons8-eye-64")
+        let xx = newPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
         sender.setImage(xx, for: .normal)
     }
     
     @objc  func handleASDss(sender:UIButton)  {
         confirmNewPasswordTextField.isSecureTextEntry.toggle()
-        let xx = confirmNewPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility") : #imageLiteral(resourceName: "icons8-eye-64")
+        let xx = confirmNewPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
         sender.setImage(xx, for: .normal)
     }
     

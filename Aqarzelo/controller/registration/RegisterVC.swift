@@ -126,11 +126,11 @@ class RegisterVC: UIViewController {
         
     }
     
-    fileprivate func goToMainTab(_ user:UserModel)  {
-        cacheCurrentUserCodabe.save(user)
+    fileprivate func goToMainTab()  {
+//        cacheCurrentUserCodabe.save(user)
         
-        //        userDefaults.set(true, forKey: UserDefaultsConstants.isUserLogined)
-        //              userDefaults.synchronize()
+                userDefaults.set(true, forKey: UserDefaultsConstants.isUserLogined)
+                      userDefaults.synchronize()
         
         //        navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -156,7 +156,7 @@ class RegisterVC: UIViewController {
             guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
             self.saveToken(token: token.apiToken)
             DispatchQueue.main.async {
-                self.goToMainTab(token)
+                self.goToMainTab()
             }
         }
         
@@ -175,7 +175,7 @@ class RegisterVC: UIViewController {
             self.saveToken(token: token.apiToken)
             
             DispatchQueue.main.async {
-                self.goToMainTab(token)
+                self.goToMainTab()
             }
         }
     }
@@ -200,7 +200,7 @@ class RegisterVC: UIViewController {
             self.saveToken(token: user.apiToken)
             
             DispatchQueue.main.async {
-                self.goToMainTab(user)
+                self.goToMainTab()
             }
         }
         
@@ -280,7 +280,7 @@ extension RegisterVC:  GIDSignInDelegate {
             guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
             self.saveToken(token: token.apiToken)
             DispatchQueue.main.async {
-                self.goToMainTab(token)
+                self.goToMainTab()
             }
         }
         

@@ -45,6 +45,10 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         t.title = "SMS code".localized
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.textColor = .white
+                      t.errorColor = .white
+                      t.tintColor = .white
+                      t.selectedTitleColor = .white
         return t
     }()
     lazy var passwordTextField:SkyFloatingLabelTextField = {
@@ -56,7 +60,11 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        t.textColor = .white
+                      t.errorColor = .white
+                      t.tintColor = .white
+                      t.selectedTitleColor = .white
+        passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordOldBTN
         t.rightViewMode = .always
         //        t.constrainHeight(constant: 44)
@@ -78,7 +86,11 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        passwordAAAOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        t.textColor = .white
+                      t.errorColor = .white
+                      t.tintColor = .white
+                      t.selectedTitleColor = .white
+        passwordAAAOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordAAAOldBTN
         t.rightViewMode = .always
         return t
@@ -141,13 +153,13 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
     
     @objc fileprivate func handleShowPassword(sender:UIButton)  {
         passwordTextField.isSecureTextEntry.toggle()
-        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility") : #imageLiteral(resourceName: "icons8-eye-64")
+        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
                sender.setImage(xx, for: .normal)
     }
     
     @objc fileprivate func handleShowConfirmPassword(sender:UIButton)  {
         confirmPasswordTextField.isSecureTextEntry.toggle()
-        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility") : #imageLiteral(resourceName: "icons8-eye-64")
+        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysOriginal)
                sender.setImage(xx, for: .normal)
     }
     

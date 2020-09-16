@@ -45,6 +45,10 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
     lazy var priceTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
         t.keyboardType = UIKeyboardType.numberPad
+        t.textColor = .white
+                      t.errorColor = .white
+                      t.tintColor = .white
+                      t.selectedTitleColor = .white
         t.placeholder = "enter price".localized
         t.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
         t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)

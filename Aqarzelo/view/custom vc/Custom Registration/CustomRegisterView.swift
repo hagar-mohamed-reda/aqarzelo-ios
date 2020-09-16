@@ -31,6 +31,10 @@ class CustomRegisterView: UIView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.textColor = .white
+        t.errorColor = .white
+        t.tintColor = .white
+        t.selectedTitleColor = .white
         return t
     }()
     lazy var phoneTextField:SkyFloatingLabelTextField = {
@@ -41,28 +45,24 @@ class CustomRegisterView: UIView {
         t.title = "Phone".localized
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.textColor = .white
+               t.errorColor = .white
+               t.tintColor = .white
+               t.selectedTitleColor = .white
         return t
     }()
-    lazy var commercialNumberTextField:SkyFloatingLabelTextField = {
+    lazy var emailTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
-        t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        t.placeholder = "Commerical Number".localized
-        t.keyboardType = UIKeyboardType.numberPad
-        t.title = "Commerical Number".localized
-        t.placeholderColor = .white
-        t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        t.isHide(true)
-        return t
-    }()
-    lazy var emailTextField:SkyFloatingLabelTextFieldWithIcon = {
-        let t = SkyFloatingLabelTextFieldWithIcon(frame: .zero, iconType: .image)
         t.keyboardType = UIKeyboardType.emailAddress
         t.placeholder = "Email".localized
         t.title = "Email".localized
-        t.iconImage = #imageLiteral(resourceName: "back button")
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.textColor = .white
+               t.errorColor = .white
+               t.tintColor = .white
+               t.selectedTitleColor = .white
         t.constrainHeight(constant: 50)
         return t
     }()
@@ -75,18 +75,21 @@ class CustomRegisterView: UIView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        //        let button = UIButton()
-        //        button.setImage(#imageLiteral(resourceName: "eye (1)"), for: .normal)
-        //        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
-        passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        t.textColor = .white
+               t.errorColor = .white
+               t.tintColor = .white
+               t.selectedTitleColor = .white
+        passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordOldBTN
         t.rightViewMode = .always
         return t
     }()
     lazy var passwordOldBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
         b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        b.imageView?.contentMode = .scaleAspectFit
+        b.imageView?.clipsToBounds=true
         b.addTarget(self, action: #selector(handleASD), for: .touchUpInside)
         return b
     }()
@@ -98,10 +101,11 @@ class CustomRegisterView: UIView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        //        let button = UIButton()
-        //        button.setImage(#imageLiteral(resourceName: "eye (1)"), for: .normal)
-        //        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
-        passwordAAAOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        t.textColor = .white
+               t.errorColor = .white
+               t.tintColor = .white
+               t.selectedTitleColor = .white
+        passwordAAAOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         //        button.addTarget(self, action: #selector(handleASDs), for: .touchUpInside)
         t.rightView =  passwordAAAOldBTN
         t.rightViewMode = .always
@@ -109,7 +113,7 @@ class CustomRegisterView: UIView {
     }()
     lazy var passwordAAAOldBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal), for: .normal)
+        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
         b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASDs), for: .touchUpInside)
         return b
@@ -174,9 +178,9 @@ class CustomRegisterView: UIView {
             emailTextField,
             passwordTextField,
             confirmPasswordTextField,usernameTextField,
-            phoneTextField,commercialNumberTextField
+            phoneTextField
             ].forEach({$0.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)})
-        let mainStack = getStack(views: usernameTextField,phoneTextField,commercialNumberTextField,emailTextField,passwordTextField,confirmPasswordTextField, spacing: 16, distribution: .fillEqually, axis: .vertical)
+        let mainStack = getStack(views: usernameTextField,phoneTextField,emailTextField,passwordTextField,confirmPasswordTextField, spacing: 16, distribution: .fillEqually, axis: .vertical)
         
         //        let buttonStack = getStack(views: facebookImageView,googleImagView, spacing: 8, distribution: .fillEqually, axis: .horizontal)
         let buttonStack:UIStackView
@@ -208,13 +212,13 @@ class CustomRegisterView: UIView {
     
     @objc func handleASD(sender:UIButton)  {
         passwordTextField.isSecureTextEntry.toggle()
-        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility") : #imageLiteral(resourceName: "icons8-eye-64")
+        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     
     @objc func handleASDs(sender:UIButton)  {
         confirmPasswordTextField.isSecureTextEntry.toggle()
-        let xx = confirmPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility") : #imageLiteral(resourceName: "icons8-eye-64")
+        let xx = confirmPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     
@@ -240,16 +244,6 @@ class CustomRegisterView: UIView {
                 }
                 else {
                     registerViewModel.phone = texts
-                    floatingLabelTextField.errorMessage = ""
-                }
-                
-            }else if text == commercialNumberTextField {
-                if  (texts.count < 4 ) {
-                    floatingLabelTextField.errorMessage = "Invalid commerical number".localized
-                    registerViewModel.commericalNumber = nil
-                }
-                else {
-                    registerViewModel.commericalNumber = texts
                     floatingLabelTextField.errorMessage = ""
                 }
                 
@@ -286,13 +280,5 @@ class CustomRegisterView: UIView {
         }
     }
     
-    @objc func handleUserComp(sender:UISegmentedControl)  {
-        let x = sender.selectedSegmentIndex
-        
-        registerViewModel.isUser =   x == 0 ? false : true
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-            self.commercialNumberTextField.isHide(x == 0 ? true : false)
-        })
-        
-    }
+   
 }

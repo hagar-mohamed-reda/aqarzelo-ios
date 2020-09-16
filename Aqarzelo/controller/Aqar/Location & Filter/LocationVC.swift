@@ -110,7 +110,7 @@ class LocationVC: UIViewController {
     var currentUser:UserModel?{
         didSet{
             guard let user = currentUser else { return  }
-            self.putUserPhoto(photoUrl:user.photoURL)
+//            self.putUserPhoto(photoUrl:user.photoURL)
         }
     }
     var isCheckUserLocation = true
@@ -158,7 +158,8 @@ class LocationVC: UIViewController {
         }else    {
             
             if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-                currentUser=cacheCurrentUserCodabe.storedValue
+                updateUserProfile()
+//                currentUser=cacheCurrentUserCodabe.storedValue
             }
             
             if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
@@ -246,27 +247,27 @@ class LocationVC: UIViewController {
     }
     
     fileprivate func updateUserProfile()  {
-        //        guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
-        //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        //        SVProgressHUD.setForegroundColor(UIColor.green)
-        //        SVProgressHUD.show(withStatus: "Looding...".localized)
-        //
-        //        let dispatchGroup = DispatchGroup()
-        //        dispatchGroup.enter()
-        //
-        //        UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
-        //            if let err=err{
-        //                SVProgressHUD.showError(withStatus: err.localizedDescription)
-        //                self.activeViewsIfNoData();return
-        //            }
-        //            dispatchGroup.leave()
-        //            SVProgressHUD.dismiss()
-        //            self.activeViewsIfNoData() // disbale all events in the screen
-        //            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-        //            self.currentUser = user
-        //            self.putUserPhoto(photoUrl:user.photoURL)
-        //
-        //        }
+                guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
+//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+                SVProgressHUD.setForegroundColor(UIColor.green)
+                SVProgressHUD.show(withStatus: "Looding...".localized)
+        
+                let dispatchGroup = DispatchGroup()
+                dispatchGroup.enter()
+        
+                UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
+                    if let err=err{
+                        SVProgressHUD.showError(withStatus: err.localizedDescription)
+                        self.activeViewsIfNoData();return
+                    }
+                    dispatchGroup.leave()
+                    SVProgressHUD.dismiss()
+                    self.activeViewsIfNoData() // disbale all events in the screen
+                    guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+                    self.currentUser = user
+                    self.putUserPhoto(photoUrl:user.photoURL)
+        
+                }
         
     }
     
@@ -310,7 +311,7 @@ class LocationVC: UIViewController {
     }
     
     fileprivate  func getUserPostsAndUserProfile()  {
-//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         
         
         var group2: BaseAqarModel?
@@ -634,7 +635,7 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
     }
     
     func searchForResults(categoryId:Int,citId: Int, areaId: Int, price1: Int, price2: Int, space1: Int, space2: Int, type: String, bedroom_number: Int, bathroom_number: Int)  {
-//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         // make search to find aqars
         SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Looding....".localized)
