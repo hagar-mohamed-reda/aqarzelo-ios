@@ -20,7 +20,7 @@ class SecondCreateCityCell: BaseCollectionCell {
             iconImageView.isUserInteractionEnabled = true
 //            cityDrop.selectedIndex = aqar.cityID-1
             cityDrop.text = MOLHLanguage.isRTLLanguage() ? aqar.city.nameAr :  aqar.city.nameEn
-            cityDrop.selectedIndex = aqar.cityID
+            cityDrop.selectedIndex = aqar.cityID-1
 //            let cc = aqar.cityID
 //
 //                       let city = getCityFromIndex(cc)

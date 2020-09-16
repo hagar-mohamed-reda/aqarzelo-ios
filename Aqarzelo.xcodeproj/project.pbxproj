@@ -1252,8 +1252,8 @@
 			isa = PBXGroup;
 			children = (
 				9FE270C124E8871A008889AB /* SecondCreateAddressCell.swift */,
-				9FE270C624E8871D008889AB /* SecondCreateAreaCell.swift */,
 				9FE270C324E8871C008889AB /* SecondCreateBuildDateCell.swift */,
+				9FE270C624E8871D008889AB /* SecondCreateAreaCell.swift */,
 				9FE270C524E8871D008889AB /* SecondCreateCityCell.swift */,
 				9FE270C224E8871B008889AB /* SecondCreateFloorNumberCell.swift */,
 				9FE270C424E8871C008889AB /* SecondCreateLocationCell.swift */,

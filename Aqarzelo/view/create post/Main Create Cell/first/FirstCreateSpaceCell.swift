@@ -18,8 +18,8 @@ class FirstCreateSpaceCell: BaseCollectionCell {
             guard let aqar = aqar else { return  }
             iconImageView.image = #imageLiteral(resourceName: "Group 3933")
             iconImageView.isUserInteractionEnabled = true
-            priceTextField.text = "\(aqar.price)"
-            handleTextContents?(Int(aqar.price) ,true)
+            priceTextField.text = aqar.space
+            handleTextContents?(Int(aqar.space.toInt() ?? 100) ,true)
         }
     }
     

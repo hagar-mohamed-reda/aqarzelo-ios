@@ -19,14 +19,15 @@ class SecondCreateAreaCell: BaseCollectionCell {
             guard let aqar = aqar else { return  }
             iconImageView.image = #imageLiteral(resourceName: "Group 3933")
             iconImageView.isUserInteractionEnabled = true
-            areaDrop.text = MOLHLanguage.isRTLLanguage() ? aqar.area?.nameAr :  aqar.area?.nameEn
-            areaDrop.selectedIndex = aqar.areaID
-//            self.getAreaAccordingToCityId(index: aqar.cityID)
-//            areaDrop.selectedIndex = aqar.areaID
+            let aa = aqar.areaID
+            self.getAreaAccordingToCityId(index: aqar.cityID-1)
+             let area = getAreassFromIndex( aa)
+            areaDrop.selectedIndex = area-1
+            areaDrop.text = MOLHLanguage.isRTLLanguage() ?  aqar.area?.nameAr : aqar.area?.nameEn
 //            if  let foo = areaIDSArray.firstIndex(of: aqar.areaID){
-//
+//            
 //            let xx = areaArray[foo]
-//
+//            
 //            areaDrop.text = xx
 //            }
             self.handleTextContents?(aqar.areaID,true)
@@ -130,6 +131,34 @@ class SecondCreateAreaCell: BaseCollectionCell {
     fileprivate func fetchData()  {
            
            fetchEnglishData(isArabic: MOLHLanguage.isRTLLanguage())
+       }
+    
+    fileprivate func getAreassFromIndex(_ index:Int) -> Int {
+           var citName = [String]()
+           var cityId = [Int]()
+           
+           if MOLHLanguage.isRTLLanguage() {
+               
+               
+               
+               if let  cityArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]{
+                   
+                   citName = cityArray
+                   cityId = cityIds
+                   
+                   
+                   
+               }}else {
+               if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int] {
+                   citName = cityArray
+                   cityId = cityIds
+               }
+           }
+           let ss = cityId.filter{$0 == index}
+        
+           let ff = ss.first ?? 1
+           
+           return cityId[ff - 1 ]
        }
     
     fileprivate func fetchEnglishData(isArabic:Bool) {

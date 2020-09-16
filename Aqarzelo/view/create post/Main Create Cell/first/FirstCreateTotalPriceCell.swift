@@ -19,7 +19,7 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
             iconImageView.image = #imageLiteral(resourceName: "Group 3933")
             iconImageView.isUserInteractionEnabled = true
             priceTextField.text = "\(aqar.price)"
-            handleTextContents?(Int(aqar.price) ?? 0,true)
+            handleTextContents?(Int(aqar.price) ?? aqar.pricePerMeter.toInt() ?? 100,true)
         }
     }
     

@@ -18,7 +18,7 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
             iconImageView.image = #imageLiteral(resourceName: "Group 3943")
             iconImageView.isUserInteractionEnabled = true
             dateTextField.text = aqar.buildDate
-            handleTextContents?(dateTextField.text!,true)
+            handleTextContents?(aqar.buildDate,true)
         }
     }
     
