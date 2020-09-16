@@ -281,28 +281,28 @@ class PostServices{
         //        PostServices.fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
-    func updatePost(api_token:String,title:String,description:String,category_id:Int,city_id:Int,area_id:Int,type:String,lat:Double,lng:Double,owner_type:String,space:Double,price_per_meter:Double,payment_method:String,finishing_type:String,bedroom_number:Int,bathroom_number:Int,floor_number:Int,has_garden:Int,has_parking:Int,has_furnished:Int,build_date:String,totalPrice:Double,postId:Int,completion: @escaping (BaseUpdateAqarModel?, Error?) -> ())  {
-        
-        //real_estate_number  == build number
-        
-        let urlString = "http://aqarzelo.com/public/api/post/update".toSecrueHttps()
-        guard  let url = URL(string: urlString) else { return  }
-        let postString = "api_token=\(api_token)&title=\(title)&description=\(description)&category_id=\(category_id)&city_id=\(city_id)&area_id=\(area_id)&type=\(type)&lat=\(lat)&lng=\(lng)&owner_type=\(owner_type)&space=\(space)&price_per_meter=\(price_per_meter)&payment_method=\(payment_method)&bedroom_number=\(bedroom_number)&bathroom_number=\(bathroom_number)&floor_number=\(floor_number)&finishing_type=\(finishing_type)&has_garden=\(has_garden)&has_parking=\(has_parking)&furnished=\(has_furnished)&build_date=\(build_date)&price=\(totalPrice)&post_id=\(postId)"
-        
-        
-        RegistrationServices.registerationPostMethodGeneric(postString: postString, url: url, completion: completion)
-        
-        //        createGeneralSecondMethod(postString: postString, url: url, completion:completion)
-        
-    }
+     func updatePost(api_token:String,title:String,titleAR:String,description:String,category_id:Int,city_id:Int,area_id:Int,type:String,lat:Double,lng:Double,owner_type:String,space:Double,price_per_meter:Double,price:Double,payment_method:String,finishing_type:String,bedroom_number:Int,bathroom_number:Int,floor_number:Int,has_garden:Int,has_parking:Int,has_furnished:Int,build_date:String,totalPrice:Double,postId:Int,completion: @escaping (BaseUpdateAqarModel?, Error?) -> ())  {
+           
+           //real_estate_number  == build number
+           
+           let urlString = "http://aqarzelo.com/public/api/post/update".toSecrueHttps()
+           guard  let url = URL(string: urlString) else { return  }
+           let postString = "api_token=\(api_token)&title=\(title)&title_ar=\(titleAR)&description=\(description)&category_id=\(category_id)&city_id=\(city_id)&area_id=\(area_id)&type=\(type)&lat=\(lat)&lng=\(lng)&owner_type=\(owner_type)&space=\(space)&price_per_meter=\(price_per_meter)&price=\(price)&payment_method=\(payment_method)&bedroom_number=\(bedroom_number)&bathroom_number=\(bathroom_number)&floor_number=\(floor_number)&finishing_type=\(finishing_type)&has_garden=\(has_garden)&has_parking=\(has_parking)&furnished=\(has_furnished)&build_date=\(build_date)&price=\(totalPrice)&post_id=\(postId)"
+           
+           
+           RegistrationServices.registerationPostMethodGeneric(postString: postString, url: url, completion: completion)
+           
+           //        createGeneralSecondMethod(postString: postString, url: url, completion:completion)
+           
+       }
     
-    func addTotalPost(api_token:String,title:String,description:String,category_id:Int,city_id:Int,area_id:Int,type:String,lat:Double,lng:Double,owner_type:String,space:Double,price_per_meter:Int,payment_method:String,finishing_type:String,bedroom_number:Int,bathroom_number:Int,floor_number:Int,has_garden:Int,has_parking:Int,has_furnished:Int,build_date:String,totalPrice:Int,completion: @escaping (BaseAddAqarModel?, Error?) -> ())  {
+   func addTotalPost(api_token:String,title:String,titleAR:String,description:String,category_id:Int,city_id:Int,area_id:Int,type:String,lat:Double,lng:Double,owner_type:String,space:Double,price_per_meter:Int,price:Int,payment_method:String,finishing_type:String,bedroom_number:Int,bathroom_number:Int,floor_number:Int,has_garden:Int,has_parking:Int,has_furnished:Int,build_date:String,totalPrice:Int,completion: @escaping (BaseAddAqarModel?, Error?) -> ())  {
         
         //real_estate_number  == build number
         
         let urlString = "http://aqarzelo.com/public/api/post/add".toSecrueHttps()
         guard  let url = URL(string: urlString) else { return  }
-        let postString = "api_token=\(api_token)&title=\(title)&description=\(description)&category_id=\(category_id)&city_id=\(city_id)&area_id=\(area_id)&type=\(type)&lat=\(lat)&lng=\(lng)&owner_type=\(owner_type)&space=\(space)&price_per_meter=\(price_per_meter)&payment_method=\(payment_method)&bedroom_number=\(bedroom_number)&bathroom_number=\(bathroom_number)&floor_number=\(floor_number)&finishing_type=\(finishing_type)&has_garden=\(has_garden)&has_parking=\(has_parking)&has_furnished=\(has_furnished)&build_date=\(build_date)"
+        let postString = "api_token=\(api_token)&title=\(title)&title_ar=\(titleAR)&description=\(description)&category_id=\(category_id)&city_id=\(city_id)&area_id=\(area_id)&type=\(type)&lat=\(lat)&lng=\(lng)&owner_type=\(owner_type)&space=\(space)&price_per_meter=\(price_per_meter)&price=\(price)&payment_method=\(payment_method)&bedroom_number=\(bedroom_number)&bathroom_number=\(bathroom_number)&floor_number=\(floor_number)&finishing_type=\(finishing_type)&has_garden=\(has_garden)&has_parking=\(has_parking)&has_furnished=\(has_furnished)&build_date=\(build_date)"
         
         RegistrationServices.registerationPostMethodGeneric(postString: postString, url: url, completion: completion)
         

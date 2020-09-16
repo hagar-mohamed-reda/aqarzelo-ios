@@ -29,6 +29,7 @@ class MainCreatePostViewModel {
     
     //variables
     var title:String? {didSet {checkFormValidity()}}
+    var titleAr:String? {didSet {checkFormValidity()}}
     var category:String? {didSet {checkFormValidity()}}
     var sell:String? {didSet {checkFormValidity()}}
     var space:String? {didSet {checkFormValidity()}}
@@ -42,7 +43,7 @@ class MainCreatePostViewModel {
         
         let isFormValid = describe?.isEmpty == false && ownerType?.isEmpty == false && payment?.isEmpty == false && finshed?.isEmpty == false &&  more?.isEmpty == false
         &&  lat?.isEmpty == false && lng?.isEmpty == false && city?.isEmpty == false && area?.isEmpty == false && buildDate?.isEmpty == false && fllorNum?.isEmpty == false
-        &&  title?.isEmpty == false && sell?.isEmpty == false && category?.isEmpty == false && space?.isEmpty == false && roomNum?.isEmpty == false && bathsNum?.isEmpty == false && pricePer?.isEmpty == false && totalPrice?.isEmpty == false
+        &&  title?.isEmpty == false && titleAr?.isEmpty == false  && sell?.isEmpty == false && category?.isEmpty == false && space?.isEmpty == false && roomNum?.isEmpty == false && bathsNum?.isEmpty == false && pricePer?.isEmpty == false && totalPrice?.isEmpty == false
         
         bindableIsFormValidate.value = isFormValid
     }
