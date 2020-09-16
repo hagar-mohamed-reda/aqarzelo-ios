@@ -37,7 +37,7 @@ class FirstCreateTitleArPostCell: BaseCollectionCell,UITextFieldDelegate {
         
         return v
     }()
-    lazy var titleLabel = UILabel(text: "Arabic Title ".localized, font: .systemFont(ofSize: 20), textColor: .black)
+    lazy var titleLabel = UILabel(text: "Title in Arabic ".localized, font: .systemFont(ofSize: 20), textColor: .black)
     
     lazy var textView:UITextView = {
         let tx = UITextView()
