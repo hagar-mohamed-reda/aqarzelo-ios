@@ -20,6 +20,7 @@ class CustomAddMinusView: UIView {
         im.contentMode = .scaleAspectFit
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAddOne)))
         im.clipsToBounds = true
+        im.constrainWidth(constant: 30)
 //        im.constrainWidth(constant: 10)
 
         return im
@@ -29,7 +30,7 @@ class CustomAddMinusView: UIView {
 //        im.constrainHeight(constant: 50)
        
                 im.constrainHeight(constant: 50)
-               im.constrainWidth(constant: 80)
+               im.constrainWidth(constant: 50)
         im.contentMode = .scaleToFill
 //               im.clipsToBounds = true
 //               im.layer.cornerRadius = dd/2
@@ -58,7 +59,7 @@ class CustomAddMinusView: UIView {
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMinusOne)))
         im.clipsToBounds = true
         im.contentMode = .scaleAspectFit
-//        im.constrainWidth(constant: 10)
+        im.constrainWidth(constant: 30)
         return im
     }()
     
