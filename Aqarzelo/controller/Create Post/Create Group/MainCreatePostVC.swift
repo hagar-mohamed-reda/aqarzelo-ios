@@ -377,7 +377,7 @@ class MainCreatePostVC: UIViewController {
     
     func updatePost()  {
         if let aqar = aqar {
-            if let p = aqar.datumDescription,let f = aqar.lat.toDouble(),let g = aqar.lng.toDouble(),let s = Double(aqar.space),let r = Double(aqar.pricePerMeter),let cc = aqar.bedroomNumber.toInt(),let rr = aqar.bathroomNumber.toInt(),let xx = aqar.floorNumber.toInt(){
+            if let p = aqar.datumDescription,let f = aqar.lat.toDouble(),let g = aqar.lng.toDouble(),let s = Double(aqar.space),let r = Double(aqar.pricePerMeter),let cc = aqar.bedroomNumber.toInt(),let rr = aqar.bathroomNumber.toInt(),let xx = aqar.floorNumber?.toInt(){
                 
                 let more = mainCcreatePostVviewModel.more?.toInt()
                 let rrr = Double(aqar.price)

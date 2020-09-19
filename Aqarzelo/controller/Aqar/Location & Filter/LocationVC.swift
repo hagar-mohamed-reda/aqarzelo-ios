@@ -110,7 +110,7 @@ class LocationVC: UIViewController {
     var currentUser:UserModel?{
         didSet{
             guard let user = currentUser else { return  }
-            //            self.putUserPhoto(photoUrl:user.photoURL)
+                        self.putUserPhoto(photoUrl:user.photoURL)
         }
     }
     var isCheckUserLocation = true
@@ -157,7 +157,7 @@ class LocationVC: UIViewController {
             present(welcome, animated: true)
         }else    {
             
-            if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+            if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
                 updateUserProfile()
                 //                currentUser=cacheCurrentUserCodabe.storedValue
             }
@@ -247,6 +247,10 @@ class LocationVC: UIViewController {
     }
     
     fileprivate func updateUserProfile()  {
+        currentUser=cacheCurrentUserCodabe.storedValue
+        if currentUser != nil {
+            return
+        }
         guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
         //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         SVProgressHUD.setForegroundColor(UIColor.green)
@@ -658,12 +662,14 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
             SVProgressHUD.showInfo(withStatus: "No data available......".localized)
         }else {
             self.aqarsArray.removeAll()
-            customLocationView.mapView.clear()
+            
             self.aqarsArray = based.data ?? []
-            self.addMarkerInMapView()
+           
             
         }
         DispatchQueue.main.async {
+            self.customLocationView.mapView.clear()
+             self.addMarkerInMapView()
             self.customLocationView.collectionView.reloadData()
         }
     }

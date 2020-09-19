@@ -16,8 +16,8 @@ class SecondCreateFloorNumberCell: BaseCollectionCell {
         didSet{
             guard let aqar = aqar else { return  }
             iconImageView.image = #imageLiteral(resourceName: "Group 3943")
-            customAddMinusView.numberOfItemsLabel.text = "\(aqar.floorNumber)"
-            handleTextContents?(Int(aqar.floorNumber) ?? 0,true)
+            customAddMinusView.numberOfItemsLabel.text = aqar.floorNumber
+            handleTextContents?(Int(aqar.floorNumber ?? "0") ?? 0,true)
         }
     }
     

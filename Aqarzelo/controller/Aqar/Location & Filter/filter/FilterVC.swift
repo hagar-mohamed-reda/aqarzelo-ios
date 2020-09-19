@@ -282,7 +282,7 @@ class FilterVC: UIViewController {
         if let cityIdArra = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let areaIdArra = userDefaults.value(forKey: UserDefaultsConstants.areaIdsArrays) as? [Int],let areaIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int],let cityIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String]{
             self.citysNumberArray = cityIdArra
             
-            let areas = citysNumberArray[index]
+            let areas = citysNumberArray[index-1]
             let areasFilteredArray = areaIdArray.indexes(of: areas)
             areasFilteredArray.forEach { (s) in
                 allAreasSelectedArray.append(areaIdArra[s])
@@ -292,8 +292,8 @@ class FilterVC: UIViewController {
                 finalFilteredAreaNames.append(areasStringArray[index])
                 
             }
-            
-            
+            self.finalFilteredAreaNames.removeAll(where: {$0=="All"})
+            self.finalFilteredAreaNames.insert("All".localized, at: 0)
             self.customFilterView.areaDrop.optionArray = finalFilteredAreaNames
             //            self.dropDownTableViewVC.areaDataSource=finalFilteredAreaNames
             DispatchQueue.main.async {
@@ -450,7 +450,7 @@ class FilterVC: UIViewController {
         print(65)
     }
     
-    @objc fileprivate func handleSubmit()  {   delgate?.getaqarsAccordingTo(citId:selectedCityId,areaId:selectedAreaId,price1:minimuPrice,price2:maximumPrice,space1:minimuSpace,space2:maximumSpace,type:selectedType,bedroom_number:2,bathroom_number:2, categoryId: selectedCategoryId)
+    @objc fileprivate func handleSubmit()  {   delgate?.getaqarsAccordingTo(citId:selectedCityId,areaId:selectedAreaId,price1:minimuPrice,price2:maximumPrice,space1:minimuSpace,space2:maximumSpace,type:selectedType,bedroom_number:numberOfRooms,bathroom_number:numberOfBaths, categoryId: selectedCategoryId)
         navigationController?.popViewController(animated: true)
     }
 }

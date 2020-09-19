@@ -40,6 +40,7 @@ class CustomLocationView:  CustomBaseView{
     lazy var subView:UIView = {
         let v = UIView(backgroundColor: #colorLiteral(red: 0.4169815183, green: 0.83258003, blue: 0.6895253658, alpha: 1))
         v.constrainHeight(constant: 160)
+        v.alpha = 0.5
 //        v.isHide(true)
         return v
     }()

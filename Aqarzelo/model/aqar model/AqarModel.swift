@@ -16,8 +16,8 @@ struct AqarModel:Codable {
     var address: String?
     let lng, lat, phone, space: String
     let pricePerMeter: String
-    var refusedReason: String?
-    let bedroomNumber, bathroomNumber, floorNumber:String
+    var refusedReason,floorNumber: String?
+    let bedroomNumber, bathroomNumber:String
     var realEstateNumber: String?
     
     var buildDate: String?
@@ -98,6 +98,7 @@ struct Area: Codable {
 
 enum Active: String, Codable {
     case active = "active"
+    case notActive = "not_active"
 }
 
 
@@ -157,8 +158,8 @@ enum DatumType: String, Codable {
 class CompanyClass: Codable {
     var id: Int?
     let name, email, password: String
-    let lng, lat: String?
-    let phone, photo, cover: String
+    var lng, lat,photo,cover: String?
+    let phone: String
     var address: String?
     let apiToken: String?
     let active: Active

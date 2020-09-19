@@ -18,16 +18,16 @@ class SecondCreateCityCell: BaseCollectionCell {
             guard let aqar = aqar else { return  }
             iconImageView.image = #imageLiteral(resourceName: "Group 3938")
             iconImageView.isUserInteractionEnabled = true
-//            cityDrop.selectedIndex = aqar.cityID-1
+            //            cityDrop.selectedIndex = aqar.cityID-1
             cityDrop.text = MOLHLanguage.isRTLLanguage() ? aqar.city.nameAr :  aqar.city.nameEn
             cityDrop.selectedIndex = aqar.cityID-1
-//            let cc = aqar.cityID
-//
-//                       let city = getCityFromIndex(cc)
-//            cityDrop.text = city
-//            if let arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
-//                       cityDrop.text = arr[aqar.cityID-1]
-//                   }
+            //            let cc = aqar.cityID
+            //
+            //                       let city = getCityFromIndex(cc)
+            //            cityDrop.text = city
+            //            if let arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
+            //                       cityDrop.text = arr[aqar.cityID-1]
+            //                   }
             
             
             handleTextContents?(aqar.cityID-1,true)
@@ -57,27 +57,28 @@ class SecondCreateCityCell: BaseCollectionCell {
     }()
     
     lazy var mainDrop1View:UIView =  {
-
-         let v = makeMainSubViewWithAppendView(vv: [cityDrop])
+        
+        let v = makeMainSubViewWithAppendView(vv: [cityDrop])
         v.hstack(cityDrop).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
         v.isHide(true)
         v.constrainWidth(constant: frame.width - 120)
-          return v
-      }()
+        return v
+    }()
     
     lazy var cityDrop:DropDown = {
         let i = returnMainDropDown(plcae: "Select City".localized)
-        if let arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
+        if var arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
+           
             i.optionArray = arr
         }
         i.constrainHeight(constant: 40)
-//        v.constrainWidth(constant: frame.width - 128)
-//        i.isHide(true)
-
+        //        v.constrainWidth(constant: frame.width - 128)
+        //        i.isHide(true)
+        
         i.didSelect(completion: {[unowned self] (choosed, index, id) in
             self.handleTextContents?(index,true)
         })
-
+        
         return i
     }()
     
@@ -85,11 +86,11 @@ class SecondCreateCityCell: BaseCollectionCell {
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((Int?,Bool)->Void)?
     var handleOpenDropDown:((CGRect)->Void)?
-
+    
     override func setupViews() {
-//        mainDrop1View.isUserInteractionEnabled=true
+        //        mainDrop1View.isUserInteractionEnabled=true
         
-
+        
         categoryLabel.constrainHeight(constant: 30)
         backgroundColor = .white
         
@@ -97,8 +98,8 @@ class SecondCreateCityCell: BaseCollectionCell {
         
         let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
         let dd = hstack(mainDrop1View,UIView())
-//        makeThissss(xx: mainDrop1View, cc: cityDrop, img: cityImage)
-
+        //        makeThissss(xx: mainDrop1View, cc: cityDrop, img: cityImage)
+        
         let second = stack(categoryLabel,categoryQuestionLabel,dd,UIView(),spacing:8)
         
         hstack(ss,second,UIView(),spacing:16).withMargins(.init(top: 0, left: 36, bottom: 0, right: 8))
@@ -138,5 +139,5 @@ class SecondCreateCityCell: BaseCollectionCell {
     
     @objc  func handleOpenDrops()  {
         handleOpenDropDown?(mainDrop1View.frame)
-       }
+    }
 }

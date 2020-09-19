@@ -21,15 +21,15 @@ class SecondCreateAreaCell: BaseCollectionCell {
             iconImageView.isUserInteractionEnabled = true
             let aa = aqar.areaID
             self.getAreaAccordingToCityId(index: aqar.cityID-1)
-             let area = getAreassFromIndex( aa)
+            let area = getAreassFromIndex( aa)
             areaDrop.selectedIndex = area-1
             areaDrop.text = MOLHLanguage.isRTLLanguage() ?  aqar.area?.nameAr : aqar.area?.nameEn
-//            if  let foo = areaIDSArray.firstIndex(of: aqar.areaID){
-//            
-//            let xx = areaArray[foo]
-//            
-//            areaDrop.text = xx
-//            }
+            //            if  let foo = areaIDSArray.firstIndex(of: aqar.areaID){
+            //
+            //            let xx = areaArray[foo]
+            //
+            //            areaDrop.text = xx
+            //            }
             self.handleTextContents?(aqar.areaID,true)
         }
     }
@@ -63,13 +63,13 @@ class SecondCreateAreaCell: BaseCollectionCell {
         return l
     }()
     lazy var mainDrop1View:UIView =  {
-
-            let v = makeMainSubViewWithAppendView(vv: [areaDrop])
-           v.hstack(areaDrop).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
-           v.isHide(true)
-           v.constrainWidth(constant: frame.width - 120)
-             return v
-         }()
+        
+        let v = makeMainSubViewWithAppendView(vv: [areaDrop])
+        v.hstack(areaDrop).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
+        v.isHide(true)
+        v.constrainWidth(constant: frame.width - 120)
+        return v
+    }()
     lazy var areaDrop:DropDown = {
         let i = returnMainDropDown(plcae: "Select Area".localized)
         i.constrainHeight(constant: 40)
@@ -86,11 +86,11 @@ class SecondCreateAreaCell: BaseCollectionCell {
     var handleTextContents:((Int?,Bool)->Void)?
     
     var cityArray = [String]() //["one","two","three","sdfdsfsd"]
-       var areaArray = [String]()
-       
-       var cityIDSArray = [Int]() //["one","two","three","sdfdsfsd"]
-       var areaIDSArray = [Int]()
-
+    var areaArray = [String]()
+    
+    var cityIDSArray = [Int]() //["one","two","three","sdfdsfsd"]
+    var areaIDSArray = [Int]()
+    
     fileprivate func getAreaAccordingToCityId(index:Int)  {
         areaIDSArray.removeAll()
         areaArray.removeAll()
@@ -110,7 +110,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
                 areaArray.append( areasStringArray[indexx])
                 
             }
-            
+           
             self.areaDrop.optionArray = areaArray
             
             DispatchQueue.main.async {
@@ -123,70 +123,71 @@ class SecondCreateAreaCell: BaseCollectionCell {
         super.init(frame: frame)
         fetchData()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     fileprivate func fetchData()  {
-           
-           fetchEnglishData(isArabic: MOLHLanguage.isRTLLanguage())
-       }
+        
+        fetchEnglishData(isArabic: MOLHLanguage.isRTLLanguage())
+    }
     
     fileprivate func getAreassFromIndex(_ index:Int) -> Int {
-           var citName = [String]()
-           var cityId = [Int]()
-           
-           if MOLHLanguage.isRTLLanguage() {
-               
-               
-               
-               if let  cityArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]{
-                   
-                   citName = cityArray
-                   cityId = cityIds
-                   
-                   
-                   
-               }}else {
-               if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int] {
-                   citName = cityArray
-                   cityId = cityIds
-               }
-           }
-           let ss = cityId.filter{$0 == index}
+        var citName = [String]()
+        var cityId = [Int]()
         
-           let ff = ss.first ?? 1
-           
-           return cityId[ff - 1 ]
-       }
+        if MOLHLanguage.isRTLLanguage() {
+            
+            
+            
+            if let  cityArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]{
+                
+                citName = cityArray
+                cityId = cityIds
+                
+                
+                
+            }}else {
+            if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int] {
+                citName = cityArray
+                cityId = cityIds
+            }
+        }
+        let ss = cityId.filter{$0 == index}
+        
+        let ff = ss.first ?? 1
+        
+        return cityId[ff - 1 ]
+    }
     
     fileprivate func fetchEnglishData(isArabic:Bool) {
-           if isArabic {
-               
-               
-               if  let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let degreeNames = userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String] , let degreeIds =  userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]  {
-                                
-                   self.cityArray = cityArray
-                          self.areaArray = degreeNames
-                          self.cityIDSArray = cityIds
-                          areaIDSArray = degreeIds
-               }
-           }else {
-               if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let degreeNames = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String] , let degreeIds =  userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]  {
-                  
-                 self.cityArray = cityArray
-                                         self.areaArray = degreeNames
-                                         self.cityIDSArray = cityIds
-                                         areaIDSArray = degreeIds
-                   
-               }
-           }
-           self.areaDrop.optionArray = areaArray
-           DispatchQueue.main.async {
-               self.layoutIfNeeded()
-           }
-       }
+        if isArabic {
+            
+            
+            if  let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let degreeNames = userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String] , let degreeIds =  userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]  {
+                
+                self.cityArray = cityArray
+                self.areaArray = degreeNames
+                self.cityIDSArray = cityIds
+                areaIDSArray = degreeIds
+            }
+        }else {
+            if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let degreeNames = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String] , let degreeIds =  userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int]  {
+                
+                self.cityArray = cityArray
+                self.areaArray = degreeNames
+                self.cityIDSArray = cityIds
+                areaIDSArray = degreeIds
+                
+            }
+        }
+       
+        self.areaDrop.optionArray = areaArray
+        DispatchQueue.main.async {
+            self.layoutIfNeeded()
+        }
+    }
     
     
     override func setupViews() {
