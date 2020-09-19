@@ -49,7 +49,7 @@
 //forget pass vc
 
 "Invalid Phone number" = "رقم الهاتف غير صحيح";
-"Confirm" = "تاكيد";
+"Confirm" = "تاكيد";"All"="الكل";
 "Waiting..." = "انتظر من فضلك.....";
 "Password reset successfully"="تم تعديل الباسورد بنجاح";
 "Resend SMS..."="اعاده ارسال رساله...";

@@ -39,69 +39,69 @@ class FilterVC: UIViewController {
     
     lazy var customMainAlertVC:CustomMainAlertVC = {
         let t = CustomMainAlertVC()
-//        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        //        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
         t.modalTransitionStyle = .crossDissolve
         t.modalPresentationStyle = .overCurrentContext
         return t
     }()
     
-//    lazy var dropDownTableViewVC:DropDownAllTableViewVC = {
-//        let v = DropDownAllTableViewVC()
-//        v.view.layer.cornerRadius = 8
-//        v.view.clipsToBounds=true
-//        v.handleCheckedIndex = {[unowned self] types,select,index in
-//            self.checkSelectedDropDown(types,select,index)
-//            self.removeTransparentView()
-//        }
-//        return v
-//    }()
-//
-//    func checkSelectedDropDown(_ type:String,_ seleced:String,_ index:Int)  {
-//        if type == "city" {
-//            self.customFilterView.cityDrop.text = seleced
-//            self.getAreaAccordingToCityId(index: index-1)
-//            self.selectedCityId = index
-//        }else if type == "area" {
-//            self.customFilterView.areaDrop.text = seleced
-//            self.selectedAreaId = self.allAreasSelectedArray[index-1]
-//
-//        }else if type == "cat" {
-//            self.customFilterView.catDrop.text = seleced
-//            self.selectedCategoryId = self.categoryIdsArray[index]
-//
-//        }else if type == "type" {
-//            self.customFilterView.typeDrop.text = seleced
-//            self.selectedType = seleced
-//        }
-//    }
+    //    lazy var dropDownTableViewVC:DropDownAllTableViewVC = {
+    //        let v = DropDownAllTableViewVC()
+    //        v.view.layer.cornerRadius = 8
+    //        v.view.clipsToBounds=true
+    //        v.handleCheckedIndex = {[unowned self] types,select,index in
+    //            self.checkSelectedDropDown(types,select,index)
+    //            self.removeTransparentView()
+    //        }
+    //        return v
+    //    }()
+    //
+    //    func checkSelectedDropDown(_ type:String,_ seleced:String,_ index:Int)  {
+    //        if type == "city" {
+    //            self.customFilterView.cityDrop.text = seleced
+    //            self.getAreaAccordingToCityId(index: index-1)
+    //            self.selectedCityId = index
+    //        }else if type == "area" {
+    //            self.customFilterView.areaDrop.text = seleced
+    //            self.selectedAreaId = self.allAreasSelectedArray[index-1]
+    //
+    //        }else if type == "cat" {
+    //            self.customFilterView.catDrop.text = seleced
+    //            self.selectedCategoryId = self.categoryIdsArray[index]
+    //
+    //        }else if type == "type" {
+    //            self.customFilterView.typeDrop.text = seleced
+    //            self.selectedType = seleced
+    //        }
+    //    }
     lazy var customFilterView:CustomFilterView = {
         let v = CustomFilterView()
-//        [v.mainDrop1View,v.mainDrop2View,v.mainDrop3View,v.mainDrop4View].forEach({$0.isUserInteractionEnabled=true})
-//        v.mainDrop1View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCitys)))
-//        v.mainDrop2View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAreas)))
-//        v.mainDrop3View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCategoriess)))
-//        v.mainDrop4View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTypess)))
-//
-//
-//        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeTransparentView)))
+        //        [v.mainDrop1View,v.mainDrop2View,v.mainDrop3View,v.mainDrop4View].forEach({$0.isUserInteractionEnabled=true})
+        //        v.mainDrop1View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCitys)))
+        //        v.mainDrop2View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAreas)))
+        //        v.mainDrop3View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleCategoriess)))
+        //        v.mainDrop4View.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTypess)))
+        //
+        //
+        //        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeTransparentView)))
         
         
         
-                v.cityDrop.didSelect(completion: {[unowned self] (ss, index, id) in
-                            self.getAreaAccordingToCityId(index: index)
-                    self.selectedCityId = self.getCityFromIndex(index)
-        
-                })
-                v.areaDrop.didSelect(completion: { [unowned self] (selected, index, _) in
-                    self.selectedAreaId = self.allAreasSelectedArray[index]
-                })
-                v.categoryDrop.didSelect(completion: {[unowned self] (selected, index, _) in
-                    self.selectedCategoryId = self.categoryIdsArray[index]
-                    print(self.selectedCategoryId)
-                })
-                v.TypeDrop.didSelect(completion: {[unowned self] (selected, _, _) in
-                    self.selectedType = selected
-                })
+        v.cityDrop.didSelect(completion: {[unowned self] (ss, index, id) in
+            self.getAreaAccordingToCityId(index: index)
+            self.selectedCityId = self.getCityFromIndex(index)
+            
+        })
+        v.areaDrop.didSelect(completion: { [unowned self] (selected, index, _) in
+            self.selectedAreaId = self.allAreasSelectedArray[index]
+        })
+        v.categoryDrop.didSelect(completion: {[unowned self] (selected, index, _) in
+            self.selectedCategoryId = self.categoryIdsArray[index]
+            print(self.selectedCategoryId)
+        })
+        v.TypeDrop.didSelect(completion: {[unowned self] (selected, _, _) in
+            self.selectedType = selected
+        })
         v.priceSlider.addTarget(self, action: #selector(rangeSliderValueChanged), for: .valueChanged)
         v.spaceSlider.addTarget(self, action: #selector(rangeSliderValueChanged), for: .valueChanged)
         v.submitButton.addTarget(self, action: #selector(handleSubmit), for: .touchUpInside)
@@ -231,41 +231,45 @@ class FilterVC: UIViewController {
                 self.categoryIdsArray = cateIds
             }
         }
-                self.customFilterView.cityDrop.optionArray = self.citysStringArray
-                self.customFilterView.areaDrop.optionArray = self.areasStringArray
-                self.customFilterView.categoryDrop.optionArray = self.categoryStringArray
+        self.citysStringArray.insert("All".localized, at: 0)
+        self.areasStringArray.insert("All".localized, at: 0)
+        self.categoryStringArray.insert("All".localized, at: 0)
+
+        self.customFilterView.cityDrop.optionArray = self.citysStringArray
+        self.customFilterView.areaDrop.optionArray = self.areasStringArray
+        self.customFilterView.categoryDrop.optionArray = self.categoryStringArray
         
-//        self.dropDownTableViewVC.cityDataSource=citysStringArray
-//        self.dropDownTableViewVC.areaDataSource=areasStringArray
+        //        self.dropDownTableViewVC.cityDataSource=citysStringArray
+        //        self.dropDownTableViewVC.areaDataSource=areasStringArray
         DispatchQueue.main.async {
             self.view.layoutIfNeeded()
         }
     }
     
     fileprivate func getCityFromIndex(_ index:Int) -> Int {
-           var citName = [String]()
-           var cityId = [Int]()
-           
-           if MOLHLanguage.isRTLLanguage() {
-               
-               
-               
-               if let  cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
-                   
-                   citName = cityArray
-                   cityId = cityIds
-                   
-                   
-                   
-               }}else {
-               if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int] {
-                   citName = cityArray
-                   cityId = cityIds
-               }
-           }
-           
-           return cityId[index ]
-       }
+        var citName = [String]()
+        var cityId = [Int]()
+        
+        if MOLHLanguage.isRTLLanguage() {
+            
+            
+            
+            if let  cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
+                
+                citName = cityArray
+                cityId = cityIds
+                
+                
+                
+            }}else {
+            if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int] {
+                citName = cityArray
+                cityId = cityIds
+            }
+        }
+        
+        return cityId[index ]
+    }
     
     fileprivate func fetchData()  {
         
@@ -291,8 +295,9 @@ class FilterVC: UIViewController {
                 
             }
             
-                        self.customFilterView.areaDrop.optionArray = finalFilteredAreaNames
-//            self.dropDownTableViewVC.areaDataSource=finalFilteredAreaNames
+            
+            self.customFilterView.areaDrop.optionArray = finalFilteredAreaNames
+            //            self.dropDownTableViewVC.areaDataSource=finalFilteredAreaNames
             DispatchQueue.main.async {
                 self.view.layoutIfNeeded()
             }
@@ -350,81 +355,81 @@ class FilterVC: UIViewController {
         
     }
     
-//    fileprivate func showDropDownMenu(_ v:UIView,type:String) {
-//        let bView = v
-//        dropDownTableViewVC.areaDataSource.removeAll();        dropDownTableViewVC.cityDataSource.removeAll()
-//        ;  dropDownTableViewVC.categoryDataSource.removeAll(); dropDownTableViewVC.typeDataSource.removeAll()
-//        if type == "city" {
-//            dropDownTableViewVC.cityDataSource = citysStringArray
-//        }else if type == "area" {
-//            dropDownTableViewVC.areaDataSource = finalFilteredAreaNames//areasStringArray
-//        }else if type == "cat" {
-//            dropDownTableViewVC.categoryDataSource = categoryStringArray
-//        }else if type == "type" {
-//            dropDownTableViewVC.typeDataSource = ["Sale".localized, "Rent".localized]
-//        }
-//        dropDownTableViewVC.types=type
-//        dropDownTableViewVC.tableView.reloadData()
-//
-//        let xx = dropDownTableViewVC.view!
-//        let ff = bView.frame.origin.y + bView.frame.height + 5
-//
-//        let window = UIWindow.key
-//        transparentView.frame = window?.frame ?? self.view.frame
-//        self.view.addSubViews(views: transparentView,xx)
-//
-//        view.addSubview(xx)
-//
-//        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
-//        transparentView.addGestureRecognizer(tapgesture)
-//        transparentView.alpha = 0
-//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-//            self.transparentView.alpha = 0.5
-//            xx.fillSuperview(padding: .init(top: ff, left: 16, bottom: 0, right: 16))
-//        }, completion: nil)
-//    }
+    //    fileprivate func showDropDownMenu(_ v:UIView,type:String) {
+    //        let bView = v
+    //        dropDownTableViewVC.areaDataSource.removeAll();        dropDownTableViewVC.cityDataSource.removeAll()
+    //        ;  dropDownTableViewVC.categoryDataSource.removeAll(); dropDownTableViewVC.typeDataSource.removeAll()
+    //        if type == "city" {
+    //            dropDownTableViewVC.cityDataSource = citysStringArray
+    //        }else if type == "area" {
+    //            dropDownTableViewVC.areaDataSource = finalFilteredAreaNames//areasStringArray
+    //        }else if type == "cat" {
+    //            dropDownTableViewVC.categoryDataSource = categoryStringArray
+    //        }else if type == "type" {
+    //            dropDownTableViewVC.typeDataSource = ["Sale".localized, "Rent".localized]
+    //        }
+    //        dropDownTableViewVC.types=type
+    //        dropDownTableViewVC.tableView.reloadData()
+    //
+    //        let xx = dropDownTableViewVC.view!
+    //        let ff = bView.frame.origin.y + bView.frame.height + 5
+    //
+    //        let window = UIWindow.key
+    //        transparentView.frame = window?.frame ?? self.view.frame
+    //        self.view.addSubViews(views: transparentView,xx)
+    //
+    //        view.addSubview(xx)
+    //
+    //        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+    //        transparentView.addGestureRecognizer(tapgesture)
+    //        transparentView.alpha = 0
+    //        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+    //            self.transparentView.alpha = 0.5
+    //            xx.fillSuperview(padding: .init(top: ff, left: 16, bottom: 0, right: 16))
+    //        }, completion: nil)
+    //    }
     
     
     //TODO:-Handle methods
     
     //MARK:-Handle drop down methods
     
-//    @objc  func handleAreas()  {
-//        showDropDownMenu(customFilterView.mainDrop2View, type: "area")
-//        dropDownTableViewVC.view.isHide(dropDownTableViewVC.areaDataSource.count > 0 ? false : true)
-//    }
-//
-//    @objc  func handleCategoriess()  {
-//        showDropDownMenu(customFilterView.mainDrop3View, type: "cat")
-//        dropDownTableViewVC.view.isHide(false)
-//    }
-//
-//    @objc  func handleTypess()  {
-//        showDropDownMenu(customFilterView.mainDrop4View, type: "type")
-//        dropDownTableViewVC.view.isHide(false)
-//    }
-//
-//    @objc  func handleCitys()  {
-//        showDropDownMenu(customFilterView.mainDrop1View, type: "city")
-//        dropDownTableViewVC.view.isHide(false)
-//    }
+    //    @objc  func handleAreas()  {
+    //        showDropDownMenu(customFilterView.mainDrop2View, type: "area")
+    //        dropDownTableViewVC.view.isHide(dropDownTableViewVC.areaDataSource.count > 0 ? false : true)
+    //    }
+    //
+    //    @objc  func handleCategoriess()  {
+    //        showDropDownMenu(customFilterView.mainDrop3View, type: "cat")
+    //        dropDownTableViewVC.view.isHide(false)
+    //    }
+    //
+    //    @objc  func handleTypess()  {
+    //        showDropDownMenu(customFilterView.mainDrop4View, type: "type")
+    //        dropDownTableViewVC.view.isHide(false)
+    //    }
+    //
+    //    @objc  func handleCitys()  {
+    //        showDropDownMenu(customFilterView.mainDrop1View, type: "city")
+    //        dropDownTableViewVC.view.isHide(false)
+    //    }
     
-//    @objc func removeTransparentView() {
-//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-//            self.transparentView.alpha = 0
-//            self.dropDownTableViewVC.view.removeFromSuperview()
-//        }, completion: nil)
-//    }
+    //    @objc func removeTransparentView() {
+    //        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+    //            self.transparentView.alpha = 0
+    //            self.dropDownTableViewVC.view.removeFromSuperview()
+    //        }, completion: nil)
+    //    }
     
-//    @objc func handleDismiss()  {
-//        dismiss(animated: true, completion: nil)
-//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-//            self.transparentView.alpha = 0
-//            self.dropDownTableViewVC.view.removeFromSuperview()
-//            //            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-//        }, completion: nil)
-//        //        [customNoInternetView,transparentView].forEach({$0.})
-//    }
+    //    @objc func handleDismiss()  {
+    //        dismiss(animated: true, completion: nil)
+    //        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+    //            self.transparentView.alpha = 0
+    //            self.dropDownTableViewVC.view.removeFromSuperview()
+    //            //            self.tableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+    //        }, completion: nil)
+    //        //        [customNoInternetView,transparentView].forEach({$0.})
+    //    }
     
     @objc func rangeSliderValueChanged(slider:RangeSlider) {
         

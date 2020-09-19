@@ -80,7 +80,7 @@ class CustomFilterView:CustomBaseView {
     lazy var TypeDrop:DropDown = {
         let i = returnMainDropDown(plcae: "Type".localized)
         i.constrainHeight(constant: 50)
-        i.optionArray = ["Sale".localized, "Rent".localized]
+        i.optionArray = ["All".localized,"Sale".localized, "Rent".localized]
         
         return i
     }()
@@ -163,22 +163,22 @@ class CustomFilterView:CustomBaseView {
     //        let dropStack = getStack(views: mainDrop1View,mainDrop2View,mainDrop3View,mainDrop4View, spacing: 16, distribution: .fillEqually, axis: .vertical)
     //        return dropStack
     //    }()
-   lazy var mainStackView:UIStackView = {
-           let mainStackView = getStack(views: dropStack,totalStack,total2Stack,seperatorView, spacing: 24, distribution: .fill, axis: .vertical)
-           return mainStackView
-       }()
-       lazy var dropStack:UIStackView = {
-           let dropStack = getStack(views: mainDrop1View,mainDrop2View,mainDrop3View,mainDrop4View, spacing: 16, distribution: .fillEqually, axis: .vertical)
-           return dropStack
-       }()
-       lazy var totalStack:UIStackView = {
-           let totalStack = getStack(views: numRoomsLabel,roomsMinusAddView, spacing: 8, distribution: .fillEqually, axis: .horizontal)
-           return totalStack
-       }()
-       lazy var total2Stack:UIStackView = {
-           let total2Stack = getStack(views: numBathsLabel,bathsMinusAddView, spacing: 8, distribution: .fillEqually, axis: .horizontal)
-           return total2Stack
-       }()
+    lazy var mainStackView:UIStackView = {
+        let mainStackView = getStack(views: dropStack,totalStack,total2Stack,seperatorView, spacing: 24, distribution: .fill, axis: .vertical)
+        return mainStackView
+    }()
+    lazy var dropStack:UIStackView = {
+        let dropStack = getStack(views: mainDrop1View,mainDrop2View,mainDrop3View,mainDrop4View, spacing: 16, distribution: .fillEqually, axis: .vertical)
+        return dropStack
+    }()
+    lazy var totalStack:UIStackView = {
+        let totalStack = getStack(views: numRoomsLabel,roomsMinusAddView, spacing: 8, distribution: .fillEqually, axis: .horizontal)
+        return totalStack
+    }()
+    lazy var total2Stack:UIStackView = {
+        let total2Stack = getStack(views: numBathsLabel,bathsMinusAddView, spacing: 8, distribution: .fillEqually, axis: .horizontal)
+        return total2Stack
+    }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -214,8 +214,8 @@ class CustomFilterView:CustomBaseView {
             
         }
         
-       
-                    
+        
+        
         addSubViews(views: mainStackView,submitButton,priceLabel,priceSlider,priceStack,spaceLabel,spaceSlider,spaceStack)
         
         mainStackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 32, left: 16, bottom: 0, right: 16))
