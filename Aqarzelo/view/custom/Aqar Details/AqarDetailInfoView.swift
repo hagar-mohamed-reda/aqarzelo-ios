@@ -16,15 +16,30 @@ class AqarDetailInfoView:UIView {
         didSet{
             guard let aqar = aqar else { return  }
 
-            if MOLHLanguage.isRTLLanguage() {
-                if let bb = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String]  {
-                    LabelsView[8].text = bb[aqar.cityID]
-                }
-            }else {
-                if let bb = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String]  {
-                    LabelsView[8].text = bb[aqar.cityID]
-                }
-            }
+             if MOLHLanguage.isRTLLanguage() {
+                            if let bb = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let xx =  userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int] {
+                                let xx = xx.indexes(of: aqar.cityID)
+                                                   
+                                                   LabelsView[8].text = bb[xx.first ?? 0]
+            //                    LabelsView[8].text = bb[aqar.cityID]
+                            }
+                        }else {
+                            if let bb = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let xx =  userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]  {
+                                let xx = xx.indexes(of: aqar.cityID)
+                                
+                                LabelsView[8].text = bb[xx.first ?? 0]
+                            }
+                        }
+            
+//            if MOLHLanguage.isRTLLanguage() {
+//                if let bb = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String]  {
+//                    LabelsView[8].text = bb[aqar.cityID]
+//                }
+//            }else {
+//                if let bb = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String]  {
+//                    LabelsView[8].text = bb[aqar.cityID]
+//                }
+//            }
             
             
             LabelsView[0].text = "\(String(describing: aqar.bedroomNumber)) "+"Rooms".localized
