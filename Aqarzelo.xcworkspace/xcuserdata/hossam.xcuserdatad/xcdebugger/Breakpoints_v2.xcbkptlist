@@ -247,22 +247,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "52A52652-5344-4732-BC53-747452AE24F2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "228E42E4-7598-434A-AF04-B42890D5B9E1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -270,8 +254,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "fireTimer(timer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +270,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "fireTimer(timer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1100,8 +1084,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "654"
-            endingLineNumber = "654"
+            startingLineNumber = "708"
+            endingLineNumber = "708"
             landmarkName = "searchForResults(categoryId:citId:areaId:price1:price2:space1:space2:type:bedroom_number:bathroom_number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1116,8 +1100,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "662"
-            endingLineNumber = "662"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
             landmarkName = "refreshData(base:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1132,8 +1116,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "664"
-            endingLineNumber = "664"
+            startingLineNumber = "718"
+            endingLineNumber = "718"
             landmarkName = "refreshData(base:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1164,8 +1148,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "updateUserProfile()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1180,8 +1164,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "653"
-            endingLineNumber = "653"
+            startingLineNumber = "707"
+            endingLineNumber = "707"
             landmarkName = "searchForResults(categoryId:citId:areaId:price1:price2:space1:space2:type:bedroom_number:bathroom_number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1196,8 +1180,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "655"
-            endingLineNumber = "655"
+            startingLineNumber = "709"
+            endingLineNumber = "709"
             landmarkName = "searchForResults(categoryId:citId:areaId:price1:price2:space1:space2:type:bedroom_number:bathroom_number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1212,8 +1196,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "673"
-            endingLineNumber = "673"
+            startingLineNumber = "727"
+            endingLineNumber = "727"
             landmarkName = "refreshData(base:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1228,8 +1212,8 @@
             filePath = "Aqarzelo/controller/Aqar/Location &amp; Filter/LocationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "666"
-            endingLineNumber = "666"
+            startingLineNumber = "720"
+            endingLineNumber = "720"
             landmarkName = "refreshData(base:)"
             landmarkType = "7">
          </BreakpointContent>

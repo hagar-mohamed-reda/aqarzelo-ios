@@ -21,6 +21,7 @@ class LocationVC: UIViewController {
         la.constrainWidth(constant: 40)
         la.constrainHeight(constant: 40)
         la.layer.cornerRadius = 20
+//        la.frame = .init(x: 0, y: 0, width: 40, height: 40)
         la.clipsToBounds = true
         la.isUserInteractionEnabled = true
         la.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowUser)))
@@ -110,7 +111,7 @@ class LocationVC: UIViewController {
     var currentUser:UserModel?{
         didSet{
             guard let user = currentUser else { return  }
-                        self.putUserPhoto(photoUrl:user.photoURL)
+            self.putUserPhoto(photoUrl:user.photoURL)
         }
     }
     var isCheckUserLocation = true
@@ -131,12 +132,15 @@ class LocationVC: UIViewController {
         //        userDefaults.set(true, forKey: UserDefaultsConstants.isWelcomeVCAppear)
         userDefaults.synchronize()
         setupViews()
+        getData()
         setupNavigation()
         getUserLocation()
         statusBarBackgroundColor()
     }
     
-    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -144,77 +148,126 @@ class LocationVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tabBarController?.tabBar.isHide(false)
-        navigationController?.navigationBar.isHide(false)
-        
-        
-        
-        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
-            let welcome = WelcomeVC()
-            welcome.modalPresentationStyle = .fullScreen
-            present(welcome, animated: true)
-        }else    {
-            
-            if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
-                updateUserProfile()
-                //                currentUser=cacheCurrentUserCodabe.storedValue
-            }
-            
-            if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-                currentUser=nil
-            }
-            
-            if userDefaults.bool(forKey: UserDefaultsConstants.isAllCachedHome) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts) {
-                fetchRecoomedPosts()
-            }else{}
-            
-            
-            
-            //            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
-            //                aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
-            //                present(customMainAlertVC, animated: true)
-            //            }else {}
-            //            
-            //            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
-            //                aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
-            //                present(customMainAlertVC, animated: true)
-            //            }else {}
-            
-            if !ConnectivityInternet.isConnectedToInternet {
-                customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
-                self.customNoInternetView.problemsView.play()
-                
-                self.customNoInternetView.problemsView.loopMode = .loop
-                timerForAlerting.invalidate()
-                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
-                self.present(customMainAlertVC, animated: true)
-            }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
-                //            getUserLocation()
-                fetchUserProfile()
-            }else if ConnectivityInternet.isConnectedToInternet && !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts)  {
-                fetchRecoomedPosts()
-                customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-                self.customAlerLoginView.problemsView.play()
-                
-                customAlerLoginView.problemsView.loopMode = .loop
-                timerForAlerting.invalidate()
-                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
-                self.present(customMainAlertVC, animated: true)
-                
-                
-            }else {
-                //                checkUserLogin()
-            }
-        }
-        
-        //                }
-    }
+           super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.frame.origin = CGPoint(x: 0, y: 20)
+           tabBarController?.tabBar.isHide(false)
+           navigationController?.navigationBar.isHide(false)
+           
+           
+           
+           if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
+               let welcome = WelcomeVC()
+               welcome.modalPresentationStyle = .fullScreen
+               present(welcome, animated: true)
+           }else    {
+               
+               if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
+                   updateUserProfile()
+                   //                currentUser=cacheCurrentUserCodabe.storedValue
+               }
+               
+               if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+                   currentUser=nil
+               }
+               
+               if userDefaults.bool(forKey: UserDefaultsConstants.isAllCachedHome) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts) {
+                   fetchRecoomedPosts()
+               }else{}
+               
+               
+               
+               //            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
+               //                aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
+               //                present(customMainAlertVC, animated: true)
+               //            }else {}
+               //
+               //            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
+               //                aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
+               //                present(customMainAlertVC, animated: true)
+               //            }else {}
+               
+               if !ConnectivityInternet.isConnectedToInternet {
+                   customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
+                   self.customNoInternetView.problemsView.play()
+                   
+                   self.customNoInternetView.problemsView.loopMode = .loop
+                   timerForAlerting.invalidate()
+                   timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
+                   self.present(customMainAlertVC, animated: true)
+               }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
+                   //            getUserLocation()
+                   fetchUserProfile()
+               }else if ConnectivityInternet.isConnectedToInternet && !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts)  {
+                   fetchRecoomedPosts()
+                   customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+                   self.customAlerLoginView.problemsView.play()
+                   
+                   customAlerLoginView.problemsView.loopMode = .loop
+                   timerForAlerting.invalidate()
+                   timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+                   self.present(customMainAlertVC, animated: true)
+                   
+                   
+               }else {
+                   //                checkUserLogin()
+               }
+           }
+           
+           //                }
+       }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        tabBarController?.tabBar.isHide(false)
+//        navigationController?.navigationBar.isHide(false)
+//
+//
+//
+//        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
+//            let welcome = WelcomeVC()
+//            welcome.modalPresentationStyle = .fullScreen
+//            present(welcome, animated: true)
+//        }else {
+//
+//        if !ConnectivityInternet.isConnectedToInternet {
+//            customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
+//            self.customNoInternetView.problemsView.play()
+//
+//            self.customNoInternetView.problemsView.loopMode = .loop
+//            timerForAlerting.invalidate()
+//            timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
+//            self.present(customMainAlertVC, animated: true)
+//        }
+//            if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
+//                       updateUserProfile()
+//                       fetchRecoomedPosts()
+//                       //                currentUser=cacheCurrentUserCodabe.storedValue
+//                   }
+//            if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+//
+////            } userDefaults.bool(forKey: UserDefaultsConstants.isFirstLoginedScreen) {
+//                 currentUser=nil
+//                fetchRecoomedPosts()
+//                customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+//                                  self.customAlerLoginView.problemsView.play()
+//
+//                                  customAlerLoginView.problemsView.loopMode = .loop
+//                                  timerForAlerting.invalidate()
+//                                  timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+//                                  self.present(customMainAlertVC, animated: true)
+//            }
+//        }
+//
+//    }
     
     
     //MARK:-User methods
     
+    func getData()  {
+        
+       
+       }
     
     @objc  func fireTimer(timer:Timer)  {
         if  let userInfo = timerForAlerting.userInfo as? [String: String]   {
@@ -481,6 +534,7 @@ class LocationVC: UIViewController {
     }
     
     fileprivate func setupNavigation()  {
+        navigationController?.navigationBar.backgroundColor = .red
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: userProfileImage)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
@@ -664,12 +718,12 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
             self.aqarsArray.removeAll()
             
             self.aqarsArray = based.data ?? []
-           
+            
             
         }
         DispatchQueue.main.async {
             self.customLocationView.mapView.clear()
-             self.addMarkerInMapView()
+            self.addMarkerInMapView()
             self.customLocationView.collectionView.reloadData()
         }
     }
@@ -746,10 +800,10 @@ extension LocationVC: FilterVCProtocol {
     }
     
     
-//    func getaqarsAccordingTo(citId: Int, areaId: Int, price1: Int, price2: Int, space1: Int, space2: Int, type: String, bedroom_number: Int, bathroom_number: Int,categoryId:Int) {
-////        customLocationView.mapView.clear()
-//        searchForResults(categoryId: categoryId, citId: citId, areaId: areaId, price1: price1, price2: price2, space1: space1, space2: space2, type: type, bedroom_number: bedroom_number, bathroom_number: bathroom_number)
-//    }
+    //    func getaqarsAccordingTo(citId: Int, areaId: Int, price1: Int, price2: Int, space1: Int, space2: Int, type: String, bedroom_number: Int, bathroom_number: Int,categoryId:Int) {
+    ////        customLocationView.mapView.clear()
+    //        searchForResults(categoryId: categoryId, citId: citId, areaId: areaId, price1: price1, price2: price2, space1: space1, space2: space2, type: type, bedroom_number: bedroom_number, bathroom_number: bathroom_number)
+    //    }
     
     
     

@@ -169,6 +169,7 @@ class AqarDetailsInfoVC: UIViewController {
         
         v.constrainHeight(constant: 160)
         v.isHide(true)
+        v.alpha = 0.5
         return v
     }()
     lazy var collectionViewHighlighted:UICollectionView = {
@@ -227,6 +228,7 @@ class AqarDetailsInfoVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         statusBarBackgroundColor()
+        navigationController?.navigationBar.isHide(false)
         UIApplication.shared.isStatusBarHidden = false
         SVProgressHUD.dismiss()
         
@@ -409,6 +411,7 @@ class AqarDetailsInfoVC: UIViewController {
     }
     
     @objc fileprivate  func handleBack()  {
+        navigationController?.navigationBar.isHide(false)
         navigationController?.popViewController(animated: true)
     }
     
