@@ -13,7 +13,7 @@ import MOLH
 //import fluid_slider
 
 protocol FilterVCProtocol {
-    func getaqarsAccordingTo(citId:Int,areaId:Int,price1:Int,price2:Int,space1:Int,space2:Int,type:String,bedroom_number:Int,bathroom_number:Int,categoryId:Int)
+    func getaqarsAccordingTo(citId:Int?,areaId:Int?,price1:Int,price2:Int,space1:Int,space2:Int,type:String?,bedroom_number:Int?,bathroom_number:Int?,categoryId:Int?)
 }
 
 class FilterVC: UIViewController {
@@ -89,18 +89,18 @@ class FilterVC: UIViewController {
         
         v.cityDrop.didSelect(completion: {[unowned self] (ss, index, id) in
             self.getAreaAccordingToCityId(index: index)
-            self.selectedCityId = self.getCityFromIndex(index)
+            self.selectedCityId = index == 0 ? nil : self.getCityFromIndex(index)
             
         })
         v.areaDrop.didSelect(completion: { [unowned self] (selected, index, _) in
-            self.selectedAreaId = self.allAreasSelectedArray[index]
+            self.selectedAreaId = index == 0 ? nil :  self.allAreasSelectedArray[index-1]
         })
         v.categoryDrop.didSelect(completion: {[unowned self] (selected, index, _) in
-            self.selectedCategoryId = self.categoryIdsArray[index]
+            self.selectedCategoryId = index == 0 ? nil : self.categoryIdsArray[index-1]
             print(self.selectedCategoryId)
         })
-        v.TypeDrop.didSelect(completion: {[unowned self] (selected, _, _) in
-            self.selectedType = selected
+        v.TypeDrop.didSelect(completion: {[unowned self] (selected, index, _) in
+            self.selectedType = index == 0 ? nil : selected
         })
         v.priceSlider.addTarget(self, action: #selector(rangeSliderValueChanged), for: .valueChanged)
         v.spaceSlider.addTarget(self, action: #selector(rangeSliderValueChanged), for: .valueChanged)
@@ -120,17 +120,13 @@ class FilterVC: UIViewController {
     
     var areasStringArray = [String]()
     var citysNumberArray = [Int]()
-    var numberOfRooms = 0
-    var numberOfBaths = 0
     var minimuPrice = 0
-    var maximumPrice = 100000
+    var maximumPrice = 1000000
     
-    var minimuSpace = 350
-    var maximumSpace = 9906
-    var selectedType = "Sale"
-    var selectedCityId = 1
-    var selectedAreaId = 1
-    var selectedCategoryId = 1
+    var minimuSpace = 0
+    var maximumSpace = 1000
+    var selectedType:String?
+    var selectedCityId,selectedAreaId,selectedCategoryId,numberOfRooms,numberOfBaths:Int?
     var allCategoriesSelectedArray = [Int]()
     var categoryIdsArray = [Int]()
     
@@ -247,6 +243,7 @@ class FilterVC: UIViewController {
     }
     
     fileprivate func getCityFromIndex(_ index:Int) -> Int {
+        
         var citName = [String]()
         var cityId = [Int]()
         
@@ -268,7 +265,7 @@ class FilterVC: UIViewController {
             }
         }
         
-        return cityId[index ]
+        return cityId[index-1 ]
     }
     
     fileprivate func fetchData()  {
@@ -278,6 +275,7 @@ class FilterVC: UIViewController {
     
     
     fileprivate func getAreaAccordingToCityId(index:Int)  {
+        if index == 0 {return }
         finalFilteredAreaNames.removeAll()
         allAreasSelectedArray.removeAll()
         

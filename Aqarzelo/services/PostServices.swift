@@ -41,11 +41,39 @@ class PostServices{
         //        PostServices.fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
-    func getPostsUsingSearchData(category_id:Int,price2:Int,price1:Int,bedNumber:Int,bathNumber:Int,type:String,city_id:Int,area_id:Int,completion: @escaping (BaseAqarModel?, Error?) -> ()) {
+    func getPostsUsingSearchData(category_id:Int?,price2:Int,price1:Int,bedNumber:Int?,bathNumber:Int?,type:String?,city_id:Int?,area_id:Int?,space1:Int,space2:Int,completion: @escaping (BaseAqarModel?, Error?) -> ()) {
         
-        let urlString = "http://aqarzelo.com/public/api/post/search?price1=\(price1)&price2=\(price2)&bedroom_number=\(bedNumber)&bathroom_number=\(bathNumber)&type=\(type)&city_id=\(city_id)&area_id=\(area_id)&category_id=\(category_id)".toSecrueHttps()
-        RegistrationServices.registerationGetMethodGenerics(urlString: urlString, completion: completion)
-        //        PostServices.fetchGenericJSONData(urlString: urlString, completion: completion)
+        let x = category_id != nil ? category_id : nil
+        let z = bedNumber != nil ? bedNumber : nil
+        let c = bathNumber != nil ? bathNumber : nil
+        let v = type != nil ? type : nil
+        let b = city_id != nil ? city_id : nil
+        let n = area_id != nil ? area_id : nil
+        var urlString:String = "http://aqarzelo.com/public/api/post/search?price1=\(price1)&price2=\(price2)&space1=\(space1)&space2=\(space2)"
+        
+        if x != nil {
+            urlString.append("&category_id=\(x!)")
+        }
+        if z != nil {
+            urlString.append("&bedroom_number=\(z!)")
+                 
+               }
+        if c != nil {
+             urlString.append("&bathroom_number=\(c!)")
+        }
+        if v != nil {
+             urlString.append("&type=\(v!)")
+            
+        }
+        if b != nil {
+             urlString.append("&city_id=\(b!)")
+            
+        }
+        if n != nil {
+             urlString.append("&area_id=\(n!)")
+            
+        }
+        RegistrationServices.registerationGetMethodGenerics(urlString: urlString.toSecrueHttps(), completion: completion)
     }
     
     func deletePost(api_token:String,post_id:Int,completion:  @escaping (MainWithoutBaseModel?, Error?) -> ())  {

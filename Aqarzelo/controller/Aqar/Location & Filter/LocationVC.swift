@@ -634,13 +634,14 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
         //        return .init(width: view.frame.width , height: 150)
     }
     
-    func searchForResults(categoryId:Int,citId: Int, areaId: Int, price1: Int, price2: Int, space1: Int, space2: Int, type: String, bedroom_number: Int, bathroom_number: Int)  {
+    func searchForResults(categoryId:Int?,citId: Int?, areaId: Int?, price1: Int, price2: Int, space1: Int, space2: Int, type: String?, bedroom_number: Int?, bathroom_number: Int?)  {
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         // make search to find aqars
         SVProgressHUD.setForegroundColor(UIColor.green)
         SVProgressHUD.show(withStatus: "Looding....".localized)
         
-        PostServices.shared.getPostsUsingSearchData(category_id: categoryId, price2: price2, price1: price1, bedNumber: bedroom_number, bathNumber: bathroom_number, type: type, city_id: citId, area_id: areaId) { (base, err) in
+        PostServices.shared.getPostsUsingSearchData(category_id: categoryId, price2: price2 , price1: price1, bedNumber: bedroom_number, bathNumber: bathroom_number, type: type, city_id: citId, area_id: areaId, space1: space1, space2: space2) { (base, err) in
+            
             if let err=err{
                 SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
@@ -657,7 +658,10 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
             SVProgressHUD.showInfo(withStatus: "No data available......".localized)
         }else {
             self.aqarsArray.removeAll()
+            customLocationView.mapView.clear()
             self.aqarsArray = based.data ?? []
+            self.addMarkerInMapView()
+            
         }
         DispatchQueue.main.async {
             self.customLocationView.collectionView.reloadData()
@@ -731,11 +735,15 @@ extension LocationVC:GMSMapViewDelegate {
 }
 
 extension LocationVC: FilterVCProtocol {
-    
-    func getaqarsAccordingTo(citId: Int, areaId: Int, price1: Int, price2: Int, space1: Int, space2: Int, type: String, bedroom_number: Int, bathroom_number: Int,categoryId:Int) {
-        customLocationView.mapView.clear()
-        searchForResults(categoryId: categoryId, citId: citId, areaId: areaId, price1: price1, price2: price2, space1: space1, space2: space2, type: type, bedroom_number: bedroom_number, bathroom_number: bathroom_number)
+    func getaqarsAccordingTo(citId: Int?, areaId: Int?, price1: Int, price2: Int, space1: Int, space2: Int, type: String?, bedroom_number: Int?, bathroom_number: Int?, categoryId: Int?) {
+        self.searchForResults(categoryId: categoryId, citId: citId, areaId: areaId, price1: price1, price2: price2, space1: space1, space2: space2, type: type, bedroom_number: bedroom_number, bathroom_number: bathroom_number)
     }
+    
+    
+//    func getaqarsAccordingTo(citId: Int, areaId: Int, price1: Int, price2: Int, space1: Int, space2: Int, type: String, bedroom_number: Int, bathroom_number: Int,categoryId:Int) {
+////        customLocationView.mapView.clear()
+//        searchForResults(categoryId: categoryId, citId: citId, areaId: areaId, price1: price1, price2: price2, space1: space1, space2: space2, type: type, bedroom_number: bedroom_number, bathroom_number: bathroom_number)
+//    }
     
     
     
