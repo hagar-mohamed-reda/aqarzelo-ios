@@ -46,7 +46,7 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-                      t.errorColor = .white
+                      t.errorColor = .red
                       t.tintColor = .white
                       t.selectedTitleColor = .white
         t.titleColor = .white
@@ -62,7 +62,7 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-                      t.errorColor = .white
+                      t.errorColor = .red
                       t.tintColor = .white
                       t.selectedTitleColor = .white
         t.titleColor = .white
@@ -74,8 +74,9 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
     }()
     lazy var passwordOldBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal), for: .normal)
-        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        b.setImage(UIImage(systemName: "eye.slash.fill") , for: .normal)
+//        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysOriginal), for: .normal)
+//        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleShowPassword), for: .touchUpInside)
         return b
     }()
@@ -89,7 +90,7 @@ class CustomForgetPasswordConfirmationView: CustomBaseView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-                      t.errorColor = .white
+                      t.errorColor = .red
                       t.tintColor = .white
                       t.selectedTitleColor = .white
         t.titleColor = .white

@@ -46,7 +46,7 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
         let t = SkyFloatingLabelTextField()
         t.keyboardType = UIKeyboardType.numberPad
         t.textColor = .white
-        t.errorColor = .white
+        t.errorColor = .red
         t.tintColor = .white
         t.selectedTitleColor = .white
         t.titleColor = .white

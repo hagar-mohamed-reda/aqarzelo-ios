@@ -110,7 +110,7 @@ class LocationVC: UIViewController {
     var currentUser:UserModel?{
         didSet{
             guard let user = currentUser else { return  }
-//            self.putUserPhoto(photoUrl:user.photoURL)
+            //            self.putUserPhoto(photoUrl:user.photoURL)
         }
     }
     var isCheckUserLocation = true
@@ -159,7 +159,7 @@ class LocationVC: UIViewController {
             
             if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
                 updateUserProfile()
-//                currentUser=cacheCurrentUserCodabe.storedValue
+                //                currentUser=cacheCurrentUserCodabe.storedValue
             }
             
             if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
@@ -247,27 +247,27 @@ class LocationVC: UIViewController {
     }
     
     fileprivate func updateUserProfile()  {
-                guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
-//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-                SVProgressHUD.setForegroundColor(UIColor.green)
-                SVProgressHUD.show(withStatus: "Looding...".localized)
+        guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
+        //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        SVProgressHUD.setForegroundColor(UIColor.green)
+        SVProgressHUD.show(withStatus: "Looding...".localized)
         
-                let dispatchGroup = DispatchGroup()
-                dispatchGroup.enter()
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
         
-                UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
-                    if let err=err{
-                        SVProgressHUD.showError(withStatus: err.localizedDescription)
-                        self.activeViewsIfNoData();return
-                    }
-                    dispatchGroup.leave()
-                    SVProgressHUD.dismiss()
-                    self.activeViewsIfNoData() // disbale all events in the screen
-                    guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-                    self.currentUser = user
-                    self.putUserPhoto(photoUrl:user.photoURL)
-        
-                }
+        UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
+            if let err=err{
+                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.activeViewsIfNoData();return
+            }
+            dispatchGroup.leave()
+            SVProgressHUD.dismiss()
+            self.activeViewsIfNoData() // disbale all events in the screen
+            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+            self.currentUser = user
+            self.putUserPhoto(photoUrl:user.photoURL)
+            
+        }
         
     }
     
@@ -659,10 +659,6 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
             self.aqarsArray.removeAll()
             self.aqarsArray = based.data ?? []
         }
-        //        if self.aqarsArray.count <= 0 {
-        //
-        //            SVProgressHUD.showInfo(withStatus: "No data available......".localized)
-        //        }
         DispatchQueue.main.async {
             self.customLocationView.collectionView.reloadData()
         }

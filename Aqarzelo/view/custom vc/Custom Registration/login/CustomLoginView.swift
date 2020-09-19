@@ -23,7 +23,7 @@ class CustomLoginView: UIView {
         i.isUserInteractionEnabled = true
         return i
     }()
-  
+    
     lazy var loginLabel:UILabel = {
         let l = UILabel(text: "Login".localized, font: .systemFont(ofSize: 29), textColor: .white)
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -39,9 +39,9 @@ class CustomLoginView: UIView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-                      t.errorColor = .white
-                      t.tintColor = .white
-                      t.selectedTitleColor = .white
+        t.errorColor = .red
+        t.tintColor = .white
+        t.selectedTitleColor = .white
         t.titleColor = .white
         //        t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)
         t.constrainHeight(constant: 50)
@@ -56,9 +56,9 @@ class CustomLoginView: UIView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-                      t.errorColor = .white
-                      t.tintColor = .white
-                      t.selectedTitleColor = .white
+        t.errorColor = .red
+        t.tintColor = .white
+        t.selectedTitleColor = .white
         t.titleColor = .white
         t.isSecureTextEntry = true
         t.constrainHeight(constant: 50)
@@ -69,10 +69,9 @@ class CustomLoginView: UIView {
     }()
     lazy var passwordOldBTN:UIButton = {
         let b = UIButton(type: .custom)
-        
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
-        b.imageView?.contentMode = .scaleAspectFit
-        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        b.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+//        b.imageView?.contentMode = .scaleAspectFit
+//        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASD), for: .touchUpInside)
         return b
     }()
@@ -173,7 +172,7 @@ class CustomLoginView: UIView {
         mainImageView.fillSuperview()
         backImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 60, left: 16, bottom: 0, right: 0))
         loginLabel.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 80, left: 0, bottom: 0, right: 0))
-
+        
         
         subStack.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 0, left: 32, bottom: 0, right: 32))
         loginButton.anchor(top: subStack.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor,padding: .init(top: 24, left: 16, bottom: 0, right: 16))
@@ -214,9 +213,11 @@ class CustomLoginView: UIView {
     
     @objc func handleASD(sender:UIButton)  {
         passwordTextField.isSecureTextEntry.toggle()
-        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
+        let xx = passwordTextField.isSecureTextEntry == true ?
+            UIImage(systemName: "eye.slash.fill") :
+            UIImage(systemName: "eye.fill")
         sender.setImage(xx, for: .normal)
     }
     
-  
+    
 }

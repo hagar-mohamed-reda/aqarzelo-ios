@@ -46,7 +46,7 @@ class FirstCreatePriceCell: BaseCollectionCell {
     lazy var priceTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
         t.textColor = .white
-                      t.errorColor = .white
+                      t.errorColor = .red
                       t.tintColor = .white
                       t.selectedTitleColor = .white
         t.titleColor = .white

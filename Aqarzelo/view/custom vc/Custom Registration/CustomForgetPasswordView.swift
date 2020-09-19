@@ -41,7 +41,7 @@ class CustomForgetPasswordView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-                      t.errorColor = .white
+                      t.errorColor = .red
                       t.tintColor = .white
                       t.selectedTitleColor = .white
         t.titleColor = .white

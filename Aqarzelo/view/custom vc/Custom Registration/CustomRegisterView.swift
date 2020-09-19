@@ -32,7 +32,7 @@ class CustomRegisterView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-        t.errorColor = .white
+        t.errorColor = .red
         t.titleColor = .white
         t.tintColor = .white
         t.selectedTitleColor = .white
@@ -47,7 +47,7 @@ class CustomRegisterView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-        t.errorColor = .white
+        t.errorColor = .red
         t.tintColor = .white
         t.titleColor = .white
         t.selectedTitleColor = .white
@@ -62,7 +62,7 @@ class CustomRegisterView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-        t.errorColor = .white
+        t.errorColor = .red
         t.tintColor = .white
         t.selectedTitleColor = .white
         t.titleColor = .white
@@ -79,7 +79,7 @@ class CustomRegisterView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-        t.errorColor = .white
+        t.errorColor = .red
         t.tintColor = .white
         t.selectedTitleColor = .white
         t.titleColor = .white
@@ -90,10 +90,10 @@ class CustomRegisterView: UIView {
     }()
     lazy var passwordOldBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
-        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
-        b.imageView?.contentMode = .scaleAspectFit
-        b.imageView?.clipsToBounds=true
+        b.setImage(UIImage(systemName: "eye.slash.fill") , for: .normal)
+//        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+//        b.imageView?.contentMode = .scaleAspectFit
+//        b.imageView?.clipsToBounds=true
         b.addTarget(self, action: #selector(handleASD), for: .touchUpInside)
         return b
     }()
@@ -106,7 +106,7 @@ class CustomRegisterView: UIView {
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
-        t.errorColor = .white
+        t.errorColor = .red
         t.tintColor = .white
         t.selectedTitleColor = .white
         t.titleColor = .white
@@ -118,8 +118,10 @@ class CustomRegisterView: UIView {
     }()
     lazy var passwordAAAOldBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
-        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        b.setImage(UIImage(systemName: "eye.slash.fill") , for: .normal)
+
+//        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
+//        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASDs), for: .touchUpInside)
         return b
     }()
@@ -221,13 +223,18 @@ class CustomRegisterView: UIView {
     
     @objc func handleASD(sender:UIButton)  {
         passwordTextField.isSecureTextEntry.toggle()
-        let xx = passwordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
+        let xx = passwordTextField.isSecureTextEntry == true ?
+                          UIImage(systemName: "eye.slash.fill") :
+                          UIImage(systemName: "eye.fill")
         sender.setImage(xx, for: .normal)
     }
     
     @objc func handleASDs(sender:UIButton)  {
         confirmPasswordTextField.isSecureTextEntry.toggle()
-        let xx = confirmPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
+//        let xx = confirmPasswordTextField.isSecureTextEntry == true ? #imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate) : #imageLiteral(resourceName: "icons8-eye-64").withRenderingMode(.alwaysTemplate)
+       let xx = confirmPasswordTextField.isSecureTextEntry == true ?
+       UIImage(systemName: "eye.slash.fill") :
+       UIImage(systemName: "eye.fill")
         sender.setImage(xx, for: .normal)
     }
     
