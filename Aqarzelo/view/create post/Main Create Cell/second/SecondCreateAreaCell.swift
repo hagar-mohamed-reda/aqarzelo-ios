@@ -110,7 +110,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
                 areaArray.append( areasStringArray[indexx])
                 
             }
-           
+            
             self.areaDrop.optionArray = areaArray
             
             DispatchQueue.main.async {
@@ -182,7 +182,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
                 
             }
         }
-       
+        
         self.areaDrop.optionArray = areaArray
         DispatchQueue.main.async {
             self.layoutIfNeeded()

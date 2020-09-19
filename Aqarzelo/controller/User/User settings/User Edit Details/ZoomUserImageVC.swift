@@ -72,9 +72,9 @@ class ZoomUserImageVC: UIViewController {
     func setupNavigation()  {
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
-        let label = UILabel(text: "Preview".localized, font: .systemFont(ofSize: 20), textColor: .white)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: label)
+//        let label = UILabel(text: "Preview".localized, font: .systemFont(ofSize: 20), textColor: .white)
+//        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: label)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "×-1").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleClose))
     }
     
