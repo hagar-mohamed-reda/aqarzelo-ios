@@ -208,7 +208,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             }
         }
         
-        height = indexPath.item == 7 ? 150 : indexPath.item == 2 ? 150 : indexPath.item == 8 ? 150 : indexPath.item == 0 || indexPath.item == 1 ? firstHeight+150 :  120
+        height = indexPath.item == 7 ? 150 : indexPath.item == 2 ? 150 : indexPath.item == 8 ? 150 : indexPath.item == 0 || indexPath.item == 1 ? firstHeight+150 : indexPath.item == 5 || indexPath.item == 6 ? 150 : 120
         
         return .init(width: view.frame.width, height: height)
     }

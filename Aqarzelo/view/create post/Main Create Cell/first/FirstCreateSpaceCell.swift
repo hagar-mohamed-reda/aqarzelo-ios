@@ -43,11 +43,7 @@ class FirstCreateSpaceCell: BaseCollectionCell {
     }()
     lazy var priceTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
-        t.textColor = .white
-                      t.errorColor = .red
-                      t.tintColor = .white
-                      t.selectedTitleColor = .white
-        t.titleColor = .white
+      
         t.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
         t.keyboardType = UIKeyboardType.numberPad
         t.placeholder = "enter space".localized

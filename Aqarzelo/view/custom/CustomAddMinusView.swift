@@ -25,18 +25,28 @@ class CustomAddMinusView: UIView {
 
         return im
     }()
-    lazy var background2ImageView:UIImageView = {
-        let im = UIImageView(image: UIImage(named: "Ellipse 10"))
-//        im.constrainHeight(constant: 50)
-       
-                im.constrainHeight(constant: 50)
-               im.constrainWidth(constant: 50)
-        im.contentMode = .scaleToFill
-//               im.clipsToBounds = true
-//               im.layer.cornerRadius = dd/2
-//               im.clipsToBounds=true
-        return im
+    
+    lazy var background2ImageView:UIView = {
+       let v = UIView(backgroundColor: #colorLiteral(red: 0.4343734086, green: 0.8606870174, blue: 0.7011793256, alpha: 1))
+//        v.constrainWidth(constant: 60)
+        v.constrainHeight(constant: 60)
+        v.layer.cornerRadius = 30
+        v.clipsToBounds=true
+        return v
     }()
+    
+//    lazy var background2ImageView:UIImageView = {
+//        let im = UIImageView(image: UIImage(named: "Ellipse 10"))
+////        im.constrainHeight(constant: 50)
+//
+//                im.constrainHeight(constant: 60)
+////               im.constrainWidth(constant: 60)
+////        im.contentMode = .scaleToFill
+////               im.clipsToBounds = true
+////               im.layer.cornerRadius = dd/2
+////               im.clipsToBounds=true
+//        return im
+//    }()
 //    lazy var background2ImageView:UIView = {
 //         let im = UIView(backgroundColor: #colorLiteral(red: 0.4343734086, green: 0.8606870174, blue: 0.7011793256, alpha: 1))
 //        let dd = mainStack.frame.width/2
@@ -52,7 +62,7 @@ class CustomAddMinusView: UIView {
 
         return d
     }()
-    lazy var numberOfItemsLabel = UILabel(text: "\(count)", font: .systemFont(ofSize: 16), textColor: .white,textAlignment: .center)
+    lazy var numberOfItemsLabel = UILabel(text: "\(count)", font: .systemFont(ofSize: 20), textColor: .white,textAlignment: .center)
     lazy var minusImageView:UIImageView = {
         let im = UIImageView(image:#imageLiteral(resourceName: "minus"))// #imageLiteral(resourceName: "-"))
         im.isUserInteractionEnabled = true
@@ -114,7 +124,7 @@ class CustomAddMinusView: UIView {
         background2ImageView.addSubview(numberOfItemsLabel)
         [plusImageView,minusImageView].forEach({$0.constrainWidth(constant: 30)})
 //        hstack(minusImageView,background2ImageView,plusImageView,distribution:.fill).withMargins( .init(top: 0, left: 16, bottom: 0, right: 16))
-         hstack(minusImageView,background2ImageView,plusImageView,distribution:.fill).withMargins( .init(top: 0, left: 16, bottom: 0, right: 16))
+        hstack(minusImageView,background2ImageView,plusImageView,spacing:8,distribution:.fill).withMargins( .init(top: 0, left: 16, bottom: 0, right: 16))
 //        addSubview(mainStack)
 //        mainStack.fillSuperview()
         numberOfItemsLabel.centerInSuperview()
