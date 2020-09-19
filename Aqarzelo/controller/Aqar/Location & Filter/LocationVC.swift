@@ -135,7 +135,7 @@ class LocationVC: UIViewController {
         getData()
         setupNavigation()
         getUserLocation()
-        statusBarBackgroundColor()
+//        statusBarBackgroundColor()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -149,8 +149,9 @@ class LocationVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.frame.origin = CGPoint(x: 0, y: 20)
-           tabBarController?.tabBar.isHide(false)
+        self.navigationController?.navigationBar.frame.origin = CGPoint(x: 0, y: 20) //solve problem of place of navigation
+        statusBarBackgroundColor()
+        tabBarController?.tabBar.isHide(false)
            navigationController?.navigationBar.isHide(false)
            
            
