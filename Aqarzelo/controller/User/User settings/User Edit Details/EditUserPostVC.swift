@@ -91,8 +91,7 @@ class EditUserPostVC: BaseViewController {
     func fetchAllPhotos()  {
         self.photosFinishedArray.removeAll()
         UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding....".localized)
+        progressHudProperties()
         
         UploadImagesServices.shared.getAllUserImagesWithPostId(postId:postId,api_token: currentUserToken) { (base, error) in
             if let error = error {

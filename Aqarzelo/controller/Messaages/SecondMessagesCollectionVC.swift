@@ -199,7 +199,11 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
         
         //        dictUsers.removeAll()
         //        usersArray.removeAll()
-        SVProgressHUD.setForegroundColor(UIColor.green)
+        SVProgressHUD.setRingThickness(10)
+        SVProgressHUD.setMinimumSize(.init(width: 80, height: 80))
+//        SVProgressHUD.setRingRadius(CGFloat(10.0))
+        SVProgressHUD.setForegroundColor(UIColor.blue)
+       
         SVProgressHUD.show(withStatus: "Looding...".localized)
         
         MessagesServices.shared.getUsersIds(api_token: currentUser.apiToken) { (users,keys, err) in

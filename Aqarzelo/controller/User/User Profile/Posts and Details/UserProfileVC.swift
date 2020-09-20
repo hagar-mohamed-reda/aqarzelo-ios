@@ -202,8 +202,7 @@ class UserProfileVC: UIViewController {
         
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         //        guard let api_Key = user.apiToken
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding...".localized)
+        progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -316,8 +315,7 @@ class UserProfileVC: UIViewController {
         guard let user = user else { return  }
         
         UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding....".localized)
+        progressHudProperties()
         PostServices.shared.deletePost(api_token: user.apiToken, post_id: post.id ) { (base, error) in
             if let error = error {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)

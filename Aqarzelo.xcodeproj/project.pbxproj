@@ -15,6 +15,7 @@
 		9FB2437624FC13C0004F43FB /* ListOfPhotoMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */; };
 		9FD04E4024EDB2910077884A /* DropDownAllTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */; };
 		9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */; };
+		9FD9D1272517E9CF0092BFD3 /* Tesxtcx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD9D1262517E9CF0092BFD3 /* Tesxtcx.swift */; };
 		9FDBDC162506C19D003D596D /* FloatingLabeledTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDBDC152506C19D003D596D /* FloatingLabeledTextFields.swift */; };
 		9FDDB71D24E98E7300AF8817 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71524E98E6B00AF8817 /* Extensions.swift */; };
 		9FDDB71E24E98E7300AF8817 /* ExtensionUivewwwwwww.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71624E98E6C00AF8817 /* ExtensionUivewwwwwww.swift */; };
@@ -236,6 +237,7 @@
 		9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainVC.swift; sourceTree = "<group>"; };
 		9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownAllTableViewVC.swift; sourceTree = "<group>"; };
 		9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCityAndAreaTableViewVC.swift; sourceTree = "<group>"; };
+		9FD9D1262517E9CF0092BFD3 /* Tesxtcx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tesxtcx.swift; sourceTree = "<group>"; };
 		9FDBDC152506C19D003D596D /* FloatingLabeledTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabeledTextFields.swift; sourceTree = "<group>"; };
 		9FDDB71524E98E6B00AF8817 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9FDDB71624E98E6C00AF8817 /* ExtensionUivewwwwwww.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUivewwwwwww.swift; sourceTree = "<group>"; };
@@ -975,6 +977,7 @@
 				9FE2701024E88309008889AB /* BaseCollectionVC.swift */,
 				9FE2701224E88317008889AB /* BaseViewController.swift */,
 				9FE2701424E88325008889AB /* HomeTabBarVC.swift */,
+				9FD9D1262517E9CF0092BFD3 /* Tesxtcx.swift */,
 			);
 			path = bases;
 			sourceTree = "<group>";
@@ -1520,6 +1523,7 @@
 				9FDDB75424E98F9F00AF8817 /* FirstCreateView.swift in Sources */,
 				9FE2707624E88542008889AB /* UserPostsCollectionVC.swift in Sources */,
 				9FE26FAD24E87D2E008889AB /* FilterServices.swift in Sources */,
+				9FD9D1272517E9CF0092BFD3 /* Tesxtcx.swift in Sources */,
 				9FDDB73C24E98EF200AF8817 /* CustomMustLogInView.swift in Sources */,
 				9FE270FD24E88868008889AB /* MasterPhotoCell.swift in Sources */,
 				9FDDB72024E98E7300AF8817 /* ExtensionValidation.swift in Sources */,

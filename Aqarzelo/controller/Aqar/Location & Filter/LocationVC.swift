@@ -822,6 +822,7 @@ extension LocationVC: FilterVCProtocol {
 
 extension UIViewController {
 
+    
     /**
      *  Height of status bar + navigation bar (if navigation bar exist)
      */
