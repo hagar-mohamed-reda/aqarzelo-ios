@@ -76,7 +76,7 @@ class AqarDetailInfoView:UIView {
     lazy var LabelsView:[UILabel] = {
         var arrangedViews = [UILabel ]()
         (0...12).forEach({ (i) in
-            let im = UILabel(text: "labelsNames[i]", font: .systemFont(ofSize: 16), textColor: .black)
+            let im = UILabel(text: "labelsNames[i]", font: .systemFont(ofSize: 12), textColor: .black)
             //            im.constrainHeight(constant: 20)
             arrangedViews.append(im)
         })

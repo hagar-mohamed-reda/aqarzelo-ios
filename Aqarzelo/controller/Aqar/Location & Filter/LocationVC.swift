@@ -149,11 +149,17 @@ class LocationVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.frame.origin = CGPoint(x: 0, y: 20) //solve problem of place of navigation
-        statusBarBackgroundColor()
+        
         tabBarController?.tabBar.isHide(false)
            navigationController?.navigationBar.isHide(false)
-           
+        let ss = UIDevice().type
+        if ss == .iPhone6S || ss == .iPhone6 || ss == .iPhone6SPlus || ss == .iPhone6Plus  {
+            self.navigationController?.navigationBar.frame.origin = CGPoint(x: 0, y: 20)
+        }
+        setNeedsStatusBarAppearanceUpdate()
+         //solve problem of place of navigation 20
+        print(topbarHeight)
+           statusBarBackgroundColor()
            
            
            if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
@@ -531,7 +537,9 @@ class LocationVC: UIViewController {
     fileprivate  func setupViews()  {
         view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1) //#colorLiteral(red: 0.207870394, green: 0.8542298079, blue: 0.7240723968, alpha: 1)
         view.addSubViews(views: customLocationView)
-        customLocationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 48, right: 0))
+        customLocationView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 48, right: 0))
+
+//        customLocationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 48, right: 0))
     }
     
     fileprivate func setupNavigation()  {
@@ -810,4 +818,17 @@ extension LocationVC: FilterVCProtocol {
     
     
     
+}
+
+extension UIViewController {
+
+    /**
+     *  Height of status bar + navigation bar (if navigation bar exist)
+     */
+
+    var topbarHeight: CGFloat {
+        return self.navigationController?.navigationBar.frame.height ?? 0.0
+//        return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
+//            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+    }
 }
