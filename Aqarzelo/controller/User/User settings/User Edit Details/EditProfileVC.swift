@@ -161,11 +161,14 @@ class EditProfileVC: UIViewController {
         UserServices.shared.updateProfileUser(token: currentUser.apiToken, website: website ?? ""  , phone: phone ?? currentUser.phone ?? "", email: finalEmail ?? currentUser.email, address: address ?? "", facebook: facebook ?? "") { (user, err) in
             
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 UIApplication.shared.endIgnoringInteractionEvents()
             }
+            SVProgressHUD.dismiss()
             guard let user=user?.data else{return}
             self.currentUser = user
+            
             DispatchQueue.main.async {
                 userDefaults.set(true, forKey: UserDefaultsConstants.isUserEditProfile)
                 userDefaults.synchronize()

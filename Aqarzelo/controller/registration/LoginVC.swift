@@ -189,7 +189,7 @@ class LoginVC: UIViewController {
         
         customLoginView.loginViewModel.performLogging {[unowned self] (base,err) in
             if let err = err {
-                
+//                 DispatchQueue.main.async {
                 self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
                 
 //                SVProgressHUD.showError(withStatus: err.localizedDescription)
