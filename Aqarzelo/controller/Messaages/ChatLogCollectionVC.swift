@@ -83,8 +83,7 @@ class ChatLogCollectionVC: BaseViewController {
     
     fileprivate func loadMessages()  {
         messagesArray.removeAll()
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding....".localized)
+        progressHudProperties()
         MessagesServices.shared.getMessages(api_token: userToken, user_to: userId) { [unowned self] (base, err) in
             if let error = err {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)

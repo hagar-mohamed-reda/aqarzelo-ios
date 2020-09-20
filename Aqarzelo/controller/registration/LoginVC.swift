@@ -110,8 +110,7 @@ class LoginVC: UIViewController {
         customLoginView.loginViewModel.bindableIsLogging.bind(observer: {  [unowned self] (isReg) in
             if isReg == true {
                 UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-                SVProgressHUD.setForegroundColor(UIColor.green)
-                SVProgressHUD.show(withStatus: "Login...".localized)
+                self.progressHudProperties()
                 
             }else {
                 SVProgressHUD.dismiss()

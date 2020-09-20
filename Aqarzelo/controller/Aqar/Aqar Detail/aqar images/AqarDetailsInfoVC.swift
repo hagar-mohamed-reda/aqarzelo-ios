@@ -238,7 +238,7 @@ class AqarDetailsInfoVC: UIViewController {
     
     
     fileprivate func getCityAccordingToAqar(id:Int)  {
-        SVProgressHUD.show(withStatus: "Looding...".localized)
+       progressHudProperties()
         FilterServices.shared.getCities(completion: { (base,error) in
             if let err = error {
                 SVProgressHUD.showError(withStatus: err.localizedDescription)

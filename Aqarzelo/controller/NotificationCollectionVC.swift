@@ -184,8 +184,7 @@ class NotificationCollectionVC: BaseCollectionVC {
     fileprivate func loadNotifications()  {
         
         guard let token = userDefaults.value(forKey: UserDefaultsConstants.userApiToken) as? String else { return }
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding...".localized)
+       progressHudProperties()
         NotificationAndFavoriteServices.shared.getAllNotifications(apiToke: token) {[unowned self] (bases, err) in
             if let err=err{
                 SVProgressHUD.showError(withStatus: err.localizedDescription)

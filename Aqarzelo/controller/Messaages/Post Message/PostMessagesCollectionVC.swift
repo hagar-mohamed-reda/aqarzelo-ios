@@ -103,8 +103,7 @@ class PostMessagesCollectionVC: BaseCollectionVC {
     
     fileprivate func loadMessages()  {
         //        messagesArray.removeAll()
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding....".localized)
+       progressHudProperties()
         PostServices.shared.getPostReviews(post_id: post_Id) { (base, err) in
             if let error = err {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)

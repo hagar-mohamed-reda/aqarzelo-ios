@@ -122,8 +122,7 @@ class ListOfPhotoMainSecVC: UIViewController {
         photosArray.removeAll()
         
         var group1:  [ImageModel]?
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding...".localized)
+       progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -200,9 +199,7 @@ class ListOfPhotoMainSecVC: UIViewController {
     
     func getAllImagesNotMaster()  {
         var group1: [ImageModel]?
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        //            UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        SVProgressHUD.show(withStatus: "Looding...".localized)
+       progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)

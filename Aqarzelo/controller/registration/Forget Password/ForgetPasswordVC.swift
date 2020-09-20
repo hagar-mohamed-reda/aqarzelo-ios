@@ -69,9 +69,7 @@ class ForgetPasswordVC: UIViewController {
         customForgetPassView.forgetPassViewModel.bindableIsLogging.bind(observer: {  [unowned self] (isReg) in
             if isReg == true {
                 UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-                SVProgressHUD.setForegroundColor(UIColor.green)
-                
-                SVProgressHUD.show(withStatus: "Waiting...".localized)
+                self.progressHudProperties()
                 
             }else {
                 SVProgressHUD.dismiss()

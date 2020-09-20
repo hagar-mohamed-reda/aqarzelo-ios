@@ -88,9 +88,7 @@ class ForgetPasswordConfirmationVC: UIViewController {
         customForgetPassConfirmView.forgetPassConfirmViewModel.bindableIsConfirm.bind {  [unowned self] (isReg) in
             if isReg == true {
                 UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-                SVProgressHUD.setForegroundColor(UIColor.green)
-                
-                SVProgressHUD.show(withStatus: "Waiting...".localized)
+                self.progressHudProperties()
                 
             }else {
                 SVProgressHUD.dismiss()
@@ -128,7 +126,7 @@ class ForgetPasswordConfirmationVC: UIViewController {
     
     @objc fileprivate  func handleResendSMS()  {
         UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        SVProgressHUD.show(withStatus: "Resend SMS...".localized)
+       progressHudProperties()
         RegistrationServices.shared.forgetPassword(phone: phone) {[unowned self] (base, err) in
             if let err=err{
                 SVProgressHUD.showError(withStatus: err.localizedDescription)

@@ -179,10 +179,7 @@ class EditProfileVC: UIViewController {
     fileprivate func updateUserProfiles() {
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding....".localized)
-        
-        
+       progressHudProperties()
         
         UserServices.shared.updateProfileUser(token: currentUser.apiToken, coverImage: imageBackgroundView.image, photoImage: imageProfileView.image, website: website ?? ""  , phone: phone ?? currentUser.phone ?? "", email: finalEmail ?? currentUser.email, address: address ?? "", facebook: facebook ?? "") { (users, err) in
             

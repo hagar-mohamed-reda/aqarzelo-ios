@@ -313,8 +313,7 @@ class LocationVC: UIViewController {
         }
         guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
         //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding...".localized)
+       progressHudProperties()
         
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
@@ -380,8 +379,7 @@ class LocationVC: UIViewController {
         
         var group2: BaseAqarModel?
         var group3: BaseAqarModel?
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding...".localized)
+       progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -490,9 +488,7 @@ class LocationVC: UIViewController {
     fileprivate func fetchRecoomedPosts()  {
         
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        
-        SVProgressHUD.show(withStatus: "Looding....".localized)
+       progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -704,8 +700,7 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
     func searchForResults(categoryId:Int?,citId: Int?, areaId: Int?, price1: Int, price2: Int, space1: Int, space2: Int, type: String?, bedroom_number: Int?, bathroom_number: Int?)  {
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         // make search to find aqars
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding....".localized)
+       progressHudProperties()
         
         PostServices.shared.getPostsUsingSearchData(category_id: categoryId, price2: price2 , price1: price1, bedNumber: bedroom_number, bathNumber: bathroom_number, type: type, city_id: citId, area_id: areaId, space1: space1, space2: space2) { (base, err) in
             

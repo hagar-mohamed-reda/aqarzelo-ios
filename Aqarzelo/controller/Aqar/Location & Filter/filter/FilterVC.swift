@@ -182,8 +182,7 @@ class FilterVC: UIViewController {
     }
     
     fileprivate  func getAreaAccordingTo(id:Int)  {
-        SVProgressHUD.setForegroundColor(UIColor.green)
-        SVProgressHUD.show(withStatus: "Looding....".localized)
+      progressHudProperties()
         FilterServices.shared.getAreaAccordingToCity(id: citysNumberArray.firstIndex(of: id) ?? 1) {[unowned self] (base, error) in
             if let error=error{
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
