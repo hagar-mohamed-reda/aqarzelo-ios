@@ -20,14 +20,36 @@ class Tesxtcx: UIViewController {
         return v
     }()
     
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+        let t = CustomMainAlertVC()
+        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        t.modalTransitionStyle = .crossDissolve
+        t.modalPresentationStyle = .overCurrentContext
+        return t
+    }()
     
-     
+    lazy var customErrorView:CustomErrorView = {
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        progressHudProperties()
+       
+    }
+    
+    @objc  func handleDismiss()  {
+        dismiss(animated: true)
+    }
+    
+    @objc func handleDoneError()  {
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
     }
 }

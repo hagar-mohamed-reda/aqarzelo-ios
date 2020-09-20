@@ -15,6 +15,7 @@
 		9FB2437624FC13C0004F43FB /* ListOfPhotoMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */; };
 		9FD04E4024EDB2910077884A /* DropDownAllTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */; };
 		9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */; };
+		9FD083B0251801FE00927033 /* CustomErrorViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD083AF251801FE00927033 /* CustomErrorViews.swift */; };
 		9FD9D1272517E9CF0092BFD3 /* Tesxtcx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD9D1262517E9CF0092BFD3 /* Tesxtcx.swift */; };
 		9FDBDC162506C19D003D596D /* FloatingLabeledTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDBDC152506C19D003D596D /* FloatingLabeledTextFields.swift */; };
 		9FDDB71D24E98E7300AF8817 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDB71524E98E6B00AF8817 /* Extensions.swift */; };
@@ -237,6 +238,7 @@
 		9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainVC.swift; sourceTree = "<group>"; };
 		9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownAllTableViewVC.swift; sourceTree = "<group>"; };
 		9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCityAndAreaTableViewVC.swift; sourceTree = "<group>"; };
+		9FD083AF251801FE00927033 /* CustomErrorViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorViews.swift; sourceTree = "<group>"; };
 		9FD9D1262517E9CF0092BFD3 /* Tesxtcx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tesxtcx.swift; sourceTree = "<group>"; };
 		9FDBDC152506C19D003D596D /* FloatingLabeledTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabeledTextFields.swift; sourceTree = "<group>"; };
 		9FDDB71524E98E6B00AF8817 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -531,6 +533,15 @@
 			path = "drop down";
 			sourceTree = "<group>";
 		};
+		9FD083AE251801EC00927033 /* error */ = {
+			isa = PBXGroup;
+			children = (
+				9FDDB72E24E98EEF00AF8817 /* CustomErrorView.swift */,
+				9FD083AF251801FE00927033 /* CustomErrorViews.swift */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
 		9FDBDC142506C15B003D596D /* textfileds */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,7 +574,7 @@
 				9FDDB72B24E98EEB00AF8817 /* CustomConfirmationView.swift */,
 				9FDDB73124E98EF200AF8817 /* CustomEmptyNoDataView.swift */,
 				9FDDB72C24E98EEC00AF8817 /* CustomEmptyNotifyOrFavoriteView.swift */,
-				9FDDB72E24E98EEF00AF8817 /* CustomErrorView.swift */,
+				9FD083AE251801EC00927033 /* error */,
 				9FDDB73024E98EF100AF8817 /* CustomMustLogInView.swift */,
 				9FDDB72624E98EE600AF8817 /* CustomNoInternetView.swift */,
 				9FDDB72724E98EE700AF8817 /* CustomResetPasswordView.swift */,
@@ -1548,6 +1559,7 @@
 				9FE270A624E886D5008889AB /* BaseCollectionCell.swift in Sources */,
 				9FE270BE24E8870A008889AB /* FirstCreatePostCell.swift in Sources */,
 				9FE2709224E88694008889AB /* AqarDetailChartsCell.swift in Sources */,
+				9FD083B0251801FE00927033 /* CustomErrorViews.swift in Sources */,
 				9FE2707C24E88559008889AB /* ContactUsVC.swift in Sources */,
 				9FE2704324E8845B008889AB /* AppDetailRecommendHorizentalCollectionVC.swift in Sources */,
 				9FE26FC424E87FA0008889AB /* Bindable.swift in Sources */,

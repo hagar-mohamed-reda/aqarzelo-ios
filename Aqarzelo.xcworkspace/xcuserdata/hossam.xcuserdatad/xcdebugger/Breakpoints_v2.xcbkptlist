@@ -94,8 +94,8 @@
             filePath = "Aqarzelo/helpers/Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "getMainTabBarController()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "Aqarzelo/helpers/Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "getMainTabBarController()"
             landmarkType = "7">
             <Locations>
@@ -1247,6 +1247,86 @@
             startingLineNumber = "155"
             endingLineNumber = "155"
             landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38FBEA7A-2E7C-44F5-903A-311F55F59364"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/registration/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "handleLogin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C4D58B7-A0F6-4D40-92DA-AF10E84F1B2F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/registration/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "handleLogin()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0C4D58B7-A0F6-4D40-92DA-AF10E84F1B2F - 2db1fdfeea8f74e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.LoginVC.(handleLogin in _EF8136F815D5D068570665FD94BB9EE5)() -&gt; ()"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/controller/registration/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  uuid = "0C4D58B7-A0F6-4D40-92DA-AF10E84F1B2F - 17898b0c6c48e9df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Aqarzelo.BaseUserSecondModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Aqarzelo.LoginVC.(handleLogin in _EF8136F815D5D068570665FD94BB9EE5)() -&gt; ()"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/controller/registration/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "238">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2B5F819-CF7D-44E9-BEE5-8E4268DB4963"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/registration/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "handleLogin()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -72,7 +72,7 @@ class UserEditingInfoTableCell: BaseTableViewCell {
         if let floatingLabelTextField = text as? SkyFloatingLabelTextField {
             if index == 2 {
                 if !texts.isValidEmail     {
-                    floatingLabelTextField.errorMessage = "Invalid Email or Phone".localized
+                    floatingLabelTextField.errorMessage = "Invalid E-mail or Phone".localized
                     //                    email = nil
                 }
                 else {

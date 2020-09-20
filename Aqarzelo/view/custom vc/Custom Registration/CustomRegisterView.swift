@@ -29,6 +29,7 @@ class CustomRegisterView: UIView {
         t.placeholder = "Username".localized
         t.title = "Username".localized
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.titleFormatter = { $0 }
         t.placeholderColor = .white
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
@@ -50,6 +51,7 @@ class CustomRegisterView: UIView {
         t.errorColor = .red
         t.tintColor = .white
         t.titleColor = .white
+        t.titleFormatter = { $0 }
         t.selectedTitleColor = .white
         return t
     }()
@@ -57,6 +59,7 @@ class CustomRegisterView: UIView {
         let t = SkyFloatingLabelTextField()
         t.keyboardType = UIKeyboardType.emailAddress
         t.placeholder = "Email".localized
+        t.titleFormatter = { $0 }
         t.title = "Email".localized
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .white
@@ -82,6 +85,7 @@ class CustomRegisterView: UIView {
         t.errorColor = .red
         t.tintColor = .white
         t.selectedTitleColor = .white
+        t.titleFormatter = { $0 }
         t.titleColor = .white
         passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordOldBTN
@@ -109,6 +113,7 @@ class CustomRegisterView: UIView {
         t.errorColor = .red
         t.tintColor = .white
         t.selectedTitleColor = .white
+        t.titleFormatter = { $0 }
         t.titleColor = .white
         passwordAAAOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         //        button.addTarget(self, action: #selector(handleASDs), for: .touchUpInside)

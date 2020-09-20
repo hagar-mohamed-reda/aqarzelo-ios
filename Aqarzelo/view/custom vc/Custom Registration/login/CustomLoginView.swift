@@ -42,6 +42,7 @@ class CustomLoginView: UIView {
         t.errorColor = .red
         t.tintColor = .white
         t.selectedTitleColor = .white
+        t.titleFormatter = { $0 }
         t.titleColor = .white
         //        t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)
         t.constrainHeight(constant: 50)
@@ -51,6 +52,7 @@ class CustomLoginView: UIView {
         let t = SkyFloatingLabelTextField()
         t.title = "Password".localized
         t.tintColor = .white
+        t.titleFormatter = { $0 }
         t.placeholderColor = .white
         t.placeholder = "Enter your password".localized
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
@@ -60,6 +62,7 @@ class CustomLoginView: UIView {
         t.tintColor = .white
         t.selectedTitleColor = .white
         t.titleColor = .white
+        
         t.isSecureTextEntry = true
         t.constrainHeight(constant: 50)
         passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
@@ -188,7 +191,8 @@ class CustomLoginView: UIView {
         if let floatingLabelTextField = text as? SkyFloatingLabelTextField {
             if text == emailTextField {
                 if !texts.isValidEmail && !texts.isValidPhoneNumber    {
-                    floatingLabelTextField.errorMessage = "Invalid Email or Phone".localized
+                    floatingLabelTextField.errorMessage = "Invalid E-mail or Phone".localized
+                    floatingLabelTextField.errorMessage?.lowercased()
                     loginViewModel.email = nil
                 }
                 else {
@@ -199,6 +203,7 @@ class CustomLoginView: UIView {
             }else
                 if(texts.count < 8 ) {
                     floatingLabelTextField.errorMessage = "Password must have 8 character".localized
+                    floatingLabelTextField.errorMessage?.lowercased()
                     loginViewModel.password = nil
                 }
                 else {

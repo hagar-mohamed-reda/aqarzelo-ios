@@ -26,6 +26,7 @@ class CustomChangePasswordView: CustomBaseView {
         t.placeholder = "Old Passowrd".localized
         t.title = "Old Passowrd".localized
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
+        t.titleFormatter = { $0 }
         t.placeholderColor = .black
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.textColor = .white
@@ -58,6 +59,7 @@ class CustomChangePasswordView: CustomBaseView {
         t.textColor = .white
         t.errorColor = .red
         t.tintColor = .white
+        t.titleFormatter = { $0 }
         t.selectedTitleColor = .white
         t.titleColor = .white
         passwordBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
@@ -92,6 +94,7 @@ class CustomChangePasswordView: CustomBaseView {
         t.textColor = .white
         t.errorColor = .red
         t.tintColor = .white
+        t.titleFormatter = { $0 }
         t.selectedTitleColor = .white
         t.titleColor = .white
         passwordCOBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))

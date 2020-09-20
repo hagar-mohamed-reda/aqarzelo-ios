@@ -15,10 +15,25 @@ import SVProgressHUD
 
 extension UIViewController {
     
+    func callMainError(err:String,vc:UIViewController,views:CustomErrorView)  {
+        DispatchQueue.main.async {
+            
+        
+         vc.addCustomViewInCenter(views: views, height: 220)
+        views.errorInfoLabel.text = err
+               views.problemsView.play()
+               views.problemsView.loopMode = .loop
+               
+               self.present(vc, animated: true)
+        }
+    }
+    
     func progressHudProperties() {
+        let height =  UIScreen.main.bounds.height/12
         SVProgressHUD.setRingThickness(20)
-        SVProgressHUD.setRingNoTextRadius(80)
-        SVProgressHUD.setMinimumSize(.init(width: 180, height: 180))
+        SVProgressHUD.setRingNoTextRadius(height)
+    
+//        SVProgressHUD.setMinimumSize(.init(width: 180, height: 20))
         SVProgressHUD.setForegroundColor(#colorLiteral(red: 0.2015180886, green: 0.811791122, blue: 0.7185178995, alpha: 1))
         SVProgressHUD.setBackgroundColor(UIColor.clear)
         SVProgressHUD.show()

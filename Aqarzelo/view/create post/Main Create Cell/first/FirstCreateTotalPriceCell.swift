@@ -49,7 +49,8 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
         t.errorColor = .red
         t.tintColor = .white
         t.selectedTitleColor = .white
-        t.titleColor = .white
+//        t.titleColor = .white
+         t.titleFormatter = { $0 }
         t.placeholder = "enter price".localized
         t.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
         t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)

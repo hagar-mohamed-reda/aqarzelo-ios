@@ -63,6 +63,13 @@ class LoginVC: UIViewController {
         
     }
     
+    lazy var customErrorView:CustomErrorView = {
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
+    
     lazy var customNoInternetView:CustomNoInternetView = {
         let v = CustomNoInternetView()
         v.setupAnimation(name: "4970-unapproved-cross")
@@ -173,19 +180,30 @@ class LoginVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func handleDoneError()  {
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
+    
     @objc fileprivate func handleLogin()  {
         
         customLoginView.loginViewModel.performLogging {[unowned self] (base,err) in
             if let err = err {
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                
+//                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
-            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-            self.saveToken(token: user.apiToken)
+            let xx = MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn
+            
+           
             
             DispatchQueue.main.async {
+                guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView); return}
+                           self.saveToken(token: user.apiToken)
                 self.goToMainTab(user)
             }
             
