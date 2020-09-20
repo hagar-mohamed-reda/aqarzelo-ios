@@ -34,6 +34,19 @@ class ChatLogCollectionVC: BaseViewController {
         c.alwaysBounceVertical = true
         return c
     }()
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+        let t = CustomMainAlertVC()
+        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        t.modalTransitionStyle = .crossDissolve
+        t.modalPresentationStyle = .overCurrentContext
+        return t
+    }()
+    lazy var customErrorView:CustomErrorView = {
+           let v = CustomErrorView()
+           v.setupAnimation(name: "4970-unapproved-cross")
+           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+           return v
+       }()
     lazy var customTopView:ChatLogHeaderCell = {
         let v = ChatLogHeaderCell()
         v.targetName = targetUesrName
@@ -86,7 +99,8 @@ class ChatLogCollectionVC: BaseViewController {
         progressHudProperties()
         MessagesServices.shared.getMessages(api_token: userToken, user_to: userId) { [unowned self] (base, err) in
             if let error = err {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
             SVProgressHUD.dismiss()
             guard let messages = base?.data else {return}
@@ -175,13 +189,24 @@ class ChatLogCollectionVC: BaseViewController {
         
         MessagesServices.shared.sendMessage(message: message, token: userToken, toUser:String(describing: userId! )) {[unowned self] (base, err) in
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.resetAllData()
             }
             self.loadNewerMessages()
         }
         resetAllData()
     }
+    
+    
+    @objc  func handleDismiss()  {
+        dismiss(animated: true)
+    }
+    
+    @objc func handleDoneError()  {
+           removeViewWithAnimation(vvv: customErrorView)
+           customMainAlertVC.dismiss(animated: true)
+       }
 }
 
 //MARK:-Extensions

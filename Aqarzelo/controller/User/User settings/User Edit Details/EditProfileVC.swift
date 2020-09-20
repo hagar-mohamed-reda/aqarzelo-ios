@@ -17,6 +17,12 @@ protocol EditProfileVCProtocol {
 
 class EditProfileVC: UIViewController {
     
+    lazy var customErrorView:CustomErrorView = {
+           let v = CustomErrorView()
+           v.setupAnimation(name: "4970-unapproved-cross")
+           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+           return v
+       }()
     lazy var customUpadteUserVview:CustomUpdateSserProfileView = {
         let v = CustomUpdateSserProfileView()
         v.setupAnimation(name: "15179-confirm-popup")
@@ -187,7 +193,8 @@ class EditProfileVC: UIViewController {
         UserServices.shared.updateProfileUser(token: currentUser.apiToken, coverImage: imageBackgroundView.image, photoImage: imageProfileView.image, website: website ?? ""  , phone: phone ?? currentUser.phone ?? "", email: finalEmail ?? currentUser.email, address: address ?? "", facebook: facebook ?? "") { (users, err) in
             
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -213,6 +220,11 @@ class EditProfileVC: UIViewController {
     @objc func handleDismiss()  {
         dismiss(animated: true, completion: nil)
     }
+    
+    @objc func handleDoneError()  {
+           removeViewWithAnimation(vvv: customErrorView)
+           customMainAlertVC.dismiss(animated: true)
+       }
     
     @objc func handleNext()  {
         customMainAlertVC.addCustomViewInCenter(views: customUpadteUserVview, height: 220)

@@ -50,7 +50,19 @@ class ListOfPhotoMainSecVC: UIViewController {
         pi.allowsEditing = true
         return pi
     }()
-    
+    lazy var customErrorView:CustomErrorView = {
+           let v = CustomErrorView()
+           v.setupAnimation(name: "4970-unapproved-cross")
+           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+           return v
+       }()
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+           let t = CustomMainAlertVC()
+           t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+           t.modalTransitionStyle = .crossDissolve
+           t.modalPresentationStyle = .overCurrentContext
+           return t
+       }()
     var mainImageView:UIImage!
     
     var pushedImage:UIImage!
@@ -262,7 +274,8 @@ class ListOfPhotoMainSecVC: UIViewController {
     func processToDeleteImage(index:Int,imageImdex:Int)   {
         ImagesServices.shared.deleteImage(id: imageImdex, token: currentUserToken) {[unowned self] (base, err) in
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription);return
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription);return
             }
             self.photosArray.remove(at: index)
             self.numberOfImageUpload = self.numberOfImageUpload-1
@@ -439,6 +452,11 @@ class ListOfPhotoMainSecVC: UIViewController {
         }
     }
     
+    
+    @objc  func handleDismiss()  {
+        dismiss(animated: true)
+    }
+    
     @objc func handleUploadNextComplete(notify: Notification)  {
         nextButton.isEnabled = true
         
@@ -503,6 +521,11 @@ class ListOfPhotoMainSecVC: UIViewController {
             }
         }
     }
+    
+    @objc func handleDoneError()  {
+           removeViewWithAnimation(vvv: customErrorView)
+           customMainAlertVC.dismiss(animated: true)
+       }
     
     @objc fileprivate  func  handleBack()  {
         

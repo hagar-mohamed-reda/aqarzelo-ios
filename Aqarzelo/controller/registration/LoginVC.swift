@@ -158,7 +158,8 @@ class LoginVC: UIViewController {
     fileprivate func handleFacebookLoginAction() {
         RegistrationServices.shared.loginUsingFacebook(vc: self) {[unowned self] (base, err) in
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription);return
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription);return
                     self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -282,7 +283,8 @@ extension LoginVC:  GIDSignInDelegate {
     func makeOtherRegisterExternal(fullName:String,email:String)  {
         RegistrationServices.shared.loginWithExternal(name: fullName, photo: "", email: email) {[unowned self] (base, error) in
             if let err=error{
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
             

@@ -21,7 +21,12 @@ class NotificationCollectionVC: BaseCollectionVC {
         return refreshControl
         
     }()
-    
+    lazy var customErrorView:CustomErrorView = {
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
     lazy var problemsView:AnimationView = {
         let i = AnimationView()
         i.animation = Animation.named("10002-empty-notification")
@@ -187,7 +192,8 @@ class NotificationCollectionVC: BaseCollectionVC {
        progressHudProperties()
         NotificationAndFavoriteServices.shared.getAllNotifications(apiToke: token) {[unowned self] (bases, err) in
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription)
             }
             SVProgressHUD.dismiss()
             guard let base = bases?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? bases?.messageAr : bases?.messageEn); return}
@@ -240,6 +246,11 @@ class NotificationCollectionVC: BaseCollectionVC {
     //remove popup view
     @objc func handleDismiss()  {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func handleDoneError()  {
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
     }
     
     @objc func handleOk()  {

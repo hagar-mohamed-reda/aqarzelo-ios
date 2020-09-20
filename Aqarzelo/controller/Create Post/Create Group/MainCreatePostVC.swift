@@ -100,8 +100,19 @@ class MainCreatePostVC: UIViewController {
     var isPostEditing:Bool = false
     
     var mainCcreatePostVviewModel = MainCreatePostViewModel() //view model
-    
-    
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+           let t = CustomMainAlertVC()
+           t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+           t.modalTransitionStyle = .crossDissolve
+           t.modalPresentationStyle = .overCurrentContext
+           return t
+       }()
+    lazy var customErrorView:CustomErrorView = {
+           let v = CustomErrorView()
+           v.setupAnimation(name: "4970-unapproved-cross")
+           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+           return v
+       }()
     lazy var nextButton:UIButton = {
         let b = UIButton(title: "Next".localized, titleColor: .black, font: .systemFont(ofSize: 16), backgroundColor: .white, target: self, action: #selector(handleNext))
         b.layer.borderWidth = 2
@@ -345,7 +356,8 @@ class MainCreatePostVC: UIViewController {
     
     fileprivate func makeOperationAfterPostMade(isUpdate:Bool,_ err: Error?) {
         if let err=err {
-            SVProgressHUD.showError(withStatus: err.localizedDescription)
+            self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//            SVProgressHUD.showError(withStatus: err.localizedDescription)
             self.activeViewsIfNoData();return
         }
         if isUpdate {
@@ -456,6 +468,15 @@ class MainCreatePostVC: UIViewController {
     @objc fileprivate  func  handleBack()  {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func handleDoneError()  {
+           removeViewWithAnimation(vvv: customErrorView)
+           customMainAlertVC.dismiss(animated: true)
+       }
+    
+    @objc func handleDismiss()  {
+           dismiss(animated: true, completion: nil)
+       }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

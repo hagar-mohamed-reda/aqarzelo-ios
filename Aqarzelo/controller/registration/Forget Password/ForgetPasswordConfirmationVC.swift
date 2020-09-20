@@ -14,6 +14,13 @@ import SkyFloatingLabelTextField
 
 class ForgetPasswordConfirmationVC: UIViewController {
     
+    
+    lazy var customErrorView:CustomErrorView = {
+           let v = CustomErrorView()
+           v.setupAnimation(name: "4970-unapproved-cross")
+           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+           return v
+       }()
     lazy var customMainAlertVC:CustomMainAlertVC = {
         let t = CustomMainAlertVC()
         t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
@@ -129,7 +136,8 @@ class ForgetPasswordConfirmationVC: UIViewController {
        progressHudProperties()
         RegistrationServices.shared.forgetPassword(phone: phone) {[unowned self] (base, err) in
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -148,7 +156,8 @@ class ForgetPasswordConfirmationVC: UIViewController {
         
         customForgetPassConfirmView.forgetPassConfirmViewModel.performConfirmation { (base, err) in
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+//                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -175,7 +184,10 @@ class ForgetPasswordConfirmationVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    
+    @objc func handleDoneError()  {
+           removeViewWithAnimation(vvv: customErrorView)
+           customMainAlertVC.dismiss(animated: true)
+       }
     
 }
 
