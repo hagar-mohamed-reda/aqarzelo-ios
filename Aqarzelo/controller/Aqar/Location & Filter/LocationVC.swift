@@ -493,7 +493,9 @@ class LocationVC: UIViewController {
     }
     
     fileprivate func fetchRecoomedPosts()  {
-        
+        if aqarsArray != nil && aqarsArray.count < 0  {
+            return
+        }
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
        progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)

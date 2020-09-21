@@ -227,6 +227,7 @@
 		9FE2710424E8887A008889AB /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2710224E88879008889AB /* UserDetailCell.swift */; };
 		9FE2710524E8887A008889AB /* UserPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2710324E8887A008889AB /* UserPostsCell.swift */; };
 		9FFA424B24FEA3F100EF862E /* TintedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */; };
+		9FFC736F251919AA0065DDB9 /* OutlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC736E251919AA0065DDB9 /* OutlinedLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -454,6 +455,7 @@
 		9FE2710224E88879008889AB /* UserDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
 		9FE2710324E8887A008889AB /* UserPostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsCell.swift; sourceTree = "<group>"; };
 		9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintedSegmentedControl.swift; sourceTree = "<group>"; };
+		9FFC736E251919AA0065DDB9 /* OutlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedLabel.swift; sourceTree = "<group>"; };
 		A8953DA5FEB4182F22DA9FFB /* Pods-Aqarzelo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aqarzelo.debug.xcconfig"; path = "Target Support Files/Pods-Aqarzelo/Pods-Aqarzelo.debug.xcconfig"; sourceTree = "<group>"; };
 		CACADD2DC40895DADE73CEBB /* Pods-Aqarzelo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aqarzelo.release.xcconfig"; path = "Target Support Files/Pods-Aqarzelo/Pods-Aqarzelo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -628,6 +630,7 @@
 				9FDDB75624E98FB300AF8817 /* CustomTabBar.swift */,
 				9FDBDC142506C15B003D596D /* textfileds */,
 				9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */,
+				9FFC736E251919AA0065DDB9 /* OutlinedLabel.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1605,6 +1608,7 @@
 				9FE26F8B24E87C3C008889AB /* CustomMainAlertVC.swift in Sources */,
 				9FE26FC624E87FCD008889AB /* FirstCcreatePostVviewModel.swift in Sources */,
 				9FE26FED24E8812F008889AB /* BaseAdsModel.swift in Sources */,
+				9FFC736F251919AA0065DDB9 /* OutlinedLabel.swift in Sources */,
 				9FE26FD224E8803D008889AB /* ForgetPassViewModel.swift in Sources */,
 				9FDDB73A24E98EF200AF8817 /* CustomErrorView.swift in Sources */,
 				9FDDB74A24E98F5B00AF8817 /* CustomAddMinusView.swift in Sources */,

@@ -37,10 +37,16 @@ class AqarDetailCell: BaseCollectionCell {
             distanceLabel.text = "\(space) "+"K".localized
             reviewLabel.text = "\(aqar.userReview.count) "+"Reviews".localized
             
-            for(index,view) in starsStackView.arrangedSubviews.enumerated(){
-                let ratingInt = Int(aqar.rate )
-                view.alpha = index >= ratingInt ? 0 : 1
-            }
+            for(index,view ) in starsStackView.arrangedSubviews.enumerated(){
+                           let ratingInt = Int(aqar.rate )
+                 
+                (view as? UIImageView )?.image = index >= ratingInt ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "star2")
+//                           view.alpha = index >= ratingInt ? 0 : 1
+                       }
+//            for(index,view) in starsStackView.arrangedSubviews.enumerated(){
+//                let ratingInt = Int(aqar.rate )
+//                view.alpha = index >= ratingInt ? 0 : 1
+//            }
         }
     }
     
@@ -57,24 +63,39 @@ class AqarDetailCell: BaseCollectionCell {
         i.clipsToBounds = true
         return i
     }()
-    lazy var titleLabel = UILabel(text: "Home", font: .systemFont(ofSize: 18), textColor: .white )
-    lazy var priceLabel = UILabel(text: "10.000 EGY", font: .systemFont(ofSize: 16), textColor: .white )
-    lazy var distanceLabel = UILabel(text: "23 M", font: .systemFont(ofSize: 20), textColor: .white )
-    lazy var reviewLabel = UILabel(text: "24 reviews", font: .systemFont(ofSize: 14), textColor: .white,textAlignment: .left )
-    lazy var rateButton = UIButton(title: "Rate", titleColor: ColorConstant.mainBackgroundColor, font: .systemFont(ofSize: 20), backgroundColor: .clear, target: self, action: #selector(handleRates))
     
-    let starsStackView:UIStackView = {
-        var arrangedViews = [ UIView]()
-        (0..<5).forEach({ (_) in
-            let im = UIImageView(image: #imageLiteral(resourceName: "star2"))
-            im.constrainWidth(constant: 24)
-            im.constrainHeight(constant: 24)
-            arrangedViews.append(im)
-        })
-        arrangedViews.append(UIView())
-        let stack = UIStackView(arrangedSubviews: arrangedViews)
-        return stack
-    }()
+    
+    lazy var titleLabel = UILabel(text: "Home", font: .systemFont(ofSize: 22), textColor: .white )
+    lazy var priceLabel = UILabel(text: "10.000 EGY", font: .systemFont(ofSize: 22), textColor: .white )
+    lazy var distanceLabel = UILabel(text: "23 M", font: .systemFont(ofSize: 22), textColor: .white )
+    lazy var reviewLabel = UILabel(text: "24 reviews", font: .systemFont(ofSize: 14), textColor: .white )
+    lazy var rateButton = UIButton(title: "Rate", titleColor: ColorConstant.mainBackgroundColor, font: .systemFont(ofSize: 18), backgroundColor: .clear, target: self, action: #selector(handleRates))
+    
+//    lazy var starsStackView:UIStackView = {
+//        var arrangedViews = [ UIView]()
+//        (0..<5).forEach({ (_) in
+//            let im = UIImageView(image: #imageLiteral(resourceName: "star2"))
+//            im.constrainWidth(constant: 20)
+//            im.constrainHeight(constant: 20)
+//            arrangedViews.append(im)
+//        })
+//        arrangedViews.append(UIView())
+//        let stack = UIStackView(arrangedSubviews: arrangedViews)
+//        return stack
+//    }()
+    lazy var starsStackView:UIStackView = {
+           var arrangedViews = [ UIImageView]()
+           (0..<5).forEach({ (_) in
+               let im = UIImageView(image: #imageLiteral(resourceName: "star2"))
+               im.constrainWidth(constant: 20)
+               im.constrainHeight(constant: 20)
+               arrangedViews.append(im)
+           })
+//           arrangedViews.append(UIView())
+           let stack = UIStackView(arrangedSubviews: arrangedViews)
+        stack.spacing = 4
+           return stack
+       }()
     //    let panaromaView = CTPanoramaView()
     
     
@@ -82,14 +103,17 @@ class AqarDetailCell: BaseCollectionCell {
         backgroundColor = .white
         let leftStack = getStack(views: UIView(),titleLabel,priceLabel,distanceLabel, spacing: 8, distribution: .fill, axis: .vertical)
         [titleLabel,priceLabel,reviewLabel,distanceLabel].forEach({$0.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left})
-        let ss = MOLHLanguage.isRTLLanguage() ? getStack(views: rateButton,reviewLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) :  getStack(views: reviewLabel,rateButton,UIView(), spacing: 8, distribution: .fill, axis: .horizontal)
+        [titleLabel,priceLabel,reviewLabel,distanceLabel].forEach { (l) in
+            l.layer.shadowOpacity = 0.8
+            l.layer.shadowOffset = CGSize(width: 0, height: 0)
+        }
+        
+        let ss = MOLHLanguage.isRTLLanguage() ? getStack(views: rateButton,reviewLabel,UIView(), spacing: 0, distribution: .fill, axis: .horizontal) :  getStack(views: reviewLabel,rateButton,UIView(), spacing: 8, distribution: .fill, axis: .horizontal)
         
         addSubViews(views: mainImageView,mainWebView,leftStack,starsStackView,ss)//,reviewLabel,rateButton)
         
         mainImageView.fillSuperview()
         mainWebView.fillSuperview()
-        //          backImageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 24, left: 32, bottom: 0, right: 0))
-        //          logoImageView.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: trailingAnchor,padding: .init(top: 24, left: 0, bottom: 0, right: 32))
         
         leftStack.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil,padding: .init(top: 0, left: 32, bottom: 48, right: 0))
         ss.anchor(top: starsStackView.bottomAnchor, leading: starsStackView.leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor,padding: .init(top: 16, left: 0, bottom: 48, right: 0))
