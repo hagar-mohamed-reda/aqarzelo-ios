@@ -598,7 +598,7 @@ class LocationVC: UIViewController {
         hidedCustomWhiteViewTabBar(hide: true)
         showOrHideCustomTabBar(hide: true)
         let user = UserSettingsVC()
-        user.user = currentUser
+        user.currentUser = currentUser
         navigationController?.pushViewController(user, animated: true)
     }
     

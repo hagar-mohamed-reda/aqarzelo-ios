@@ -35,7 +35,7 @@ class ContactUsVC: UIViewController {
         i.constrainHeight(constant: view.frame.height/3)
         i.constrainWidth(constant: view.frame.width/3)
         
-//        i.clipsToBounds = true
+        //        i.clipsToBounds = true
         return i
     }()
     var images = [#imageLiteral(resourceName: "twitter (3)"),#imageLiteral(resourceName: "google-plus"),#imageLiteral(resourceName: "facebook (6)"),#imageLiteral(resourceName: "snapchat (1)")]

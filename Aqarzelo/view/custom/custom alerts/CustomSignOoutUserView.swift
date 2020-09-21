@@ -23,12 +23,15 @@ class CustomSignOoutUserView: CustomBaseView {
         let v = UIView(backgroundColor: .lightGray)
         v.layer.cornerRadius = 16
         v.clipsToBounds = true
-        v.layer.borderWidth = 2
+        v.layer.borderWidth = 0
         v.layer.borderColor = UIColor.gray.cgColor
         return v
     }()
     lazy var subView:UIView = {
-        let v =  UIView(backgroundColor: .lightGray)
+        let v =  UIView(backgroundColor: .clear)
+        v.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMinYCorner]
+        v.layer.cornerRadius = 8
+        v.clipsToBounds = true
         return v
     }()
     lazy var problemsView:AnimationView = {
@@ -41,10 +44,10 @@ class CustomSignOoutUserView: CustomBaseView {
     
     
     func setupAnimation(name:String)  {
-           problemsView.animation = Animation.named(name)
-           problemsView.play()
-           problemsView.loopMode = .loop
-       }
+        problemsView.animation = Animation.named(name)
+        problemsView.play()
+        problemsView.loopMode = .loop
+    }
     
     override func setupViews()  {
         backgroundColor = .clear
@@ -60,7 +63,7 @@ class CustomSignOoutUserView: CustomBaseView {
             problemsView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             problemsView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0),
             detailInformationLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
-            ])
+        ])
         
         subView.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: mainView.trailingAnchor,padding: .init(top: 0, left: 0, bottom: 40, right: 0))
         

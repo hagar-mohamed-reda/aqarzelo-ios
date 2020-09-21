@@ -17,9 +17,9 @@ class UserSettingsVC: UIViewController {
     
     
     
-    var user:UserModel? {
+    var currentUser:UserModel? {
         didSet{
-            guard let user = user else { return  }
+            guard let user = currentUser else { return  }
             fetchInfo(user )
             //             fetchData()
             isLogin = true
@@ -60,6 +60,12 @@ class UserSettingsVC: UIViewController {
         c.englishButton.addTarget(self, action: #selector(handleEnglishLanguage), for: .touchUpInside)
         return c
     }()
+    lazy var customErrorView:CustomErrorView = {
+              let v = CustomErrorView()
+              v.setupAnimation(name: "4970-unapproved-cross")
+              v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+              return v
+          }()
     lazy var customTopUserView:CustomTopUserView = {
         let v = CustomTopUserView()
         //        v.constrainHeight(constant: <#T##CGFloat#>)
@@ -145,14 +151,20 @@ class UserSettingsVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
         showOrHideCustomTabBar(hide: true)
         
-        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-            user = cacheCurrentUserCodabe.storedValue
+        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
+            updateUserProfile()
+            isLogin = true
+            tableView.reloadData()
+        }
+        
+        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser != nil{
+            currentUser = cacheCurrentUserCodabe.storedValue
             isLogin = true
             tableView.reloadData()
         }
         
         if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-            user=nil
+            currentUser=nil
             isLogin = false
             tableView.reloadData()
         }
@@ -168,6 +180,38 @@ class UserSettingsVC: UIViewController {
     }
     
     //MARK:-User methods
+    
+     fileprivate func updateUserProfile()  {
+            currentUser=cacheCurrentUserCodabe.storedValue
+            if currentUser != nil {
+                return
+            }
+            guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
+            //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+           progressHudProperties()
+            
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            
+            UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
+                if let err=err{
+                    DispatchQueue.main.async {
+                                            self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+
+                    }
+    //                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                    self.activeViewsIfNoData();return
+                }
+                dispatchGroup.leave()
+                SVProgressHUD.dismiss()
+                self.activeViewsIfNoData() // disbale all events in the screen
+                guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+                self.currentUser = user
+                self.fetchInfo(user)
+                
+            }
+            
+        }
     
     fileprivate func fetchInfo(_ user:UserModel)  {
         guard let url = URL(string: user.photoURL) else{return}
@@ -310,6 +354,11 @@ class UserSettingsVC: UIViewController {
         removeViewWithAnimation(vvv: customAlerLoginView)
         customMainAlertVC.dismiss(animated: true)
     }
+    
+    @objc func handleDoneError()  {
+              removeViewWithAnimation(vvv: customErrorView)
+              customMainAlertVC.dismiss(animated: true)
+          }
 }
 
 //MARK:-Extensions
@@ -388,7 +437,7 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         
         userDefaults.synchronize()
         userDefaults.synchronize()
-        self.user = nil
+        self.currentUser = nil
         cacheCurrentUserCodabe.deleteFile(cacheCurrentUserCodabe.storedValue!)
         
         isLogin = !isLogin
@@ -413,7 +462,7 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func goToChangePaasowrd()  {
-        let change = ChangePasswordVC(token: user?.apiToken ?? "")
+        let change = ChangePasswordVC(token: currentUser?.apiToken ?? "")
         navigationController?.pushViewController(change, animated: true)
     }
     
@@ -529,7 +578,7 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func goToEditProfile()  {
         //        showOrHideCustomTabBar(hide: true)
-        guard let user = user else { return  }
+        guard let user = currentUser else { return  }
         //        let help = UserProfileVC(user: user)
         let help = UserProfileVC()
         help.user=user
