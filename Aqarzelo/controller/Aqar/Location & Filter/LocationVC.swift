@@ -816,15 +816,6 @@ extension LocationVC: FilterVCProtocol {
     }
     
     
-    //    func getaqarsAccordingTo(citId: Int, areaId: Int, price1: Int, price2: Int, space1: Int, space2: Int, type: String, bedroom_number: Int, bathroom_number: Int,categoryId:Int) {
-    ////        customLocationView.mapView.clear()
-    //        searchForResults(categoryId: categoryId, citId: citId, areaId: areaId, price1: price1, price2: price2, space1: space1, space2: space2, type: type, bedroom_number: bedroom_number, bathroom_number: bathroom_number)
-    //    }
-    
-    
-    
-    
-    
 }
 
 extension UIViewController {

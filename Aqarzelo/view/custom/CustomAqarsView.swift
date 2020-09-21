@@ -22,10 +22,11 @@ class CustomAqarsView: UIView {
             aqarImageView.sd_setImage(with: url)
             aqarLogoImage.sd_setImage(with: url2)
             locationTitleLabel.text = MOLHLanguage.isRTLLanguage() ? aqar.titleAr : aqar.title
-            let price = Int(aqar.price / 1000)
-            let space = aqar.space
             
-            locationDistanceLabel.text = "\(price) K, \(space) M"
+            let space = aqar.space
+            let km = aqar.price >= 1000000 ? "M".localized :  "K".localized
+                       let k = aqar.price >= 1000000 ? aqar.price / 1000000 : aqar.price / 1000
+            locationDistanceLabel.text = "\(k) \(km) , \(space) M"
         }
     }
     

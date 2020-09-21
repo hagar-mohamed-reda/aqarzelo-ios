@@ -29,10 +29,11 @@ class AqarDetailCell: BaseCollectionCell {
             guard let aqar = aqar else { return }
             
             titleLabel.text = MOLHLanguage.isRTLLanguage() ? aqar.titleAr : aqar.title
-            let price = Int(aqar.price / 1000)
+             let km = aqar.price >= 1000000 ? "M".localized :  "K".localized
+                       let k = aqar.price >= 1000000 ? aqar.price / 1000000 : aqar.price / 1000
             let space = aqar.space
             
-            priceLabel.text = "\(price) "+"EGY".localized
+            priceLabel.text = "\(k) "+"EGY".localized
             distanceLabel.text = "\(space) "+"K".localized
             reviewLabel.text = "\(aqar.userReview.count) "+"Reviews".localized
             

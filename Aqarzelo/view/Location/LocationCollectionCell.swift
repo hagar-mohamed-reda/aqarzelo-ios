@@ -18,10 +18,11 @@ class LocationCollectionCell: BaseCollectionCell {
         didSet{
             guard let aqar = aqar else { return  }
             locationTitleLabel.text = MOLHLanguage.isRTLLanguage() ? aqar.titleAr :  aqar.title
-            let price = Int(aqar.price / 1000)
+            let km = aqar.price >= 1000000 ? "M".localized :  "K".localized
+                       let k = aqar.price >= 1000000 ? aqar.price / 1000000 : aqar.price / 1000
             let space = Int(aqar.space.toInt() ?? 0/1000)
             
-            locationDistanceLabel.text = "\(price) "+"M".localized+", \(space) "+"M²".localized
+            locationDistanceLabel.text = "\(k) \(km) , \(space) "+"M²".localized
             guard let urlString = aqar.images.first?.image,let url = URL(string: urlString) else { return  }
             
             locationImageView.sd_setImage(with: url,placeholderImage: #imageLiteral(resourceName: "Saratoga Farms 2403 _Ext_Rev_1200"))

@@ -14,7 +14,9 @@ class CustomMarkerLocationView: CustomBaseView {
     var aqar:AqarModel? {
         didSet {
             guard let aqar = aqar else { return  }
-            distanceLabel.text = "\(aqar.price)"
+            let km = aqar.price >= 1000000 ? "M".localized :  "K".localized
+            let k = aqar.price >= 1000000 ? aqar.price / 1000000 : aqar.price / 1000
+            distanceLabel.text = "\(k) "+"\(km)"
             distanceLabel.textAlignment = .center
         }
     }
