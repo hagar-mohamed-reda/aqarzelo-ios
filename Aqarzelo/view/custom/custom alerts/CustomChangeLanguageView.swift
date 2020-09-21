@@ -38,7 +38,7 @@ class CustomChangeLanguageView: CustomBaseView {
     }()
     
     override func setupViews() {
-//        errorInfoLabel.constrainHeight(constant: 60)
+        //        errorInfoLabel.constrainHeight(constant: 60)
         //        layer.cornerRadius = 16
         //        clipsToBounds = true
         let buttonStack = getStack(views: englishButton,arabicButton, spacing: 16, distribution: .fillEqually, axis: .horizontal)
@@ -49,8 +49,8 @@ class CustomChangeLanguageView: CustomBaseView {
         subView.addSubViews(views: seperatorView,errorLabel,errorInfoLabel)
         
         NSLayoutConstraint.activate([errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-//                                     errorInfoLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
-            ])
+                                     //                                     errorInfoLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0)
+        ])
         //        subView.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: mainView.trailingAnchor,padding: .init(top: 0, left: 0, bottom: 30, right: 0))
         
         subView.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: mainView.trailingAnchor,padding: .init(top: 0, left: 0, bottom: 40, right: 0))

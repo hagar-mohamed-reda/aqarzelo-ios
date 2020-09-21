@@ -29,22 +29,20 @@ class CustomChangePasswordView: CustomBaseView {
         t.titleFormatter = { $0 }
         t.placeholderColor = .black
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        t.textColor = .white
+        t.textColor = .black
         t.errorColor = .red
-        t.tintColor = .white
-        t.selectedTitleColor = .white
-        t.titleColor = .white
+        t.tintColor = .black
+        t.selectedTitleColor = .black
+        t.titleColor = .black
         t.constrainHeight(constant: 50)
-        passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
+        passwordOldBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordOldBTN
         t.rightViewMode = .always
         return t
     }()
     lazy var passwordOldBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(UIImage(systemName: "eye.slash.fill") , for: .normal)
-//        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
-//        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        b.setImage(UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysTemplate) , for: .normal)
         b.addTarget(self, action: #selector(handleASD), for: .touchUpInside)
         return b
     }()
@@ -56,29 +54,29 @@ class CustomChangePasswordView: CustomBaseView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .black
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        t.textColor = .white
+        t.textColor = .black
         t.errorColor = .red
-        t.tintColor = .white
+        t.tintColor = .black
         t.titleFormatter = { $0 }
-        t.selectedTitleColor = .white
-        t.titleColor = .white
-        passwordBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
+        t.selectedTitleColor = .black
+        t.titleColor = .black
+        passwordBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordBTN
         t.rightViewMode = .always
         return t
     }()
     lazy var passwordBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
-        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        b.setImage(UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
+//        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASDa), for: .touchUpInside)
         
         return b
     }()
     lazy var passwordCOBTN:UIButton = {
         let b = UIButton(type: .custom)
-        b.setImage(#imageLiteral(resourceName: "visibility").withRenderingMode(.alwaysTemplate), for: .normal)
-        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        b.setImage(UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
+//        b.imageEdgeInsets = MOLHLanguage.isRTLLanguage() ? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -16) : UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         b.addTarget(self, action: #selector(handleASDss), for: .touchUpInside)
         
         return b
@@ -91,13 +89,13 @@ class CustomChangePasswordView: CustomBaseView {
         t.lineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
         t.placeholderColor = .black
         t.selectedLineColor = #colorLiteral(red: 0.2641228139, green: 0.9383022785, blue: 0.9660391212, alpha: 1)
-        t.textColor = .white
+        t.textColor = .black
         t.errorColor = .red
-        t.tintColor = .white
+        t.tintColor = .black
         t.titleFormatter = { $0 }
-        t.selectedTitleColor = .white
-        t.titleColor = .white
-        passwordCOBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 25), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
+        t.selectedTitleColor = .black
+        t.titleColor = .black
+        passwordCOBTN.frame = CGRect(x: CGFloat(t.frame.size.width - 10), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
         t.rightView =  passwordCOBTN
         t.rightViewMode = .always
         return t
@@ -150,24 +148,24 @@ class CustomChangePasswordView: CustomBaseView {
     @objc  func handleASD(sender:UIButton)  {
         oldPasswordTextField.isSecureTextEntry.toggle()
         let xx = oldPasswordTextField.isSecureTextEntry == true ?
-                   UIImage(systemName: "eye.slash.fill") :
-                   UIImage(systemName: "eye.fill")
+                                        UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysTemplate) :
+                   UIImage(systemName: "eye.fill")?.withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     
     @objc  func handleASDa(sender:UIButton)  {
         newPasswordTextField.isSecureTextEntry.toggle()
         let xx = newPasswordTextField.isSecureTextEntry == true ?
-                          UIImage(systemName: "eye.slash.fill") :
-                          UIImage(systemName: "eye.fill")
+                                        UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysTemplate) :
+                   UIImage(systemName: "eye.fill")?.withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     
     @objc  func handleASDss(sender:UIButton)  {
         confirmNewPasswordTextField.isSecureTextEntry.toggle()
         let xx = confirmNewPasswordTextField.isSecureTextEntry == true ?
-                                 UIImage(systemName: "eye.slash.fill") :
-                                 UIImage(systemName: "eye.fill")
+                                 UIImage(systemName: "eye.slash.fill")?.withRenderingMode(.alwaysTemplate) :
+            UIImage(systemName: "eye.fill")?.withRenderingMode(.alwaysTemplate)
         sender.setImage(xx, for: .normal)
     }
     

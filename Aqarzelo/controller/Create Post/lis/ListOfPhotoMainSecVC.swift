@@ -51,18 +51,18 @@ class ListOfPhotoMainSecVC: UIViewController {
         return pi
     }()
     lazy var customErrorView:CustomErrorView = {
-           let v = CustomErrorView()
-           v.setupAnimation(name: "4970-unapproved-cross")
-           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
-           return v
-       }()
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
     lazy var customMainAlertVC:CustomMainAlertVC = {
-           let t = CustomMainAlertVC()
-           t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-           t.modalTransitionStyle = .crossDissolve
-           t.modalPresentationStyle = .overCurrentContext
-           return t
-       }()
+        let t = CustomMainAlertVC()
+        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        t.modalTransitionStyle = .crossDissolve
+        t.modalPresentationStyle = .overCurrentContext
+        return t
+    }()
     var mainImageView:UIImage!
     
     var pushedImage:UIImage!
@@ -134,7 +134,7 @@ class ListOfPhotoMainSecVC: UIViewController {
         photosArray.removeAll()
         
         var group1:  [ImageModel]?
-       progressHudProperties()
+        progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -211,7 +211,7 @@ class ListOfPhotoMainSecVC: UIViewController {
     
     func getAllImagesNotMaster()  {
         var group1: [ImageModel]?
-       progressHudProperties()
+        progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -275,7 +275,7 @@ class ListOfPhotoMainSecVC: UIViewController {
         ImagesServices.shared.deleteImage(id: imageImdex, token: currentUserToken) {[unowned self] (base, err) in
             if let err=err{
                 self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription);return
+                //                SVProgressHUD.showError(withStatus: err.localizedDescription);return
             }
             self.photosArray.remove(at: index)
             self.numberOfImageUpload = self.numberOfImageUpload-1
@@ -523,9 +523,9 @@ class ListOfPhotoMainSecVC: UIViewController {
     }
     
     @objc func handleDoneError()  {
-           removeViewWithAnimation(vvv: customErrorView)
-           customMainAlertVC.dismiss(animated: true)
-       }
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
     
     @objc fileprivate  func  handleBack()  {
         
@@ -547,9 +547,9 @@ class ListOfPhotoMainSecVC: UIViewController {
     
     @objc fileprivate func handleNext()  {
         
-//        if numberOfImageUpload != trackNumberUplodaedImages {
-//
-//        }else {
+        //        if numberOfImageUpload != trackNumberUplodaedImages {
+        //
+        //        }else {
         
         if aqar != nil {
             if  isFromUpdatePost  {
@@ -569,7 +569,7 @@ class ListOfPhotoMainSecVC: UIViewController {
                 self.creatMainSnackBar(message: "Wait until Upload image...".localized)
             }
         }
-//    }
+        //    }
     }
     
 }

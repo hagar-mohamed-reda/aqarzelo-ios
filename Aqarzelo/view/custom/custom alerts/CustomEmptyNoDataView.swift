@@ -9,23 +9,23 @@
 import Lottie
 
 class CustomEmptyNoDataView: CustomBaseView {
-
-
-lazy var problemsView:AnimationView = {
-      let i = AnimationView()
-      i.contentMode = .scaleAspectFit
-      return i
-  }()
-
+    
+    
+    lazy var problemsView:AnimationView = {
+        let i = AnimationView()
+        i.contentMode = .scaleAspectFit
+        return i
+    }()
+    
     func setupAnimation(name:String)  {
-          problemsView.animation = Animation.named(name)
-          problemsView.play()
-          problemsView.loopMode = .loop
-      }
-      
+        problemsView.animation = Animation.named(name)
+        problemsView.play()
+        problemsView.loopMode = .loop
+    }
+    
     
     override func setupViews() {
         addSubview(problemsView)
         problemsView.centerInSuperview(size: .init(width: frame.width, height: 150))
-}
+    }
 }

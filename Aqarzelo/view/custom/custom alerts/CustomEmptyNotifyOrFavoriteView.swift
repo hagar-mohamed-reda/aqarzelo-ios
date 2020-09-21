@@ -18,7 +18,7 @@ class CustomEmptyNotifyOrFavoriteView: CustomBaseView {
         return i
     }()
     
-   
+    
     func setupAnimation(name:String)  {
         problemsView.animation = Animation.named(name)
         problemsView.play()
@@ -26,7 +26,7 @@ class CustomEmptyNotifyOrFavoriteView: CustomBaseView {
     }
     
     override func setupViews() {
-    addSubview(problemsView)
+        addSubview(problemsView)
         problemsView.fillSuperview()
     }
 }
