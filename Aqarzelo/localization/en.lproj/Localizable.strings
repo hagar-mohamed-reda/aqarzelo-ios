@@ -30,7 +30,7 @@
 "OR LOGIN WITH" = "OR LOGIN WITH";
 "Don't have an account ? " = "Don't have an account ? ";
 "Sign up" = "Sign up";
-"Invalid E-mail or Phone" = "Invalid E-mail or Phone";
+"Invalid E-mail or Phone must begin with 0 and 11 numbers"="Invalid E-mail or Phone must begin with 0 and 11 numbers";
 "Password must have 8 character" = "Password must have 8 character";
 
 //register vc
@@ -41,14 +41,13 @@
 "Confirm Password" = "Confirm Password";
 "OR SIGN UP WITH" = "OR SIGN UP WITH";
 "Invalid Username" = "Invalid Username";
-"Invalid Phone number" = "Invalid Phone number";
+"Phone must begin with 0 and 11 numbers"="Phone must begin with 0 and 11 numbers";
 "Invalid Email" = "Invalid Email";
 "Passowrd should be same" = "Passowrd should be same";
 "Password must have 8 character" = "Password must have 8 character";
 
 //forget pass vc
 
-"Invalid Phone number" = "Invalid Phone number";
 "Confirm" = "Confirm";
 "Waiting..." = "Waiting...";
 "Password reset successfully"="Password reset successfully";

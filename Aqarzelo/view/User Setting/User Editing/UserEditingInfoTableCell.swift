@@ -16,7 +16,7 @@ class UserEditingInfoTableCell: BaseTableViewCell {
     var index:Int! {
         didSet {
             guard let index = index else { return }
-
+            
             texts = index == 2 ? "Enter your email".localized : index == 3 ? "Enter your Phone".localized : index == 4 ? "Enter your facebook".localized : index == 5 ? "Enter your address".localized :  "Enter your website".localized
         }
     }
@@ -72,7 +72,7 @@ class UserEditingInfoTableCell: BaseTableViewCell {
         if let floatingLabelTextField = text as? SkyFloatingLabelTextField {
             if index == 2 {
                 if !texts.isValidEmail     {
-                    floatingLabelTextField.errorMessage = "Invalid E-mail or Phone".localized
+                    floatingLabelTextField.errorMessage = "Invalid E-mail or Phone must begin with 0 and 11 numbers".localized
                     //                    email = nil
                 }
                 else {
@@ -83,7 +83,7 @@ class UserEditingInfoTableCell: BaseTableViewCell {
                 
             }else if index == 3 {
                 if !texts.isValidPhoneNumber  {
-                    floatingLabelTextField.errorMessage = "Invalid Phone number".localized
+                    floatingLabelTextField.errorMessage = "Phone must begin with 0 and 11 numbers".localized
                     
                 }
                 else {

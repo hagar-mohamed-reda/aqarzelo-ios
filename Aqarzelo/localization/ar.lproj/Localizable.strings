@@ -28,7 +28,7 @@
 "OR LOGIN WITH" = " أو اشترك مع ";
 "Don't have an account ? " = "ليس لديك حساب ? ";
 "Sign up" = "الاشتراك";
-"Invalid E-mail or Phone" = "البريد الإلكتروني أو رقم الهاتف غير صحيح";
+"Invalid E-mail or Phone must begin with 0 and 11 numbers" = "البريد الإلكتروني أو رقم الهاتف غير صحيح";
 "Password must have 8 character" = " كلمة المرور يجب ان تحتوي علي ٨ كلمات";
 
 //register vc
@@ -39,7 +39,7 @@
 "Confirm Password" = "تأكيد كلمة المرور";
 "OR SIGN UP WITH" = "أو اشترك مع";
 "Invalid Username" = "اسم المستخدم غير صحيح";
-"Invalid Phone number" = "رقم الهاتف غير صحيح";
+"Phone must begin with 0 and 11 numbers" = "رقم الهاتف غير صحيح";
 "Invalid Email" = " البريد الإلكتروني غير صحيح";
 "Passowrd should be same" = "يجب مطابقة كلمة المرور";
 "password must have 8 character" = " كلمة المرور";
@@ -47,8 +47,6 @@
 
 
 //forget pass vc
-
-"Invalid Phone number" = "رقم الهاتف غير صحيح";
 "Confirm" = "تاكيد";"All"="الكل";
 "Waiting..." = "انتظر من فضلك.....";
 "Password reset successfully"="تم تعديل الباسورد بنجاح";

@@ -191,8 +191,7 @@ class CustomLoginView: UIView {
         if let floatingLabelTextField = text as? SkyFloatingLabelTextField {
             if text == emailTextField {
                 if !texts.isValidEmail && !texts.isValidPhoneNumber    {
-                    floatingLabelTextField.errorMessage = "Invalid E-mail or Phone".localized
-                    floatingLabelTextField.errorMessage?.lowercased()
+                    floatingLabelTextField.errorMessage = "Invalid E-mail or Phone must begin with 0 and 11 numbers".localized
                     loginViewModel.email = nil
                 }
                 else {
@@ -203,7 +202,6 @@ class CustomLoginView: UIView {
             }else
                 if(texts.count < 8 ) {
                     floatingLabelTextField.errorMessage = "Password must have 8 character".localized
-                    floatingLabelTextField.errorMessage?.lowercased()
                     loginViewModel.password = nil
                 }
                 else {

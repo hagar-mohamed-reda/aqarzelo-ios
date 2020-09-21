@@ -260,7 +260,7 @@ class CustomRegisterView: UIView {
                 
             }else if text == phoneTextField {
                 if  !texts.isValidPhoneNumber {
-                    floatingLabelTextField.errorMessage = "Invalid Phone number".localized
+                    floatingLabelTextField.errorMessage = "Phone must begin with 0 and 11 numbers".localized
                     registerViewModel.phone = nil
                 }
                 else {

@@ -89,7 +89,7 @@ class CustomForgetPasswordView: UIView {
           if let floatingLabelTextField = text as? SkyFloatingLabelTextField {
               
               if !texts.isValidPhoneNumber  {
-                  floatingLabelTextField.errorMessage = "Invalid Phone number".localized
+                  floatingLabelTextField.errorMessage = "Phone must begin with 0 and 11 numbers".localized
                  forgetPassViewModel.email = nil
               }
               else {
