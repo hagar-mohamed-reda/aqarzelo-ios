@@ -238,11 +238,13 @@ class AqarDetailsInfoVC: UIViewController {
     
     
     fileprivate func getCityAccordingToAqar(id:Int)  {
-       progressHudProperties()
+        progressHudProperties()
         FilterServices.shared.getCities(completion: { (base,error) in
             if let err = error {
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -401,7 +403,7 @@ class AqarDetailsInfoVC: UIViewController {
         PostServices.shared.addPost(api_token: userToken, post_id: aqarModel.images.first?.postID ?? 1, comment: message) { (base, err) in
             if let err=err{
                 self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
             }
             
         }
@@ -425,9 +427,11 @@ class AqarDetailsInfoVC: UIViewController {
         
         PostServices.shared.addPost(api_token: userToken, post_id: aqarModel.id,rate:Int(customStarView.rating)) {[unowned self] (base, error) in
             if let err=error{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
-                //                self.view.isUserInteractionEnabled = true
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
+                self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             

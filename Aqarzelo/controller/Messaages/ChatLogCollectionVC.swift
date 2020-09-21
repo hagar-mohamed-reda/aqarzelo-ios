@@ -99,8 +99,11 @@ class ChatLogCollectionVC: BaseViewController {
         progressHudProperties()
         MessagesServices.shared.getMessages(api_token: userToken, user_to: userId) { [unowned self] (base, err) in
             if let error = err {
-                self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                DispatchQueue.main.async {
+                                   SVProgressHUD.dismiss()
+                                   self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                               }
+                               self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             guard let messages = base?.data else {return}

@@ -15,11 +15,11 @@ import SkyFloatingLabelTextField
 class ForgetPasswordVC: UIViewController {
     
     lazy var customErrorView:CustomErrorView = {
-           let v = CustomErrorView()
-           v.setupAnimation(name: "4970-unapproved-cross")
-           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
-           return v
-       }()
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
     lazy var customMainAlertVC:CustomMainAlertVC = {
         let t = CustomMainAlertVC()
         t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
@@ -106,16 +106,18 @@ class ForgetPasswordVC: UIViewController {
     }
     
     @objc func handleDoneError()  {
-           removeViewWithAnimation(vvv: customErrorView)
-           customMainAlertVC.dismiss(animated: true)
-       }
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
     
     @objc fileprivate func handleConfirmReset()  {
         
         customForgetPassView.forgetPassViewModel.performForget {[unowned self] (base,err) in
             if let err = err {
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()

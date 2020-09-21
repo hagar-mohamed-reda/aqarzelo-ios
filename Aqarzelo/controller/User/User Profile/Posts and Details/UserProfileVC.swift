@@ -22,7 +22,19 @@ class UserProfileVC: UIViewController {
         i.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBackPreviewImage)))
         return i
     }()
-    
+    lazy var customErrorView:CustomErrorView = {
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+        let t = CustomMainAlertVC()
+        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        t.modalTransitionStyle = .crossDissolve
+        t.modalPresentationStyle = .overCurrentContext
+        return t
+    }()
     lazy var backImageView:UIImageView = {
         let i =  UIImageView(image:  MOLHLanguage.isRTLLanguage() ?  #imageLiteral(resourceName: "left-arrow") : #imageLiteral(resourceName: "back button-2"))
         return i
@@ -318,7 +330,10 @@ class UserProfileVC: UIViewController {
         progressHudProperties()
         PostServices.shared.deletePost(api_token: user.apiToken, post_id: post.id ) { (base, error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -374,6 +389,15 @@ class UserProfileVC: UIViewController {
     
     //TODO:-Handle methods
     
+    @objc func handleDoneError()  {
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
+    
+    @objc func handleDismiss()  {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc  func handleBackPreviewImage()  {
         previewImage(img: userBackgroundImageView.image ?? UIImage())
     }
@@ -411,6 +435,7 @@ class UserProfileVC: UIViewController {
     @objc fileprivate  func handleBack() {
         navigationController?.popViewController(animated: true)
     }
+    
     
     //    required init?(coder aDecoder: NSCoder) {
     //        fatalError("init(coder:) has not been implemented")

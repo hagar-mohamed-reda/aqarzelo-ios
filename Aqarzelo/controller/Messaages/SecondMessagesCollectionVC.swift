@@ -30,7 +30,12 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
         return refreshControl
         
     }()
-    
+    lazy var customErrorView:CustomErrorView = {
+           let v = CustomErrorView()
+           v.setupAnimation(name: "4970-unapproved-cross")
+           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+           return v
+       }()
     lazy var customSearchMessageView:CustomSearchMessageView = {
         let v = CustomSearchMessageView()
         if let frame = navigationController?.navigationBar.frame {
@@ -197,12 +202,15 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
     func fetchUsers()  {
         guard let currentUser = currentUser else { return  }
         
-       progressHudProperties()
+        progressHudProperties()
         
         MessagesServices.shared.getUsersIds(api_token: currentUser.apiToken) { (users,keys, err) in
             if let error = err {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
-                //                 UIApplication.shared.endIgnoringInteractionEvents()
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
+                self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             guard let keys = keys,let users = users else {return}
@@ -268,6 +276,11 @@ class SecondMessagesCollectionVC: BaseCollectionVC {
     @objc  fileprivate func handleBack()  {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func handleDoneError()  {
+           removeViewWithAnimation(vvv: customErrorView)
+           customMainAlertVC.dismiss(animated: true)
+       }
     
     @objc  func didPullToRefresh()  {
         fetchUsers()

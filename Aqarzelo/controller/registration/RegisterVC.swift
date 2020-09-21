@@ -23,11 +23,11 @@ class RegisterVC: UIViewController {
         return v
     }()
     lazy var customErrorView:CustomErrorView = {
-           let v = CustomErrorView()
-           v.setupAnimation(name: "4970-unapproved-cross")
-           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
-           return v
-       }()
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
     lazy var customMainAlertVC:CustomMainAlertVC = {
         let t = CustomMainAlertVC()
         t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
@@ -130,10 +130,10 @@ class RegisterVC: UIViewController {
     }
     
     fileprivate func goToMainTab()  {
-//        cacheCurrentUserCodabe.save(user)
+        //        cacheCurrentUserCodabe.save(user)
         
-                userDefaults.set(true, forKey: UserDefaultsConstants.isUserLogined)
-                      userDefaults.synchronize()
+        userDefaults.set(true, forKey: UserDefaultsConstants.isUserLogined)
+        userDefaults.synchronize()
         
         //        navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -151,8 +151,10 @@ class RegisterVC: UIViewController {
     fileprivate func handleFacebookLoginAction() {
         RegistrationServices.shared.loginUsingFacebook(vc: self) {[unowned self] (base, err) in
             if let err=err{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -170,7 +172,7 @@ class RegisterVC: UIViewController {
         RegistrationServices.shared.loginWithExternal(name: fullName, photo: "", email: email) {[unowned self] (base, error) in
             if let err=error{
                 self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
             
@@ -196,8 +198,10 @@ class RegisterVC: UIViewController {
         
         customRegisterView.registerViewModel.performRegister { (base, err) in
             if let err=err{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -254,9 +258,9 @@ class RegisterVC: UIViewController {
     }
     
     @objc func handleDoneError()  {
-           removeViewWithAnimation(vvv: customErrorView)
-           customMainAlertVC.dismiss(animated: true)
-       }
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
     
     
 }
@@ -282,8 +286,10 @@ extension RegisterVC:  GIDSignInDelegate {
         
         RegistrationServices.shared.loginWithExternal(name: fullName, photo: "", email: email) {[unowned self] (base, error) in
             if let err=error{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()

@@ -17,17 +17,17 @@ import MOLH
 class LocationVC: UIViewController {
     
     lazy var customErrorView:CustomErrorView = {
-           let v = CustomErrorView()
-           v.setupAnimation(name: "4970-unapproved-cross")
-           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
-           return v
-       }()
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
     lazy var userProfileImage:UIImageView = {
         let la = UIImageView(image: #imageLiteral(resourceName: "Group 3931-1"))
         la.constrainWidth(constant: 40)
         la.constrainHeight(constant: 40)
         la.layer.cornerRadius = 20
-//        la.frame = .init(x: 0, y: 0, width: 40, height: 40)
+        //        la.frame = .init(x: 0, y: 0, width: 40, height: 40)
         la.clipsToBounds = true
         la.isUserInteractionEnabled = true
         la.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowUser)))
@@ -141,7 +141,7 @@ class LocationVC: UIViewController {
         getData()
         setupNavigation()
         getUserLocation()
-//        statusBarBackgroundColor()
+        //        statusBarBackgroundColor()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -154,133 +154,133 @@ class LocationVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         
         tabBarController?.tabBar.isHide(false)
-           navigationController?.navigationBar.isHide(false)
+        navigationController?.navigationBar.isHide(false)
         let ss = UIDevice().type
         if ss == .iPhone6S || ss == .iPhone6 || ss == .iPhone6SPlus || ss == .iPhone6Plus  {
             self.navigationController?.navigationBar.frame.origin = CGPoint(x: 0, y: 20)
         }
         setNeedsStatusBarAppearanceUpdate()
-         //solve problem of place of navigation 20
+        //solve problem of place of navigation 20
         print(topbarHeight)
-           statusBarBackgroundColor()
-           
-           
-           if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
-               let welcome = WelcomeVC()
-               welcome.modalPresentationStyle = .fullScreen
-               present(welcome, animated: true)
-           }else    {
-               
-               if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
-                   updateUserProfile()
-                   //                currentUser=cacheCurrentUserCodabe.storedValue
-               }
-               
-               if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-                   currentUser=nil
-               }
-               
-               if userDefaults.bool(forKey: UserDefaultsConstants.isAllCachedHome) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts) {
-                   fetchRecoomedPosts()
-               }else{}
-               
-               
-               
-               //            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
-               //                aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
-               //                present(customMainAlertVC, animated: true)
-               //            }else {}
-               //
-               //            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
-               //                aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
-               //                present(customMainAlertVC, animated: true)
-               //            }else {}
-               
-               if !ConnectivityInternet.isConnectedToInternet {
-                   customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
-                   self.customNoInternetView.problemsView.play()
-                   
-                   self.customNoInternetView.problemsView.loopMode = .loop
-                   timerForAlerting.invalidate()
-                   timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
-                   self.present(customMainAlertVC, animated: true)
-               }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
-                   //            getUserLocation()
-                   fetchUserProfile()
-               }else if ConnectivityInternet.isConnectedToInternet && !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts)  {
-                   fetchRecoomedPosts()
-                   customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-                   self.customAlerLoginView.problemsView.play()
-                   
-                   customAlerLoginView.problemsView.loopMode = .loop
-                   timerForAlerting.invalidate()
-                   timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
-                   self.present(customMainAlertVC, animated: true)
-                   
-                   
-               }else {
-                   //                checkUserLogin()
-               }
-           }
-           
-           //                }
-       }
+        statusBarBackgroundColor()
+        
+        
+        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
+            let welcome = WelcomeVC()
+            welcome.modalPresentationStyle = .fullScreen
+            present(welcome, animated: true)
+        }else    {
+            
+            if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
+                updateUserProfile()
+                //                currentUser=cacheCurrentUserCodabe.storedValue
+            }
+            
+            if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+                currentUser=nil
+            }
+            
+            if userDefaults.bool(forKey: UserDefaultsConstants.isAllCachedHome) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts) {
+                fetchRecoomedPosts()
+            }else{}
+            
+            
+            
+            //            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostUpdated) {
+            //                aaddCustomConfirmationView(text: "Post updated Successfully...".localized)
+            //                present(customMainAlertVC, animated: true)
+            //            }else {}
+            //
+            //            if  userDefaults.bool(forKey: UserDefaultsConstants.isPostMaded) {
+            //                aaddCustomConfirmationView(text: "Post Created Successfully...".localized)
+            //                present(customMainAlertVC, animated: true)
+            //            }else {}
+            
+            if !ConnectivityInternet.isConnectedToInternet {
+                customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
+                self.customNoInternetView.problemsView.play()
+                
+                self.customNoInternetView.problemsView.loopMode = .loop
+                timerForAlerting.invalidate()
+                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
+                self.present(customMainAlertVC, animated: true)
+            }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
+                //            getUserLocation()
+                fetchUserProfile()
+            }else if ConnectivityInternet.isConnectedToInternet && !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts)  {
+                fetchRecoomedPosts()
+                customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+                self.customAlerLoginView.problemsView.play()
+                
+                customAlerLoginView.problemsView.loopMode = .loop
+                timerForAlerting.invalidate()
+                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+                self.present(customMainAlertVC, animated: true)
+                
+                
+            }else {
+                //                checkUserLogin()
+            }
+        }
+        
+        //                }
+    }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        tabBarController?.tabBar.isHide(false)
-//        navigationController?.navigationBar.isHide(false)
-//
-//
-//
-//        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
-//            let welcome = WelcomeVC()
-//            welcome.modalPresentationStyle = .fullScreen
-//            present(welcome, animated: true)
-//        }else {
-//
-//        if !ConnectivityInternet.isConnectedToInternet {
-//            customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
-//            self.customNoInternetView.problemsView.play()
-//
-//            self.customNoInternetView.problemsView.loopMode = .loop
-//            timerForAlerting.invalidate()
-//            timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
-//            self.present(customMainAlertVC, animated: true)
-//        }
-//            if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
-//                       updateUserProfile()
-//                       fetchRecoomedPosts()
-//                       //                currentUser=cacheCurrentUserCodabe.storedValue
-//                   }
-//            if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-//
-////            } userDefaults.bool(forKey: UserDefaultsConstants.isFirstLoginedScreen) {
-//                 currentUser=nil
-//                fetchRecoomedPosts()
-//                customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-//                                  self.customAlerLoginView.problemsView.play()
-//
-//                                  customAlerLoginView.problemsView.loopMode = .loop
-//                                  timerForAlerting.invalidate()
-//                                  timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
-//                                  self.present(customMainAlertVC, animated: true)
-//            }
-//        }
-//
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //
+    //        tabBarController?.tabBar.isHide(false)
+    //        navigationController?.navigationBar.isHide(false)
+    //
+    //
+    //
+    //        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
+    //            let welcome = WelcomeVC()
+    //            welcome.modalPresentationStyle = .fullScreen
+    //            present(welcome, animated: true)
+    //        }else {
+    //
+    //        if !ConnectivityInternet.isConnectedToInternet {
+    //            customMainAlertVC.addCustomViewInCenter(views: customNoInternetView, height: 200)
+    //            self.customNoInternetView.problemsView.play()
+    //
+    //            self.customNoInternetView.problemsView.loopMode = .loop
+    //            timerForAlerting.invalidate()
+    //            timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
+    //            self.present(customMainAlertVC, animated: true)
+    //        }
+    //            if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
+    //                       updateUserProfile()
+    //                       fetchRecoomedPosts()
+    //                       //                currentUser=cacheCurrentUserCodabe.storedValue
+    //                   }
+    //            if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+    //
+    ////            } userDefaults.bool(forKey: UserDefaultsConstants.isFirstLoginedScreen) {
+    //                 currentUser=nil
+    //                fetchRecoomedPosts()
+    //                customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+    //                                  self.customAlerLoginView.problemsView.play()
+    //
+    //                                  customAlerLoginView.problemsView.loopMode = .loop
+    //                                  timerForAlerting.invalidate()
+    //                                  timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+    //                                  self.present(customMainAlertVC, animated: true)
+    //            }
+    //        }
+    //
+    //    }
     
     
     //MARK:-User methods
     
     func getData()  {
         
-       
-       }
+        
+    }
     
     @objc  func fireTimer(timer:Timer)  {
         if  let userInfo = timerForAlerting.userInfo as? [String: String]   {
@@ -319,7 +319,7 @@ class LocationVC: UIViewController {
         }
         guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
         //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-       progressHudProperties()
+        progressHudProperties()
         
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
@@ -327,7 +327,7 @@ class LocationVC: UIViewController {
         UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
             if let err=err{
                 self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
             dispatchGroup.leave()
@@ -386,7 +386,7 @@ class LocationVC: UIViewController {
         
         var group2: BaseAqarModel?
         var group3: BaseAqarModel?
-       progressHudProperties()
+        progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -497,7 +497,7 @@ class LocationVC: UIViewController {
             return
         }
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-       progressHudProperties()
+        progressHudProperties()
         let semaphore = DispatchSemaphore(value: 0)
         
         let dispatchQueue = DispatchQueue.global(qos: .background)
@@ -543,8 +543,8 @@ class LocationVC: UIViewController {
         view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1) //#colorLiteral(red: 0.207870394, green: 0.8542298079, blue: 0.7240723968, alpha: 1)
         view.addSubViews(views: customLocationView)
         customLocationView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 48, right: 0))
-
-//        customLocationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 48, right: 0))
+        
+        //        customLocationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 48, right: 0))
     }
     
     fileprivate func setupNavigation()  {
@@ -639,9 +639,9 @@ class LocationVC: UIViewController {
     }
     
     @objc func handleDoneError()  {
-           removeViewWithAnimation(vvv: customErrorView)
-           customMainAlertVC.dismiss(animated: true)
-       }
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
     
     @objc func handleRemvoeAds()  {
         removeViewWithAnimation(vvv: customAqarView)
@@ -714,12 +714,15 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
     func searchForResults(categoryId:Int?,citId: Int?, areaId: Int?, price1: Int, price2: Int, space1: Int, space2: Int, type: String?, bedroom_number: Int?, bathroom_number: Int?)  {
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         // make search to find aqars
-       progressHudProperties()
+        progressHudProperties()
         
         PostServices.shared.getPostsUsingSearchData(category_id: categoryId, price2: price2 , price1: price1, bedNumber: bedroom_number, bathNumber: bathroom_number, type: type, city_id: citId, area_id: areaId, space1: space1, space2: space2) { (base, err) in
             
             if let err=err{
-                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
@@ -821,15 +824,15 @@ extension LocationVC: FilterVCProtocol {
 }
 
 extension UIViewController {
-
+    
     
     /**
      *  Height of status bar + navigation bar (if navigation bar exist)
      */
-
+    
     var topbarHeight: CGFloat {
         return self.navigationController?.navigationBar.frame.height ?? 0.0
-//        return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
-//            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        //        return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
+        //            (self.navigationController?.navigationBar.frame.height ?? 0.0)
     }
 }

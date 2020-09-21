@@ -158,9 +158,11 @@ class LoginVC: UIViewController {
     fileprivate func handleFacebookLoginAction() {
         RegistrationServices.shared.loginUsingFacebook(vc: self) {[unowned self] (base, err) in
             if let err=err{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription);return
-                    self.activeViewsIfNoData();return
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
+                self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
@@ -190,21 +192,21 @@ class LoginVC: UIViewController {
         
         customLoginView.loginViewModel.performLogging {[unowned self] (base,err) in
             if let err = err {
-//                 DispatchQueue.main.async {
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-                
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
             let xx = MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn
             
-           
+            
             
             DispatchQueue.main.async {
                 guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView); return}
-                           self.saveToken(token: user.apiToken)
+                self.saveToken(token: user.apiToken)
                 self.goToMainTab(user)
             }
             
@@ -284,7 +286,7 @@ extension LoginVC:  GIDSignInDelegate {
         RegistrationServices.shared.loginWithExternal(name: fullName, photo: "", email: email) {[unowned self] (base, error) in
             if let err=error{
                 self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
             

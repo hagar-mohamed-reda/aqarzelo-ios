@@ -21,6 +21,19 @@ class EditUserPostVC: BaseViewController {
         v.nextButton.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return v
     }()
+    lazy var customErrorView:CustomErrorView = {
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+           let t = CustomMainAlertVC()
+           t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+           t.modalTransitionStyle = .crossDissolve
+           t.modalPresentationStyle = .overCurrentContext
+           return t
+       }()
     lazy var picker: UIImagePickerController = {
         let pi = UIImagePickerController()
         pi.delegate = self
@@ -95,8 +108,11 @@ class EditUserPostVC: BaseViewController {
         
         UploadImagesServices.shared.getAllUserImagesWithPostId(postId:postId,api_token: currentUserToken) { (base, error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
-                self.activeViewsIfNoData()
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
+                self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             
@@ -185,6 +201,10 @@ class EditUserPostVC: BaseViewController {
         customAddPostListOfPhotoView.nextButton.isEnabled = true
     }
     
+    @objc func handleDoneError()  {
+              removeViewWithAnimation(vvv: customErrorView)
+              customMainAlertVC.dismiss(animated: true)
+          }
     
     @objc fileprivate  func  handleBack()  {
         navigationController?.popViewController(animated: true)
@@ -203,6 +223,10 @@ class EditUserPostVC: BaseViewController {
         self.picker.sourceType = .photoLibrary
         self.present(self.picker, animated: true, completion: nil)
     }
+    
+    @objc func handleDismiss()  {
+           dismiss(animated: true, completion: nil)
+       }
 }
 
 

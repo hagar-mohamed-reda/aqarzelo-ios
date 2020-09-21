@@ -189,11 +189,14 @@ class NotificationCollectionVC: BaseCollectionVC {
     fileprivate func loadNotifications()  {
         
         guard let token = userDefaults.value(forKey: UserDefaultsConstants.userApiToken) as? String else { return }
-       progressHudProperties()
+        progressHudProperties()
         NotificationAndFavoriteServices.shared.getAllNotifications(apiToke: token) {[unowned self] (bases, err) in
             if let err=err{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                }
+                self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             guard let base = bases?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? bases?.messageAr : bases?.messageEn); return}

@@ -90,8 +90,10 @@ class ChangePasswordVC: UIViewController {
         
         customChangePassword.changePpasswordViewModel.performLogging {[unowned self] (base,err) in
             if let err = err {
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                DispatchQueue.main.async {
+                                SVProgressHUD.dismiss()
+                                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                            }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
