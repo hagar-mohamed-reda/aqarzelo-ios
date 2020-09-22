@@ -13,6 +13,7 @@
 		9F970C4A24FC3A2800448E7E /* ListOfPhotoMainSecVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */; };
 		9FA7D2D025069FD300EF4166 /* CustomStarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */; };
 		9FB2437624FC13C0004F43FB /* ListOfPhotoMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */; };
+		9FCC8733251A5A5900D3C799 /* EditProfileVCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCC8732251A5A5900D3C799 /* EditProfileVCS.swift */; };
 		9FD04E4024EDB2910077884A /* DropDownAllTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */; };
 		9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */; };
 		9FD083B0251801FE00927033 /* CustomErrorViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD083AF251801FE00927033 /* CustomErrorViews.swift */; };
@@ -237,6 +238,7 @@
 		9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainSecVC.swift; sourceTree = "<group>"; };
 		9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStarViews.swift; sourceTree = "<group>"; };
 		9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainVC.swift; sourceTree = "<group>"; };
+		9FCC8732251A5A5900D3C799 /* EditProfileVCS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVCS.swift; sourceTree = "<group>"; };
 		9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownAllTableViewVC.swift; sourceTree = "<group>"; };
 		9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCityAndAreaTableViewVC.swift; sourceTree = "<group>"; };
 		9FD083AF251801FE00927033 /* CustomErrorViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorViews.swift; sourceTree = "<group>"; };
@@ -524,6 +526,15 @@
 				9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */,
 			);
 			path = lis;
+			sourceTree = "<group>";
+		};
+		9FCC8731251A5A4400D3C799 /* edit */ = {
+			isa = PBXGroup;
+			children = (
+				9FE2708424E8857C008889AB /* EditProfileVC.swift */,
+				9FCC8732251A5A5900D3C799 /* EditProfileVCS.swift */,
+			);
+			path = edit;
 			sourceTree = "<group>";
 		};
 		9FD04E3E24EDB2730077884A /* drop down */ = {
@@ -1172,7 +1183,7 @@
 		9FE2708324E88570008889AB /* User Edit Details */ = {
 			isa = PBXGroup;
 			children = (
-				9FE2708424E8857C008889AB /* EditProfileVC.swift */,
+				9FCC8731251A5A4400D3C799 /* edit */,
 				9FE2708624E8857D008889AB /* EditUserPostVC.swift */,
 				9FE2708524E8857C008889AB /* ZoomUserImageVC.swift */,
 			);
@@ -1517,6 +1528,7 @@
 				9FE2707724E88542008889AB /* UserPostsDetailsCollectionVC.swift in Sources */,
 				9FE26FB524E87D67008889AB /* UploadImagesServices.swift in Sources */,
 				9FE2708824E8857D008889AB /* ZoomUserImageVC.swift in Sources */,
+				9FCC8733251A5A5900D3C799 /* EditProfileVCS.swift in Sources */,
 				9FE2705824E884C1008889AB /* AddPostVC.swift in Sources */,
 				9FDDB75024E98F7D00AF8817 /* AppDetailDiscriptionView.swift in Sources */,
 				9FDDB75D24E98FB900AF8817 /* CustomSelectedButton.swift in Sources */,

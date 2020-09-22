@@ -29,7 +29,7 @@ class UserEditPictureTableCell: BaseTableViewCell {
     }
     
     
-    var isEdit:Bool = false
+//    var isEdit:Bool = false
     
     
     lazy var profileImageView:UIImageView = {
@@ -52,8 +52,11 @@ class UserEditPictureTableCell: BaseTableViewCell {
     }()
     var widthImageView:NSLayoutConstraint!
     var handleChooseImageClosure:((UIImage)->Void)?
-    var handleEditUsingIndex:((Int,UserEditPictureTableCell,Int)->Void)?
+//    var handleEditUsingIndex:((Int,UserEditPictureTableCell,Int)->Void)?
     
+    
+    var handleEditUsingIndex:((Int,UserEditPictureTableCell,Int,UIImage)->Void)?
+
     var handleImageScalling:((UIImage)->Void)?
     
     
@@ -75,11 +78,12 @@ class UserEditPictureTableCell: BaseTableViewCell {
     }
     
     @objc func handleChooseImage()  {
-        isEdit ?  handleChooseImageClosure?(profileImageView.image ?? UIImage()) :   handleImageScalling?(profileImageView.image ?? UIImage())
+//        isEdit ?  handleChooseImageClosure?(profileImageView.image ?? UIImage()) :   handleImageScalling?(profileImageView.image ?? UIImage())
+        handleImageScalling?(profileImageView.image ?? UIImage())
     }
     
     @objc func handleEdit()  {
-        handleEditUsingIndex?(index,self,0)
+        handleEditUsingIndex?(index,self,0,profileImageView.image ?? UIImage())
         
     }
 }

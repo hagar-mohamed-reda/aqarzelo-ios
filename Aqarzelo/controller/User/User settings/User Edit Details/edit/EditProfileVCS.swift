@@ -1,23 +1,19 @@
 //
-//  EditProfileVC.swift
+//  EditProfileVCS.swift
 //  Aqarzelo
 //
-//  Created by Hossam on 8/9/20.
+//  Created by Hossam on 9/22/20.
 //  Copyright © 2020 Hossam. All rights reserved.
 //
 
 import UIKit
-import SDWebImage
-import SVProgressHUD
 import MOLH
+import SVProgressHUD
 
-protocol EditProfileVCProtocol {
-    func reloadUserData()
-}
-
-class EditProfileVC: UIViewController {
+class EditProfileVCS: UIViewController {
     
-    lazy var customErrorView:CustomErrorView = {
+    
+ lazy var customErrorView:CustomErrorView = {
         let v = CustomErrorView()
         v.setupAnimation(name: "4970-unapproved-cross")
         v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
@@ -40,11 +36,8 @@ class EditProfileVC: UIViewController {
     
     var delgate:EditProfileVCProtocol?
     
-    fileprivate var currentUser:UserModel!
-    init(user:UserModel) {
-        self.currentUser = user
-        super.init(nibName: nil, bundle: nil)
-    }
+     var currentUser:UserModel?
+   
     
     
     
@@ -102,7 +95,7 @@ class EditProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadUserData()
+//        loadUserData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -110,14 +103,14 @@ class EditProfileVC: UIViewController {
         SVProgressHUD.dismiss()
     }
     
-    func loadUserData()  {
-        finalEmail = currentUser.email
-        phone = currentUser.phone
-        facebook = currentUser.facebook
-        website = currentUser.website
-        address = currentUser.address
-        
-    }
+//    func loadUserData()  {
+//        finalEmail = currentUser.email
+//        phone = currentUser.phone
+//        facebook = currentUser.facebook
+//        website = currentUser.website
+//        address = currentUser.address
+//
+//    }
     
     func setupViews()  {
         view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1)//ColorConstant.mainBackgroundColor
@@ -164,6 +157,7 @@ class EditProfileVC: UIViewController {
     }
     
     fileprivate func updateUserDataWithoutImages() {
+        guard let currentUser = currentUser else { return  }
         UserServices.shared.updateProfileUser(token: currentUser.apiToken, website: website ?? ""  , phone: phone ?? currentUser.phone ?? "", email: finalEmail ?? currentUser.email, address: address ?? "", facebook: facebook ?? "") { (user, err) in
             
             if let err=err{
@@ -191,7 +185,7 @@ class EditProfileVC: UIViewController {
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         
         progressHudProperties()
-        
+         guard let currentUser = currentUser else { return  }
         UserServices.shared.updateProfileUser(token: currentUser.apiToken, coverImage: imageBackgroundView.image, photoImage: imageProfileView.image, website: website ?? ""  , phone: phone ?? currentUser.phone ?? "", email: finalEmail ?? currentUser.email, address: address ?? "", facebook: facebook ?? "") { (users, err) in
             
             if let err=err{
@@ -246,13 +240,11 @@ class EditProfileVC: UIViewController {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+   
 }
 
 
-extension EditProfileVC: UITableViewDelegate, UITableViewDataSource {
+extension EditProfileVCS: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
@@ -268,13 +260,18 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource {
             //            imageProfileView = cell.profileImageView
             //            cell.profileImageView=imageProfileView ?? UIImageView()
             
-            cell.handleEditUsingIndex = { [unowned self] (index,cell,tag) in // tag == 0 change profile picture
-                self.handleEditChangePicture(cell: cell, index: index, tag: 0)
+            cell.handleEditUsingIndex = { [unowned self] (index,cell,tag,img) in // tag == 0 change profile picture
+                self.imagePicked = tag
+                               self.imageProfileView.image = img
+                                              self.setupImagePickerProfile()
             }
-            cell.handleChooseImageClosure = { [unowned self] img in
-                self.imageProfileView.image = img
-                self.setupImagePickerProfile()
-            }
+//                self.handleEditChangePicture(cell: cell, index: index, tag: 0)
+               
+            
+//            cell.handleChooseImageClosure = { [unowned self] img in
+//                self.imageProfileView.image = img
+//                self.setupImagePickerProfile()
+//            }
             
             cell.handleImageScalling = { img in
                 let zoomImage = ZoomUserImageVC(img:img)
@@ -286,17 +283,19 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellBackgroundId, for: indexPath) as! UserEditingBackgroundTableCell
             cell.index = index
             cell.user = currentUser
-            //            imageBackgroundView = cell.backgroundImageView
-            //            cell.backgroundImageView=imageBackgroundView ?? UIImageView()
             
-            cell.handleEditUsingIndex = {[unowned self] (index,cell,tag) in
-                self.handleEditChangePictureBackground(cell: cell, index: index, tag: tag)
-            }
-            
-            cell.handleChooseImageClosure = { [unowned self] img in
+            cell.handleEditUsingIndex = {[unowned self] (index,cell,tag,img) in
+                self.imagePicked = tag
                 self.imageBackgroundView.image = img
                 self.setupImagePickerProfile()
             }
+//                self.handleEditChangePictureBackground(cell: cell, index: index, tag: tag)
+            
+            
+//            cell.handleChooseImageClosure = { [unowned self] img in
+//                self.imageBackgroundView.image = img
+//                self.setupImagePickerProfile()
+//            }
             
             cell.handleImageScalling = { img in
                 let zoomImage = ZoomUserImageVC(img:img)
@@ -312,10 +311,10 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource {
             cell.editingTextField.text = index == 2 ? finalEmail : index == 3 ? phone : index == 4 ? facebook : index == 5 ? address : website
             let labelText = textsArray[indexPath.row-2]
             cell.profilePictureLabel.text = labelText
-            cell.handleEditUsingIndex = { [unowned self] (index,cell) in
-                self.handleEditData(cell: cell, index: index)
-            }
-            
+//            cell.handleEditUsingIndex = { [unowned self] (index,cell) in
+//                self.handleEditData(cell: cell, index: index)
+//            }
+             handleEditData(cell: cell, index: index)
             cell.handleGetTextValue = {[unowned self] (indexx,text) in
                 self.giveTextToValues(index: indexx, text: text)
             }
@@ -346,21 +345,21 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource {
         return indexPath.row == 1 ? 180 : 120
     }
     
-    func handleEditChangePictureBackground(cell:UserEditingBackgroundTableCell,index:Int,tag:Int)  {
-        imagePicked = tag
-        cell.isEdit = !cell.isEdit
-    }
     
-    func handleEditChangePicture(cell:UserEditPictureTableCell,index:Int,tag:Int)  {
-        imagePicked = tag
-        cell.isEdit = !cell.isEdit
-        //        cell.profileImageView.isUserInteractionEnabled = true
-    }
+//    func handleEditChangePicture(cell:UserEditPictureTableCell,index:Int,tag:Int)  {
+//        imagePicked = tag
+//        cell.isEdit = !cell.isEdit
+//        //        cell.profileImageView.isUserInteractionEnabled = true
+//    }
     
     func handleEditData(cell:UserEditingInfoTableCell,index:Int)  {
-        
+        if currentUser?.isExternal == 0 {
+            cell.mainView.isUserInteractionEnabled = false
+             cell.mainView.layer.borderColor = UIColor.lightGray.cgColor
+        }else {
         cell.mainView.isUserInteractionEnabled = true
         cell.mainView.layer.borderColor = UIColor.black.cgColor
+        }
     }
     
     func setupImagePickerProfile() {
@@ -376,7 +375,7 @@ extension EditProfileVC: UITableViewDelegate, UITableViewDataSource {
 
 //MARK:-Extension
 
-extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EditProfileVCS: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController (_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let img = info[.originalImage]  as? UIImage   {
@@ -401,3 +400,4 @@ extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationController
     
     
 }
+

@@ -24,19 +24,19 @@ class UserEditingInfoTableCell: BaseTableViewCell {
     var texts = ""
     
     lazy var profilePictureLabel = UILabel(text: "Profile Picture".localized, font: .systemFont(ofSize: 18), textColor: #colorLiteral(red: 0.4835856557, green: 0.483658731, blue: 0.4835696816, alpha: 1))
-    lazy var editButton:UIButton = {
-        let b = UIButton()
-        b.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
-        b.setTitle("Edit".localized, for: .normal)
-        b.setTitleColor(#colorLiteral(red: 0.3446323574, green: 0.889023602, blue: 0.7731447816, alpha: 1), for: .normal)
-        return b
-    }()
+//    lazy var editButton:UIButton = {
+//        let b = UIButton()
+//        b.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
+//        b.setTitle("Edit".localized, for: .normal)
+//        b.setTitleColor(#colorLiteral(red: 0.3446323574, green: 0.889023602, blue: 0.7731447816, alpha: 1), for: .normal)
+//        return b
+//    }()
     lazy var mainView:UIView = {
         let v = UIView(backgroundColor: .white)
         v.layer.borderWidth = 2
         v.layer.borderColor = UIColor.lightGray.cgColor
         v.addSubview(editingTextField)
-        v.isUserInteractionEnabled = false
+//        v.isUserInteractionEnabled = false
         return v
     }()
     lazy var editingTextField:CustomTextField = {
@@ -46,7 +46,7 @@ class UserEditingInfoTableCell: BaseTableViewCell {
         return t
     }()
     
-    var handleEditUsingIndex:((Int,UserEditingInfoTableCell)->Void)?
+//    var handleEditUsingIndex:((Int,UserEditingInfoTableCell)->Void)?
     var handleGetTextValue:((Int,String?)->Void)?
     
     
@@ -54,16 +54,17 @@ class UserEditingInfoTableCell: BaseTableViewCell {
         backgroundColor = .white
         selectionStyle = .none
         editingTextField.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
-        let topStack = MOLHLanguage.isRTLLanguage() ? hstack(profilePictureLabel,UIView(),editButton)  : hstack(editButton,UIView(),profilePictureLabel)
+//        let topStack = MOLHLanguage.isRTLLanguage() ? hstack(profilePictureLabel,UIView(),editButton)  : hstack(editButton,UIView(),profilePictureLabel)
         
-        
-        stack(topStack,mainView,spacing:8).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
+//        stack(topStack,mainView,spacing:8).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
+
+        stack(profilePictureLabel,mainView,spacing:8).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
         editingTextField.fillSuperview()
     }
     
-    @objc func handleEdit()  {
-        handleEditUsingIndex?(index,self)
-    }
+//    @objc func handleEdit()  {
+//        handleEditUsingIndex?(index,self)
+//    }
     
     @objc fileprivate func handleTextChange(text:SkyFloatingLabelTextField)  {
         
@@ -72,7 +73,7 @@ class UserEditingInfoTableCell: BaseTableViewCell {
         if let floatingLabelTextField = text as? SkyFloatingLabelTextField {
             if index == 2 {
                 if !texts.isValidEmail     {
-                    floatingLabelTextField.errorMessage = "Invalid E-mail or Phone must begin with 0 and 11 numbers".localized
+                    floatingLabelTextField.errorMessage = "     Invalid E-mail or Phone must begin with 0 and 11 numbers".localized
                     //                    email = nil
                 }
                 else {
@@ -83,7 +84,7 @@ class UserEditingInfoTableCell: BaseTableViewCell {
                 
             }else if index == 3 {
                 if !texts.isValidPhoneNumber  {
-                    floatingLabelTextField.errorMessage = "Phone must begin with 0 and 11 numbers".localized
+                    floatingLabelTextField.errorMessage = "     Phone must begin with 0 and 11 numbers".localized
                     
                 }
                 else {

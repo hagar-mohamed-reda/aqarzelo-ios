@@ -27,7 +27,7 @@ class UserEditingBackgroundTableCell: BaseTableViewCell {
         }
     }
     
-    var isEdit:Bool = false
+//    var isEdit:Bool = false
     lazy var backgroundImageView:UIImageView = {
         let i = UIImageView(image: #imageLiteral(resourceName: "Saratoga Farms 2403 _Ext_Rev_1200"))
         i.layer.cornerRadius = 8
@@ -46,7 +46,9 @@ class UserEditingBackgroundTableCell: BaseTableViewCell {
         return b
     }()
     
-     var handleEditUsingIndex:((Int,UserEditingBackgroundTableCell,Int)->Void)?
+//     var handleEditUsingIndex:((Int,UserEditingBackgroundTableCell,Int)->Void)?
+    var handleEditUsingIndex:((Int,UserEditingBackgroundTableCell,Int,UIImage)->Void)?
+
      var handleChooseImageClosure:((UIImage)->Void)?
      var handleImageScalling:((UIImage)->Void)?
     
@@ -64,13 +66,14 @@ class UserEditingBackgroundTableCell: BaseTableViewCell {
     }
     
     @objc func handleChooseImage()  {
-        isEdit ?  handleChooseImageClosure?(backgroundImageView.image ?? UIImage()) :   handleImageScalling?(backgroundImageView.image ?? UIImage())
+//        isEdit ?  handleChooseImageClosure?(backgroundImageView.image ?? UIImage()) :   handleImageScalling?(backgroundImageView.image ?? UIImage())
+        handleImageScalling?(backgroundImageView.image ?? UIImage())
     }
     
     
     
     @objc func handleEdit()  {
         guard let index = index else { return  }
-        handleEditUsingIndex?(index,self,1)
+        handleEditUsingIndex?(index,self,1,backgroundImageView.image ?? UIImage())
     }
 }

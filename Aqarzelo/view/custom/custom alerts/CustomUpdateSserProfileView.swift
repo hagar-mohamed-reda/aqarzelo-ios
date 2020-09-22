@@ -57,14 +57,17 @@ class CustomUpdateSserProfileView: CustomBaseView {
         let v = UIView(backgroundColor: .lightGray)
         v.layer.cornerRadius = 16
         v.clipsToBounds = true
-        v.layer.borderWidth = 2
+        v.layer.borderWidth = 0
         v.layer.borderColor = UIColor.gray.cgColor
         return v
     }()
     lazy var subView:UIView = {
-        let v =  UIView(backgroundColor: .lightGray)
-        return v
-    }()
+           let v =  UIView(backgroundColor: .clear)
+           v.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMinYCorner]
+                  v.layer.cornerRadius = 8
+                  v.clipsToBounds = true
+           return v
+       }()
     
     func setupAnimation(name:String)  {
            problemsView.animation = Animation.named(name)
