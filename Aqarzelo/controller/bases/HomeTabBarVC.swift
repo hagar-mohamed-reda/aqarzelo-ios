@@ -99,8 +99,9 @@ class HomeTabBarVC: UITabBarController {
         
         viewControllers = [
            
-            location,
+            
              cart ,
+             location,
             notification,
             love,
          ]

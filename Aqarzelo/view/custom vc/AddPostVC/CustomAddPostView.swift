@@ -21,7 +21,9 @@ class CustomAddPostView: UIView {
     
     lazy var logoImageView:UIImageView = {
         let i = UIImageView(image: #imageLiteral(resourceName: "upload-cloud"))
+        i.constrainHeight(constant: 100)
         i.contentMode = .scaleAspectFill
+        i.translatesAutoresizingMaskIntoConstraints=false
         return i
     }()
     //    lazy var maximumLabel = UILabel(text: "The maximum upload limit \n for photos is 20".localized, font: .systemFont(ofSize: 16), textColor: .black,textAlignment: .center,numberOfLines: 2)
@@ -52,12 +54,13 @@ class CustomAddPostView: UIView {
         mainImage.addSubViews(views: logoImageView,bottomStack)
         
 //        logoImageView.centerInSuperview()
-        logoImageView.anchor(top: bottomStack.topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: -48, left: 0, bottom: 8, right: 0))
+//        logoImageView.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 60, left: 0, bottom: 8, right: 0))
         
         //        maximumLabel.anchor(top: logoImageView.bottomAnchor, leading: leadingAnchor, bottom: bottomStack.topAnchor, trailing: trailingAnchor,padding: .init(top: 24, left: 48, bottom: 24, right: 48))
         bottomStack.anchor(top: nil, leading: mainImage.leadingAnchor, bottom: mainImage.bottomAnchor, trailing: mainImage.trailingAnchor,padding: .init(top: 20, left: 48, bottom: 48, right: 48))
         
         NSLayoutConstraint.activate([logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                                     logoImageView.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -120)
         ])
     }
     
@@ -72,11 +75,12 @@ class CustomAddPostView: UIView {
         
         let im = UIImageView(image: image)
         im.constrainWidth(constant: 60)
-        im.contentMode = .scaleAspectFit
+        im.clipsToBounds=true
+        im.contentMode = .scaleToFill
         if MOLHLanguage.isRTLLanguage() {
-            v.hstack(la,im).withMargins(.allSides(16))
+            v.hstack(la,im).withMargins(.init(top: 16, left: 24, bottom: 16, right: 24))
         }else {
-            v.hstack(im,la).withMargins(.allSides(16))
+            v.hstack(im,la).withMargins(.init(top: 16, left: 24, bottom: 16, right: 24))
         }
         return v
     }

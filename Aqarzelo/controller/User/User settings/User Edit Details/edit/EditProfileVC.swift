@@ -120,7 +120,7 @@ class EditProfileVC: UIViewController {
     }
     
     func setupViews()  {
-        view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1)//ColorConstant.mainBackgroundColor
+        view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1) //ColorConstant.mainBackgroundColor
         
         view.addSubViews(views: mainView,tableView,nextButton)
         
