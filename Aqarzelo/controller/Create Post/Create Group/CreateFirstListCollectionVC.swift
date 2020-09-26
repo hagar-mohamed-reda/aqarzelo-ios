@@ -30,6 +30,15 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     var is8CellIsOpen = false
     var is9CellIsOpen = false
 
+    var is1CellIError = false
+       var is2CellIsError = false
+       var is3CellIsError = false
+       var is4CellIsError = false
+       var is5CellIsError = false
+       var is6CellIsError = false
+       var is7CellIsError = false
+       var is8CellIsError = false
+       var is9CellIsError = false
     
     var aqar:AqarModel? {
         didSet{
@@ -308,6 +317,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     fileprivate func enableFirstTitleCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateTitleArPostCell  {
             cell.iconImageView.isUserInteractionEnabled = openNext
+            
        }
     }
     
@@ -397,6 +407,8 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         
     }
     
+    
+    
     func setupCollections() {
         collectionView.backgroundColor = .white
         collectionView.contentInset.top = 8
@@ -422,3 +434,6 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     
     
 }
+
+
+//self.creatMainSnackBar(message: "Master Photo can't be deleted...".localized)
