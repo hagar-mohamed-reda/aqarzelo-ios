@@ -20,6 +20,17 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     fileprivate let cellPricesId = "cellPricesId"
     fileprivate let cellTotalPricesId = "cellTotalPricesId"
     
+    var is1CellIsOpen = false
+    var is2CellIsOpen = false
+    var is3CellIsOpen = false
+    var is4CellIsOpen = false
+    var is5CellIsOpen = false
+    var is6CellIsOpen = false
+    var is7CellIsOpen = false
+    var is8CellIsOpen = false
+    var is9CellIsOpen = false
+
+    
     var aqar:AqarModel? {
         didSet{
             guard let aqar = aqar else { return  }
@@ -66,6 +77,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         if indexPath.item == 0 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTitleId, for: indexPath) as! FirstCreatePostCell
             cell.aqar = aqar
+            cell.createFirstListCollectionVC=self
             cell.handleTextContents = {[unowned self] (tx,openNext) in
                 //                self.titles = tx
                 self.firstCcreatePostVviewModel.title = openNext ?  tx : String()
@@ -201,14 +213,37 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var height:CGFloat
         var firstHeight:CGFloat = 0.0
-        if indexPath.item == 0 {
+        if indexPath.item == 0 || indexPath.item == 1{
             if let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0))  as? FirstCreatePostCell{
                 
-                firstHeight = cell.textView.text.estimateFrameForText(cell.textView.text).height
+                firstHeight =   cell.textView.text.estimateFrameForText(cell.textView.text).height
+//                height = !is1CellIsOpen ? 80 : firstHeight+150
             }
         }
         
-        height = indexPath.item == 7 ? 150 : indexPath.item == 2 ? 150 : indexPath.item == 8 ? 150 : indexPath.item == 0 || indexPath.item == 1 ? firstHeight+150 : indexPath.item == 5 || indexPath.item == 6 ? 150 : 120
+        switch indexPath.item {
+            case 0:
+            height = !is1CellIsOpen ? 80 : firstHeight+150
+            case 1:
+                       height = !is2CellIsOpen ? 80 : firstHeight+150
+            case 2:
+            height = !is3CellIsOpen ? 80 : 150
+            case 3:
+            height = !is4CellIsOpen ? 80 : 120
+            case 4:
+            height = !is5CellIsOpen ? 80 : 120
+            case 5:
+            height = !is6CellIsOpen ? 80 : 150
+            case 6:
+            height = !is7CellIsOpen ? 80 : 150
+            case 7:
+            height = !is8CellIsOpen ? 80 : 150
+        default:
+            height = !is9CellIsOpen ? 80 : 150
+        }
+        
+        
+//        height =  indexPath.item == 7 ? 150 : indexPath.item == 2 ? 150 : indexPath.item == 8 ? 150 : indexPath.item == 0 || indexPath.item == 1 ? firstHeight+150 : indexPath.item == 5 || indexPath.item == 6 ? 150 : 120
         
         return .init(width: view.frame.width, height: height)
     }
@@ -273,7 +308,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     fileprivate func enableFirstTitleCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateTitleArPostCell  {
             cell.iconImageView.isUserInteractionEnabled = openNext
-        }
+       }
     }
     
     fileprivate func enableSecondCell(_ openNext: Bool,index:Int) {
@@ -307,41 +342,54 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         }
     }
     
+    func increaseAndDereaseCellSize(current : inout Bool,previous:inout Bool)  {
+        current=true
+        previous=false
+        self.collectionView.reloadData()
+    }
     
     fileprivate  func handleHidedViews(index:Int)  {
         switch index {
         case 0:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePostCell {
                 cell.hideViewsAgain(views: cell.counttitleLabel,cell.mainView)
+                increaseAndDereaseCellSize(current: &is2CellIsOpen, previous: &is1CellIsOpen)
             }
         case 1:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateTitleArPostCell {
                 cell.hideViewsAgain(views: cell.counttitleLabel,cell.mainView)
+                increaseAndDereaseCellSize(current: &is3CellIsOpen, previous: &is2CellIsOpen)
             }
             
         case 2:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePostCategoryCell {
                 cell.hideViewsAgain(views: cell.buttonStack,cell.categoryQuestionLabel)
+                increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
             }
         case 3:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateSellOrRentCell {
                 cell.hideViewsAgain(views: cell.buttonStack,cell.categoryQuestionLabel)
+                increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
             }
         case 4:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateSpaceCell {
                 cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)
+                increaseAndDereaseCellSize(current: &is6CellIsOpen, previous: &is5CellIsOpen)
             }
         case 5:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateRoomsNumberCell {
                 cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
+                increaseAndDereaseCellSize(current: &is7CellIsOpen, previous: &is6CellIsOpen)
             }
         case 6:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell {
                 cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
+                increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is7CellIsOpen)
             }
         case 7:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePriceCell {
                 cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)
+                increaseAndDereaseCellSize(current: &is9CellIsOpen, previous: &is8CellIsOpen)
             }
         default:
             ()

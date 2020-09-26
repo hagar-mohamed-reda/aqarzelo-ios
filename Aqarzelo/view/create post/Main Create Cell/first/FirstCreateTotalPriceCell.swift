@@ -45,10 +45,10 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
     lazy var priceTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
         t.keyboardType = UIKeyboardType.numberPad
-        t.textColor = .white
+        t.textColor = .black
         t.errorColor = .red
-        t.tintColor = .white
-        t.selectedTitleColor = .white
+        t.tintColor = .black
+        t.selectedTitleColor = .black
 //        t.titleColor = .white
          t.titleFormatter = { $0 }
         t.placeholder = "enter price".localized

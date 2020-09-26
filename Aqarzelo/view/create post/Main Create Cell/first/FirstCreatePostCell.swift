@@ -68,6 +68,7 @@ class FirstCreatePostCell: BaseCollectionCell,UITextFieldDelegate {
     
     var handleTextContents:((String?,Bool)->Void)?
     var titleString:String = ""
+    weak var createFirstListCollectionVC:CreateFirstListCollectionVC?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -109,8 +110,8 @@ class FirstCreatePostCell: BaseCollectionCell,UITextFieldDelegate {
     //
     @objc func handleShowViews()  {
         self.showHidingViews(views: counttitleLabel,mainView, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3930"), seperator: seperatorView)
-        
-        
+        self.createFirstListCollectionVC?.is1CellIsOpen=true
+        self.createFirstListCollectionVC?.collectionView.reloadData()
     }
     
     

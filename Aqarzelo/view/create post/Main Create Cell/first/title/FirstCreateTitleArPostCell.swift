@@ -26,7 +26,7 @@ class FirstCreateTitleArPostCell: BaseCollectionCell,UITextFieldDelegate {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3923-3"))
-        im.isUserInteractionEnabled = true
+        im.isUserInteractionEnabled = false
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
