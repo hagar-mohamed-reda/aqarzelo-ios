@@ -56,7 +56,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     //    var buildDate,address:String?
     
     
-    var cityId:Int? = 0
+    var cityId:Int?
     
     var isPostEditing:Bool = false
     

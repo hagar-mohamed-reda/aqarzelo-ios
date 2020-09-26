@@ -97,8 +97,8 @@ class LocationVC: UIViewController {
     
     lazy var    customMarkerLocationView:CustomMarkerLocationView = {
         let v = CustomMarkerLocationView(backgroundColor: .clear)
-        v.constrainHeight(constant: 80)
-        v.constrainWidth(constant: 80)
+        v.constrainHeight(constant: 60)
+        v.constrainWidth(constant: 60)
         return v
     }()
     

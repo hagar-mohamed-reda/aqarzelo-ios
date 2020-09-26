@@ -97,6 +97,7 @@ class ListOfFhotoCell: BaseCollectionCell {
     }()
     lazy var photoImageView:UIImageView = {
         let i = UIImageView()
+        i.contentMode = .scaleAspectFit
         i.constrainWidth(constant: 150)
         i.addSubViews(views: logo360ImageView,trueImageView)
         i.clipsToBounds = true
@@ -107,6 +108,7 @@ class ListOfFhotoCell: BaseCollectionCell {
         s.progress = 0
         s.progressTintColor =  #colorLiteral(red: 0.3672481477, green: 0.8992366791, blue: 0.7968696356, alpha: 1)
         s.isHide(true)
+        s.constrainHeight(constant: 1)
         return s
     }()
     lazy var namePhotoLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .black)

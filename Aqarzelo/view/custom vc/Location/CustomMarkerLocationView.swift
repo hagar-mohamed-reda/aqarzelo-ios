@@ -29,7 +29,7 @@ class CustomMarkerLocationView: CustomBaseView {
         return i
     }()
     lazy var distanceLabel:UILabel = {
-        let l = UILabel(text: "", font: .systemFont(ofSize: 14), textColor: .black)
+        let l = UILabel(text: "", font: .systemFont(ofSize: 18), textColor: .black)
      l.backgroundColor = .lightGray
         l.layer.cornerRadius = 8
         l.clipsToBounds = true
