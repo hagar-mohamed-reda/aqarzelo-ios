@@ -24,7 +24,7 @@ class FirstCreateBathsNumberCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3928"))
-        //        im.isUserInteractionEnabled = true
+                im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -46,7 +46,7 @@ class FirstCreateBathsNumberCell: BaseCollectionCell {
     lazy var customAddMinusView:CustomAddMinusView = {
         let v = CustomAddMinusView()
         v.isHide(true)
-//        v.constrainHeight(constant: 40)
+        //        v.constrainHeight(constant: 40)
         v.constrainWidth(constant: (frame.width - 48 )/2)
         v.minusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMinusOne)))
         v.plusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAddOne)))
@@ -57,6 +57,7 @@ class FirstCreateBathsNumberCell: BaseCollectionCell {
     var handleTextContents:((Int,Bool)->Void)?
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
+    weak var createFirstListCollectionVC:CreateFirstListCollectionVC?
     
     override func setupViews() {
         categoryLabel.constrainHeight(constant: 30)
@@ -73,6 +74,10 @@ class FirstCreateBathsNumberCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createFirstListCollectionVC?.is6CellIsError == false {
+            self.createFirstListCollectionVC?.creatMainSnackBar(message: "Rooms number Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: customAddMinusView,questionLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3935"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

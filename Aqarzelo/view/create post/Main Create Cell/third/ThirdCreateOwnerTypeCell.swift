@@ -30,6 +30,7 @@ class ThirdCreateOwnerTypeCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3954"))
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()

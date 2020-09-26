@@ -29,16 +29,16 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     var is7CellIsOpen = false
     var is8CellIsOpen = false
     var is9CellIsOpen = false
-
+    
     var is1CellIError = false
-       var is2CellIsError = false
-       var is3CellIsError = false
-       var is4CellIsError = false
-       var is5CellIsError = false
-       var is6CellIsError = false
-       var is7CellIsError = false
-       var is8CellIsError = false
-       var is9CellIsError = false
+    var is2CellIsError = false
+    var is3CellIsError = false
+    var is4CellIsError = false
+    var is5CellIsError = false
+    var is6CellIsError = false
+    var is7CellIsError = false
+    var is8CellIsError = false
+    var is9CellIsError = false
     
     var aqar:AqarModel? {
         didSet{
@@ -98,6 +98,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         }else  if indexPath.item == 1 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier:cellTitleARId, for: indexPath) as! FirstCreateTitleArPostCell
             cell.aqar = aqar
+            cell.createFirstListCollectionVC=self
             cell.index = 1
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: 0)
@@ -116,6 +117,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         else if indexPath.item == 2 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellCategoryId, for: indexPath) as! FirstCreatePostCategoryCell
             cell.aqar = aqar
+            cell.createFirstListCollectionVC=self
             cell.index = 1
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
@@ -132,6 +134,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellSallId, for: indexPath) as! FirstCreateSellOrRentCell
             cell.aqar = aqar
             cell.index = 2
+            cell.createFirstListCollectionVC=self
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
             }
@@ -145,6 +148,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         }else if indexPath.item == 4 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellSpaceId, for: indexPath) as! FirstCreateSpaceCell
             cell.aqar = aqar
+            cell.createFirstListCollectionVC=self
             cell.index = 3
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
@@ -160,6 +164,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         }else if indexPath.item == 5 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellRoomsId, for: indexPath) as! FirstCreateRoomsNumberCell
             cell.aqar = aqar
+            cell.createFirstListCollectionVC=self
             cell.index = 4
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
@@ -174,6 +179,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         }else if indexPath.item == 6 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellBathsId, for: indexPath) as! FirstCreateBathsNumberCell
             cell.aqar = aqar
+            cell.createFirstListCollectionVC=self
             cell.index = 5
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
@@ -188,6 +194,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         }else if indexPath.item == 7 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPricesId, for: indexPath) as! FirstCreatePriceCell
             cell.aqar = aqar
+            cell.createFirstListCollectionVC=self
             cell.index = 6
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
@@ -207,6 +214,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         
         let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTotalPricesId, for: indexPath) as! FirstCreateTotalPriceCell
         cell.aqar = aqar
+        cell.createFirstListCollectionVC=self
         cell.index = 7
         cell.handleHidePreviousCell = {[unowned self] (index) in
             self.handleHidedViews(index: index)
@@ -226,33 +234,33 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             if let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0))  as? FirstCreatePostCell{
                 
                 firstHeight =   cell.textView.text.estimateFrameForText(cell.textView.text).height
-//                height = !is1CellIsOpen ? 80 : firstHeight+150
+                //                height = !is1CellIsOpen ? 80 : firstHeight+150
             }
         }
         
         switch indexPath.item {
-            case 0:
+        case 0:
             height = !is1CellIsOpen ? 80 : firstHeight+150
-            case 1:
-                       height = !is2CellIsOpen ? 80 : firstHeight+150
-            case 2:
+        case 1:
+            height = !is2CellIsOpen ? 80 : firstHeight+150
+        case 2:
             height = !is3CellIsOpen ? 80 : 150
-            case 3:
+        case 3:
             height = !is4CellIsOpen ? 80 : 120
-            case 4:
+        case 4:
             height = !is5CellIsOpen ? 80 : 120
-            case 5:
+        case 5:
             height = !is6CellIsOpen ? 80 : 150
-            case 6:
+        case 6:
             height = !is7CellIsOpen ? 80 : 150
-            case 7:
+        case 7:
             height = !is8CellIsOpen ? 80 : 150
         default:
             height = !is9CellIsOpen ? 80 : 150
         }
         
         
-//        height =  indexPath.item == 7 ? 150 : indexPath.item == 2 ? 150 : indexPath.item == 8 ? 150 : indexPath.item == 0 || indexPath.item == 1 ? firstHeight+150 : indexPath.item == 5 || indexPath.item == 6 ? 150 : 120
+        //        height =  indexPath.item == 7 ? 150 : indexPath.item == 2 ? 150 : indexPath.item == 8 ? 150 : indexPath.item == 0 || indexPath.item == 1 ? firstHeight+150 : indexPath.item == 5 || indexPath.item == 6 ? 150 : 120
         
         return .init(width: view.frame.width, height: height)
     }
@@ -304,51 +312,58 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     
     fileprivate func enableThirdCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateSpaceCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is4CellIsError=openNext
         }
     }
     
     fileprivate func enableFirstCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index+1, section: 0)) as? FirstCreatePostCategoryCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is2CellIsError=openNext
         }
     }
     
     fileprivate func enableFirstTitleCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateTitleArPostCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
-            
-       }
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is1CellIError=openNext
+        }
     }
     
     fileprivate func enableSecondCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateSellOrRentCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is3CellIsError=openNext
         }
     }
     
     
     fileprivate func enableForthCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateRoomsNumberCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is5CellIsError=openNext
         }
     }
     
     fileprivate func enableFifthCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is6CellIsError=openNext
         }
     }
     
     fileprivate func enableSixthCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePriceCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is7CellIsError=openNext
         }
     }
     
     fileprivate func enableSeventhCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateTotalPriceCell   {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is8CellIsError=openNext
         }
     }
     
@@ -436,4 +451,3 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
 }
 
 
-//self.creatMainSnackBar(message: "Master Photo can't be deleted...".localized)

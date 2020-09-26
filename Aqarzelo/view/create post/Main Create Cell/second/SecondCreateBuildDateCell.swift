@@ -24,7 +24,7 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3950"))
-        //        im.isUserInteractionEnabled = true
+                im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()

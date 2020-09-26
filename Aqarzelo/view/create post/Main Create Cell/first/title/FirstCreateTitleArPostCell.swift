@@ -26,7 +26,7 @@ class FirstCreateTitleArPostCell: BaseCollectionCell,UITextFieldDelegate {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3923-3"))
-        im.isUserInteractionEnabled = false
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -68,9 +68,10 @@ class FirstCreateTitleArPostCell: BaseCollectionCell,UITextFieldDelegate {
     var handleTextContents:((String?,Bool)->Void)?
     var titleString:String = ""
     var index:Int!
-
+    weak var createFirstListCollectionVC:CreateFirstListCollectionVC?
+    
     var handleHidePreviousCell:((Int)->Void)?
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextChanged), name: UITextView.textDidChangeNotification, object: nil)
@@ -110,9 +111,13 @@ class FirstCreateTitleArPostCell: BaseCollectionCell,UITextFieldDelegate {
     
     //
     @objc func handleShowViews()  {
+        if self.createFirstListCollectionVC?.is1CellIError == false {
+            self.createFirstListCollectionVC?.creatMainSnackBar(message: "Title Should Be Filled First...".localized)
+            return
+        }
         self.showHidingViews(views: counttitleLabel,mainView, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3930"), seperator: seperatorView)
         handleHidePreviousCell?(index)
-
+        
         
     }
     

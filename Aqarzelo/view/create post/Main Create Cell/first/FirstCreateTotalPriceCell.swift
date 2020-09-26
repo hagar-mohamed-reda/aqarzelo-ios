@@ -25,7 +25,7 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3929"))
-        //        im.isUserInteractionEnabled = true
+                im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -63,7 +63,7 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var priceString:String!
-    
+    weak var createFirstListCollectionVC:CreateFirstListCollectionVC?
     
     override func setupViews() {
         categoryLabel.constrainHeight(constant: 30)
@@ -103,6 +103,10 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createFirstListCollectionVC?.is8CellIsError == false {
+                   self.createFirstListCollectionVC?.creatMainSnackBar(message: "Price Per Meter Should Be Filled First...".localized)
+                   return
+               }
         showHidingViewsWithoutSepertor(views: mainView,priceLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3933"))
         handleHidePreviousCell?(index)
     }

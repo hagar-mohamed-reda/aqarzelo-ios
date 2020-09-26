@@ -494,7 +494,7 @@
 		9F27590C25127051006A93B2 /* title */ = {
 			isa = PBXGroup;
 			children = (
-				9FE270B424E88708008889AB /* FirstCreateBathsNumberCell.swift */,
+				9FE270B624E88709008889AB /* FirstCreatePostCell.swift */,
 				9F27590D25127064006A93B2 /* FirstCreateTitleArPostCell.swift */,
 			);
 			path = title;
@@ -1266,11 +1266,11 @@
 			children = (
 				9F27590C25127051006A93B2 /* title */,
 				9FE270B024E88707008889AB /* FirstCreatePostCategoryCell.swift */,
-				9FE270B624E88709008889AB /* FirstCreatePostCell.swift */,
-				9FE270B124E88707008889AB /* FirstCreatePriceCell.swift */,
-				9FE270B524E88709008889AB /* FirstCreateRoomsNumberCell.swift */,
 				9FE270B324E88708008889AB /* FirstCreateSellOrRentCell.swift */,
 				9FE270B224E88707008889AB /* FirstCreateSpaceCell.swift */,
+				9FE270B524E88709008889AB /* FirstCreateRoomsNumberCell.swift */,
+				9FE270B424E88708008889AB /* FirstCreateBathsNumberCell.swift */,
+				9FE270B124E88707008889AB /* FirstCreatePriceCell.swift */,
 				9FE270B724E88709008889AB /* FirstCreateTotalPriceCell.swift */,
 			);
 			path = first;

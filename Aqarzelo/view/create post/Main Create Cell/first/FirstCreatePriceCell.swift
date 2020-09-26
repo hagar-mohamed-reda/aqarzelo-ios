@@ -26,7 +26,7 @@ class FirstCreatePriceCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3929"))
-        //        im.isUserInteractionEnabled = true
+                im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -46,10 +46,10 @@ class FirstCreatePriceCell: BaseCollectionCell {
     lazy var priceTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
         t.textColor = .black
-                      t.errorColor = .red
-                      t.tintColor = .black
-                      t.selectedTitleColor = .black
-//        t.titleColor = .white
+        t.errorColor = .red
+        t.tintColor = .black
+        t.selectedTitleColor = .black
+        //        t.titleColor = .white
         t.titleFormatter = { $0 }
         t.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
         t.keyboardType = UIKeyboardType.numberPad
@@ -69,6 +69,7 @@ class FirstCreatePriceCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var priceString:String!
+    weak var createFirstListCollectionVC:CreateFirstListCollectionVC?
     
     
     override func setupViews() {
@@ -109,6 +110,10 @@ class FirstCreatePriceCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createFirstListCollectionVC?.is7CellIsError == false {
+            self.createFirstListCollectionVC?.creatMainSnackBar(message: "Bathrooms number Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: mainView,priceLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3933"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

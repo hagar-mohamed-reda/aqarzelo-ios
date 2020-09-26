@@ -20,10 +20,10 @@ class FirstCreateSellOrRentCell: BaseCollectionCell {
                 switch type {
                 case PostTypeEnum.sale.rawValue:
                     colorBackgroundSelectedButton(sender: sellButton, views: [rentButton])
-                     handleTextContents?(type,true)
+                    handleTextContents?(type,true)
                 default:
                     colorBackgroundSelectedButton(sender: rentButton, views: [sellButton])
- handleTextContents?(type,true)
+                    handleTextContents?(type,true)
                 }
                 if sender.titleLabel?.text!.lowercased() == aqar.type {
                     sender.backgroundColor = ColorConstant.mainBackgroundColor
@@ -37,7 +37,7 @@ class FirstCreateSellOrRentCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3925-1"))
-        //        im.isUserInteractionEnabled = true
+                im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -63,6 +63,7 @@ class FirstCreateSellOrRentCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((String,Bool)->Void)?
+    weak var createFirstListCollectionVC:CreateFirstListCollectionVC?
     
     override func setupViews() {
         categoryLabel.constrainHeight(constant: 30)
@@ -97,6 +98,10 @@ class FirstCreateSellOrRentCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createFirstListCollectionVC?.is3CellIsError == false {
+            self.createFirstListCollectionVC?.creatMainSnackBar(message: "Category Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: categoryQuestionLabel,buttonStack, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3932"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

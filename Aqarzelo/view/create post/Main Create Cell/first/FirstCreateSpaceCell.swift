@@ -25,7 +25,7 @@ class FirstCreateSpaceCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3926"))
-        //        im.isUserInteractionEnabled = true
+                im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         //        im.constrainWidth(constant: 20)
         return im
@@ -43,11 +43,11 @@ class FirstCreateSpaceCell: BaseCollectionCell {
     }()
     lazy var priceTextField:SkyFloatingLabelTextField = {
         let t = SkyFloatingLabelTextField()
-      t.titleFormatter = { $0 }
+        t.titleFormatter = { $0 }
         t.textColor = .black
-                             t.errorColor = .red
-                             t.tintColor = .black
-                             t.selectedTitleColor = .black
+        t.errorColor = .red
+        t.tintColor = .black
+        t.selectedTitleColor = .black
         t.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
         t.keyboardType = UIKeyboardType.numberPad
         t.placeholder = "enter space".localized
@@ -66,6 +66,7 @@ class FirstCreateSpaceCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var priceString:String!
+    weak var createFirstListCollectionVC:CreateFirstListCollectionVC?
     
     
     override func setupViews() {
@@ -106,6 +107,10 @@ class FirstCreateSpaceCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createFirstListCollectionVC?.is4CellIsError == false {
+            self.createFirstListCollectionVC?.creatMainSnackBar(message: "Sale or rent Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: mainView,priceLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3933"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

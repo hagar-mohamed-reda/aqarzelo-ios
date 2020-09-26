@@ -31,7 +31,7 @@ class FirstCreatePostCategoryCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3924-1"))
-        //        im.isUserInteractionEnabled = true
+                im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -75,6 +75,7 @@ class FirstCreatePostCategoryCell: BaseCollectionCell {
     }()
     
     var handleTextContents:((Int,Bool)->Void)?
+    weak var createFirstListCollectionVC:CreateFirstListCollectionVC?
     
     
     
@@ -115,6 +116,10 @@ class FirstCreatePostCategoryCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createFirstListCollectionVC?.is2CellIsError == false {
+            self.createFirstListCollectionVC?.creatMainSnackBar(message: "Title in Arabic Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: categoryQuestionLabel,buttonStack, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3931"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }
