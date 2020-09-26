@@ -312,14 +312,14 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     
     fileprivate func enableThirdCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateSpaceCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is4CellIsError=openNext
         }
     }
     
     fileprivate func enableFirstCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index+1, section: 0)) as? FirstCreatePostCategoryCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is2CellIsError=openNext
         }
     }
@@ -333,7 +333,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     
     fileprivate func enableSecondCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateSellOrRentCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is3CellIsError=openNext
         }
     }
@@ -341,28 +341,28 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     
     fileprivate func enableForthCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateRoomsNumberCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is5CellIsError=openNext
         }
     }
     
     fileprivate func enableFifthCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is6CellIsError=openNext
         }
     }
     
     fileprivate func enableSixthCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePriceCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is7CellIsError=openNext
         }
     }
     
     fileprivate func enableSeventhCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateTotalPriceCell   {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is8CellIsError=openNext
         }
     }

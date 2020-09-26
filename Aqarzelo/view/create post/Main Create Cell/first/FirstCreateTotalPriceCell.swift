@@ -25,7 +25,7 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3929"))
-                im.isUserInteractionEnabled = true
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -49,8 +49,8 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
         t.errorColor = .red
         t.tintColor = .black
         t.selectedTitleColor = .black
-//        t.titleColor = .white
-         t.titleFormatter = { $0 }
+        //        t.titleColor = .white
+        t.titleFormatter = { $0 }
         t.placeholder = "enter price".localized
         t.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
         t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)
@@ -104,9 +104,9 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
     
     @objc func handleShowViews()  {
         if self.createFirstListCollectionVC?.is8CellIsError == false {
-                   self.createFirstListCollectionVC?.creatMainSnackBar(message: "Price Per Meter Should Be Filled First...".localized)
-                   return
-               }
+            self.createFirstListCollectionVC?.creatMainSnackBar(message: "Price Per Meter Should Be Filled First...".localized)
+            return
+        }
         showHidingViewsWithoutSepertor(views: mainView,priceLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3933"))
         handleHidePreviousCell?(index)
     }

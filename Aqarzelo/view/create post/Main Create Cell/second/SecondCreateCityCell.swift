@@ -36,7 +36,7 @@ class SecondCreateCityCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3946"))
-                im.isUserInteractionEnabled = true
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -61,14 +61,14 @@ class SecondCreateCityCell: BaseCollectionCell {
         let v = makeMainSubViewWithAppendView(vv: [cityDrop])
         v.hstack(cityDrop).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
         v.isHide(true)
-        v.constrainWidth(constant: frame.width - 120)
+        v.constrainWidth(constant: frame.width - 140)//120
         return v
     }()
     
     lazy var cityDrop:DropDown = {
         let i = returnMainDropDown(plcae: "Select City".localized)
         if var arr = MOLHLanguage.isRTLLanguage() ? userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String] :  userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String] {
-           
+            
             i.optionArray = arr
         }
         i.constrainHeight(constant: 40)
@@ -86,6 +86,19 @@ class SecondCreateCityCell: BaseCollectionCell {
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((Int?,Bool)->Void)?
     var handleOpenDropDown:((CGRect)->Void)?
+    weak var createSecondListCollectionVC:CreateSecondListCollectionVC?
+    var cityArray = [String]() //["one","two","three","sdfdsfsd"]
+    
+    var cityIDSArray = [Int]()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        fetchData()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func setupViews() {
         //        mainDrop1View.isUserInteractionEnabled=true
@@ -103,6 +116,35 @@ class SecondCreateCityCell: BaseCollectionCell {
         let second = stack(categoryLabel,categoryQuestionLabel,dd,UIView(),spacing:8)
         
         hstack(ss,second,UIView(),spacing:16).withMargins(.init(top: 0, left: 36, bottom: 0, right: 8))
+    }
+    
+    fileprivate func fetchData()  {
+        
+        fetchEnglishData(isArabic: MOLHLanguage.isRTLLanguage())
+    }
+    
+    fileprivate func fetchEnglishData(isArabic:Bool) {
+        if isArabic {
+            
+            
+            if  let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]  {
+                
+                self.cityArray = cityArray
+                
+            }
+        }else {
+            if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]  {
+                
+                self.cityArray = cityArray
+                
+                
+            }
+        }
+        
+        self.cityDrop.optionArray = cityArray
+        DispatchQueue.main.async {
+            self.layoutIfNeeded()
+        }
     }
     
     fileprivate func getCityFromIndex(_ index:Int) -> String {
@@ -133,6 +175,10 @@ class SecondCreateCityCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createSecondListCollectionVC?.is1CellIError == false {
+            self.createSecondListCollectionVC?.creatMainSnackBar(message: "Location Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: categoryQuestionLabel,mainDrop1View, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3938"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

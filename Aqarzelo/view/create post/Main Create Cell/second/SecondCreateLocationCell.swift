@@ -54,7 +54,7 @@ class SecondCreateLocationCell: BaseCollectionCell {
     
     var handlerChooseLocation:(()->Void)?
     var handlerNext:((Double,Double,Bool)->Void)?
-    
+     weak var createSecondListCollectionVC:CreateSecondListCollectionVC?
     
     override func setupViews() {
         categoryLabel.constrainHeight(constant: 30)
@@ -74,6 +74,9 @@ class SecondCreateLocationCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        
         showHidingViews(views: categoryQuestionLabel,mapButton, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3937"), seperator: seperatorView)
+        self.createSecondListCollectionVC?.is1CellIsOpen=true
+        self.createSecondListCollectionVC?.collectionView.reloadData()
     }
 }

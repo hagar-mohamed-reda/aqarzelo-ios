@@ -26,7 +26,7 @@ class SecondCreateAddressCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3948"))
-                im.isUserInteractionEnabled = true
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -62,6 +62,8 @@ class SecondCreateAddressCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((String?,Bool)->Void)?
+    weak var createSecondListCollectionVC:CreateSecondListCollectionVC?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,7 +96,10 @@ class SecondCreateAddressCell: BaseCollectionCell {
     
     //
     @objc func handleShowViews()  {
-        
+        if self.createSecondListCollectionVC?.is3CellIsError == false {
+            self.createSecondListCollectionVC?.creatMainSnackBar(message: "Area Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: counttitleLabel,textView,counttitleLabel,categoryQuestionLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3940"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

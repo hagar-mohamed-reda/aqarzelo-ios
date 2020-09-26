@@ -23,14 +23,14 @@ class SecondCreateFloorNumberCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3951"))
-                im.isUserInteractionEnabled = true
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
     
     lazy var categoryLabel = UILabel(text: "Floor number".localized, font: .systemFont(ofSize: 20), textColor: .black)
     lazy var questionLabel:UILabel = {
-        let l = UILabel(text: "What is the property floor number ?".localized, font: .systemFont(ofSize: 16), textColor: .black)
+        let l = UILabel(text: "What is the property floor number ?".localized, font: .systemFont(ofSize: 16), textColor: .black,numberOfLines: 2)
         //        l.constrainHeight(constant: 20)
         l.isHide(true)
         return l
@@ -40,7 +40,7 @@ class SecondCreateFloorNumberCell: BaseCollectionCell {
     lazy var customAddMinusView:CustomAddMinusView = {
         let v = CustomAddMinusView()
         v.isHide(true)
-        v.constrainHeight(constant: 40)
+//        v.constrainHeight(constant: 40)
         v.constrainWidth(constant: (frame.width - 48 )/2)
         v.minusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMinusOne)))
         v.plusImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAddOne)))
@@ -54,6 +54,7 @@ class SecondCreateFloorNumberCell: BaseCollectionCell {
     var handleTextContents:((Int,Bool)->Void)?
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
+    weak var createSecondListCollectionVC:CreateSecondListCollectionVC?
     
     override func setupViews() {
         backgroundColor = .white
@@ -71,6 +72,10 @@ class SecondCreateFloorNumberCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createSecondListCollectionVC?.is5CellIsError == false {
+            self.createSecondListCollectionVC?.creatMainSnackBar(message: "Year of Building Should Be Filled First...".localized)
+            return
+        }
         showHidingViewsWithoutSepertor(views: customAddMinusView,questionLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3943"))
         handleHidePreviousCell?(index)
     }

@@ -44,7 +44,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3947"))
-                im.isUserInteractionEnabled = true
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -67,7 +67,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
         let v = makeMainSubViewWithAppendView(vv: [areaDrop])
         v.hstack(areaDrop).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
         v.isHide(true)
-        v.constrainWidth(constant: frame.width - 120)
+        v.constrainWidth(constant: frame.width - 140)//120
         return v
     }()
     lazy var areaDrop:DropDown = {
@@ -90,6 +90,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
     
     var cityIDSArray = [Int]() //["one","two","three","sdfdsfsd"]
     var areaIDSArray = [Int]()
+    weak var createSecondListCollectionVC:CreateSecondListCollectionVC?
     
     fileprivate func getAreaAccordingToCityId(index:Int)  {
         areaIDSArray.removeAll()
@@ -191,7 +192,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
     
     
     override func setupViews() {
-        
+        categoryLabel.constrainHeight(constant: 30)
         backgroundColor = .white
         let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
         let dd = hstack(mainDrop1View,UIView())
@@ -204,6 +205,10 @@ class SecondCreateAreaCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createSecondListCollectionVC?.is2CellIsError == false {
+            self.createSecondListCollectionVC?.creatMainSnackBar(message: "City Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: categoryQuestionLabel,mainDrop1View, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3933"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

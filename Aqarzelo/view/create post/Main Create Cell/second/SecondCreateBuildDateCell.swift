@@ -24,7 +24,7 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3950"))
-                im.isUserInteractionEnabled = true
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -67,6 +67,7 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((String?,Bool)->Void)?
+    weak var createSecondListCollectionVC:CreateSecondListCollectionVC?
     
     override func setupViews() {
         backgroundColor = .white
@@ -86,6 +87,10 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createSecondListCollectionVC?.is4CellIsError == false {
+            self.createSecondListCollectionVC?.creatMainSnackBar(message: "Address Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: questionLabel,mainView,dateTextField, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3942"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }
