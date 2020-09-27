@@ -116,7 +116,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "89008CDD-366C-480A-B64F-04168F40F04E - d639e1ea6541c54e"
+                  uuid = "89008CDD-366C-480A-B64F-04168F40F04E - 4ac66ad3ac8388e8"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -131,7 +131,7 @@
                   offsetFromSymbolStart = "69">
                </Location>
                <Location
-                  uuid = "89008CDD-366C-480A-B64F-04168F40F04E - 361b1dc249649cc0"
+                  uuid = "89008CDD-366C-480A-B64F-04168F40F04E - aae496fb80a6d166"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -562,7 +562,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "71640262-9E02-457D-AEB8-30D86EB39B65 - 118b8a8156696306"
+                  uuid = "71640262-9E02-457D-AEB8-30D86EB39B65 - f062c938d2e2be05"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -577,7 +577,7 @@
                   offsetFromSymbolStart = "1685">
                </Location>
                <Location
-                  uuid = "71640262-9E02-457D-AEB8-30D86EB39B65 - 6be79b8b3f82c84"
+                  uuid = "71640262-9E02-457D-AEB8-30D86EB39B65 - e7573a013773f187"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -894,8 +894,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
             endingLineNumber = "78"
-            landmarkName = "areaDrop"
-            landmarkType = "24">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -910,8 +910,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "aqar"
-            landmarkType = "24">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -926,8 +926,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "aqar"
-            landmarkType = "24">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -942,8 +942,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
             endingLineNumber = "115"
-            landmarkName = "getAreaAccordingToCityId(index:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1026,7 +1026,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "64606ABE-59BC-4C76-9CBA-9AE1728582D6 - 53a427e56424474"
+                  uuid = "64606ABE-59BC-4C76-9CBA-9AE1728582D6 - 12f34292773846fe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1041,7 +1041,7 @@
                   offsetFromSymbolStart = "2994">
                </Location>
                <Location
-                  uuid = "64606ABE-59BC-4C76-9CBA-9AE1728582D6 - bebd72a6a44fe974"
+                  uuid = "64606ABE-59BC-4C76-9CBA-9AE1728582D6 - a974724a8535ebfe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1266,7 +1266,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "0C4D58B7-A0F6-4D40-92DA-AF10E84F1B2F - 2db1fdfeea8f74e9"
+                  uuid = "0C4D58B7-A0F6-4D40-92DA-AF10E84F1B2F - 74a6c967d5643bab"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1281,7 +1281,7 @@
                   offsetFromSymbolStart = "22">
                </Location>
                <Location
-                  uuid = "0C4D58B7-A0F6-4D40-92DA-AF10E84F1B2F - 17898b0c6c48e9df"
+                  uuid = "0C4D58B7-A0F6-4D40-92DA-AF10E84F1B2F - 4e9ebf9553a3a69d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1390,8 +1390,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
             endingLineNumber = "173"
-            landmarkName = "fetchEnglishData(isArabic:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1406,8 +1406,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
-            landmarkName = "cityId"
-            landmarkType = "24">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
