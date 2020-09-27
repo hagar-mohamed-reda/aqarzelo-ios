@@ -17,6 +17,20 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
     fileprivate let cellFinishedId = "cellFinishedId"
     fileprivate let cellMoreId = "cellMoreId"
     
+    var is1CellIsOpen = false
+    var is2CellIsOpen = false
+    var is3CellIsOpen = false
+    var is4CellIsOpen = false
+    var is5CellIsOpen = false
+    
+    
+    var is1CellIError = false
+    var is2CellIsError = false
+    var is3CellIsError = false
+    var is4CellIsError = false
+    var is5CellIsError = false
+    
+    
     var handleNextVC:((Bool,String?,String?,String?, String?,Int?)->Void)?
     var thirdCcreatePostVviewModel = ThirdCcreatePostVviewModel() //view model
     //    var moreSelected:Int?
@@ -58,6 +72,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellDescribeId, for: indexPath) as! ThirdCreateDescribeCell
             cell.index = 0
             cell.aqar = aqar
+            cell.createThirddListCollectionVC=self
             cell.handleTextContents = { [unowned self] (details,openNext) in
                 //                self.discribe = details
                 self.thirdCcreatePostVviewModel.describe = openNext ? details : String()
@@ -69,6 +84,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellTypeId, for: indexPath) as! ThirdCreateOwnerTypeCell
             cell.index = 1
             cell.aqar = aqar
+            cell.createThirddListCollectionVC=self
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
             }
@@ -83,6 +99,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellPaymentId, for: indexPath) as! ThirdCreatePaymentMethodCell
             cell.index = 2
             cell.aqar = aqar
+            cell.createThirddListCollectionVC=self
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
             }
@@ -97,6 +114,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellFinishedId, for: indexPath) as! ThirdCreateFinishedMethodCell
             cell.index = 3
             cell.aqar = aqar
+            cell.createThirddListCollectionVC=self
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
             }
@@ -110,6 +128,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
         let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellMoreId, for: indexPath) as! ThirdCreateMoreCell
         cell.index = 4
         cell.aqar = aqar
+        cell.createThirddListCollectionVC=self
         cell.handleHidePreviousCell = {[unowned self] (index) in
             self.handleHidedViews(index: 4)
         }
@@ -147,6 +166,19 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
                 
                 firstHeight = cell.textView.text.estimateFrameForText(cell.textView.text).height
             }
+        }
+        
+        switch indexPath.item {
+        case 0:
+            height = !is1CellIsOpen ? 80 : firstHeight+150+60
+        case 1:
+            height = !is2CellIsOpen ? 80 : 120
+        case 2:
+            height = !is3CellIsOpen ? 80 : 300
+        case 3:
+            height = !is4CellIsOpen ? 80 : 120
+        default:
+            height = !is5CellIsOpen ? 80 : 120
         }
         
         height = indexPath.row == 0 ? firstHeight+150+60 : indexPath.item == 3 ? 300 :  120

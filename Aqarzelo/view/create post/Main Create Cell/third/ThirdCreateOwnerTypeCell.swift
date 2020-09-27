@@ -63,7 +63,8 @@ class ThirdCreateOwnerTypeCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((String,Bool)->Void)?
-    
+    weak var createThirddListCollectionVC:CreateThirddListCollectionVC?
+
     override func setupViews() {
         categoryLabel.constrainHeight(constant: 30)
         categoryQuestionLabel.isHide(true)
@@ -98,6 +99,10 @@ class ThirdCreateOwnerTypeCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createThirddListCollectionVC?.is3CellIsError == false {
+            self.createThirddListCollectionVC?.creatMainSnackBar(message: "Describe Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: categoryQuestionLabel,buttonStack, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3958"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

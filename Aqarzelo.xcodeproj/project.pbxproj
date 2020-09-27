@@ -1293,10 +1293,10 @@
 			isa = PBXGroup;
 			children = (
 				9FE270D224E8872E008889AB /* ThirdCreateDescribeCell.swift */,
-				9FE270D124E8872D008889AB /* ThirdCreateFinishedMethodCell.swift */,
-				9FE270CF24E8872D008889AB /* ThirdCreateMoreCell.swift */,
 				9FE270D024E8872D008889AB /* ThirdCreateOwnerTypeCell.swift */,
 				9FE270CE24E8872C008889AB /* ThirdCreatePaymentMethodCell.swift */,
+				9FE270D124E8872D008889AB /* ThirdCreateFinishedMethodCell.swift */,
+				9FE270CF24E8872D008889AB /* ThirdCreateMoreCell.swift */,
 			);
 			path = third;
 			sourceTree = "<group>";

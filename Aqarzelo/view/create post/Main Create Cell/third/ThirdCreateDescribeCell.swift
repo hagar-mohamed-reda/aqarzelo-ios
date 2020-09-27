@@ -65,6 +65,8 @@ class ThirdCreateDescribeCell: BaseCollectionCell {
     var index:Int!
     var handleTextContents:((String?,Bool)->Void)?
     var handleHidePreviousCell:((Int)->Void)?
+    weak var createThirddListCollectionVC:CreateThirddListCollectionVC?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

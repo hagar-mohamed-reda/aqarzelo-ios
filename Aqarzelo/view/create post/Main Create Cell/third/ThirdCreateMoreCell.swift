@@ -38,7 +38,7 @@ class ThirdCreateMoreCell: BaseCollectionCell {
     
     lazy var iconImageView:UIImageView = {
         let im = UIImageView(image: #imageLiteral(resourceName: "Group 3956"))
-                im.isUserInteractionEnabled = true
+        im.isUserInteractionEnabled = true
         im.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowViews)))
         return im
     }()
@@ -87,6 +87,7 @@ class ThirdCreateMoreCell: BaseCollectionCell {
     var index:Int = 1
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((Int,Bool)->Void)?
+    weak var createThirddListCollectionVC:CreateThirddListCollectionVC?
     
     override func setupViews() {
         
@@ -123,6 +124,10 @@ class ThirdCreateMoreCell: BaseCollectionCell {
     
     @objc func handleShowViews()  {
         //        [c,c2,c3,c4].forEach({$0.isHide(false)})
+        if self.createThirddListCollectionVC?.is2CellIsError == false {
+            self.createThirddListCollectionVC?.creatMainSnackBar(message: "Finished Should Be Filled First...".localized)
+            return
+        }
         showHidingViewsWithoutSepertor(views: totalStackFinished, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3960"))
         handleHidePreviousCell?(index)
     }

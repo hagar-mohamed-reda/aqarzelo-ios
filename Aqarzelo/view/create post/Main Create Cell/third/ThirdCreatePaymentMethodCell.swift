@@ -60,6 +60,7 @@ class ThirdCreatePaymentMethodCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((String,Bool)->Void)?
+    weak var createThirddListCollectionVC:CreateThirddListCollectionVC?
     
     
     override func setupViews() {
@@ -95,6 +96,10 @@ class ThirdCreatePaymentMethodCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
+        if self.createThirddListCollectionVC?.is4CellIsError == false {
+            self.createThirddListCollectionVC?.creatMainSnackBar(message: "Owner type Should Be Filled First...".localized)
+            return
+        }
         showHidingViews(views: categoryQuestionLabel,buttonStack, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3959"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }

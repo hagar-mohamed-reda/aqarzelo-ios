@@ -83,7 +83,7 @@ class ContactUsVC: UIViewController {
     
     //MARK:-User methods
     
-    fileprivate func loadLinks()  {
+     func loadLinks()  {
         links = [
             "https://www.youtube.com/",
             "https://www.facebook.com/",

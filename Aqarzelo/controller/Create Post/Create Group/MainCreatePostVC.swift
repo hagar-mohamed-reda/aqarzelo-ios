@@ -70,7 +70,7 @@ class MainCreatePostVC: UIViewController {
     lazy  var middleSecondPostCollection:CreateSecondListCollectionVC = {
         let vc =  CreateSecondListCollectionVC()
         vc.delgate = self
-        vc.view.isHide(false)
+        vc.view.isHide(true)
         //        vc.handleOpenDropDown = {[unowned self] frame in
         //            self.handleOpenDropDown(frame)
         //        }
@@ -81,7 +81,7 @@ class MainCreatePostVC: UIViewController {
     }()// second
     lazy  var middleThirdPostCollection:CreateThirddListCollectionVC = {
         let vc = CreateThirddListCollectionVC() // third
-        vc.view.isHide(true)
+        vc.view.isHide(false)
         vc.handleNextVC = { [unowned self] (isOpen,discribe,ownType,payment,finiashed,moreTag) in
             
             isOpen ? self.makeThirdOperation(discribe, ownType, payment, finiashed, moreTag, isOpen) : self.enableButton(isOpen, .white, second: true, third: true, last: true)
@@ -101,18 +101,18 @@ class MainCreatePostVC: UIViewController {
     
     var mainCcreatePostVviewModel = MainCreatePostViewModel() //view model
     lazy var customMainAlertVC:CustomMainAlertVC = {
-           let t = CustomMainAlertVC()
-           t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-           t.modalTransitionStyle = .crossDissolve
-           t.modalPresentationStyle = .overCurrentContext
-           return t
-       }()
+        let t = CustomMainAlertVC()
+        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        t.modalTransitionStyle = .crossDissolve
+        t.modalPresentationStyle = .overCurrentContext
+        return t
+    }()
     lazy var customErrorView:CustomErrorView = {
-           let v = CustomErrorView()
-           v.setupAnimation(name: "4970-unapproved-cross")
-           v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
-           return v
-       }()
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
     lazy var nextButton:UIButton = {
         let b = UIButton(title: "Next".localized, titleColor: .black, font: .systemFont(ofSize: 16), backgroundColor: .white, target: self, action: #selector(handleNext))
         b.layer.borderWidth = 2
@@ -357,7 +357,7 @@ class MainCreatePostVC: UIViewController {
     fileprivate func makeOperationAfterPostMade(isUpdate:Bool,_ err: Error?) {
         if let err=err {
             self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
-//            SVProgressHUD.showError(withStatus: err.localizedDescription)
+            //            SVProgressHUD.showError(withStatus: err.localizedDescription)
             self.activeViewsIfNoData();return
         }
         if isUpdate {
@@ -398,7 +398,7 @@ class MainCreatePostVC: UIViewController {
                 let moreParking = more == 1 ? 1 : 0
                 
                 //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-               progressHudProperties()
+                progressHudProperties()
                 
                 PostServices.shared.updatePost(api_token: currentUserToken, title: aqar.title,titleAR:aqar.titleAr, description: p, category_id: aqar.categoryID, city_id: aqar.cityID, area_id: aqar.areaID, type: aqar.type, lat:  f, lng:  g, owner_type: aqar.ownerType, space: s, price_per_meter: r, price: rrr, payment_method: aqar.paymentMethod, finishing_type: aqar.finishingType, bedroom_number: cc, bathroom_number: rr, floor_number: xx, has_garden: moreGarden, has_parking: moreParking, has_furnished: moreFurn, build_date:aqar.buildDate ?? "" ,totalPrice:Double(aqar.price),postId: aqar.id) {[unowned self] (base, err) in
                     
@@ -420,19 +420,19 @@ class MainCreatePostVC: UIViewController {
     func makeNewPost()  {
         
         guard let postDiscribe = mainCcreatePostVviewModel.describe, let postOwnerType = mainCcreatePostVviewModel.ownerType,
-            let postPayment = mainCcreatePostVviewModel.payment,  let postFiniashed = mainCcreatePostVviewModel.finshed,
-            let postYear = mainCcreatePostVviewModel.buildDate,
-            let postType = mainCcreatePostVviewModel.sell,
-            
-            let postTitle = mainCcreatePostVviewModel.title,let postTitleAr = mainCcreatePostVviewModel.titleAr,
-            
-            
-            //Int or double
-            let postCity_id = Int(mainCcreatePostVviewModel.city ?? "1"),  let postArea_id = Int(mainCcreatePostVviewModel.area ?? "1"),
-            let postCategory_id = Int(mainCcreatePostVviewModel.category ?? "1"),  let postSpaceNum = Int(mainCcreatePostVviewModel.space ?? "1"),
-            let postBathNum = Int(mainCcreatePostVviewModel.bathsNum ?? "1"),  let postPriceMeter = Int(mainCcreatePostVviewModel.pricePer ?? "1"),let rrr=Int(mainCcreatePostVviewModel.totalPrice ?? "1"),
-            let postBedNum = Int(mainCcreatePostVviewModel.roomNum ?? "1"),  let postTotalPrice = Int(mainCcreatePostVviewModel.totalPrice ?? "1"),
-            let postFloor = Int(mainCcreatePostVviewModel.fllorNum ?? "1"), let postMoreTag = Int(mainCcreatePostVviewModel.more ?? "0"), let postLat = Double(mainCcreatePostVviewModel.lat ?? "0.0"), let postLng = Double(mainCcreatePostVviewModel.lng ?? "0.0") else { return  }
+              let postPayment = mainCcreatePostVviewModel.payment,  let postFiniashed = mainCcreatePostVviewModel.finshed,
+              let postYear = mainCcreatePostVviewModel.buildDate,
+              let postType = mainCcreatePostVviewModel.sell,
+              
+              let postTitle = mainCcreatePostVviewModel.title,let postTitleAr = mainCcreatePostVviewModel.titleAr,
+              
+              
+              //Int or double
+              let postCity_id = Int(mainCcreatePostVviewModel.city ?? "1"),  let postArea_id = Int(mainCcreatePostVviewModel.area ?? "1"),
+              let postCategory_id = Int(mainCcreatePostVviewModel.category ?? "1"),  let postSpaceNum = Int(mainCcreatePostVviewModel.space ?? "1"),
+              let postBathNum = Int(mainCcreatePostVviewModel.bathsNum ?? "1"),  let postPriceMeter = Int(mainCcreatePostVviewModel.pricePer ?? "1"),let rrr=Int(mainCcreatePostVviewModel.totalPrice ?? "1"),
+              let postBedNum = Int(mainCcreatePostVviewModel.roomNum ?? "1"),  let postTotalPrice = Int(mainCcreatePostVviewModel.totalPrice ?? "1"),
+              let postFloor = Int(mainCcreatePostVviewModel.fllorNum ?? "1"), let postMoreTag = Int(mainCcreatePostVviewModel.more ?? "0"), let postLat = Double(mainCcreatePostVviewModel.lat ?? "0.0"), let postLng = Double(mainCcreatePostVviewModel.lng ?? "0.0") else { return  }
         
         
         let moreFurn = postMoreTag == 0 ? 1 : 0
@@ -440,7 +440,7 @@ class MainCreatePostVC: UIViewController {
         let moreParking = postMoreTag == 1 ? 1 : 0
         
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-       progressHudProperties()
+        progressHudProperties()
         
         PostServices.shared.addTotalPost(api_token: currentUserToken, title: postTitle, titleAR: postTitleAr , description: postDiscribe, category_id: postCategory_id, city_id: postCity_id, area_id: postArea_id, type: postType , lat:  postLat , lng:  postLng, owner_type: postOwnerType, space: Double(postSpaceNum), price_per_meter: postPriceMeter, price: rrr, payment_method: postPayment, finishing_type: postFiniashed, bedroom_number: postBedNum, bathroom_number: postBathNum, floor_number: postFloor, has_garden: moreGarden, has_parking: moreParking, has_furnished: moreFurn, build_date: postYear,totalPrice:postTotalPrice) { (base, err) in
             
@@ -470,13 +470,13 @@ class MainCreatePostVC: UIViewController {
     }
     
     @objc func handleDoneError()  {
-           removeViewWithAnimation(vvv: customErrorView)
-           customMainAlertVC.dismiss(animated: true)
-       }
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
     
     @objc func handleDismiss()  {
-           dismiss(animated: true, completion: nil)
-       }
+        dismiss(animated: true, completion: nil)
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -23,11 +23,11 @@ class ThirdCreateFinishedMethodCell: BaseCollectionCell {
                 
                 handleTextssContents?(noButton.tag,true)
                 handleTextssContentsSecondChange?(0, true)
-//                handleTextContents?(FinishedTypeEnum.without_finished.rawValue, true)
+                //                handleTextContents?(FinishedTypeEnum.without_finished.rawValue, true)
             }else {
-//                [semiFinishedButton,luxButton,superLuxButton,extraSuperLuxButton,withoutFinishedButton].forEach { (sender) in
+                //                [semiFinishedButton,luxButton,superLuxButton,extraSuperLuxButton,withoutFinishedButton].forEach { (sender) in
                 
-                    
+                
                 switch aqar.finishingType {
                 case FinishedTypeEnum.semi_finished.rawValue:
                     semiFinishedButton.backgroundColor = ColorConstant.mainBackgroundColor
@@ -41,14 +41,14 @@ class ThirdCreateFinishedMethodCell: BaseCollectionCell {
                 case FinishedTypeEnum.extra_super_lux.rawValue:
                     extraSuperLuxButton.backgroundColor = ColorConstant.mainBackgroundColor
                     handleTextssContentsSecondChange?( 4,true)
-               
-                   
+                    
+                    
                 default:
                     withoutFinishedButton.backgroundColor = ColorConstant.mainBackgroundColor
                     handleTextssContentsSecondChange?( 5,true)
                 }
-                }
-//            }
+            }
+            //            }
             
             
         }
@@ -122,8 +122,9 @@ class ThirdCreateFinishedMethodCell: BaseCollectionCell {
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextssContents:((Int,Bool)->Void)?
-     var handleTextssContentsSecondChange:((Int,Bool)->Void)?
+    var handleTextssContentsSecondChange:((Int,Bool)->Void)?
     var handleTextContents:((String,Bool)->Void)?
+    weak var createThirddListCollectionVC:CreateThirddListCollectionVC?
     
     override func setupViews() {
         categoryLabel.constrainHeight(constant: 30)
@@ -177,7 +178,7 @@ class ThirdCreateFinishedMethodCell: BaseCollectionCell {
         handleTextssContents?(sender.tag,true)
         
         totalStackFinished.isHidden = sender.tag == 2 ? true : false
-//        sender.tag == 2 ? handleTextContents?(FinishedTypeEnum.without_finished.rawValue, true) : handleTextContents?(FinishedTypeEnum.without_finished.rawValue, false)
+        //        sender.tag == 2 ? handleTextContents?(FinishedTypeEnum.without_finished.rawValue, true) : handleTextContents?(FinishedTypeEnum.without_finished.rawValue, false)
         sender.tag == 2 ? handleTextssContentsSecondChange?(5, true) : handleTextssContentsSecondChange?(0, false)
     }
     
@@ -186,7 +187,7 @@ class ThirdCreateFinishedMethodCell: BaseCollectionCell {
         
         colorBackgroundSelectedButton(sender: sender, views: views)
         sender.backgroundColor = ColorConstant.mainBackgroundColor
-//        handleTextContents?(sender.titleLabel!.text!,true)
+        //        handleTextContents?(sender.titleLabel!.text!,true)
         handleTextssContentsSecondChange?(sender.tag,true)
     }
     
@@ -200,12 +201,18 @@ class ThirdCreateFinishedMethodCell: BaseCollectionCell {
                     sender.backgroundColor = ColorConstant.mainBackgroundColor
                     handleTextssContentsSecondChange?(sender.tag,true)
                 }
-//                if sender.titleLabel!.text?.lowercased() == aqar?.finishingType {
-//                    sender.backgroundColor = ColorConstant.mainBackgroundColor
-//                    handleTextContents?(sender.titleLabel!.text!.lowercased(), true)
-//                }
+                //                if sender.titleLabel!.text?.lowercased() == aqar?.finishingType {
+                //                    sender.backgroundColor = ColorConstant.mainBackgroundColor
+                //                    handleTextContents?(sender.titleLabel!.text!.lowercased(), true)
+                //                }
             }
         }
+        
+        if self.createThirddListCollectionVC?.is1CellIError == false {
+            self.createThirddListCollectionVC?.creatMainSnackBar(message: "Payment method Should Be Filled First...".localized)
+            return
+        }
+        
         showHidingViews(views: categoryQuestionLabel,totalFirstStackFinished, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3942"), seperator: seperatorView)
         
         handleHidePreviousCell?(index)
