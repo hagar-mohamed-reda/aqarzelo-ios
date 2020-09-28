@@ -99,7 +99,7 @@ class ThirdCreateOwnerTypeCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
-        if self.createThirddListCollectionVC?.is3CellIsError == false {
+        if self.createThirddListCollectionVC?.is1CellIError == false {
             self.createThirddListCollectionVC?.creatMainSnackBar(message: "Describe Should Be Filled First...".localized)
             return
         }

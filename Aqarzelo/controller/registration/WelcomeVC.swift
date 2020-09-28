@@ -46,6 +46,7 @@ class WelcomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        AppInstance.showLoader()
         print(userDefaults.value(forKey: UserDefaultsConstants.categoryNameArabicArray))
         //                                removeObservers()
         setupAnimation()
@@ -280,6 +281,7 @@ class WelcomeVC: UIViewController {
     
     @objc fileprivate func handleCurrentLocation()  {
         let home = HomeTabBarVC()
+//        AppInstance.hideLoader()
         userDefaults.set(false, forKey: UserDefaultsConstants.isWelcomeVCAppear)
         userDefaults.synchronize()
         home.modalPresentationStyle = .fullScreen
@@ -288,6 +290,7 @@ class WelcomeVC: UIViewController {
     
     @objc fileprivate func handleGoLocation()  {
         let choose = ChooseLocationVC()
+//        AppInstance.hideLoader()
         choose.delgate = self
         let nav = UINavigationController(rootViewController: choose)
         nav.modalPresentationStyle = .fullScreen

@@ -318,3 +318,27 @@
 
 "No Results!"="!لا توجد نتائج";"Title in Arabic "="العنوان بالعربي ";
 "enter space"="ادخل المساحة";"Invalid Space"="خطا في المعلومات";
+
+
+
+//errors main
+"Title Should Be Filled First..."="...يجب ملئ العنوان اولا";
+"Title in Arabic Should Be Filled First..."="...يجب ملئ العنوان بالعربي اولا";
+"Bathrooms number Should Be Filled First..."="...يجب ملئ عدد الحمامات اولا";
+"Space Should Be Filled First..."="...يجب ملئ المساحه اولا";
+"Category Should Be Filled First..."="...يجب ملئ النوع اولا";
+"Rooms number Should Be Filled First..."="...يجب ملئ عدد الغرف اولا";
+"Sale or rent Should Be Filled First..."="...يجب ملئ حاله الشراء اولا";
+"Price Per Meter Should Be Filled First..."="...يجب ملئ السعر بالمتر اولا";
+"Location Should Be Filled First..."="...يجب ملئ الموقع اولا";
+"City Should Be Filled First..."="...يجب اختيار المدينه اولا";
+"Area Should Be Filled First..."="...يجب اختيار المنطقه اولا";
+"Address Should Be Filled First..."="...يجب ملئ العنوان اولا";
+"Year of Building Should Be Filled First..."="...يجب ملئ تاريخ الانشاء اولا";
+"Describe Should Be Filled First..."="...يجب ملئ الوصف اولا";
+"Owner type Should Be Filled First..."="...يجب ملئ الملكيه اولا";
+"Payment method Should Be Filled First..."="...يجب ملئ طريقه الدفع اولا";
+"Finished Should Be Filled First..."="...يجب ملئ حاله الانتهاء اولا";
+
+"Upload normal photo"="رفع صوره عاديه";"Upload 360 photo"=" 360 رفع صوره ";
+

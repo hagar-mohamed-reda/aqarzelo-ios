@@ -124,7 +124,7 @@ class ThirdCreateMoreCell: BaseCollectionCell {
     
     @objc func handleShowViews()  {
         //        [c,c2,c3,c4].forEach({$0.isHide(false)})
-        if self.createThirddListCollectionVC?.is2CellIsError == false {
+        if self.createThirddListCollectionVC?.is4CellIsError == false {
             self.createThirddListCollectionVC?.creatMainSnackBar(message: "Finished Should Be Filled First...".localized)
             return
         }

@@ -96,7 +96,7 @@ class ThirdCreatePaymentMethodCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
-        if self.createThirddListCollectionVC?.is4CellIsError == false {
+        if self.createThirddListCollectionVC?.is2CellIsError == false {
             self.createThirddListCollectionVC?.creatMainSnackBar(message: "Owner type Should Be Filled First...".localized)
             return
         }

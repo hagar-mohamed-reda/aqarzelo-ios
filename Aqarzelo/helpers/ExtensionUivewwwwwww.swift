@@ -270,6 +270,19 @@ extension UIImageView {
         self.contentMode = contentMode
         self.clipsToBounds = true
     }
+    
+    func spin(duration: Float) {
+        let rotation = CABasicAnimation(keyPath: "transform.rotation")
+        rotation.fromValue = 0
+        rotation.toValue = 2 * Double.pi
+        rotation.duration = 0.7
+        rotation.repeatCount = duration
+        layer.add(rotation, forKey: "spin")
+      }
+
+      func stopSpinning() {
+        layer.removeAllAnimations()
+      }
 }
 
 extension UIImage {

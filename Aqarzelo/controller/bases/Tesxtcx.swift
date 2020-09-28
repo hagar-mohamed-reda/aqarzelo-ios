@@ -1,55 +1,40 @@
-////
-////  Tesxtcx.swift
-////  Aqarzelo
-////
-////  Created by Hossam on 9/20/20.
-////  Copyright © 2020 Hossam. All rights reserved.
-////
 //
-//import UIKit
-//import SVProgressHUD
+//  Tesxtcx.swift
+//  Aqarzelo
 //
-//class Tesxtcx: UIViewController {
-//    
-//    lazy var myActivityIndicator:UIActivityIndicatorView = {
-//        let v = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-//        v.color = .red
-//        
-//        v.constrainHeight(constant: 60)
-//        v.constrainWidth(constant: 60)
-//        return v
-//    }()
-//    
-//    lazy var customMainAlertVC:CustomMainAlertVC = {
-//        let t = CustomMainAlertVC()
-//        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-//        t.modalTransitionStyle = .crossDissolve
-//        t.modalPresentationStyle = .overCurrentContext
-//        return t
-//    }()
-//    
-//    lazy var customErrorView:CustomErrorView = {
-//        let v = CustomErrorView()
-//        v.setupAnimation(name: "4970-unapproved-cross")
-//        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
-//        return v
-//    }()
-//    
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        view.backgroundColor = .white
-//        
-//       
-//    }
-//    
-//    @objc  func handleDismiss()  {
-//        dismiss(animated: true)
-//    }
-//    
-//    @objc func handleDoneError()  {
-//        removeViewWithAnimation(vvv: customErrorView)
-//        customMainAlertVC.dismiss(animated: true)
-//    }
-//}
+//  Created by Hossam on 9/20/20.
+//  Copyright © 2020 Hossam. All rights reserved.
+//
+
+import UIKit
+import SVProgressHUD
+
+class Tesxtcx: UIViewController {
+    
+    lazy var logoImageView:UIImageView = {
+        let i = UIImageView(image: #imageLiteral(resourceName: "يبير"))
+        i.constrainHeight(constant: 128)
+        i.constrainWidth(constant: 101)
+        i.translatesAutoresizingMaskIntoConstraints = false
+        i.spin(duration: 2.0)
+        return i
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .red
+//        let ind = MyIndicator(frame: CGRect(x: 0, y: 0, width: 100, height: 100), image: #imageLiteral(resourceName: "يبير"))
+//        view.addSubview(ind)
+//        ind.startAnimating()
+//        view.addSubview(logoImageView)
+//
+//        logoImageView.centerInSuperview()
+    }
+    
+    @objc  func handleDismiss()  {
+        dismiss(animated: true)
+    }
+    
+   
+}

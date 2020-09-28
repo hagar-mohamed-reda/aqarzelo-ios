@@ -174,14 +174,14 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
         case 1:
             height = !is2CellIsOpen ? 80 : 120
         case 2:
-            height = !is3CellIsOpen ? 80 : 300
+            height = !is3CellIsOpen ? 80 : 120
         case 3:
-            height = !is4CellIsOpen ? 80 : 120
+            height = !is4CellIsOpen ? 80 : 300
         default:
             height = !is5CellIsOpen ? 80 : 120
         }
         
-        height = indexPath.row == 0 ? firstHeight+150+60 : indexPath.item == 3 ? 300 :  120
+//        height = indexPath.row == 0 ? firstHeight+150+60 : indexPath.item == 3 ? 300 :  120
         
         return .init(width: view.frame.width, height: height)
     }
@@ -210,48 +210,60 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
     
     fileprivate func enableSecondsCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ThirdCreateOwnerTypeCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is1CellIError=openNext
         }
     }
     
     fileprivate func enableForthsCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ThirdCreateFinishedMethodCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is3CellIsError=openNext
         }
     }
     
     fileprivate func enableFifthsCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ThirdCreateMoreCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is4CellIsError=openNext
         }
     }
     
     fileprivate func enableThirdsCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ThirdCreatePaymentMethodCell  {
-            cell.iconImageView.isUserInteractionEnabled = openNext
+//            cell.iconImageView.isUserInteractionEnabled = openNext
+            self.is2CellIsError=openNext
         }
     }
     
-    
+    func increaseAndDereaseCellSize(current : inout Bool,previous:inout Bool)  {
+        current=true
+        previous=false
+        self.collectionView.reloadData()
+    }
     
     fileprivate func handleHidedViews(index:Int)  {
         switch index {
         case 1:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreateDescribeCell {
                 cell.hideViewsAgain(views: cell.mainView,cell.counttitleLabel)
+                increaseAndDereaseCellSize(current: &is2CellIsOpen, previous: &is1CellIsOpen)
             }
             
         case 2:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreateOwnerTypeCell {
                 cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.buttonStack)
+                increaseAndDereaseCellSize(current: &is3CellIsOpen, previous: &is2CellIsOpen)
             }
         case 3:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreatePaymentMethodCell {
                 cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.buttonStack)
+                increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
             }
         case 4:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreateFinishedMethodCell {
                 cell.hideViewsAgain(views: cell.totalFirstStackFinished,cell.categoryQuestionLabel,cell.totalStackFinished)
+                increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
             }
             
         default:

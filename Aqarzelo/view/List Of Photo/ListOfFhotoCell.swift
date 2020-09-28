@@ -89,15 +89,15 @@ class ListOfFhotoCell: BaseCollectionCell {
     }()
     lazy var trueImageView:UIImageView = {
         let i = UIImageView(image: #imageLiteral(resourceName: "correct"))
-        i.constrainWidth(constant: 32)
-        i.constrainHeight(constant: 32)
+        i.constrainWidth(constant: 20)
+        i.constrainHeight(constant: 20)
         i.clipsToBounds = true
         i.isHide(true)
         return i
     }()
     lazy var photoImageView:UIImageView = {
-        let i = UIImageView()
-        i.contentMode = .scaleAspectFit
+        let i = UIImageView(image: #imageLiteral(resourceName: "315730-1474502491-5"))
+        i.contentMode = .scaleAspectFill
         i.constrainWidth(constant: 150)
         i.addSubViews(views: logo360ImageView,trueImageView)
         i.clipsToBounds = true
@@ -112,8 +112,8 @@ class ListOfFhotoCell: BaseCollectionCell {
         return s
     }()
     lazy var namePhotoLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .black)
-    lazy var sizePhotoLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .lightGray)
-    lazy var progressLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .lightGray)
+    lazy var sizePhotoLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var progressLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .black)
     lazy var closeButton:UIButton = {
         let b = UIButton()
         b.setImage(UIImage(named: "×-1"), for: .normal)

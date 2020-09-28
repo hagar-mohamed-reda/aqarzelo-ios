@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C373ECE1BC57B7F6BC86767 /* Pods_Aqarzelo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519E04DD8D8FDF679056F215 /* Pods_Aqarzelo.framework */; };
 		9F27590E25127064006A93B2 /* FirstCreateTitleArPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F27590D25127064006A93B2 /* FirstCreateTitleArPostCell.swift */; };
+		9F2D38CA25223E4D008FCA16 /* MyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D38C925223E4D008FCA16 /* MyIndicator.swift */; };
 		9F686A182506C6A600D39FA3 /* CustomLoginViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F686A172506C6A600D39FA3 /* CustomLoginViews.swift */; };
 		9F970C4A24FC3A2800448E7E /* ListOfPhotoMainSecVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */; };
 		9FA7D2D025069FD300EF4166 /* CustomStarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */; };
@@ -229,11 +230,13 @@
 		9FE2710524E8887A008889AB /* UserPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2710324E8887A008889AB /* UserPostsCell.swift */; };
 		9FFA424B24FEA3F100EF862E /* TintedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */; };
 		9FFC736F251919AA0065DDB9 /* OutlinedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC736E251919AA0065DDB9 /* OutlinedLabel.swift */; };
+		9FFF8A1825224F1E00698291 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF8A1725224F1E00698291 /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		519E04DD8D8FDF679056F215 /* Pods_Aqarzelo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aqarzelo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F27590D25127064006A93B2 /* FirstCreateTitleArPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCreateTitleArPostCell.swift; sourceTree = "<group>"; };
+		9F2D38C925223E4D008FCA16 /* MyIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIndicator.swift; sourceTree = "<group>"; };
 		9F686A172506C6A600D39FA3 /* CustomLoginViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViews.swift; sourceTree = "<group>"; };
 		9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainSecVC.swift; sourceTree = "<group>"; };
 		9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStarViews.swift; sourceTree = "<group>"; };
@@ -458,6 +461,7 @@
 		9FE2710324E8887A008889AB /* UserPostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsCell.swift; sourceTree = "<group>"; };
 		9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintedSegmentedControl.swift; sourceTree = "<group>"; };
 		9FFC736E251919AA0065DDB9 /* OutlinedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedLabel.swift; sourceTree = "<group>"; };
+		9FFF8A1725224F1E00698291 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		A8953DA5FEB4182F22DA9FFB /* Pods-Aqarzelo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aqarzelo.debug.xcconfig"; path = "Target Support Files/Pods-Aqarzelo/Pods-Aqarzelo.debug.xcconfig"; sourceTree = "<group>"; };
 		CACADD2DC40895DADE73CEBB /* Pods-Aqarzelo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aqarzelo.release.xcconfig"; path = "Target Support Files/Pods-Aqarzelo/Pods-Aqarzelo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -642,6 +646,7 @@
 				9FDBDC142506C15B003D596D /* textfileds */,
 				9FFA424A24FEA3F100EF862E /* TintedSegmentedControl.swift */,
 				9FFC736E251919AA0065DDB9 /* OutlinedLabel.swift */,
+				9F2D38C925223E4D008FCA16 /* MyIndicator.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1003,6 +1008,7 @@
 				9FE2701224E88317008889AB /* BaseViewController.swift */,
 				9FE2701424E88325008889AB /* HomeTabBarVC.swift */,
 				9FD9D1262517E9CF0092BFD3 /* Tesxtcx.swift */,
+				9FFF8A1725224F1E00698291 /* SwiftUIView.swift */,
 			);
 			path = bases;
 			sourceTree = "<group>";
@@ -1652,6 +1658,7 @@
 				9FDDB76A24E9906400AF8817 /* SendChatView.swift in Sources */,
 				9FE270BB24E8870A008889AB /* FirstCreateSellOrRentCell.swift in Sources */,
 				9FDDB73824E98EF200AF8817 /* CustomEmptyNotifyOrFavoriteView.swift in Sources */,
+				9F2D38CA25223E4D008FCA16 /* MyIndicator.swift in Sources */,
 				9FE2706524E884E1008889AB /* CreateSecondListCollectionVC.swift in Sources */,
 				9FE26FF224E8815D008889AB /* BaseRemoveImagemodel.swift in Sources */,
 				9FDDB73524E98EF200AF8817 /* CustomStarView.swift in Sources */,
@@ -1684,6 +1691,7 @@
 				9FDDB75124E98F7D00AF8817 /* AqarDetailInfoView.swift in Sources */,
 				9FDDB77024E9908400AF8817 /* CustomSecondSearchView.swift in Sources */,
 				9FE2704C24E8848B008889AB /* LocationVC.swift in Sources */,
+				9FFF8A1825224F1E00698291 /* SwiftUIView.swift in Sources */,
 				9FE270BA24E8870A008889AB /* FirstCreateSpaceCell.swift in Sources */,
 				9FDDB78724E990D500AF8817 /* CustomTopUserView.swift in Sources */,
 				9FDDB73424E98EF200AF8817 /* CustomSignOoutUserView.swift in Sources */,

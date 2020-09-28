@@ -110,6 +110,8 @@ class ThirdCreateDescribeCell: BaseCollectionCell {
         
         showHidingViews(views: mainView,counttitleLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3957"), seperator: seperatorView)
         handleHidePreviousCell?(index)
+        self.createThirddListCollectionVC?.is1CellIsOpen=true
+        self.createThirddListCollectionVC?.collectionView.reloadData()
     }
     
     var discribeString:String = ""

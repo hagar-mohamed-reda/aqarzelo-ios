@@ -8,6 +8,7 @@
 
 
 import UIKit
+import SwiftUI
 
 class ListOfPhotoFooterCell: UICollectionReusableView {
     
@@ -35,8 +36,8 @@ class ListOfPhotoFooterCell: UICollectionReusableView {
         
         return i
     }()
-    lazy var uploadPhotoLabel = UILabel(text: "Upload Normal photo", font: .systemFont(ofSize: 16), textColor: .black)
-    lazy var upload360PhotoLabel = UILabel(text: "Upload 360 photo", font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var uploadPhotoLabel = UILabel(text: "Upload normal photo".localized, font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var upload360PhotoLabel = UILabel(text: "Upload 360 photo".localized, font: .systemFont(ofSize: 16), textColor: .black)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,10 +57,36 @@ class ListOfPhotoFooterCell: UICollectionReusableView {
         
         contents.centerInSuperview()
         secondContents.centerInSuperview()
-        hstack(mainImageView,secondMainImageView,spacing:16,distribution: .fillEqually)
+        hstack(secondMainImageView,mainImageView,spacing:16,distribution: .fillEqually)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+struct SSS:UIViewRepresentable {
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
+    }
+    
+    
+    func makeUIView(context: Context) -> some UIView {
+        return ListOfPhotoFooterCell()
+    }
+}
+
+struct ContentViewS : View {
+    
+    var body: some View {
+        SSS()
+    }
+}
+
+struct SwiftUIView_PreviewsS: PreviewProvider {
+    static var previews: some View {
+        ContentViewS()
+            .previewLayout(.fixed(width: 400, height: 100))
     }
 }

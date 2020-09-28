@@ -208,7 +208,7 @@ class ThirdCreateFinishedMethodCell: BaseCollectionCell {
             }
         }
         
-        if self.createThirddListCollectionVC?.is1CellIError == false {
+        if self.createThirddListCollectionVC?.is3CellIsError == false {
             self.createThirddListCollectionVC?.creatMainSnackBar(message: "Payment method Should Be Filled First...".localized)
             return
         }

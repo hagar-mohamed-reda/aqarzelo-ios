@@ -8,6 +8,7 @@
 
 
 import UIKit
+import SwiftUI
 import SDWebImage
 
 class ListOfPhotoMaseterCell: BaseCollectionCell {
@@ -65,13 +66,15 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
     
     lazy var logoImageView:UIImageView = {
         let i = UIImageView(image: #imageLiteral(resourceName: "home(1)"))
-        i.constrainWidth(constant: 32)
-        i.constrainHeight(constant: 32)
+        i.constrainWidth(constant: 20)
+        i.constrainHeight(constant: 20)
         i.clipsToBounds = true
         return i
     }()
     lazy var photoImageView:UIImageView = {
-        let i = UIImageView()
+        let i = UIImageView(image: #imageLiteral(resourceName: "315730-1474502491-5"))
+        i.contentMode = .scaleAspectFill
+
         i.constrainWidth(constant: 150)
         i.addSubViews(views: logoImageView,trueImageView)
         i.clipsToBounds = true
@@ -82,6 +85,7 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
         s.progress = 0
         s.progressTintColor =  #colorLiteral(red: 0.3672481477, green: 0.8992366791, blue: 0.7968696356, alpha: 1)
         s.isHide(true)
+        s.constrainHeight(constant: 1)
         return s
     }()
     lazy var trueImageView:UIImageView = {
@@ -92,9 +96,9 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
         i.isHide(true)
         return i
     }()
-    lazy var namePhotoLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .black)
-    lazy var sizePhotoLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .lightGray)
-    lazy var progressLabel = UILabel(text: "", font: .systemFont(ofSize: 16), textColor: .lightGray)
+    lazy var namePhotoLabel = UILabel(text: "hosam.png", font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var sizePhotoLabel = UILabel(text: "3 mb", font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var progressLabel = UILabel(text: "20", font: .systemFont(ofSize: 16), textColor: .black)
     lazy var closeButton:UIButton = {
         let b = UIButton()
         b.setImage(UIImage(named: "×-1"), for: .normal)
@@ -174,5 +178,30 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
     
     @objc func handleDelete()  {
         handleInteruptUpload?(photo?.id ?? 0)
+    }
+}
+
+struct AAA:UIViewRepresentable {
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
+    }
+    
+    
+    func makeUIView(context: Context) -> some UIView {
+        return ListOfPhotoMaseterCell()
+    }
+}
+
+struct ContentView : View {
+    
+    var body: some View {
+        AAA()
+    }
+}
+
+struct SwiftUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .previewLayout(.fixed(width: 400, height: 100))
     }
 }
