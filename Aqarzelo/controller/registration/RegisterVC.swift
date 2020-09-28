@@ -288,7 +288,7 @@ extension RegisterVC:  GIDSignInDelegate {
             if let err=error{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 250)
                 }
                 self.activeViewsIfNoData();return
             }
@@ -380,5 +380,16 @@ extension RegisterVC:UIScrollViewDelegate {
         }else if x > ss {
             scrollView.contentOffset.y = ss
         }
+    }
+}
+
+
+extension UILabel {
+    func getSize(constrainedWidth: CGFloat) -> CGSize {
+        return systemLayoutSizeFitting(CGSize(width: constrainedWidth, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+    }
+    
+    func getSizeWithoutWidth() -> CGSize {
+        return systemLayoutSizeFitting(CGSize(width: 0, height: UIView.layoutFittingCompressedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
     }
 }

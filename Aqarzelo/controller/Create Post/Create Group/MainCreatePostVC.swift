@@ -54,11 +54,10 @@ class MainCreatePostVC: UIViewController {
         v.delgate = self
         return v
     }()
-    
-    
+   
     lazy var middleFirstPostCollection:CreateFirstListCollectionVC = {
         let vc = CreateFirstListCollectionVC()
-        vc.view.isHide(true)
+        vc.view.isHide(false)
         //         vc.view.isHide(true)
         vc.handleNextVC = { [unowned self] (isOpen,title,titleAr,category_id,type,spaceNum,roomNum,bathNum,priceMeter,totalPrice) in
             isOpen ? self.makeFirstOperation(title,titleAr, category_id, type, spaceNum,roomNum, bathNum, priceMeter, totalPrice, isOpen) : self.enableButton(isOpen, .white, second: false, third: false, last: false)
@@ -81,7 +80,7 @@ class MainCreatePostVC: UIViewController {
     }()// second
     lazy  var middleThirdPostCollection:CreateThirddListCollectionVC = {
         let vc = CreateThirddListCollectionVC() // third
-        vc.view.isHide(false)
+        vc.view.isHide(true)
         vc.handleNextVC = { [unowned self] (isOpen,discribe,ownType,payment,finiashed,moreTag) in
             
             isOpen ? self.makeThirdOperation(discribe, ownType, payment, finiashed, moreTag, isOpen) : self.enableButton(isOpen, .white, second: true, third: true, last: true)

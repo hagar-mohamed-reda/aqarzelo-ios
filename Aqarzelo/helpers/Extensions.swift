@@ -15,7 +15,7 @@ import SVProgressHUD
 
 extension UIViewController {
     
-    func callMainError(err:String,vc:UIViewController,views:CustomErrorView)  {
+    func callMainError(err:String,vc:UIViewController,views:CustomErrorView,height:CGFloat? = 220)  {
         DispatchQueue.main.async {
             
         

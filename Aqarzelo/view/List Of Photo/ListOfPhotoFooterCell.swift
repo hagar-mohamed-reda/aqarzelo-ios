@@ -65,28 +65,28 @@ class ListOfPhotoFooterCell: UICollectionReusableView {
     }
 }
 
-
-struct SSS:UIViewRepresentable {
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        
-    }
-    
-    
-    func makeUIView(context: Context) -> some UIView {
-        return ListOfPhotoFooterCell()
-    }
-}
-
-struct ContentViewS : View {
-    
-    var body: some View {
-        SSS()
-    }
-}
-
-struct SwiftUIView_PreviewsS: PreviewProvider {
-    static var previews: some View {
-        ContentViewS()
-            .previewLayout(.fixed(width: 400, height: 100))
-    }
-}
+//
+//struct SSS:UIViewRepresentable {
+//    func updateUIView(_ uiView: UIViewType, context: Context) {
+//        
+//    }
+//    
+//    
+//    func makeUIView(context: Context) -> some UIView {
+//        return ListOfPhotoFooterCell()
+//    }
+//}
+//
+//struct ContentViewS : View {
+//    
+//    var body: some View {
+//        SSS()
+//    }
+//}
+//
+//struct SwiftUIView_PreviewsS: PreviewProvider {
+//    static var previews: some View {
+//        ContentViewS()
+//            .previewLayout(.fixed(width: 400, height: 100))
+//    }
+//}
