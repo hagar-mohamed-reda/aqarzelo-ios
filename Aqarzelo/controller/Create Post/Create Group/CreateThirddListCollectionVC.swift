@@ -181,7 +181,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
             height = !is5CellIsOpen ? 80 : 120
         }
         
-//        height = indexPath.row == 0 ? firstHeight+150+60 : indexPath.item == 3 ? 300 :  120
+        //        height = indexPath.row == 0 ? firstHeight+150+60 : indexPath.item == 3 ? 300 :  120
         
         return .init(width: view.frame.width, height: height)
     }
@@ -210,28 +210,28 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
     
     fileprivate func enableSecondsCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ThirdCreateOwnerTypeCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is1CellIError=openNext
         }
     }
     
     fileprivate func enableForthsCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ThirdCreateFinishedMethodCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is3CellIsError=openNext
         }
     }
     
     fileprivate func enableFifthsCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ThirdCreateMoreCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is4CellIsError=openNext
         }
     }
     
     fileprivate func enableThirdsCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ThirdCreatePaymentMethodCell  {
-//            cell.iconImageView.isUserInteractionEnabled = openNext
+            //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is2CellIsError=openNext
         }
     }

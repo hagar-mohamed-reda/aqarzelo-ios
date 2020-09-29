@@ -340,10 +340,11 @@ class UserProfileVC: UIViewController {
             self.activeViewsIfNoData()
             self.userPostsCollectionView.postsArray.remove(at: index)
             DispatchQueue.main.async {
+                UIApplication.shared.endIgnoringInteractionEvents()
                 SVProgressHUD.dismiss()
                 
                 self.userPostsCollectionView.collectionView.reloadData()
-                UIApplication.shared.endIgnoringInteractionEvents()
+                
             }
         }
     }

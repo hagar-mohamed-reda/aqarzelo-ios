@@ -165,7 +165,7 @@ class AppDetailBottomCollectionVC: UICollectionViewController, UICollectionViewD
     fileprivate func dialNumber(number : String) {
         
         if let url = URL(string: "tel://\(number)"),
-            UIApplication.shared.canOpenURL(url) {
+           UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler:nil)
             } else {

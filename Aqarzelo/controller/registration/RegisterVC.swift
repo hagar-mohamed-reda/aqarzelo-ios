@@ -207,8 +207,8 @@ class RegisterVC: UIViewController {
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
             let xx = MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn
-//            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn) ;return}
-//            self.saveToken(token: user.apiToken)
+            //            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn) ;return}
+            //            self.saveToken(token: user.apiToken)
             
             DispatchQueue.main.async {
                 guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView); return}
@@ -298,8 +298,8 @@ extension RegisterVC:  GIDSignInDelegate {
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
             
-//            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-//            self.saveToken(token: token.apiToken)
+            //            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+            //            self.saveToken(token: token.apiToken)
             DispatchQueue.main.async {
                 guard let token = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView); return}
                 self.saveToken(token: token.apiToken)

@@ -10,7 +10,7 @@ import UIKit
 
 class BaseCollectionVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

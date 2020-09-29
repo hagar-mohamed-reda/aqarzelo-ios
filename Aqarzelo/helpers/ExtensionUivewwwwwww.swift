@@ -43,7 +43,7 @@ extension UIView{
            b.backgroundColor = bg
            b.arrowSize = 20
            b.textColor = .black
-           b.rowBackgroundColor = .gray
+        b.rowBackgroundColor = .white//.gray
            b.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
            b.attributedPlaceholder = NSAttributedString(string: plcae.localized,attributes: [.foregroundColor: UIColor.black])
            return b

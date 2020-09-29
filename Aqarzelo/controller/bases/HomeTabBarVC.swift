@@ -98,13 +98,13 @@ class HomeTabBarVC: UITabBarController {
         tabBar.barTintColor = #colorLiteral(red: 0.9966195226, green: 0.9997286201, blue: 0.9998206496, alpha: 1)
         
         viewControllers = [
-           
-             location,
-             cart ,
+            
+            location,
+            cart ,
             
             notification,
             love,
-         ]
+        ]
         guard let items = tabBar.items else { return }
         var myDefaultFontSize: CGFloat = -8
         
@@ -134,7 +134,7 @@ class HomeTabBarVC: UITabBarController {
         views.removeFromSuperview()
     }
     
-   fileprivate func image(fromLayer layer: CALayer) -> UIImage {
+    fileprivate func image(fromLayer layer: CALayer) -> UIImage {
         UIGraphicsBeginImageContext(layer.frame.size)
         
         layer.render(in: UIGraphicsGetCurrentContext()!)

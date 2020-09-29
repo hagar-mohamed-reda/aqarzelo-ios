@@ -40,6 +40,9 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     var is8CellIsError = false
     var is9CellIsError = false
     
+    var isCellHidden = true
+    
+    
     var aqar:AqarModel? {
         didSet{
             guard let aqar = aqar else { return  }
@@ -246,6 +249,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         case 2:
             height = !is3CellIsOpen ? 80 : 150
         case 3:
+//            height = isCellHidden ? 0 : !is4CellIsOpen ? 80 : 120 for hidden specific cell 
             height = !is4CellIsOpen ? 80 : 120
         case 4:
             height = !is5CellIsOpen ? 80 : 120
@@ -293,7 +297,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             guard let isValid = isValid else {return}
             
             guard  let t = self.firstCcreatePostVviewModel.title,let ar = self.firstCcreatePostVviewModel.titleAR,let ca = self.firstCcreatePostVviewModel.category?.toInt(), let ty = self.firstCcreatePostVviewModel.sell
-                , let space = self.firstCcreatePostVviewModel.space?.toInt(), let room = self.firstCcreatePostVviewModel.roomNum?.toInt(), let bath = self.firstCcreatePostVviewModel.bathsNum?.toInt(), let price = self.firstCcreatePostVviewModel.pricePer?.toInt(), let total = self.firstCcreatePostVviewModel.totalPrice?.toInt() else {return}
+                   , let space = self.firstCcreatePostVviewModel.space?.toInt(), let room = self.firstCcreatePostVviewModel.roomNum?.toInt(), let bath = self.firstCcreatePostVviewModel.bathsNum?.toInt(), let price = self.firstCcreatePostVviewModel.pricePer?.toInt(), let total = self.firstCcreatePostVviewModel.totalPrice?.toInt() else {return}
             
             
             isValid ? self.handleNextVC?(isValid, t,ar,ca,ty  ,space ,room ,bath ,price,total) : self.handleNextVC?(isValid, t,ar,ca,ty  ,space,room,bath,price,total)

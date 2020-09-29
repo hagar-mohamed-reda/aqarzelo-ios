@@ -54,7 +54,7 @@ class MainCreatePostVC: UIViewController {
         v.delgate = self
         return v
     }()
-   
+    
     lazy var middleFirstPostCollection:CreateFirstListCollectionVC = {
         let vc = CreateFirstListCollectionVC()
         vc.view.isHide(false)

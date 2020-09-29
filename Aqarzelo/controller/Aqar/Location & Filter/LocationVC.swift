@@ -664,7 +664,7 @@ extension LocationVC: UIScrollViewDelegate {
         
         guard
             let indexPath = customLocationView.collectionView.indexPathForItem(at: point)     else {
-                return
+            return
         }
         customLocationView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         customLocationView.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
@@ -776,7 +776,7 @@ extension LocationVC: CLLocationManagerDelegate{
             
         }
         guard let latitude = (aqarsArray.first?.lat as? NSString)?.doubleValue
-            ,let longitude = (aqarsArray.first?.lng as? NSString)?.doubleValue else{return}
+              ,let longitude = (aqarsArray.first?.lng as? NSString)?.doubleValue else{return}
         let camera = GMSCameraPosition.camera(withLatitude: latitude,
                                               longitude:longitude, zoom: 16.5)//16.5
         customLocationView.mapView.camera = camera
