@@ -222,10 +222,10 @@
             filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -542,10 +542,10 @@
             filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -862,8 +862,8 @@
             filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateBuildDateCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "aqar"
             landmarkType = "24">
          </BreakpointContent>
@@ -878,10 +878,10 @@
             filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1582,10 +1582,10 @@
             filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1809,6 +1809,146 @@
             startingLineNumber = "219"
             endingLineNumber = "219"
             landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79CF810C-D1B3-49C2-8B35-65A1B689FD67"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateAddressCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "categroy_id"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "08F7C3F7-C5B2-4D65-A075-CD9678A4990F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateBuildDateCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "dateTextField"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "08F7C3F7-C5B2-4D65-A075-CD9678A4990F - 5804392978489e0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.SecondCreateBuildDateCell.ss.getter : __C.UIStackView"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/view/create%20post/Main%20Create%20Cell/second/SecondCreateBuildDateCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "263">
+               </Location>
+               <Location
+                  uuid = "08F7C3F7-C5B2-4D65-A075-CD9678A4990F - 162a457f6895821b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.SecondCreateBuildDateCell.ss.setter : __C.UIStackView"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/view/create%20post/Main%20Create%20Cell/second/SecondCreateBuildDateCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "08F7C3F7-C5B2-4D65-A075-CD9678A4990F - b9c4b89e82ccdd34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.SecondCreateBuildDateCell.ss.modify : __C.UIStackView"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/view/create%20post/Main%20Create%20Cell/second/SecondCreateBuildDateCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "08F7C3F7-C5B2-4D65-A075-CD9678A4990F - a376e5d40a860815"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.SecondCreateBuildDateCell.ss.modify : __C.UIStackView with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/view/create%20post/Main%20Create%20Cell/second/SecondCreateBuildDateCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "08F7C3F7-C5B2-4D65-A075-CD9678A4990F - 39fccde6be8821e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.SecondCreateBuildDateCell.init(frame: __C.CGRect) -&gt; Aqarzelo.SecondCreateBuildDateCell"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/view/create%20post/Main%20Create%20Cell/second/SecondCreateBuildDateCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "2570">
+               </Location>
+               <Location
+                  uuid = "08F7C3F7-C5B2-4D65-A075-CD9678A4990F - d11a6114ad78bca1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aqarzelo.SecondCreateBuildDateCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Aqarzelo.SecondCreateBuildDateCell&gt;"
+                  moduleName = "Aqarzelo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/view/create%20post/Main%20Create%20Cell/second/SecondCreateBuildDateCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "2413">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF79212C-E3FC-4CAE-96A1-843B2AC8B42D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/Create Post/Create Group/CreateThirddListCollectionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "setupThirdCcreatePostVviewModelObserver()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

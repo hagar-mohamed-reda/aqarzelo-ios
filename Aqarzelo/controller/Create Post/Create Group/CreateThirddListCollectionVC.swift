@@ -37,7 +37,12 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
     var thirdCcreatePostVviewModel = ThirdCcreatePostVviewModel() //view model
     //    var moreSelected:Int?
     //    var discribe,ownerType,payment,finishedType:String?
-    
+    var category_id:Int?  {
+        didSet{
+            let ff = category_id == 4  ? true : false
+            isFinsihedHidden=ff
+        }
+    }
     var aqar:AqarModel? {
         didSet{
             guard let aqar = aqar else { return  }
@@ -110,6 +115,9 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
                 //                self.payment = tx
                 self.thirdCcreatePostVviewModel.payment = openNext ? tx : String()
                 self.enableForthsCell(openNext, index: 3)
+                self.is4CellIsError=category_id == 4 ? true : false
+                
+                self.thirdCcreatePostVviewModel.finshed = category_id == 4  ? String() :  nil
             }
             return cell
         }else if indexPath.item == 3 {
@@ -258,16 +266,24 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
                 increaseAndDereaseCellSize(current: &is3CellIsOpen, previous: &is2CellIsOpen)
             }
         case 3:
+           
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreatePaymentMethodCell {
                 cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.buttonStack)
                 increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
             }
         case 4:
+            if isFinsihedHidden {
+                if let cell = collectionView.cellForItem(at: IndexPath(item: 2, section: 0)) as? ThirdCreatePaymentMethodCell {
+                    cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.buttonStack)
+                    increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
+                    increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
+                }
+            }else{
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreateFinishedMethodCell {
                 cell.hideViewsAgain(views: cell.totalFirstStackFinished,cell.categoryQuestionLabel,cell.totalStackFinished)
                 increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
             }
-            
+            }
         default:
             ()
         }

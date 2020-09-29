@@ -12,6 +12,21 @@ import MOLH
 
 class SecondCreateAddressCell: BaseCollectionCell {
     
+    var categroy_id:Int? {
+        didSet{
+            guard let categroy_id = categroy_id else { return  }
+            let x = categroy_id == 4 ? true : false
+            
+            if x {
+               ss =  stack(iconImageView,UIView(),alignment:.center)
+            }else {
+                ss =  stack(iconImageView,seperatorView,alignment:.center)
+            }
+            setupViews()
+        }
+    }
+    
+    
     var aqar:AqarModel?{
         didSet{
             guard let aqar = aqar else { return  }
@@ -56,7 +71,7 @@ class SecondCreateAddressCell: BaseCollectionCell {
         //        l.constrainHeight(constant: 20)
         return l
     }()
-    
+    lazy var ss = UIStackView()//stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
     var addressString:String = ""
     
     var index:Int!
@@ -78,7 +93,7 @@ class SecondCreateAddressCell: BaseCollectionCell {
     override func setupViews() {
         counttitleLabel.isHide(true)
         backgroundColor = .white
-        let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
+        
         let second = stack(titleLabel,categoryQuestionLabel,textView,counttitleLabel,UIView(),spacing:8)
         placeHolderLabel.anchor(top: textView.topAnchor, leading: textView.leadingAnchor, bottom: textView.bottomAnchor, trailing: nil)
         hstack(ss,second,UIView(),spacing:16).withMargins(.init(top: 0, left: 36, bottom: 0, right: 8))

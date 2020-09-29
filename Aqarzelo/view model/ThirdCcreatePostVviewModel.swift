@@ -26,8 +26,8 @@ class ThirdCcreatePostVviewModel {
     
     
     func checkFormValidity() {
-        let isFormValid = describe?.isEmpty == false && ownerType?.isEmpty == false && payment?.isEmpty == false && finshed?.isEmpty == false &&  more?.isEmpty == false
-        
+//        let isFormValid = describe?.isEmpty == false && ownerType?.isEmpty == false && payment?.isEmpty == false && finshed?.isEmpty == false &&  more?.isEmpty == false
+        let isFormValid = describe?.isEmpty == false && ownerType?.isEmpty == false && payment?.isEmpty == false  &&  more?.isEmpty == false
         bindableIsFormValidate.value = isFormValid
         
     }

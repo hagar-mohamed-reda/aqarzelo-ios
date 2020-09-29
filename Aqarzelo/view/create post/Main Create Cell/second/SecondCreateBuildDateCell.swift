@@ -12,6 +12,20 @@ import MOLH
 
 class SecondCreateBuildDateCell: BaseCollectionCell {
     
+    var categroy_id:Int? {
+        didSet{
+            guard let categroy_id = categroy_id else { return  }
+            let x = categroy_id == 2 || categroy_id == 6 || categroy_id == 7 ? true : false
+            
+            if x {
+               ss =  stack(iconImageView,UIView(),alignment:.center)
+                
+            }else {
+               ss =  stack(iconImageView,seperatorView,alignment:.center)
+            }
+            setupViews()
+        }
+    }
     var aqar:AqarModel?{
         didSet{
             guard let aqar = aqar else { return  }
@@ -63,7 +77,7 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
         t.translatesAutoresizingMaskIntoConstraints = false
         return t
     }()
-    
+    lazy var ss = UIStackView()
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
     var handleTextContents:((String?,Bool)->Void)?
@@ -72,7 +86,6 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
     override func setupViews() {
         backgroundColor = .white
         
-        let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
         mainView.addSubview(dateTextField)
         dateTextField.centerInSuperview()
         let ddd = hstack(mainView,UIView())

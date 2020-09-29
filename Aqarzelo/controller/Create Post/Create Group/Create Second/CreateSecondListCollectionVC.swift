@@ -71,6 +71,15 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     //    var lat,long:Double?
     //    var buildDate,address:String?
     
+    var category_id:Int?  {
+        didSet{
+            let ss = category_id == 4 || category_id == 2 || category_id == 6 || category_id == 7 ? true : false
+            let ff = category_id == 4  ? true : false
+
+            isFloorNumberHiddern = ss
+            isYearOfBuilidingHiddern=ff
+        }
+    }
     
     var cityId:Int?
     var isFloorNumberHiddern = false
@@ -165,6 +174,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         } else if indexPath.item == 3 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellAddressId, for: indexPath) as! SecondCreateAddressCell
             cell.aqar = aqar
+            cell.categroy_id=category_id
             cell.createSecondListCollectionVC=self
             cell.index = 3
             cell.handleHidePreviousCell = {[unowned self] (index) in
@@ -175,11 +185,14 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
                 //                self.address = tx
                 self.secondCcreatePostVviewModel.address = openNext ? tx : String()
                 self.enableForthCell(openNext, index: 4)
+                
+                self.hideCells(category_id ?? 0)
             }
             return cell
         }
         else if indexPath.item == 4 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellBuildDateId, for: indexPath) as! SecondCreateBuildDateCell
+            cell.categroy_id=category_id
             cell.index = 4
             cell.createSecondListCollectionVC=self
             cell.aqar = aqar
@@ -191,6 +204,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
                 //                self.buildDate = tx
                 self.secondCcreatePostVviewModel.buildDate = openNext ? tx : String()
                 self.enableFifthCell(openNext, index: 5)
+                self.hideLastCells(category_id ?? 0)
             }
             return cell
         }
@@ -258,6 +272,22 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         self.collectionView.reloadData()
     }
     
+    func hideCells(_ id:Int)  {
+        let x = id == 4 || id == 2 ||  id == 6 || id == 7 ? "0" : nil
+        
+        secondCcreatePostVviewModel.buildDate = id == 4 ? "0" : nil
+        secondCcreatePostVviewModel.fllorNum = x
+        collectionView.reloadData()
+    }
+    
+    func hideLastCells(_ id:Int)  {
+        let x =  id == 2 ||  id == 6 || id == 7 ? "0" : nil
+        
+        secondCcreatePostVviewModel.fllorNum = x
+        collectionView.reloadData()
+    }
+    
+    
     fileprivate func setupSecondCcreatePostVviewModelObserver ()  {
         secondCcreatePostVviewModel.bindableIsFormValidate.bind {  [unowned self ]  (isValid) in
             guard let isValid = isValid else {return}
@@ -324,10 +354,18 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
                 increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
             }
         case 4:
+            if isYearOfBuilidingHiddern {
+                if let cell = collectionView.cellForItem(at: IndexPath(item: 3, section: 0)) as? SecondCreateAddressCell {
+                    cell.hideViewsAgain(views: cell.counttitleLabel,cell.textView,cell.counttitleLabel,cell.categoryQuestionLabel)
+                increaseAndDereaseCellSize(current: &is6CellIsOpen, previous: &is5CellIsOpen)
+                }
+            }else {
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? SecondCreateAddressCell {
                 cell.hideViewsAgain(views: cell.counttitleLabel,cell.textView,cell.counttitleLabel,cell.categoryQuestionLabel)
                 increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
-            }        case 5:
+            } }
+        case 5:
+            
                 if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? SecondCreateBuildDateCell {
                     cell.hideViewsAgain(views: cell.questionLabel,cell.dateTextField,cell.mainView)
                     increaseAndDereaseCellSize(current: &is6CellIsOpen, previous: &is5CellIsOpen)
