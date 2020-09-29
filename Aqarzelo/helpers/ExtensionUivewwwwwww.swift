@@ -13,41 +13,41 @@ import MOLH
 
 extension UIView{
     
- 
+    
     
     func makeThis(xx:UIView,cc:UIView)  {
         xx.hstack(cc).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
- }
+    }
     
     func makeThissss(xx:UIView,cc:UIView,img:UIImageView)  {
-              xx.hstack(cc,UIView(),img).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
-       }
+        xx.hstack(cc,UIView(),img).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
+    }
     
     func makeMainSubViewWithAppendView(vv:[UIView]) ->UIView {
-           let l = UIView(backgroundColor: .white)
-           l.layer.cornerRadius = 8
-           l.layer.borderWidth = 1
-           l.layer.borderColor = #colorLiteral(red: 0.4835817814, green: 0.4836651683, blue: 0.4835640788, alpha: 1).cgColor
-           l.constrainHeight(constant: 60)
-           vv.forEach { (v) in
-               l.addSubViews(views: v)
-           }
-           return l
-       }
-       
+        let l = UIView(backgroundColor: .white)
+        l.layer.cornerRadius = 8
+        l.layer.borderWidth = 1
+        l.layer.borderColor = #colorLiteral(red: 0.4835817814, green: 0.4836651683, blue: 0.4835640788, alpha: 1).cgColor
+        l.constrainHeight(constant: 60)
+        vv.forEach { (v) in
+            l.addSubViews(views: v)
+        }
+        return l
+    }
+    
     
     func returnMainDropDown(bg:UIColor? = #colorLiteral(red: 0.9591651559, green: 0.9593221545, blue: 0.9591317773, alpha: 1),plcae:String) -> DropDown {
-           let b = DropDown()
-//           b.layer.cornerRadius = 16
-
-           b.backgroundColor = bg
-           b.arrowSize = 20
-           b.textColor = .black
+        let b = DropDown()
+        //           b.layer.cornerRadius = 16
+        
+        b.backgroundColor = bg
+        b.arrowSize = 20
+        b.textColor = .black
         b.rowBackgroundColor = .white//.gray
-           b.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
-           b.attributedPlaceholder = NSAttributedString(string: plcae.localized,attributes: [.foregroundColor: UIColor.black])
-           return b
-       }
+        b.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
+        b.attributedPlaceholder = NSAttributedString(string: plcae.localized,attributes: [.foregroundColor: UIColor.black])
+        return b
+    }
     
     func getStack(views: UIView...,spacing:CGFloat, alignment: UIStackView.Alignment = .fill,distribution:UIStackView.Distribution,axis:NSLayoutConstraint.Axis) -> UIStackView {
         let stack = UIStackView(arrangedSubviews: views)
@@ -278,11 +278,11 @@ extension UIImageView {
         rotation.duration = 0.7
         rotation.repeatCount = duration
         layer.add(rotation, forKey: "spin")
-      }
-
-      func stopSpinning() {
+    }
+    
+    func stopSpinning() {
         layer.removeAllAnimations()
-      }
+    }
 }
 
 extension UIImage {
@@ -385,11 +385,11 @@ extension UIButton {
         
     }
     
-  
+    
 }
 
 extension UIStackView {
-   
+    
     
     @discardableResult
     open func withMargins(_ margins: UIEdgeInsets) -> UIStackView {
@@ -541,77 +541,77 @@ extension NSAttributedString {
 
 extension String {
     
-        //Converts String to Int
-        public func toInt() -> Int? {
-            if let num = NumberFormatter().number(from: self) {
-                return num.intValue
-            } else {
-                return nil
-            }
+    //Converts String to Int
+    public func toInt() -> Int? {
+        if let num = NumberFormatter().number(from: self) {
+            return num.intValue
+        } else {
+            return nil
         }
-        
-//        //Converts String to Double
-//        public func toDouble() -> Double? {
-//            if let num = NumberFormatter().number(from: self) {
-//                return num.doubleValue
-//            } else {
-//                return nil
-//            }
-//        }
-        
-        /// EZSE: Converts String to Float
-        public func toFloat() -> Float? {
-            if let num = NumberFormatter().number(from: self) {
-                return num.floatValue
-            } else {
-                return nil
-            }
+    }
+    
+    //        //Converts String to Double
+    //        public func toDouble() -> Double? {
+    //            if let num = NumberFormatter().number(from: self) {
+    //                return num.doubleValue
+    //            } else {
+    //                return nil
+    //            }
+    //        }
+    
+    /// EZSE: Converts String to Float
+    public func toFloat() -> Float? {
+        if let num = NumberFormatter().number(from: self) {
+            return num.floatValue
+        } else {
+            return nil
         }
-        
-        //Converts String to Bool
-        public func toBool() -> Bool? {
-            return (self as NSString).boolValue
-        }
+    }
+    
+    //Converts String to Bool
+    public func toBool() -> Bool? {
+        return (self as NSString).boolValue
+    }
     
     
-        var words: [String] {
-            var words: [String] = []
-            enumerateSubstrings(in: startIndex..<endIndex, options: .byWords) { word,_,_,_ in
-                guard let word = word else { return }
-                words.append(word)
-            }
-            return words
+    var words: [String] {
+        var words: [String] = []
+        enumerateSubstrings(in: startIndex..<endIndex, options: .byWords) { word,_,_,_ in
+            guard let word = word else { return }
+            words.append(word)
+        }
+        return words
         
     }
     
-//    func toDate(dateForamt:String) -> Date {
-//        let dateForamteer = DateFormatter()
-//        dateForamteer.dateFormat = dateForamt
-//
-//        if let stringAsDate = dateForamteer.date(from:self) {
-//            return stringAsDate
-//        }else {
-//            print("couldn't convert to date")
-//            return Date()
-//        }
-//
-//        return dateForamteer.string(from:self)
-//    }
+    //    func toDate(dateForamt:String) -> Date {
+    //        let dateForamteer = DateFormatter()
+    //        dateForamteer.dateFormat = dateForamt
+    //
+    //        if let stringAsDate = dateForamteer.date(from:self) {
+    //            return stringAsDate
+    //        }else {
+    //            print("couldn't convert to date")
+    //            return Date()
+    //        }
+    //
+    //        return dateForamteer.string(from:self)
+    //    }
     
-        func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
-            let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-            let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
-            
-            return ceil(boundingBox.height)
-        }
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
         
-        func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
-            let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-            let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
-            
-            return ceil(boundingBox.width)
-        }
-
+        return ceil(boundingBox.height)
+    }
+    
+    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        
+        return ceil(boundingBox.width)
+    }
+    
     
     func estimateFrameForText(_ text: String) -> CGRect {
         let size = CGSize(width: 250, height: 1000)
@@ -631,7 +631,7 @@ extension String {
                    "٧":"7",
                    "٨":"8",
                    "٩":"9"
-      ]
+        ]
         map.forEach { str = str.replacingOccurrences(of: $0, with: $1) }
         return str
     }
@@ -791,29 +791,29 @@ extension UITextField {
     }
     
     //for date picker with text field
+    
+    func setInputViewDatePicker(target: Any, selector: Selector) {
+        // Create a UIDatePicker object and assign to inputView
+        let screenWidth = UIScreen.main.bounds.width
+        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))//1
+        datePicker.datePickerMode = .date //2
+        self.inputView = datePicker //3
         
-        func setInputViewDatePicker(target: Any, selector: Selector) {
-            // Create a UIDatePicker object and assign to inputView
-            let screenWidth = UIScreen.main.bounds.width
-            let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))//1
-            datePicker.datePickerMode = .date //2
-            self.inputView = datePicker //3
-            
-            // Create a toolbar and assign it to inputAccessoryView
-            let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)) //4
-            let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //5
-            let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(tapCancel)) // 6
-            let barButton = UIBarButtonItem(title: "Done", style: .plain, target: target, action: selector) //7
-            toolBar.setItems([cancel, flexible, barButton], animated: false) //8
-            self.inputAccessoryView = toolBar //9
-            
-        }
+        // Create a toolbar and assign it to inputAccessoryView
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)) //4
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //5
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(tapCancel)) // 6
+        let barButton = UIBarButtonItem(title: "Done", style: .plain, target: target, action: selector) //7
+        toolBar.setItems([cancel, flexible, barButton], animated: false) //8
+        self.inputAccessoryView = toolBar //9
         
-        @objc func tapCancel() {
-            self.resignFirstResponder()
-        }
-        
-   
+    }
+    
+    @objc func tapCancel() {
+        self.resignFirstResponder()
+    }
+    
+    
 }
 
 
@@ -858,21 +858,21 @@ extension CMTime {
 
 extension UINavigationBar {
     
-   
+    
     
     func setGradientBackground(colors: [Any]) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.locations = [0.0 , 0.5, 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-
+        
         var updatedFrame = self.bounds
         updatedFrame.size.height += self.frame.origin.y
         gradient.frame = updatedFrame
         gradient.colors = colors;
         self.setBackgroundImage(self.image(fromLayer: gradient), for: .default)
     }
-
+    
     func image(fromLayer layer: CALayer) -> UIImage {
         UIGraphicsBeginImageContext(layer.frame.size)
         layer.render(in: UIGraphicsGetCurrentContext()!)
