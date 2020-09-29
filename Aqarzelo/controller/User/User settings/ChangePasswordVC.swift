@@ -98,10 +98,14 @@ class ChangePasswordVC: UIViewController {
             }
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
-            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn);return}
-            SVProgressHUD.showSuccess(withStatus: "Updated successfully...".localized)
-            self.activeViewsIfNoData()
+            let xx = MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn
+
+//            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn);return}
+//            SVProgressHUD.showSuccess(withStatus: "Updated successfully...".localized)
+//            self.activeViewsIfNoData()
             DispatchQueue.main.async {
+                guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView); return}
+                SVProgressHUD.showSuccess(withStatus: "Updated successfully...".localized)
                 UIApplication.shared.endIgnoringInteractionEvents()
                 self.navigationController?.popViewController(animated: true)
             }

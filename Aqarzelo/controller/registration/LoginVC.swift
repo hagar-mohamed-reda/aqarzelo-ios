@@ -292,10 +292,12 @@ extension LoginVC:  GIDSignInDelegate {
             
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
-            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-            self.saveToken(token: token.apiToken)
+//            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+//            self.saveToken(token: token.apiToken)
             
             DispatchQueue.main.async {
+                guard let token = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView); return}
+                self.saveToken(token: token.apiToken)
                 self.goToMainTab(token)
             }
         }

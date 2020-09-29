@@ -122,9 +122,10 @@ class ForgetPasswordVC: UIViewController {
             }
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
-            guard let user = base?.data else  {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+//            guard let user = base?.data else  {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
             
             DispatchQueue.main.async {
+                guard let user = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView); return}
                 self.goToNextTab(token:user.apiToken , telephone: self.customForgetPassView.forgetPassViewModel.email ?? "")
             }
         }

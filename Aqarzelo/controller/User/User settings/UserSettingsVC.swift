@@ -207,6 +207,7 @@ class UserSettingsVC: UIViewController {
                 self.activeViewsIfNoData() // disbale all events in the screen
                 guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
                 self.currentUser = user
+                
                 self.fetchInfo(user)
                 
             }

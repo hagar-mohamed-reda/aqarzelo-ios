@@ -171,6 +171,10 @@ class ForgetPasswordConfirmationVC: UIViewController {
             SVProgressHUD.showSuccess(withStatus: "Password reset successfully".localized)
             
             DispatchQueue.main.async {
+                guard let token = base?.data?.apiToken else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView); return}
+//                guard let token = base?.data?.apiToken else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+                self.saveToken(token: token)
+                SVProgressHUD.showSuccess(withStatus: "Password reset successfully".localized)
                 self.goToMainTab()
             }
         }
