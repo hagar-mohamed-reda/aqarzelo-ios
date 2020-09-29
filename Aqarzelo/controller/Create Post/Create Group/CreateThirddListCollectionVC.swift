@@ -30,6 +30,8 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
     var is4CellIsError = false
     var is5CellIsError = false
     
+    var isFinsihedHidden = false
+    
     
     var handleNextVC:((Bool,String?,String?,String?, String?,Int?)->Void)?
     var thirdCcreatePostVviewModel = ThirdCcreatePostVviewModel() //view model
@@ -176,7 +178,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
         case 2:
             height = !is3CellIsOpen ? 80 : 120
         case 3:
-            height = !is4CellIsOpen ? 80 : 300
+            height = isFinsihedHidden ? 0 : !is4CellIsOpen ? 80 : 300
         default:
             height = !is5CellIsOpen ? 80 : 120
         }

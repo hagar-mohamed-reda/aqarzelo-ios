@@ -18,7 +18,7 @@ class FirstCreateSpaceCell: BaseCollectionCell {
             guard let aqar = aqar else { return  }
             iconImageView.image = #imageLiteral(resourceName: "Group 3933")
             iconImageView.isUserInteractionEnabled = true
-            priceTextField.text = aqar.space
+            textView.text = aqar.space
             handleTextContents?(Int(aqar.space.toInt() ?? 100) ,true)
         }
     }
@@ -41,19 +41,20 @@ class FirstCreateSpaceCell: BaseCollectionCell {
         l.isHide(true)
         return l
     }()
-    lazy var priceTextField:SkyFloatingLabelTextField = {
-        let t = SkyFloatingLabelTextField()
-        t.titleFormatter = { $0 }
-        t.textColor = .black
-        t.errorColor = .red
-        t.tintColor = .black
-        t.selectedTitleColor = .black
-        t.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
-        t.keyboardType = UIKeyboardType.numberPad
-        t.placeholder = "enter space".localized
-        t.addTarget(self, action: #selector(textFieldDidChange(text:)), for: .editingChanged)
-        return t
+    lazy var textView:UITextView = {
+        let tx = UITextView()
+        tx.addSubview(placeHolderLabel)
+        tx.isScrollEnabled = false
+        tx.keyboardType = .numberPad
+        tx.font = UIFont.systemFont(ofSize: 16)
+        //        tx.isHide(true)
+        tx.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left
+        tx.delegate = self
+        tx.sizeToFit()
+        return tx
     }()
+    
+    lazy var placeHolderLabel = UILabel(text: "Enter Message".localized, font: .systemFont(ofSize: 16), textColor: .lightGray)
     lazy var priceLabel = UILabel(text: "in meter".localized, font: .systemFont(ofSize: 20), textColor: .black)
     lazy var seperatorView:UIView = {
         let v = UIView(backgroundColor: .gray)
@@ -61,7 +62,7 @@ class FirstCreateSpaceCell: BaseCollectionCell {
         
         return v
     }()
-    
+
     var handleTextContents:((Int,Bool)->Void)?
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
@@ -77,33 +78,13 @@ class FirstCreateSpaceCell: BaseCollectionCell {
         [categoryLabel,priceLabel].forEach{($0.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left)}
         
         let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
-        mainView.addSubViews(views: priceTextField)
-        priceTextField.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: mainView.trailingAnchor,padding: .init(top: 0, left: 8, bottom: 0, right: 0))
+        mainView.addSubViews(views: textView,placeHolderLabel)
+        textView.fillSuperview(padding: .init(top: 0, left: 16, bottom: 0, right: 0))
+        placeHolderLabel.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: nil,padding: .init(top: 0, left: 16, bottom: 0, right: 0))
         let second = stack(categoryLabel,mainView,priceLabel,UIView(),spacing:8)
         
         hstack(ss,second,UIView(),spacing:16).withMargins(.init(top: 0, left: 32, bottom: 0, right: 8))
         
-    }
-    
-    @objc func textFieldDidChange(text: UITextField)  {
-        mainView.layer.borderColor = UIColor.black.cgColor
-        guard let texts = text.text else { return  }
-        priceString = texts
-        if let floatingLabelTextField = text as? SkyFloatingLabelTextField {
-            if text == priceTextField {
-                
-                if  texts.count == 0 {
-                    handleTextContents?(Int(priceString) ?? 0,false)
-                    floatingLabelTextField.errorMessage = "Invalid Space".localized
-                    
-                }
-                else {
-                    
-                    floatingLabelTextField.errorMessage = ""
-                    handleTextContents?(Int(priceString) ?? 0,true)
-                }
-            }
-        }
     }
     
     @objc func handleShowViews()  {
@@ -114,4 +95,49 @@ class FirstCreateSpaceCell: BaseCollectionCell {
         showHidingViews(views: mainView,priceLabel, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3933"), seperator: seperatorView)
         handleHidePreviousCell?(index)
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTextChanged), name: UITextView.textDidChangeNotification, object: nil)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc  func handleTextChanged()  {
+        placeHolderLabel.isHidden = textView.text.count != 0
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self) //for avoiding retain cycle
+    }
+    
 }
+
+
+extension FirstCreateSpaceCell: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        mainView.layer.borderColor = UIColor.black.cgColor
+        guard var texts = textView.text else { return  }
+        priceString = texts
+        
+        if  texts.count == 0 {
+            handleTextContents?(Int(priceString) ?? 0,false)
+        }
+        else {
+            priceString = texts
+            handleTextContents?(Int(priceString) ?? 0,true)
+        }
+    }
+}
+    
+    
+    
+    
+   
+    
+

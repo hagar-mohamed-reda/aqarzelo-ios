@@ -40,8 +40,9 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     var is8CellIsError = false
     var is9CellIsError = false
     
-    var isCellHidden = true
-    
+    var isNumberOfRoomsHidden = false
+    var isNumberOfBathRoomHidden = false
+
     
     var aqar:AqarModel? {
         didSet{
@@ -84,6 +85,17 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     
     
     
+    fileprivate func checkLand(_ index: Int) {
+        isNumberOfRoomsHidden = index == 4 ? true : false
+        isNumberOfBathRoomHidden = index == 4 ? true : false
+        
+        self.is6CellIsError=index == 4 ? true : false
+        self.is7CellIsError=index == 4 ? true : false
+        self.firstCcreatePostVviewModel.roomNum = index == 4 ? "0" : nil
+        self.firstCcreatePostVviewModel.bathsNum = index == 4 ? "0" : nil
+        collectionView.reloadData()
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.item == 0 {
@@ -121,7 +133,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellCategoryId, for: indexPath) as! FirstCreatePostCategoryCell
             cell.aqar = aqar
             
-            self.is2CellIsError=true
+//            self.is2CellIsError=true
             
             cell.createFirstListCollectionVC=self
             cell.index = 1
@@ -133,6 +145,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
                 //                self.category = index
                 self.firstCcreatePostVviewModel.category = openNext ? String(index) : String()
                 self.enableSecondCell(openNext, index: 3)
+                self.checkLand(index)
                 //                self.checks2 = openNext
             }
             return cell
@@ -257,9 +270,9 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         case 4:
             height = !is5CellIsOpen ? 80 : 120
         case 5:
-            height = !is6CellIsOpen ? 80 : 150
+            height = isNumberOfRoomsHidden ? 0 : !is6CellIsOpen ? 80 : 150
         case 6:
-            height = !is7CellIsOpen ? 80 : 150
+            height = isNumberOfBathRoomHidden ? 0 : !is7CellIsOpen ? 80 : 150
         case 7:
             height = !is8CellIsOpen ? 80 : 150
         default:
@@ -415,9 +428,16 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
                 increaseAndDereaseCellSize(current: &is7CellIsOpen, previous: &is6CellIsOpen)
             }
         case 6:
+            if isNumberOfBathRoomHidden {
+                if let cell = collectionView.cellForItem(at: IndexPath(item: 4, section: 0)) as? FirstCreateSpaceCell {
+                    cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)
+//                    increaseAndDereaseCellSize(current: &is6CellIsOpen, previous: &is5CellIsOpen)
+                    increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is5CellIsOpen)
+                }}else{
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell {
                 cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
                 increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is7CellIsOpen)
+            }
             }
         case 7:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePriceCell {

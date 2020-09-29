@@ -73,7 +73,9 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     
     
     var cityId:Int?
-    
+    var isFloorNumberHiddern = false
+    var isYearOfBuilidingHiddern = false
+
     var isPostEditing:Bool = false
     
     override func viewDidLoad() {
@@ -233,10 +235,10 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         case 3:
             height = !is4CellIsOpen ? 80 : firstHeight+150
         case 4:
-            height = !is5CellIsOpen ? 80 : 150
+            height = isYearOfBuilidingHiddern ? 0 :  !is5CellIsOpen ? 80 : 150
             
         default:
-            height = !is6CellIsOpen ? 80 : 150
+            height = isFloorNumberHiddern ? 0 :  !is6CellIsOpen ? 80 : 150
         }
         
         //        height = indexPath.item == 3 ? 160  : indexPath.item == 3 ? firstHeight+150 : 150
