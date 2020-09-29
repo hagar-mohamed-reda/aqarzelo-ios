@@ -12,6 +12,7 @@
 		9F27590E25127064006A93B2 /* FirstCreateTitleArPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F27590D25127064006A93B2 /* FirstCreateTitleArPostCell.swift */; };
 		9F2D38CA25223E4D008FCA16 /* MyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D38C925223E4D008FCA16 /* MyIndicator.swift */; };
 		9F686A182506C6A600D39FA3 /* CustomLoginViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F686A172506C6A600D39FA3 /* CustomLoginViews.swift */; };
+		9F8F753E2523A91E007804ED /* CategoryCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8F753D2523A91E007804ED /* CategoryCollectionVC.swift */; };
 		9F970C4A24FC3A2800448E7E /* ListOfPhotoMainSecVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */; };
 		9FA7D2D025069FD300EF4166 /* CustomStarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */; };
 		9FB2437624FC13C0004F43FB /* ListOfPhotoMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */; };
@@ -240,6 +241,7 @@
 		9F27590D25127064006A93B2 /* FirstCreateTitleArPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCreateTitleArPostCell.swift; sourceTree = "<group>"; };
 		9F2D38C925223E4D008FCA16 /* MyIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIndicator.swift; sourceTree = "<group>"; };
 		9F686A172506C6A600D39FA3 /* CustomLoginViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViews.swift; sourceTree = "<group>"; };
+		9F8F753D2523A91E007804ED /* CategoryCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionVC.swift; sourceTree = "<group>"; };
 		9F970C4924FC3A2800448E7E /* ListOfPhotoMainSecVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainSecVC.swift; sourceTree = "<group>"; };
 		9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStarViews.swift; sourceTree = "<group>"; };
 		9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainVC.swift; sourceTree = "<group>"; };
@@ -522,6 +524,15 @@
 				9F686A172506C6A600D39FA3 /* CustomLoginViews.swift */,
 			);
 			path = login;
+			sourceTree = "<group>";
+		};
+		9F8F753B2523A912007804ED /* create first */ = {
+			isa = PBXGroup;
+			children = (
+				9FE2705C24E884D1008889AB /* CreateFirstListCollectionVC.swift */,
+				9F8F753D2523A91E007804ED /* CategoryCollectionVC.swift */,
+			);
+			path = "create first";
 			sourceTree = "<group>";
 		};
 		9FA7D2CE25069F5100EF4166 /* stars */ = {
@@ -1115,7 +1126,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE2706124E884D8008889AB /* Create Second */,
-				9FE2705C24E884D1008889AB /* CreateFirstListCollectionVC.swift */,
+				9F8F753B2523A912007804ED /* create first */,
 				9FE2705D24E884D1008889AB /* CreateThirddListCollectionVC.swift */,
 				9FE2705B24E884D0008889AB /* MainCreatePostVC.swift */,
 			);
@@ -1682,6 +1693,7 @@
 				9FE2700124E881E1008889AB /* BaseUsersIdsModel.swift in Sources */,
 				9FDDB71F24E98E7300AF8817 /* ViewControllers.swift in Sources */,
 				9FE26FA924E87D0D008889AB /* RegistrationServices.swift in Sources */,
+				9F8F753E2523A91E007804ED /* CategoryCollectionVC.swift in Sources */,
 				9FE2701524E88325008889AB /* HomeTabBarVC.swift in Sources */,
 				9FE2709424E88694008889AB /* AqarDetailInfoCell.swift in Sources */,
 				9FDDB75A24E98FB900AF8817 /* CustomTabBar.swift in Sources */,

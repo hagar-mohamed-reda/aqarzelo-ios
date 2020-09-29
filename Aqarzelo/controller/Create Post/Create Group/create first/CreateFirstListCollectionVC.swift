@@ -120,6 +120,9 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         else if indexPath.item == 2 {
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellCategoryId, for: indexPath) as! FirstCreatePostCategoryCell
             cell.aqar = aqar
+            
+            self.is2CellIsError=true
+            
             cell.createFirstListCollectionVC=self
             cell.index = 1
             cell.handleHidePreviousCell = {[unowned self] (index) in
@@ -247,7 +250,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         case 1:
             height = !is2CellIsOpen ? 80 : firstHeight+150
         case 2:
-            height = !is3CellIsOpen ? 80 : 150
+            height = !is3CellIsOpen ? 80 : 200 //150
         case 3:
 //            height = isCellHidden ? 0 : !is4CellIsOpen ? 80 : 120 for hidden specific cell 
             height = !is4CellIsOpen ? 80 : 120
@@ -392,7 +395,8 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             
         case 2:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePostCategoryCell {
-                cell.hideViewsAgain(views: cell.buttonStack,cell.categoryQuestionLabel)
+                cell.hideViewsAgain(views: cell.categoryCollectionVC.view,cell.categoryQuestionLabel)
+//                cell.hideViewsAgain(views: cell.buttonStack,cell.categoryQuestionLabel)
                 increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
             }
         case 3:
