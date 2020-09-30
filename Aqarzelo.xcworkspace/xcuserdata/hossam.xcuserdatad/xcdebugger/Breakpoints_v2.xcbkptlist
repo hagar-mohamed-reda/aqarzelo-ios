@@ -1971,54 +1971,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "803E36EC-6DC2-450F-A478-D89E8C5D4D85"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Aqarzelo/controller/Create Post/Create Group/create first/CreateFirstListCollectionVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
-            landmarkName = "handleHidedViews(index:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "97D0C085-78CE-436F-93BB-67A27BBBC46A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Aqarzelo/controller/Create Post/Create Group/create first/CreateFirstListCollectionVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
-            landmarkName = "handleHidedViews(index:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D36B89B2-1332-42E1-B521-1B42C3C786B1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Aqarzelo/controller/Create Post/Create Group/create first/CreateFirstListCollectionVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
-            landmarkName = "handleHidedViews(index:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "43E12C77-F651-4629-9DEF-7F7743F4A91F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -2035,20 +1987,20 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "544FBA13-9909-478D-A2C5-0859840B6A1E"
+            uuid = "6A395041-22A7-4020-BACF-33E6091F083E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aqarzelo/controller/Create Post/Create Group/create first/CreateFirstListCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "handleHidedViews(index:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "544FBA13-9909-478D-A2C5-0859840B6A1E - d1cee9adacf6ae62"
+                  uuid = "6A395041-22A7-4020-BACF-33E6091F083E - d1cee9adacf6ae81"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2058,12 +2010,12 @@
                   urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/controller/Create%20Post/Create%20Group/create%20first/CreateFirstListCollectionVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "455"
-                  endingLineNumber = "455"
-                  offsetFromSymbolStart = "8830">
+                  startingLineNumber = "458"
+                  endingLineNumber = "458"
+                  offsetFromSymbolStart = "9773">
                </Location>
                <Location
-                  uuid = "544FBA13-9909-478D-A2C5-0859840B6A1E - d1cee9adacf6ae62"
+                  uuid = "6A395041-22A7-4020-BACF-33E6091F083E - d1cee9adacf6ae81"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2073,11 +2025,27 @@
                   urlString = "file:///Users/hossam/Documents/19:9:2020/Aqarzeloo/Aqarzelo/controller/Create%20Post/Create%20Group/create%20first/CreateFirstListCollectionVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "455"
-                  endingLineNumber = "455"
-                  offsetFromSymbolStart = "8857">
+                  startingLineNumber = "458"
+                  endingLineNumber = "458"
+                  offsetFromSymbolStart = "9827">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4390812-E382-478C-9648-1330AB0F1A9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/Create Post/Create Group/create first/CreateFirstListCollectionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
+            landmarkName = "handleHidedViews(index:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
