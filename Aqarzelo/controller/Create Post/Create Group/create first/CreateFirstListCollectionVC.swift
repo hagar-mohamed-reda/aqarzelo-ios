@@ -42,7 +42,8 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
     
     var isNumberOfRoomsHidden = false
     var isNumberOfBathRoomHidden = false
-
+    var category_id = 0
+    
     
     var aqar:AqarModel? {
         didSet{
@@ -144,6 +145,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             cell.handleTextContents = {[unowned self] (index,openNext) in
                 //                self.category = index
                 self.firstCcreatePostVviewModel.category = openNext ? String(index) : String()
+                self.category_id = index
                 self.enableSecondCell(openNext, index: 3)
                 self.checkLand(index)
                 //                self.checks2 = openNext
@@ -201,7 +203,8 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             cell.createFirstListCollectionVC=self
             cell.index = 5
             cell.handleHidePreviousCell = {[unowned self] (index) in
-                self.handleHidedViews(index: index)
+//                self.handleHidedViews(index: index)
+                self.handleHidedViews(index: 6)
             }
             cell.handleTextContents = { [unowned self] (number,openNext) in
                 //                self.bathNumber = number
@@ -216,7 +219,8 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             cell.createFirstListCollectionVC=self
             cell.index = 6
             cell.handleHidePreviousCell = {[unowned self] (index) in
-                self.handleHidedViews(index: index)
+//                self.handleHidedViews(index: index)
+                self.handleHidedViews(index: 7)
             }
             cell.handleTextContents = { [unowned self] (price,openNext) in
                 //                self.priceMeter = price
@@ -363,6 +367,8 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateRoomsNumberCell  {
             //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is5CellIsError=openNext
+            is6CellIsError=self.category_id == 8 ? true : false
+            self.firstCcreatePostVviewModel.roomNum = self.category_id == 8 ? "0" : nil
         }
     }
     
@@ -434,11 +440,26 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
 //                    increaseAndDereaseCellSize(current: &is6CellIsOpen, previous: &is5CellIsOpen)
                     increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is5CellIsOpen)
                 }}else{
+                    
+                    if category_id == 8 {
+                        if let cell = collectionView.cellForItem(at: IndexPath(item: 4, section: 0)) as? FirstCreateSpaceCell {
+                            cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)
+                            increaseAndDereaseCellSize(current: &is7CellIsOpen, previous: &is6CellIsOpen)
+                            is5CellIsOpen=false
+//                            if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell {
+//                                cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
+//                                increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is7CellIsOpen)
+//                            }
+//                            increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
+//                            increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is5CellIsOpen)
+                        }}else {
+                    
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell {
                 cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
                 increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is7CellIsOpen)
             }
             }
+                }
         case 7:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePriceCell {
                 cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)
