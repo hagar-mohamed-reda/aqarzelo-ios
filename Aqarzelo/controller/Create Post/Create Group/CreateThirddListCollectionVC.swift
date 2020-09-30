@@ -39,6 +39,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
     //    var discribe,ownerType,payment,finishedType:String?
     var category_id:Int?  {
         didSet{
+            guard let category_id = category_id else { return  }
             let ff = category_id == 4  ? true : false
             isFinsihedHidden=ff
         }

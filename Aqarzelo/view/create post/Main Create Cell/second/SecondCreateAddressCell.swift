@@ -18,11 +18,15 @@ class SecondCreateAddressCell: BaseCollectionCell {
             let x = categroy_id == 4 ? true : false
             
             if x {
+                seperatorView.isHide(true)
                ss =  stack(iconImageView,UIView(),alignment:.center)
+                setupViews()
             }else {
+                seperatorView.isHide(false)
                 ss =  stack(iconImageView,seperatorView,alignment:.center)
+                setupViews()
             }
-            setupViews()
+//            setupViews()
         }
     }
     

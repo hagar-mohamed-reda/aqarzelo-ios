@@ -73,6 +73,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     
     var category_id:Int?  {
         didSet{
+            guard let category_id = category_id else { return  }
             let ss = category_id == 4 || category_id == 2 || category_id == 6 || category_id == 7 ? true : false
             let ff = category_id == 4  ? true : false
 

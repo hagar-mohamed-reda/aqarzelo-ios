@@ -14,7 +14,7 @@ class CategoryCollectionVC: BaseCollectionVC {
     var categoryIds = [Int]()
     fileprivate let cellTitleId = "cellTitleId"
     var handleChossenCategory:((Int)->())?
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryNames.count
     }
@@ -35,14 +35,14 @@ class CategoryCollectionVC: BaseCollectionVC {
     func colorButton(index:Int)  {
         collectionView.visibleCells.forEach { (cell) in
             if let celll = cell as? CategoryCollectionCell{
-            celll.landButton.setTitleColor(.black, for: .normal)
-            celll.landButton.backgroundColor = .white
-        }
-        }
-            if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0) ) as? CategoryCollectionCell{
-                cell.landButton.setTitleColor(.white, for: .normal)
-                cell.landButton.backgroundColor = ColorConstant.mainBackgroundColor
+                celll.landButton.setTitleColor(.black, for: .normal)
+                celll.landButton.backgroundColor = .white
             }
+        }
+        if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0) ) as? CategoryCollectionCell{
+            cell.landButton.setTitleColor(.white, for: .normal)
+            cell.landButton.backgroundColor = ColorConstant.mainBackgroundColor
+        }
     }
     
     
@@ -51,7 +51,7 @@ class CategoryCollectionVC: BaseCollectionVC {
         return .init(width: width, height: 30)
     }
     
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
     
@@ -68,13 +68,13 @@ class CategoryCollectionVC: BaseCollectionVC {
 
 class CategoryCollectionCell: BaseCollectionCell {
     
-    override var isSelected: Bool {
-        didSet {
-             landButton.setTitleColor(isSelected ? ColorConstant.mainBackgroundColor : .black, for: .normal)
-            landButton.backgroundColor =  isSelected ? .black : .white
-        }
-    }
-    
+//    override var isSelected: Bool {
+//        didSet {
+//            landButton.setTitleColor(isSelected ? ColorConstant.mainBackgroundColor : .black, for: .normal)
+//            landButton.backgroundColor =  isSelected ? .black : .white
+//        }
+//    }
+//    
     var name:String? {
         didSet{
             guard let name = name else { return  }
@@ -98,7 +98,7 @@ class CategoryCollectionCell: BaseCollectionCell {
     var handleChossenCategory:((Int,Int)->())?
     
     lazy var landButton = createButtons(title: "   Land    ".localized,tag: 3 )
-
+    
     
     override func setupViews() {
         backgroundColor = .clear
@@ -111,12 +111,12 @@ class CategoryCollectionCell: BaseCollectionCell {
         b.clipsToBounds = true
         b.layer.borderWidth = 1
         b.layer.borderColor = #colorLiteral(red: 0.1809101701, green: 0.6703525782, blue: 0.6941398382, alpha: 1).cgColor
-//        b.tag = tag
+        //        b.tag = tag
         return b
     }
     
-   @objc func handleChoosedButton()  {
-    guard let ids = ids,let index = index else { return  }
-       handleChossenCategory?(ids,index)
+    @objc func handleChoosedButton()  {
+        guard let ids = ids,let index = index else { return  }
+        handleChossenCategory?(ids,index)
     }
 }

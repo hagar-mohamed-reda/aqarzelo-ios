@@ -18,12 +18,15 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
             let x = categroy_id == 2 || categroy_id == 6 || categroy_id == 7 ? true : false
             
             if x {
+                seperatorView.isHide(true)
                ss =  stack(iconImageView,UIView(),alignment:.center)
-                
+                setupViews()
             }else {
+                seperatorView.isHide(false)
                ss =  stack(iconImageView,seperatorView,alignment:.center)
+                setupViews()
             }
-            setupViews()
+           
         }
     }
     var aqar:AqarModel?{

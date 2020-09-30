@@ -134,7 +134,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellCategoryId, for: indexPath) as! FirstCreatePostCategoryCell
             cell.aqar = aqar
             
-//            self.is2CellIsError=true
+            //            self.is2CellIsError=true
             
             cell.createFirstListCollectionVC=self
             cell.index = 1
@@ -204,7 +204,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             cell.index = 5
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
-//                self.handleHidedViews(index: 6)
+                //                self.handleHidedViews(index: 6)
             }
             cell.handleTextContents = { [unowned self] (number,openNext) in
                 //                self.bathNumber = number
@@ -220,7 +220,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             cell.index = 6
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
-//                self.handleHidedViews(index: 7)
+                //                self.handleHidedViews(index: 7)
             }
             cell.handleTextContents = { [unowned self] (price,openNext) in
                 //                self.priceMeter = price
@@ -269,7 +269,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         case 2:
             height = !is3CellIsOpen ? 80 : 200 //150
         case 3:
-//            height = isCellHidden ? 0 : !is4CellIsOpen ? 80 : 120 for hidden specific cell 
+            //            height = isCellHidden ? 0 : !is4CellIsOpen ? 80 : 120 for hidden specific cell
             height = !is4CellIsOpen ? 80 : 120
         case 4:
             height = !is5CellIsOpen ? 80 : 120
@@ -415,7 +415,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         case 2:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePostCategoryCell {
                 cell.hideViewsAgain(views: cell.categoryCollectionVC.view,cell.categoryQuestionLabel)
-//                cell.hideViewsAgain(views: cell.buttonStack,cell.categoryQuestionLabel)
+                //                cell.hideViewsAgain(views: cell.buttonStack,cell.categoryQuestionLabel)
                 increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
             }
         case 3:
@@ -430,46 +430,46 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             }
         case 5:
             
-                
-                if category_id == 8 {
-                    if let cell = collectionView.cellForItem(at: IndexPath(item: 4, section: 0)) as? FirstCreateSpaceCell {
-                        cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)
-                        increaseAndDereaseCellSize(current: &is7CellIsOpen, previous: &is6CellIsOpen)
-                        is5CellIsOpen=false
-                        if let cells = collectionView.cellForItem(at: IndexPath(item: 5, section: 0)) as? FirstCreateBathsNumberCell {
-                            cells.iconImageView.image = #imageLiteral(resourceName: "Group 3935")
-                            cells.seperatorView.backgroundColor = ColorConstant.createPostImageChoosedColor
-                        }
-                        
+            
+            if category_id == 8 {
+                if let cell = collectionView.cellForItem(at: IndexPath(item: 4, section: 0)) as? FirstCreateSpaceCell {
+                    cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)
+                    increaseAndDereaseCellSize(current: &is7CellIsOpen, previous: &is6CellIsOpen)
+                    is5CellIsOpen=false
+                    if let cells = collectionView.cellForItem(at: IndexPath(item: 5, section: 0)) as? FirstCreateBathsNumberCell {
+                        cells.iconImageView.image = #imageLiteral(resourceName: "Group 3935")
+                        cells.seperatorView.backgroundColor = ColorConstant.createPostImageChoosedColor
                     }
-                }else {
-            if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateRoomsNumberCell {
-                cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
-                increaseAndDereaseCellSize(current: &is7CellIsOpen, previous: &is6CellIsOpen)
-            }
+                    
                 }
+            }else {
+                if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateRoomsNumberCell {
+                    cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
+                    increaseAndDereaseCellSize(current: &is7CellIsOpen, previous: &is6CellIsOpen)
+                }
+            }
         case 6:
             if isNumberOfBathRoomHidden {
                 if let cell = collectionView.cellForItem(at: IndexPath(item: 4, section: 0)) as? FirstCreateSpaceCell {
                     cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)
-//                    increaseAndDereaseCellSize(current: &is6CellIsOpen, previous: &is5CellIsOpen)
+                    //                    increaseAndDereaseCellSize(current: &is6CellIsOpen, previous: &is5CellIsOpen)
                     increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is5CellIsOpen)
-                   
-                }}
-//                            if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell {
-//                                cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
-//                                increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is7CellIsOpen)
-//                            }
-//                            increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
-//                            increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is5CellIsOpen)
-                        else {
                     
-            if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell {
-                cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
-                increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is7CellIsOpen)
-            }
-            }
+                }}
+            //                            if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell {
+            //                                cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
+            //                                increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is7CellIsOpen)
+            //                            }
+            //                            increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
+            //                            increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is5CellIsOpen)
+            else {
                 
+                if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreateBathsNumberCell {
+                    cell.hideViewsAgain(views: cell.customAddMinusView,cell.questionLabel)
+                    increaseAndDereaseCellSize(current: &is8CellIsOpen, previous: &is7CellIsOpen)
+                }
+            }
+            
         case 7:
             if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? FirstCreatePriceCell {
                 cell.hideViewsAgain(views: cell.mainView,cell.priceLabel)

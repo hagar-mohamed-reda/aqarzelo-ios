@@ -69,7 +69,7 @@ class MainCreatePostVC: UIViewController {
     lazy  var middleSecondPostCollection:CreateSecondListCollectionVC = {
         let vc =  CreateSecondListCollectionVC()
         vc.delgate = self
-        vc.category_id = mainCcreatePostVviewModel.category?.toInt() ?? 0
+//        vc.category_id = mainCcreatePostVviewModel.category?.toInt()
         vc.view.isHide(true)
         //        vc.handleOpenDropDown = {[unowned self] frame in
         //            self.handleOpenDropDown(frame)
@@ -82,7 +82,7 @@ class MainCreatePostVC: UIViewController {
     lazy  var middleThirdPostCollection:CreateThirddListCollectionVC = {
         let vc = CreateThirddListCollectionVC() // third
         vc.view.isHide(true)
-        vc.category_id = mainCcreatePostVviewModel.category?.toInt() ?? 0
+       
         vc.handleNextVC = { [unowned self] (isOpen,discribe,ownType,payment,finiashed,moreTag) in
             
             isOpen ? self.makeThirdOperation(discribe, ownType, payment, finiashed, moreTag, isOpen) : self.enableButton(isOpen, .white, second: true, third: true, last: true)
@@ -157,19 +157,23 @@ class MainCreatePostVC: UIViewController {
         self.takeFirstParameters(title: title!,titleAr: titleAR!, cate: category_id!, type: type, space: spaceNum!, bedNum: bedNum!, bath: bathNum!, pricePer: priceMeter!, totalPrice: totalPrice!)
         self.enableButton(isOpen, ColorConstant.mainBackgroundColor, second: true, third: false, last: false)
         self.cutomtopView.openFirst = true
+        middleSecondPostCollection.category_id = mainCcreatePostVviewModel.category?.toInt()
+        middleSecondPostCollection.collectionView.reloadData()
     }
     
     fileprivate func makeSecondOperation(_ lat: Double?, _ long: Double?, _ city: Int?, _ area: Int?, _ address: String?, _ floor: Int?, _ year: String?, _ isOpen: Bool) {
         self.takeSecondParameters(lat: lat!, lng: long!, city: city!, area: area!, address: address!, floorNum: floor!, date: year!)
         self.enableButton(isOpen, ColorConstant.mainBackgroundColor, second: false, third: true, last: false)
         self.cutomtopView.openSecond = true
-        
+        middleThirdPostCollection.category_id = mainCcreatePostVviewModel.category?.toInt()
+        middleThirdPostCollection.collectionView.reloadData()
     }
     
     fileprivate func makeThirdOperation(_ discribe: String?, _ ownType: String?, _ payment: String?, _ finiashed: String?, _ moreTag: Int?, _ isOpen: Bool) {
         self.takeThirdParameters(discribe: discribe!, ownertype: ownType!, payment: payment!, finished: finiashed!, moreTag: moreTag!)
         self.enableButton(isOpen, ColorConstant.mainBackgroundColor, second: false, third: false, last: true)
         self.cutomtopView.openThird = true
+
     }
     
     fileprivate func enableButton(_ enable: Bool, _ background: UIColor,second:Bool,third:Bool,last:Bool) {
