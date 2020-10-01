@@ -76,7 +76,7 @@ class SecondCreateCityCell: BaseCollectionCell {
         //        i.isHide(true)
         
         i.didSelect(completion: {[unowned self] (choosed, index, id) in
-            self.handleTextContents?(index,true)
+            self.handleTextContents?(self.cityIDSArray[index],true)
         })
         
         return i
@@ -130,14 +130,14 @@ class SecondCreateCityCell: BaseCollectionCell {
             if  let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]  {
                 
                 self.cityArray = cityArray
-                
+                self.cityIDSArray=cityIds
             }
         }else {
             if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]  {
                 
                 self.cityArray = cityArray
                 
-                
+                self.cityIDSArray=cityIds
             }
         }
         

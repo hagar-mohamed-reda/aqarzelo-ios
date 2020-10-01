@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MOLH
 
 protocol CreateSecondListCollectionVCProtocol {
     func openMaps()
@@ -82,10 +83,17 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         }
     }
     
-    var cityId:Int?
+    var cityId:Int? {
+        didSet {
+            guard let cityId = cityId else { return  }
+             self.getAreasUsingAPI(index:cityId)
+        }
+    }
     var isFloorNumberHiddern = false
     var isYearOfBuilidingHiddern = false
 
+    var finalFilteredAreaNames = [String]()
+    var allAreasSelectedArray = [Int]()
     var isPostEditing:Bool = false
     
     override func viewDidLoad() {
@@ -161,7 +169,9 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
             cell.aqar = aqar
             cell.createSecondListCollectionVC=self
             cell.index = 2
-            cell.cityId = cityId
+            cell.finalFilteredAreaNames=finalFilteredAreaNames
+            cell.allAreasSelectedArray=allAreasSelectedArray
+//            cell.cityId = cityId
             cell.handleHidePreviousCell = {[unowned self] (index) in
                 self.handleHidedViews(index: index)
             }
@@ -187,7 +197,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
                 self.secondCcreatePostVviewModel.address = openNext ? tx : String()
                 self.enableForthCell(openNext, index: 4)
                 
-                self.hideCells(category_id ?? 0)
+                self.hideCells(self.category_id ?? 0)
             }
             return cell
         }
@@ -205,7 +215,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
                 //                self.buildDate = tx
                 self.secondCcreatePostVviewModel.buildDate = openNext ? tx : String()
                 self.enableFifthCell(openNext, index: 5)
-                self.hideLastCells(category_id ?? 0)
+                self.hideLastCells(self.category_id ?? 0)
             }
             return cell
         }
@@ -288,6 +298,28 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         collectionView.reloadData()
     }
     
+    func getAreasUsingAPI(index:Int )  {
+           
+           FilterServices.shared.getAreaAccordingToCity(id: index) { (base, err) in
+               self.putThese(base)
+              
+           }
+       }
+       
+       func putThese(_ d:BaseAqarAreaModel?)  {
+           guard let ss =  d?.data  else {return}
+           let dd = ss.map({MOLHLanguage.isRTLLanguage() ?  $0.nameAr : $0.nameEn}); let aa = ss.map({$0.id})
+           finalFilteredAreaNames.removeAll()
+           allAreasSelectedArray.removeAll()
+           
+           allAreasSelectedArray = aa
+                      finalFilteredAreaNames =  dd
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+       }
+    
     
     fileprivate func setupSecondCcreatePostVviewModelObserver ()  {
         secondCcreatePostVviewModel.bindableIsFormValidate.bind {  [unowned self ]  (isValid) in
@@ -315,7 +347,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SecondCreateAreaCell  {
             //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is2CellIsError=openNext
-            cell.cityId = cityId
+//            cell.cityId = cityId
         }
     }
     

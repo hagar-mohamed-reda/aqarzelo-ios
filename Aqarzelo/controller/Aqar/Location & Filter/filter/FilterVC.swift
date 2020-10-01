@@ -88,7 +88,8 @@ class FilterVC: UIViewController {
         
         
         v.cityDrop.didSelect(completion: {[unowned self] (ss, index, id) in
-            self.getAreaAccordingToCityId(index: index)
+//            self.getAreaAccordingToCityId(index: index)
+            self.getAreasUsingAPI(index:index)
             self.selectedCityId = index == 0 ? nil : self.getCityFromIndex(index)
             
         })
@@ -97,6 +98,7 @@ class FilterVC: UIViewController {
         })
         v.categoryDrop.didSelect(completion: {[unowned self] (selected, index, _) in
             self.selectedCategoryId = index == 0 ? nil : self.categoryIdsArray[index-1]
+            
             print(self.selectedCategoryId)
         })
         v.TypeDrop.didSelect(completion: {[unowned self] (selected, index, _) in
@@ -243,27 +245,10 @@ class FilterVC: UIViewController {
     
     fileprivate func getCityFromIndex(_ index:Int) -> Int {
         
-        var citName = [String]()
         var cityId = [Int]()
-        
-        if MOLHLanguage.isRTLLanguage() {
-            
-            
-            
-            if let  cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
-                
-                citName = cityArray
-                cityId = cityIds
-                
-                
-                
-            }}else {
-            if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int] {
-                citName = cityArray
-                cityId = cityIds
-            }
-        }
-        
+      if  let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
+                 cityId = cityIds
+          }
         return cityId[index-1 ]
     }
     
@@ -272,6 +257,23 @@ class FilterVC: UIViewController {
         fetchEnglishData(isArabic: MOLHLanguage.isRTLLanguage())
     }
     
+    func getAreasUsingAPI(index:Int )  {
+        
+        FilterServices.shared.getAreaAccordingToCity(id: index) { (base, err) in
+            self.putThese(base)
+           
+        }
+    }
+    
+    func putThese(_ d:BaseAqarAreaModel?)  {
+        guard let ss =  d?.data  else {return}
+        let dd = ss.map({MOLHLanguage.isRTLLanguage() ?  $0.nameAr : $0.nameEn}); let aa = ss.map({$0.id})
+        finalFilteredAreaNames.removeAll()
+        allAreasSelectedArray.removeAll()
+        
+        allAreasSelectedArray = aa
+                   finalFilteredAreaNames =  dd
+    }
     
     fileprivate func getAreaAccordingToCityId(index:Int)  {
         if index == 0 {return }

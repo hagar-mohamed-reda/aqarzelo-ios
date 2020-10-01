@@ -116,9 +116,9 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
                 //                self.payment = tx
                 self.thirdCcreatePostVviewModel.payment = openNext ? tx : String()
                 self.enableForthsCell(openNext, index: 3)
-                self.is4CellIsError=category_id == 4 ? true : false
+                self.is4CellIsError=self.category_id == 4 ? true : false
                 
-                self.thirdCcreatePostVviewModel.finshed = category_id == 4  ? String() :  nil
+                self.thirdCcreatePostVviewModel.finshed = self.category_id == 4  ? String() :  nil
             }
             return cell
         }else if indexPath.item == 3 {

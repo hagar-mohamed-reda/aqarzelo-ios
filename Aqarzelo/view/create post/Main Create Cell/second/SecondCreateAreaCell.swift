@@ -14,6 +14,14 @@ import MOLH
 
 class SecondCreateAreaCell: BaseCollectionCell {
     
+    var finalFilteredAreaNames:[String]? {
+        didSet{
+            guard let finalFilteredAreaNames = finalFilteredAreaNames else { return  }
+            areaDrop.optionArray=finalFilteredAreaNames
+        }
+    }
+    var allAreasSelectedArray = [Int]()
+    
     var aqar:AqarModel?{
         didSet{
             guard let aqar = aqar else { return  }
@@ -34,12 +42,12 @@ class SecondCreateAreaCell: BaseCollectionCell {
         }
     }
     
-    var cityId:Int?{
-        didSet {
-            guard let cityId = cityId else { return  }
-            getAreaAccordingToCityId(index: cityId)
-        }
-    }
+//    var cityId:Int?{
+//        didSet {
+//            guard let cityId = cityId else { return  }
+//            getAreaAccordingToCityId(index: cityId)
+//        }
+//    }
     
     
     lazy var iconImageView:UIImageView = {
@@ -75,7 +83,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
         i.constrainHeight(constant: 40)
         
         i.didSelect(completion: {[unowned self] (choosed, index, id) in
-            self.handleTextContents?(self.areaIDSArray[index],true)
+            self.handleTextContents?(self.allAreasSelectedArray[index],true)
         })
         
         return i

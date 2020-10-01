@@ -57,7 +57,7 @@ class MainCreatePostVC: UIViewController {
     
     lazy var middleFirstPostCollection:CreateFirstListCollectionVC = {
         let vc = CreateFirstListCollectionVC()
-        vc.view.isHide(false)
+        vc.view.isHide(true)
         //         vc.view.isHide(true)
         vc.handleNextVC = { [unowned self] (isOpen,title,titleAr,category_id,type,spaceNum,roomNum,bathNum,priceMeter,totalPrice) in
             isOpen ? self.makeFirstOperation(title,titleAr, category_id, type, spaceNum,roomNum, bathNum, priceMeter, totalPrice, isOpen) : self.enableButton(isOpen, .white, second: false, third: false, last: false)
@@ -70,7 +70,7 @@ class MainCreatePostVC: UIViewController {
         let vc =  CreateSecondListCollectionVC()
         vc.delgate = self
 //        vc.category_id = mainCcreatePostVviewModel.category?.toInt()
-        vc.view.isHide(true)
+        vc.view.isHide(false)
         //        vc.handleOpenDropDown = {[unowned self] frame in
         //            self.handleOpenDropDown(frame)
         //        }
