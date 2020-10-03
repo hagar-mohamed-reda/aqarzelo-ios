@@ -153,15 +153,17 @@ class RegisterVC: UIViewController {
             if let err=err{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
-            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-            self.saveToken(token: token.apiToken)
+            let xx = MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn
+           
             DispatchQueue.main.async {
+                guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
+                self.saveToken(token: user.apiToken)
                 self.goToMainTab()
             }
         }
@@ -171,7 +173,7 @@ class RegisterVC: UIViewController {
     func makeOtherRegisterExternal(fullName:String,email:String)  {
         RegistrationServices.shared.loginWithExternal(name: fullName, photo: "", email: email) {[unowned self] (base, error) in
             if let err=error{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 //                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return
             }
@@ -211,7 +213,7 @@ class RegisterVC: UIViewController {
             //            self.saveToken(token: user.apiToken)
             
             DispatchQueue.main.async {
-                guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView); return}
+                guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
                 self.saveToken(token: user.apiToken)
                 self.goToMainTab()
             }
@@ -301,7 +303,7 @@ extension RegisterVC:  GIDSignInDelegate {
             //            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
             //            self.saveToken(token: token.apiToken)
             DispatchQueue.main.async {
-                guard let token = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView); return}
+                guard let token = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
                 self.saveToken(token: token.apiToken)
                 self.goToMainTab()
             }

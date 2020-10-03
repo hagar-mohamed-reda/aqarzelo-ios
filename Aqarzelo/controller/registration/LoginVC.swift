@@ -160,16 +160,20 @@ class LoginVC: UIViewController {
             if let err=err{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
-            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-            self.saveToken(token: user.apiToken)
+            let xx = MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn
+            
+//            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+           
             
             DispatchQueue.main.async {
+                guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
+                self.saveToken(token: user.apiToken)
                 self.goToMainTab(user)
             }
         }
@@ -205,7 +209,7 @@ class LoginVC: UIViewController {
             
             
             DispatchQueue.main.async {
-                guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView); return}
+                guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
                 self.saveToken(token: user.apiToken)
                 self.goToMainTab(user)
             }
@@ -296,7 +300,7 @@ extension LoginVC:  GIDSignInDelegate {
 //            self.saveToken(token: token.apiToken)
             
             DispatchQueue.main.async {
-                guard let token = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView); return}
+                guard let token = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
                 self.saveToken(token: token.apiToken)
                 self.goToMainTab(token)
             }

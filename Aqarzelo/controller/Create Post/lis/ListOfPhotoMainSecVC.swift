@@ -274,7 +274,11 @@ class ListOfPhotoMainSecVC: UIViewController {
     func processToDeleteImage(index:Int,imageImdex:Int)   {
         ImagesServices.shared.deleteImage(id: imageImdex, token: currentUserToken) {[unowned self] (base, err) in
             if let err=err{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+            }
                 //                SVProgressHUD.showError(withStatus: err.localizedDescription);return
             }
             self.photosArray.remove(at: index)

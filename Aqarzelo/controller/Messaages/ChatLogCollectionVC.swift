@@ -101,7 +101,7 @@ class ChatLogCollectionVC: BaseViewController {
             if let error = err {
                 DispatchQueue.main.async {
                                    SVProgressHUD.dismiss()
-                                   self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                                   self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                                }
                                self.activeViewsIfNoData();return
             }
@@ -192,7 +192,7 @@ class ChatLogCollectionVC: BaseViewController {
         
         MessagesServices.shared.sendMessage(message: message, token: userToken, toUser:String(describing: userId! )) {[unowned self] (base, err) in
             if let err=err{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
 //                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.resetAllData()
             }

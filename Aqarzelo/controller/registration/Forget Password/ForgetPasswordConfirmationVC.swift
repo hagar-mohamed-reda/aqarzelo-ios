@@ -138,7 +138,7 @@ class ForgetPasswordConfirmationVC: UIViewController {
             if let err=err{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 self.activeViewsIfNoData();return
             }
@@ -160,7 +160,7 @@ class ForgetPasswordConfirmationVC: UIViewController {
             if let err=err{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 self.activeViewsIfNoData();return
             }
@@ -171,7 +171,7 @@ class ForgetPasswordConfirmationVC: UIViewController {
             SVProgressHUD.showSuccess(withStatus: "Password reset successfully".localized)
             
             DispatchQueue.main.async {
-                guard let token = base?.data?.apiToken else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView); return}
+                guard let token = base?.data?.apiToken else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
 //                guard let token = base?.data?.apiToken else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
                 self.saveToken(token: token)
                 SVProgressHUD.showSuccess(withStatus: "Password reset successfully".localized)

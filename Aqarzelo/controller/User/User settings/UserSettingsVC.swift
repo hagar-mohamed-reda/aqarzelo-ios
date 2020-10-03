@@ -196,7 +196,7 @@ class UserSettingsVC: UIViewController {
             UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
                 if let err=err{
                     DispatchQueue.main.async {
-                                            self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                                            self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
 
                     }
     //                SVProgressHUD.showError(withStatus: err.localizedDescription)

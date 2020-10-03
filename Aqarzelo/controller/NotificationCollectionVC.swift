@@ -194,16 +194,22 @@ class NotificationCollectionVC: BaseCollectionVC {
             if let err=err{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 self.activeViewsIfNoData();return
             }
             SVProgressHUD.dismiss()
-            guard let base = bases?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? bases?.messageAr : bases?.messageEn); return}
-            self.notificationsArray = base
-            userDefaults.set(true, forKey: UserDefaultsConstants.isNotificationsFetched)
-            userDefaults.synchronize()
+            self.activeViewsIfNoData()
+            let xx = MOLHLanguage.isRTLLanguage() ? bases?.messageAr : bases?.messageEn
+//            guard let base = bases?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? bases?.messageAr : bases?.messageEn); return}
+//            self.notificationsArray = base
+//            userDefaults.set(true, forKey: UserDefaultsConstants.isNotificationsFetched)
+//            userDefaults.synchronize()
             DispatchQueue.main.async {
+                guard let base = bases?.data else { self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
+                self.notificationsArray = base
+                userDefaults.set(true, forKey: UserDefaultsConstants.isNotificationsFetched)
+                userDefaults.synchronize()
                 SVProgressHUD.dismiss()
                 self.collectionView.refreshControl?.beginRefreshing()
                 self.collectionView.refreshControl?.endRefreshing()

@@ -37,7 +37,7 @@ class CustomErrorView: CustomBaseView {
     }()
     
     lazy var errorLabel = UILabel(text: "Error".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: MOLHLanguage.isRTLLanguage() ? .right : .left)
-    lazy var errorInfoLabel = UILabel(text: "You Can't Chat With Yourself".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: .center)
+    lazy var errorInfoLabel = UILabel(text: "You Can't Chat With Yourself".localized, font: .systemFont(ofSize: 16), textColor: .black,textAlignment: .center,numberOfLines: 0)
     lazy var mainView:UIView = {
         let v = UIView(backgroundColor: .white)
         v.layer.cornerRadius = 16

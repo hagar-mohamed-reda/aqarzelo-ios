@@ -243,7 +243,7 @@ class AqarDetailsInfoVC: UIViewController {
             if let err = error {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 self.activeViewsIfNoData();return
             }
@@ -402,7 +402,11 @@ class AqarDetailsInfoVC: UIViewController {
         
         PostServices.shared.addPost(api_token: userToken, post_id: aqarModel.images.first?.postID ?? 1, comment: message) { (base, err) in
             if let err=err{
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                
+                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+            }
                 //                SVProgressHUD.showError(withStatus: err.localizedDescription)
             }
             
@@ -429,7 +433,7 @@ class AqarDetailsInfoVC: UIViewController {
             if let err=error{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 self.activeViewsIfNoData();return
             }

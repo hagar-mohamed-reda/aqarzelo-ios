@@ -116,7 +116,7 @@ class ForgetPasswordVC: UIViewController {
             if let err = err {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView)
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 self.activeViewsIfNoData();return
             }
@@ -125,7 +125,7 @@ class ForgetPasswordVC: UIViewController {
 //            guard let user = base?.data else  {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
             
             DispatchQueue.main.async {
-                guard let user = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView); return}
+                guard let user = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
                 self.goToNextTab(token:user.apiToken , telephone: self.customForgetPassView.forgetPassViewModel.email ?? "")
             }
         }
