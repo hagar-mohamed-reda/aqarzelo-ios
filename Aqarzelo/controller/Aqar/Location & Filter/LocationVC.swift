@@ -23,7 +23,7 @@ class LocationVC: UIViewController {
         return v
     }()
     lazy var userProfileImage:UIImageView = {
-        let la = UIImageView(image: #imageLiteral(resourceName: "Group 3931-1"))
+        let la = UIImageView(image:UIImage(named: "settings"))
         la.constrainWidth(constant: 40)
         la.constrainHeight(constant: 40)
         la.layer.cornerRadius = 20
@@ -454,8 +454,8 @@ class LocationVC: UIViewController {
     
     
     fileprivate func putUserPhoto(photoUrl:String)  {
-        guard let url = URL(string: photoUrl) else { return  }
-        userProfileImage.sd_setImage(with: url,placeholderImage: #imageLiteral(resourceName: "man-user"))
+//        guard let url = URL(string: photoUrl) else { return  }
+//        userProfileImage.sd_setImage(with: url,placeholderImage: #imageLiteral(resourceName: "man-user"))
     }
     
     
@@ -555,7 +555,7 @@ class LocationVC: UIViewController {
         navigationController?.navigationBar.backgroundColor = .red
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: userProfileImage)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "funnel") ?? #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
     }
     
     func aaddCustomConfirmationView(text:String) {
