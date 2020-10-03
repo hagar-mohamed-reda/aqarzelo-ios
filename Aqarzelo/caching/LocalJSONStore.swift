@@ -9,6 +9,8 @@
 
 import UIKit
 
+let cacheAreaInCodabe: LocalJSONStore<[AreaModel]?> = LocalJSONStore(storageType: .cache, filename: "area.json")
+
 let cacheCurrentUserCodabe: LocalJSONStore<UserModel> = LocalJSONStore(storageType: .cache, filename: "sdsssasad.json")
 let cacheMessagesUserCodabe: LocalJSONStore<[UserIdsModel]> = LocalJSONStore(storageType: .cache, filename: "sdsssaddsad.json")
 let cacheMessagessssUserCodabe: LocalJSONStore<[GetPostModel]> = LocalJSONStore(storageType: .cache, filename: "sdsssasdsddsad.json")

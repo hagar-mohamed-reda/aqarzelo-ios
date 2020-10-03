@@ -115,6 +115,8 @@ class WelcomeVC: UIViewController {
                 categoryNameArabicArray.append(categ.nameAr)
                 categoryIdArray.append(categ.id)
             })
+            cacheAreaInCodabe.deleteFile(group2)
+            cacheAreaInCodabe.save(group2 ?? nil)
             
             userDefaults.set(categoryIdArray, forKey: UserDefaultsConstants.categoryIdsArray)
             userDefaults.set(cityIdData, forKey: UserDefaultsConstants.cityIdArray)

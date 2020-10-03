@@ -94,7 +94,8 @@ class ForgetPasswordConfirmationVC: UIViewController {
         }
         customForgetPassConfirmView.forgetPassConfirmViewModel.bindableIsConfirm.bind {  [unowned self] (isReg) in
             if isReg == true {
-                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+                view.isUserInteractionEnabled=false
+//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
                 self.progressHudProperties()
                 
             }else {
@@ -132,7 +133,8 @@ class ForgetPasswordConfirmationVC: UIViewController {
     }
     
     @objc fileprivate  func handleResendSMS()  {
-        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        view.isUserInteractionEnabled=false
+//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         progressHudProperties()
         RegistrationServices.shared.forgetPassword(phone: phone) {[unowned self] (base, err) in
             if let err=err{
@@ -172,7 +174,7 @@ class ForgetPasswordConfirmationVC: UIViewController {
             
             DispatchQueue.main.async {
                 guard let token = base?.data?.apiToken else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
-//                guard let token = base?.data?.apiToken else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+                //                guard let token = base?.data?.apiToken else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
                 self.saveToken(token: token)
                 SVProgressHUD.showSuccess(withStatus: "Password reset successfully".localized)
                 self.goToMainTab()

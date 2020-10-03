@@ -116,7 +116,8 @@ class LoginVC: UIViewController {
         }
         customLoginView.loginViewModel.bindableIsLogging.bind(observer: {  [unowned self] (isReg) in
             if isReg == true {
-                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+                view.isUserInteractionEnabled=false
+//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
                 self.progressHudProperties()
                 
             }else {
@@ -168,8 +169,8 @@ class LoginVC: UIViewController {
             self.activeViewsIfNoData()
             let xx = MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn
             
-//            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-           
+            //            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+            
             
             DispatchQueue.main.async {
                 guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
@@ -296,8 +297,8 @@ extension LoginVC:  GIDSignInDelegate {
             
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
-//            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-//            self.saveToken(token: token.apiToken)
+            //            guard let token = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+            //            self.saveToken(token: token.apiToken)
             
             DispatchQueue.main.async {
                 guard let token = base?.data else {self.callMainError(err: MOLHLanguage.isRTLLanguage() ? base?.messageEn as! String : base?.messageEn as! String, vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
@@ -311,7 +312,7 @@ extension LoginVC:  GIDSignInDelegate {
 
 extension LoginVC: ASAuthorizationControllerDelegate{
     
-    @available(iOS 13.0, *)
+//    @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
@@ -345,14 +346,14 @@ extension LoginVC: ASAuthorizationControllerDelegate{
         }
     }
     
-    @available(iOS 13.0, *)
+//    @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {// Handle error.}
     }
     
 }
 
 extension LoginVC: ASAuthorizationControllerPresentationContextProviding {
-    @available(iOS 13.0, *)
+//    @available(iOS 13.0, *)
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }

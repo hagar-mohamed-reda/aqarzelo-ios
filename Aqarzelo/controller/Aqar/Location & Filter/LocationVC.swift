@@ -328,8 +328,8 @@ class LocationVC: UIViewController {
             if let err=err{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+                    
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
                 }
                 //                SVProgressHUD.showError(withStatus: err.localizedDescription)
                 self.activeViewsIfNoData();return

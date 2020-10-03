@@ -127,7 +127,7 @@ class CustomLoginView: UIView {
         b.constrainHeight(constant: 50)
         return b
     }()
-    @available(iOS 13.0, *)
+//    @available(iOS 13.0, *)
     lazy var appleLogInButton : ASAuthorizationAppleIDButton = {
         let button = ASAuthorizationAppleIDButton()
         //        button.addTarget(self, action: #selector(handleLogInWithAppleID), for: .touchUpInside)

@@ -105,7 +105,8 @@ class RegisterVC: UIViewController {
         }
         customRegisterView.registerViewModel.bindableIsResgiter.bind(observer: {  [unowned self] (isReg) in
             if isReg == true {
-                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+                view.isUserInteractionEnabled=false
+//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
                 self.progressHudProperties()
                 
             }else {
@@ -160,7 +161,7 @@ class RegisterVC: UIViewController {
             SVProgressHUD.dismiss()
             self.activeViewsIfNoData()
             let xx = MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn
-           
+            
             DispatchQueue.main.async {
                 guard let user = base?.data else {self.callMainError(err: xx ?? "There is an error happened".localized , vc: self.customMainAlertVC, views: self.customErrorView,height: 260); return}
                 self.saveToken(token: user.apiToken)
@@ -324,7 +325,7 @@ extension RegisterVC:  GIDSignInDelegate {
 
 extension RegisterVC: ASAuthorizationControllerDelegate{
     
-    @available(iOS 13.0, *)
+//    @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
@@ -358,14 +359,14 @@ extension RegisterVC: ASAuthorizationControllerDelegate{
         }
     }
     
-    @available(iOS 13.0, *)
+//    @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {// Handle error.}
     }
     
 }
 
 extension RegisterVC: ASAuthorizationControllerPresentationContextProviding {
-    @available(iOS 13.0, *)
+//    @available(iOS 13.0, *)
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }

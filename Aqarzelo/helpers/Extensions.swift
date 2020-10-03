@@ -79,6 +79,7 @@ extension UIViewController {
     
     func activeViewsIfNoData()  {
         DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled=true
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }

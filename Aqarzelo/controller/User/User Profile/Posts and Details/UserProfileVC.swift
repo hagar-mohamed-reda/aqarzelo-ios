@@ -326,7 +326,8 @@ class UserProfileVC: UIViewController {
     func deletePost(post:AqarModel,index:Int)  {
         guard let user = user else { return  }
         
-        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        view.isUserInteractionEnabled=false
+//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         progressHudProperties()
         PostServices.shared.deletePost(api_token: user.apiToken, post_id: post.id ) { (base, error) in
             if let error = error {

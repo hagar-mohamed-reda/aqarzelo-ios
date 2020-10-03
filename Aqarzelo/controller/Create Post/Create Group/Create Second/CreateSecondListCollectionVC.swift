@@ -86,7 +86,8 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
     var cityId:Int? {
         didSet {
             guard let cityId = cityId else { return  }
-             self.getAreasUsingAPI(index:cityId)
+            getAreaLists(index: cityId)
+//             self.getAreasUsingAPI(index:cityId)
         }
     }
     var isFloorNumberHiddern = false
@@ -296,6 +297,21 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         
         secondCcreatePostVviewModel.fllorNum = x
         collectionView.reloadData()
+    }
+    
+    fileprivate func getAreaLists(index:Int) {
+        
+        let ss = cacheAreaInCodabe.storedValue
+        let ff = ss??.filter({$0.cityID == index})
+        let indexs = ff?.map{  $0.id}
+        
+        let names = MOLHLanguage.isRTLLanguage() ?  ff?.map{  $0.nameAr} : ff?.map{  $0.nameEn}
+        self.finalFilteredAreaNames=names ?? []
+        self.allAreasSelectedArray=indexs ?? []
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     func getAreasUsingAPI(index:Int )  {

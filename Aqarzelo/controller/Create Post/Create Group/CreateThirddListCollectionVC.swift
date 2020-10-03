@@ -267,7 +267,7 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
                 increaseAndDereaseCellSize(current: &is3CellIsOpen, previous: &is2CellIsOpen)
             }
         case 3:
-           
+            
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreatePaymentMethodCell {
                 cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.buttonStack)
                 increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
@@ -280,10 +280,10 @@ class CreateThirddListCollectionVC: BaseCollectionVC {
                     increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
                 }
             }else{
-            if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreateFinishedMethodCell {
-                cell.hideViewsAgain(views: cell.totalFirstStackFinished,cell.categoryQuestionLabel,cell.totalStackFinished)
-                increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
-            }
+                if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? ThirdCreateFinishedMethodCell {
+                    cell.hideViewsAgain(views: cell.totalFirstStackFinished,cell.categoryQuestionLabel,cell.totalStackFinished)
+                    increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
+                }
             }
         default:
             ()

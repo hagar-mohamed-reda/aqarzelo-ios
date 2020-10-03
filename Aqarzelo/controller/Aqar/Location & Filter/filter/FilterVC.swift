@@ -88,8 +88,8 @@ class FilterVC: UIViewController {
         
         
         v.cityDrop.didSelect(completion: {[unowned self] (ss, index, id) in
-//            self.getAreaAccordingToCityId(index: index)
-            self.getAreasUsingAPI(index:index)
+            self.getAreaAccordingToCityId(index: index)
+            //            self.getAreasUsingAPI(index:index)
             self.selectedCityId = index == 0 ? nil : self.getCityFromIndex(index)
             
         })
@@ -184,7 +184,7 @@ class FilterVC: UIViewController {
     }
     
     fileprivate  func getAreaAccordingTo(id:Int)  {
-      progressHudProperties()
+        progressHudProperties()
         FilterServices.shared.getAreaAccordingToCity(id: citysNumberArray.firstIndex(of: id) ?? 1) {[unowned self] (base, error) in
             if let error=error{
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
@@ -231,7 +231,7 @@ class FilterVC: UIViewController {
         self.citysStringArray.insert("All".localized, at: 0)
         self.areasStringArray.insert("All".localized, at: 0)
         self.categoryStringArray.insert("All".localized, at: 0)
-
+        
         self.customFilterView.cityDrop.optionArray = self.citysStringArray
         self.customFilterView.areaDrop.optionArray = self.areasStringArray
         self.customFilterView.categoryDrop.optionArray = self.categoryStringArray
@@ -246,9 +246,9 @@ class FilterVC: UIViewController {
     fileprivate func getCityFromIndex(_ index:Int) -> Int {
         
         var cityId = [Int]()
-      if  let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
-                 cityId = cityIds
-          }
+        if  let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
+            cityId = cityIds
+        }
         return cityId[index-1 ]
     }
     
@@ -261,7 +261,7 @@ class FilterVC: UIViewController {
         
         FilterServices.shared.getAreaAccordingToCity(id: index) { (base, err) in
             self.putThese(base)
-           
+            
         }
     }
     
@@ -272,35 +272,39 @@ class FilterVC: UIViewController {
         allAreasSelectedArray.removeAll()
         
         allAreasSelectedArray = aa
-                   finalFilteredAreaNames =  dd
+        finalFilteredAreaNames =  dd
+        
+        self.customFilterView.areaDrop.optionArray = finalFilteredAreaNames
+        //            self.dropDownTableViewVC.areaDataSource=finalFilteredAreaNames
+        DispatchQueue.main.async {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    fileprivate func getAreaLists(index:Int) {
+        
+        let ss = cacheAreaInCodabe.storedValue
+        let ff = ss??.filter({$0.cityID == index})
+        let indexs = ff?.map{  $0.id}
+        
+        let names = MOLHLanguage.isRTLLanguage() ?  ff?.map{  $0.nameAr} : ff?.map{  $0.nameEn}
+        self.finalFilteredAreaNames=names ?? []
+        self.allAreasSelectedArray=indexs ?? []
+        
+        self.finalFilteredAreaNames.removeAll(where: {$0=="All"})
+        self.finalFilteredAreaNames.insert("All".localized, at: 0)
+        self.customFilterView.areaDrop.optionArray = finalFilteredAreaNames
+        
+        
+        DispatchQueue.main.async {
+            self.view.layoutIfNeeded()
+        }
+        //        }
     }
     
     fileprivate func getAreaAccordingToCityId(index:Int)  {
         if index == 0 {return }
-        finalFilteredAreaNames.removeAll()
-        allAreasSelectedArray.removeAll()
-        
-        if let cityIdArra = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int],let areaIdArra = userDefaults.value(forKey: UserDefaultsConstants.areaIdsArrays) as? [Int],let areaIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaIdArray) as? [Int],let cityIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String]{
-            self.citysNumberArray = cityIdArra
-            
-            let areas = citysNumberArray[index-1]
-            let areasFilteredArray = areaIdArray.indexes(of: areas)
-            areasFilteredArray.forEach { (s) in
-                allAreasSelectedArray.append(areaIdArra[s])
-            }
-            areasFilteredArray.forEach { (index) in
-                
-                finalFilteredAreaNames.append(areasStringArray[index])
-                
-            }
-            self.finalFilteredAreaNames.removeAll(where: {$0=="All"})
-            self.finalFilteredAreaNames.insert("All".localized, at: 0)
-            self.customFilterView.areaDrop.optionArray = finalFilteredAreaNames
-            //            self.dropDownTableViewVC.areaDataSource=finalFilteredAreaNames
-            DispatchQueue.main.async {
-                self.view.layoutIfNeeded()
-            }
-        }
+        getAreaLists(index:index)
     }
     
     fileprivate func setupViews()  {

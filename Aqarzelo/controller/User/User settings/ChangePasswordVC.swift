@@ -148,7 +148,8 @@ class ChangePasswordVC: UIViewController {
         
         customChangePassword.changePpasswordViewModel.bindableIsLogging.bind(observer: {  [unowned self] (isReg) in
             if isReg == true {
-                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+                view.isUserInteractionEnabled=false
+//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
                 self.progressHudProperties()
                 
             }else {

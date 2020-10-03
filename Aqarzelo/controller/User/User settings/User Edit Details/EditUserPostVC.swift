@@ -103,7 +103,8 @@ class EditUserPostVC: BaseViewController {
     
     func fetchAllPhotos()  {
         self.photosFinishedArray.removeAll()
-        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        view.isUserInteractionEnabled=false
+//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
         progressHudProperties()
         
         UploadImagesServices.shared.getAllUserImagesWithPostId(postId:postId,api_token: currentUserToken) { (base, error) in
