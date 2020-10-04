@@ -22,10 +22,33 @@ class HomeTabBarVC: UITabBarController {
         //        roundedView.layer.borderColor = UIColor.lightGray.cgColor
         return roundedView
     }()
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+        let t = CustomMainAlertVC()
+        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        t.modalTransitionStyle = .crossDissolve
+        t.modalPresentationStyle = .overCurrentContext
+        return t
+    }()
+    lazy var customAlerLoginView:CustomAlertForLoginView = {
+        let v = CustomAlertForLoginView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        
+        v.loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        v.signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        return v
+    }()
+    var isUserLogined = false
+    var selectedIndexxx = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.selectedIndexxx = tabBarController?.selectedIndex ?? 0
+        //        if userDefaults.integer(forKey: UserDefaultsConstants.lastSelectedIndexTabBar) != nil {
+        //            self.selectedIndexxx = userDefaults.integer(forKey: UserDefaultsConstants.lastSelectedIndexTabBar)
+        //        }
+        
         
         let gradient = CAGradientLayer()
         let sizeLength = UIScreen.main.bounds.size.height * 2
@@ -43,6 +66,15 @@ class HomeTabBarVC: UITabBarController {
         setupViewControllers()
         //        UINavigationBar.appearance().barTintColor  = #colorLiteral(red: 0.1800859272, green: 0.6703509688, blue: 0.6941409707, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+            isUserLogined = true
+        }else {
+            isUserLogined = false
+        }
     }
     
     private func customizeTabBarView() {
@@ -99,8 +131,9 @@ class HomeTabBarVC: UITabBarController {
         
         viewControllers = [
             
-            location,
             cart ,
+            location,
+            
             
             notification,
             love,
@@ -146,32 +179,93 @@ class HomeTabBarVC: UITabBarController {
         return outputImage!
     }
     
+    func showAlertLogin()  {
+        customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+        self.customAlerLoginView.problemsView.play()
+        
+        self.customAlerLoginView.problemsView.loopMode = .loop
+        present(customMainAlertVC, animated: true)
+    }
+    
     //TODO:-Handle methods
+    
+    @objc fileprivate func handleLogin ()  {
+        removeViewWithAnimation(vvv: customAlerLoginView)
+        customMainAlertVC.dismiss(animated: true)
+        let login = LoginVC()
+        let nav = UINavigationController(rootViewController: login)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
+        
+        
+    }
+    
+    @objc fileprivate func handleSignUp ()  {
+        removeViewWithAnimation(vvv: customAlerLoginView)
+        customMainAlertVC.dismiss(animated: true)
+        let login = LoginVC()
+        let nav = UINavigationController(rootViewController: login)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true) {
+            login.handlSignUp()
+        }
+        
+    }
+    
+    @objc fileprivate func handleDismiss()  {
+        removeViewWithAnimation(vvv: customAlerLoginView)
+        dismiss(animated: true, completion: nil)
+    }
     
 }
 
 extension HomeTabBarVC: UITabBarControllerDelegate {
     
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        
+        
+        guard let tabs = tabBar.items else {return}
+        let ff = tabBarController.selectedIndex
+        selectedIndexxx=ff==2||ff==3 ? selectedIndexxx : ff
+        if !isUserLogined {
+            if tabBarController.selectedIndex == 2{
+                tabBarController.selectedIndex = self.selectedIndexxx
+                showAlertLogin()
+                tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
+                tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
+            }
+            if tabBarController.selectedIndex == 3{
+                tabBarController.selectedIndex = self.selectedIndexxx
+                tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysOriginal)
+                tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
+                showAlertLogin()
+            }
+            
+            
+        }else {}
+        
+    }
     // for disable tabed
-    //    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-    //        if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+    //        func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    //            if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
     //
     //
-    //            if let tabs = tabBar.items {
-    //                if viewController == tabBarController.viewControllers?[3]  {
-    //                    tabs[3].selectedImage = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
-    //                    return false
-    //                } else if viewController ==  tabBarController.viewControllers?[2] {
-    //                    tabs[2].selectedImage = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysOriginal)
-    //                    return false
-    //                }else {
+    //                if let tabs = tabBar.items {
+    //                    if viewController == tabBarController.viewControllers?[3]  {
+    //                        tabs[3].selectedImage = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
+    //                        return false
+    //                    } else if viewController ==  tabBarController.viewControllers?[2] {
+    //                        tabs[2].selectedImage = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysOriginal)
+    //                        return false
+    //                    }else {
     //
+    //                    }
     //                }
-    //            }
     //
-    //        }else {
+    //            }else {
+    //                return true
+    //            }
     //            return true
     //        }
-    //        return true
-    //    }
 }

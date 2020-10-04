@@ -13,6 +13,7 @@ class UserDefaultsConstants {
     
     static let isStillImageUpload="isStillImageUpload"
 
+    static let lastSelectedIndexTabBar="lastSelectedIndexTabBar"
     
     //for dropdown
        static let cityCahcedValue="cityCahcedValue"
