@@ -61,11 +61,11 @@ class UserSettingsVC: UIViewController {
         return c
     }()
     lazy var customErrorView:CustomErrorView = {
-              let v = CustomErrorView()
-              v.setupAnimation(name: "4970-unapproved-cross")
-              v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
-              return v
-          }()
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
     lazy var customTopUserView:CustomTopUserView = {
         let v = CustomTopUserView()
         //        v.constrainHeight(constant: <#T##CGFloat#>)
@@ -121,7 +121,7 @@ class UserSettingsVC: UIViewController {
         t.separatorStyle = .none
         t.backgroundColor = .white
         t.showsVerticalScrollIndicator=false
-        //        tableView.contentInset = .init(top: 16, left: 16, bottom: 0, right: 16)
+        //                t.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         t.register(BaseSettingCell.self, forCellReuseIdentifier: cellId)
         t.register(NotificationSettingCell.self, forCellReuseIdentifier: cellNotifyId)
         return t
@@ -132,7 +132,7 @@ class UserSettingsVC: UIViewController {
     var baseSetttingData: BaseSettingModel?
     fileprivate let cellId="cellId"
     fileprivate let cellNotifyId = "cellNotifyId"
-    fileprivate var isLogin = false
+    fileprivate var isLogin = true
     fileprivate var isDataFetched = true
     
     
@@ -151,23 +151,23 @@ class UserSettingsVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
         showOrHideCustomTabBar(hide: true)
         
-        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
-            updateUserProfile()
-            isLogin = true
-            tableView.reloadData()
-        }
-        
-        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser != nil{
-            currentUser = cacheCurrentUserCodabe.storedValue
-            isLogin = true
-            tableView.reloadData()
-        }
-        
-        if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-            currentUser=nil
-            isLogin = false
-            tableView.reloadData()
-        }
+        //        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
+        //            updateUserProfile()
+        //            isLogin = true
+        //            tableView.reloadData()
+        //        }
+        //
+        //        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser != nil{
+        //            currentUser = cacheCurrentUserCodabe.storedValue
+        //            isLogin = true
+        //            tableView.reloadData()
+        //        }
+        //
+        //        if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+        //            currentUser=nil
+        //            isLogin = false
+        //            tableView.reloadData()
+        //        }
         
         //        fetchData()
         //self.navigationController?.isNavigationBarHidden = true
@@ -181,38 +181,39 @@ class UserSettingsVC: UIViewController {
     
     //MARK:-User methods
     
-     fileprivate func updateUserProfile()  {
-            currentUser=cacheCurrentUserCodabe.storedValue
-            if currentUser != nil {
-                return
-            }
-            guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
-            //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-           progressHudProperties()
-            
-            let dispatchGroup = DispatchGroup()
-            dispatchGroup.enter()
-            
-            UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
-                if let err=err{
-                    DispatchQueue.main.async {
-                                            self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
-
-                    }
-    //                SVProgressHUD.showError(withStatus: err.localizedDescription)
-                    self.activeViewsIfNoData();return
+    fileprivate func updateUserProfile()  {
+        currentUser=cacheCurrentUserCodabe.storedValue
+        if currentUser != nil {
+            return
+        }
+        guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
+        //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        progressHudProperties()
+        
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        
+        UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
+            if let err=err{
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+                    
                 }
-                dispatchGroup.leave()
-                SVProgressHUD.dismiss()
-                self.activeViewsIfNoData() // disbale all events in the screen
-                guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-                self.currentUser = user
-                
-                self.fetchInfo(user)
-                
+                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
+                self.activeViewsIfNoData();return
             }
+            dispatchGroup.leave()
+            SVProgressHUD.dismiss()
+            self.activeViewsIfNoData() // disbale all events in the screen
+            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+            self.currentUser = user
+            
+            self.fetchInfo(user)
             
         }
+        
+    }
     
     fileprivate func fetchInfo(_ user:UserModel)  {
         guard let url = URL(string: user.photoURL) else{return}
@@ -226,16 +227,18 @@ class UserSettingsVC: UIViewController {
             //            UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
             var group1: BaseSettingModel?
             //        var group2: BaseAqarModel?
-            SVProgressHUD.setForegroundColor(UIColor.green)
-            SVProgressHUD.show(withStatus: "Looding....".localized)
-            
+            //            SVProgressHUD.setForegroundColor(UIColor.green)
+            //            SVProgressHUD.show(withStatus: "Looding....".localized)
+            progressHudProperties()
             let dispatchGroup = DispatchGroup()
             dispatchGroup.enter()
             
             SettingServices.shared.getAllSettings(completion: { (base, error) in
                 dispatchGroup.leave()
                 if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+                    //                    SVProgressHUD.showError(withStatus: error.localizedDescription)
                     self.activeViewsIfNoData();return
                 }
                 group1 = base
@@ -257,7 +260,7 @@ class UserSettingsVC: UIViewController {
     }
     
     fileprivate func setupViews()  {
-        view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1)//ColorConstant.mainBackgroundColor
+        view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1) //ColorConstant.mainBackgroundColor
         view.addSubview(mainImage)
         mainImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor,padding: .init(top: 16, left: -8, bottom: -8, right: -8))
         mainImage.addSubview(tableView)
@@ -357,9 +360,9 @@ class UserSettingsVC: UIViewController {
     }
     
     @objc func handleDoneError()  {
-              removeViewWithAnimation(vvv: customErrorView)
-              customMainAlertVC.dismiss(animated: true)
-          }
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
 }
 
 //MARK:-Extensions
@@ -368,13 +371,18 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return  4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let ss = section == 3 && isLogin == true
-        let dd = section == 3 && isLogin == false
-        return section == 0 ? 1 : section == 2 ? 1 : ss ? 4  :  dd ? 3 : 2
+        if !isLogin {
+            return section == 2 ? 1 : section == 3 ? 4 : 0
+        }else {
+            return section == 0 ? 1 : section == 2 ? 1 : section == 1 ? 2  :  5
+        }
+        //        let ss = section == 3 && isLogin == true
+        //        let dd = section == 3 && isLogin == false
+        //        return section == 0 ? 1 : section == 2 ? 1 : ss ? 4  :  dd ? 3 : 2
     }
     
     
@@ -402,14 +410,17 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 3 {
             if indexPath.row == 0 {
                 addCellValues(cell, section: 3, index: 0, text: "Languages".localized, image: #imageLiteral(resourceName: "Group 3927-1"))
-            } else if indexPath.row == 1 {
-                addCellValues(cell, section: 3, index: 1, text: "Help".localized, image: #imageLiteral(resourceName: "Group 3928-1"))
             } else if indexPath.row == 2 {
+                addCellValues(cell, section: 3, index: 1, text: "Help".localized, image: #imageLiteral(resourceName: "Group 3928-1"))
+            } else if indexPath.row == 1 {
                 addCellValues(cell, section: 3, index: 2, text: "Contact Us".localized, image: #imageLiteral(resourceName: "Group 3929-1"))
-            }else {
-                let ss = !checkIfNotLogin()
-                addCellValues(cell, section: 3, index: 0, text: "LogOut".localized, image: #imageLiteral(resourceName: "Group 3930-1"),hide: !isLogin)
-                
+            }else if indexPath.row == 3 {
+                addCellValues(cell, section: 3, index: 3, text: "Share Us".localized, image: #imageLiteral(resourceName: "Group 3929-1"))
+            }
+            else {
+                //                let ss = !checkIfNotLogin()
+                //                addCellValues(cell, section: 3, index: 0, text: "LogOut".localized, image: #imageLiteral(resourceName: "Group 3930-1"),hide: !isLogin)
+                addCellValues(cell, section: 3, index: 0, text: "LogOut".localized, image: #imageLiteral(resourceName: "Group 3930-1"))
             }
         }
         return cell
@@ -422,7 +433,12 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 100 : 30
+        if isLogin {
+            return section == 0 ? 130 :  60
+        }else {
+            return section == 0 ? 130 : section == 1 ? 0 : 60
+        }
+        
     }
     
     fileprivate func sigoutUser() {
@@ -441,7 +457,7 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         self.currentUser = nil
         cacheCurrentUserCodabe.deleteFile(cacheCurrentUserCodabe.storedValue!)
         
-        isLogin = !isLogin
+        isLogin = false
         customTopUserView.userNameLabel.text = "Login".localized
         customTopUserView.userImageView.image = #imageLiteral(resourceName: "Group 3931-1")
         creatMainSnackBar(message: "Sign Out Successfully...".localized)
@@ -481,45 +497,47 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
             
             if indexPath.section == 0  {
                 if indexPath.row == 0 {
-                    if checkIfNotLogin() {
-                        goToChatVC()
-                    }else {
-                        customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-                        self.customAlerLoginView.problemsView.play()
-                        
-                        customAlerLoginView.problemsView.loopMode = .loop
-                        
-                        self.present(self.customMainAlertVC, animated: true)
-                    }
+                    goToChatVC()
+                    //                    if checkIfNotLogin() {
+                    //
+                    //                    }else {
+                    //                        customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+                    //                        self.customAlerLoginView.problemsView.play()
+                    //
+                    //                        customAlerLoginView.problemsView.loopMode = .loop
+                    //
+                    //                        self.present(self.customMainAlertVC, animated: true)
+                    //                    }
                     
                 }
             }else if indexPath.section == 1 {
                 if indexPath.row == 0 { //edit profile
-                    if checkIfNotLogin() {
-                        goToEditProfile()
-                    }else {
-                        customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-                        self.customAlerLoginView.problemsView.play()
-                        
-                        customAlerLoginView.problemsView.loopMode = .loop
-                        self.timerForAlerting.invalidate()
-                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
-                        self.present(self.customMainAlertVC, animated: true)
-                    }
+                    goToEditProfile()
+                    //                    if checkIfNotLogin() {
+                    //                        goToEditProfile()
+                    //                    }else {
+                    //                        customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+                    //                        self.customAlerLoginView.problemsView.play()
+                    //
+                    //                        customAlerLoginView.problemsView.loopMode = .loop
+                    //                        self.timerForAlerting.invalidate()
+                    //                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+                    //                        self.present(self.customMainAlertVC, animated: true)
+                    //                    }
                 }else if indexPath.row == 1 { //change password
-                    
-                    if checkIfNotLogin() {
-                        
-                        goToChangePaasowrd()
-                    }else {
-                        customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-                        self.customAlerLoginView.problemsView.play()
-                        
-                        customAlerLoginView.problemsView.loopMode = .loop
-                        self.timerForAlerting.invalidate()
-                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
-                        self.present(self.customMainAlertVC, animated: true)
-                    }
+                    goToChangePaasowrd()
+                    //                    if checkIfNotLogin() {
+                    //
+                    //                        goToChangePaasowrd()
+                    //                    }else {
+                    //                        customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+                    //                        self.customAlerLoginView.problemsView.play()
+                    //
+                    //                        customAlerLoginView.problemsView.loopMode = .loop
+                    //                        self.timerForAlerting.invalidate()
+                    //                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+                    //                        self.present(self.customMainAlertVC, animated: true)
+                    //                    }
                 }
             }
             else if indexPath.section == 3 {
@@ -539,16 +557,24 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
                     let contact = ContactUsVC()
                     navigationController?.pushViewController(contact, animated: true)
                 }else {
-                    if checkIfNotLogin() {
-                        customMainAlertVC.addCustomViewInCenter(views: customSignOutView, height: 200)
-                        self.customSignOutView.problemsView.play()
-                        
-                        customSignOutView.problemsView.loopMode = .loop
-                        
-                        self.present(self.customMainAlertVC, animated: true)
-                    }else {
-                        self.creatMainSnackBar(message: "You Must Log In First...".localized)
-                    }
+                    
+                    customMainAlertVC.addCustomViewInCenter(views: customSignOutView, height: 200)
+                    self.customSignOutView.problemsView.play()
+                    
+                    customSignOutView.problemsView.loopMode = .loop
+                    
+                    self.present(self.customMainAlertVC, animated: true)
+                    
+                    //                    if checkIfNotLogin() {
+                    //                        customMainAlertVC.addCustomViewInCenter(views: customSignOutView, height: 200)
+                    //                        self.customSignOutView.problemsView.play()
+                    //
+                    //                        customSignOutView.problemsView.loopMode = .loop
+                    //
+                    //                        self.present(self.customMainAlertVC, animated: true)
+                    //                    }else {
+                    //                        self.creatMainSnackBar(message: "You Must Log In First...".localized)
+                    //                    }
                 }
             }
         }
@@ -567,10 +593,13 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         let text = section == 0 ? "" : section == 1 ? "Profile".localized : section == 2 ? "Notifications".localized : "General".localized
         
         let label = UILabel(text: text, font: .systemFont(ofSize: 20), textColor: .black)
+        label.constrainHeight(constant: 40)
         label.backgroundColor = .white
-        label.padding = .init(top: 0, left: 24, bottom: 0, right: 0)
         label.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
-        return label
+        let v = UIView(backgroundColor: .white)
+        v.addSubview(label)
+        label.anchor(top: nil, leading: v.leadingAnchor, bottom: v.bottomAnchor, trailing: v.trailingAnchor,padding: .init(top: 0, left: 32, bottom: 0, right: 32))
+        return v
     }
     
     func checkIfNotLogin() -> Bool  {

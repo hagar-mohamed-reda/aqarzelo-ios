@@ -24,13 +24,18 @@ class LocationVC: UIViewController {
     }()
     lazy var userProfileImage:UIImageView = {
         let la = UIImageView(image:UIImage(named: "settings"))
-        la.constrainWidth(constant: 40)
-        la.constrainHeight(constant: 40)
-        la.layer.cornerRadius = 20
-        //        la.frame = .init(x: 0, y: 0, width: 40, height: 40)
-        la.clipsToBounds = true
+        la.constrainWidth(constant: 30)
+        la.constrainHeight(constant: 30)
         la.isUserInteractionEnabled = true
         la.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowUser)))
+        return la
+    }()
+    lazy var filterImage:UIImageView = {
+        let la = UIImageView(image:UIImage(named: "funnel"))
+        la.constrainWidth(constant: 30)
+        la.constrainHeight(constant: 30)
+        la.isUserInteractionEnabled = true
+        la.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowMenu)))
         return la
     }()
     lazy var closeImage:UIImageView = {
@@ -488,7 +493,7 @@ class LocationVC: UIViewController {
     
     fileprivate  func signOutUser()  {
         currentUser = nil
-        userProfileImage.image = #imageLiteral(resourceName: "man-user")
+//        userProfileImage.image = #imageLiteral(resourceName: "man-user")
         fetchRecoomedPosts()
     }
     
@@ -555,7 +560,8 @@ class LocationVC: UIViewController {
         navigationController?.navigationBar.backgroundColor = .red
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: userProfileImage)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "funnel") ?? #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterImage)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "funnel") ?? #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
     }
     
     func aaddCustomConfirmationView(text:String) {
@@ -581,9 +587,10 @@ class LocationVC: UIViewController {
     //TODO:-Handle methods
     //remove popup view
     @objc fileprivate func handleDismiss()  {
-        if isCloseNavAppear == 1 {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
-        }
+//        if isCloseNavAppear == 1 {
+//            filterImage.image = UIImageView(image:UIImage(named: "funnel"))
+////            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
+//        }
         removeViewWithAnimation(vvv: customAlerLoginView)
         dismiss(animated: true, completion: nil)
     }
@@ -813,7 +820,7 @@ extension LocationVC:GMSMapViewDelegate {
             present(customMainAlertVC, animated: true, completion: nil)
             //            userDefaults.set(true, forKey: UserDefaultsConstants.isAdsAppeared)
             //            userDefaults.synchronize()
-            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeImage)
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeImage)
         }
         return true
     }
