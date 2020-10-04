@@ -173,11 +173,11 @@ class LocationVC: UIViewController {
         statusBarBackgroundColor()
         
         
-        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
-            let welcome = WelcomeVC()
-            welcome.modalPresentationStyle = .fullScreen
-            present(welcome, animated: true)
-        }else    {
+//        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
+//            let welcome = WelcomeVC()
+//            welcome.modalPresentationStyle = .fullScreen
+//            present(welcome, animated: true)
+//        }else    {
             
             if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined)  {
                 updateUserProfile()
@@ -229,7 +229,7 @@ class LocationVC: UIViewController {
             }else {
                 //                checkUserLogin()
             }
-        }
+//        }
         
         //                }
     }

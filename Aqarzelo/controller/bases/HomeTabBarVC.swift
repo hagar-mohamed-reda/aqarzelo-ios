@@ -130,9 +130,9 @@ class HomeTabBarVC: UITabBarController {
         tabBar.barTintColor = #colorLiteral(red: 0.9966195226, green: 0.9997286201, blue: 0.9998206496, alpha: 1)
         
         viewControllers = [
-            
-            cart ,
             location,
+            cart ,
+            
             
             
             notification,
@@ -234,15 +234,19 @@ extension HomeTabBarVC: UITabBarControllerDelegate {
                 showAlertLogin()
                 tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
                 tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
+                return
             }
             if tabBarController.selectedIndex == 3{
                 tabBarController.selectedIndex = self.selectedIndexxx
                 tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysOriginal)
                 tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
                 showAlertLogin()
+                return
             }
-            
-            
+            if tabBarController.selectedIndex == 0 || tabBarController.selectedIndex == 1 {
+                tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
+                tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
+            }
         }else {}
         
     }

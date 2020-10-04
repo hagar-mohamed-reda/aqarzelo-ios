@@ -100,16 +100,18 @@ class NotificationCollectionVC: BaseCollectionVC {
             self.timerForAlerting.invalidate()
             self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
             self.present(self.customMainAlertVC, animated: true)
-        }else if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+//        }else if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+//            userDefaults.bool(forKey: UserDefaultsConstants.isNotificationsFetched) ? () : loadNotifications()
+//        }else {
+        }else{
             userDefaults.bool(forKey: UserDefaultsConstants.isNotificationsFetched) ? () : loadNotifications()
-        }else {
-            customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-            self.customAlerLoginView.problemsView.play()
-            
-            customAlerLoginView.problemsView.loopMode = .loop
-            self.timerForAlerting.invalidate()
-            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
-            self.present(self.customMainAlertVC, animated: true)
+//            customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+//            self.customAlerLoginView.problemsView.play()
+//            
+//            customAlerLoginView.problemsView.loopMode = .loop
+//            self.timerForAlerting.invalidate()
+//            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+//            self.present(self.customMainAlertVC, animated: true)
         }
         tabBarController?.tabBar.isHide(false)
         problemsView.play()
