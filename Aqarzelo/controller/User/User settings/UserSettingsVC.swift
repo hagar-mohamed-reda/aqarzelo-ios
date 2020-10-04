@@ -415,7 +415,7 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
             } else if indexPath.row == 1 {
                 addCellValues(cell, section: 3, index: 2, text: "Contact Us".localized, image: #imageLiteral(resourceName: "Group 3929-1"))
             }else if indexPath.row == 3 {
-                addCellValues(cell, section: 3, index: 3, text: "Share Us".localized, image: #imageLiteral(resourceName: "Group 3929-1"))
+                addCellValues(cell, section: 3, index: 3, text: "Share Us".localized, image: UIImage(named: "share") ?? #imageLiteral(resourceName: "Group 3929-1"),hide: true)
             }
             else {
                 //                let ss = !checkIfNotLogin()
@@ -556,6 +556,10 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
                     
                     let contact = ContactUsVC()
                     navigationController?.pushViewController(contact, animated: true)
+                }else if indexPath.row == 3 {
+                    
+                    
+                    shareApplciation()
                 }else {
                     
                     customMainAlertVC.addCustomViewInCenter(views: customSignOutView, height: 200)
@@ -627,11 +631,24 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func addCellValues(_ cell: BaseSettingCell,section:Int,index:Int,text:String,image:UIImage,hide:Bool? = false) {
         cell.nameLabel.text = text
+        cell.logoImageView.isHide(hide ?? false)
         cell.logoImageView.image = image
-        [cell.nameLabel,cell.logoImageView].forEach({$0.isHide(hide ?? false)})
+        cell.logo22ImageView.isHide(!(hide ?? true))
+//        [cell.nameLabel,cell.logoImageView].forEach({$0.isHide(hide ?? false)})
     }
     
-    
+    func shareApplciation()  {
+        //Set the default sharing message.
+        let message = "Share app with friends...".localized
+               //Set the link to share.
+               if let link = URL(string: "https://play.google.com/store/apps/details?id=com.aqarzelo.aqarzelo")
+               {
+                let objectsToShare = [message,link] as [Any]
+                   let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+                self.present(activityVC, animated: true, completion: nil)
+               }
+    }
     
     
     

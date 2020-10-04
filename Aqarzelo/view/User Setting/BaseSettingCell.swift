@@ -12,24 +12,27 @@ import MOLH
 
 class BaseSettingCell: BaseTableViewCell {
     
-//    lazy var mainView:UIView = {
-//       let v = UIView()
-//    v.constrainWidth(constant: 42)
-//        v.constrainHeight(constant: 42)
-//        v.layer.cornerRadius = 21
-//        v.addSubview(logoImageView)
-//        return v
-//    }()
     lazy var logoImageView:UIImageView = {
        let i = UIImageView( )
-//        i.constrainWidth(constant: 20)
-//        i.constrainHeight(constant: 20)
-//        i.layer.cornerRadius = 10
-//        i.contentMode = .scaleAspectFit
         i.constrainWidth(constant: 42)
         i.constrainHeight(constant: 42)
-
+//        i.isHide(true)
         i.clipsToBounds = true
+        return i
+    }()
+    lazy var logo22ImageView:UIView = {
+        let i = UIView(backgroundColor: .green)
+        i.constrainWidth(constant: 42)
+        i.layer.cornerRadius = 21
+        i.clipsToBounds = true
+        i.constrainHeight(constant: 42)
+        i.addSubview(shareImageView)
+        shareImageView.centerInSuperview()
+        return i
+    }()
+    lazy var shareImageView:UIImageView = {
+       let i = UIImageView(image: UIImage(named: "share"))
+        i.contentMode = .scaleAspectFit
         return i
     }()
     
@@ -39,7 +42,7 @@ class BaseSettingCell: BaseTableViewCell {
         accessoryType = .disclosureIndicator
         backgroundColor = .white
         nameLabel.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
-        hstack(logoImageView,nameLabel,spacing: 16,alignment:.center).withMargins(.init(top: 8, left: 32, bottom: 8, right: 0))
+        hstack(logo22ImageView,logoImageView,nameLabel,spacing: 16,alignment:.center).withMargins(.init(top: 8, left: 32, bottom: 8, right: 0))
 //        logoImageView.centerInSuperview()
     }
 }
