@@ -153,9 +153,6 @@ extension Tesxtcx: UITextFieldDelegate {
                let formatter = NumberFormatter()
                formatter.numberStyle = .decimal
                formatter.maximumFractionDigits = 2
-               // Combine the new text with the old; then remove any
-               // commas from the textField before formatting
-               
                
                let newString = text.replacingCharacters(in: textRange,  with: string)
                
@@ -175,7 +172,8 @@ extension Tesxtcx: UITextFieldDelegate {
                    textField.text = nil
                }
            }
-        
+        return false
+    }
         //good solution
         
         //check if any numbers in the textField exist before editing
@@ -203,7 +201,7 @@ extension Tesxtcx: UITextFieldDelegate {
 //        textField.text = formattedNum
 //        return true
 
-        return false
-    }
+//        return false
+//    }
     
 }
