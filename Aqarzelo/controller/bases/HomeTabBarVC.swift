@@ -196,12 +196,13 @@ class HomeTabBarVC: UITabBarController {
         let nav = UINavigationController(rootViewController: login)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
-        
+        removeIconTitle()
         
     }
     
     @objc fileprivate func handleSignUp ()  {
         removeViewWithAnimation(vvv: customAlerLoginView)
+       
         customMainAlertVC.dismiss(animated: true)
         let login = LoginVC()
         let nav = UINavigationController(rootViewController: login)
@@ -209,12 +210,19 @@ class HomeTabBarVC: UITabBarController {
         present(nav, animated: true) {
             login.handlSignUp()
         }
-        
+        removeIconTitle()
+    }
+    
+    func removeIconTitle()  {
+        guard let tabs = tabBar.items else {return}
+        tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
+        tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
     }
     
     @objc fileprivate func handleDismiss()  {
         removeViewWithAnimation(vvv: customAlerLoginView)
         dismiss(animated: true, completion: nil)
+        removeIconTitle()
     }
     
 }

@@ -18,7 +18,7 @@ class CustomChangeLanguageView: CustomBaseView {
     
     
     lazy var errorLabel = UILabel(text: "Language".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: MOLHLanguage.isRTLLanguage() ? .right : .left)
-    lazy var errorInfoLabel = UILabel(text: "Change Your Current Language".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: MOLHLanguage.isRTLLanguage() ? .right : .left,numberOfLines: 2)
+    lazy var errorInfoLabel = UILabel(text: "Change Your Current Language".localized, font: .systemFont(ofSize: 20), textColor: .black,textAlignment: .center,numberOfLines: 2)
     lazy var seperatorView:UIView = {
         let v = UIView(backgroundColor: .black)
         v.constrainHeight(constant: 1)

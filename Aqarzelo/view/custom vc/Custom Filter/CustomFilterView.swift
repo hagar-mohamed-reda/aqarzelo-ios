@@ -146,7 +146,7 @@ class CustomFilterView:CustomBaseView {
         let b = UIButton()
         b.setTitle("Submit".localized, for: .normal)
         b.setTitleColor(.black, for: .normal)
-        b.backgroundColor = ColorConstant.mainBackgroundColor
+        b.backgroundColor = #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1) //ColorConstant.mainBackgroundColor
         b.constrainHeight(constant: 50)
         b.layer.cornerRadius = 16
         b.layer.borderWidth = 4

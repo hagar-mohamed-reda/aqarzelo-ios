@@ -41,6 +41,8 @@ class UserSettingsVC: UIViewController {
         t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
         t.modalTransitionStyle = .crossDissolve
         t.modalPresentationStyle = .overCurrentContext
+//        t.view.backgroundColor = .white
+//        t.view.alpha = 0.2
         return t
     }()
     
@@ -87,10 +89,10 @@ class UserSettingsVC: UIViewController {
                     }else{
                         self.customMainAlertVC.addCustomViewInCenter(views: self.customAlerLoginView, height: 200)
                         self.customAlerLoginView.problemsView.play()
-                        
+                        self.customMainAlertVC.view.backgroundColor = .lightGray
                         self.customAlerLoginView.problemsView.loopMode = .loop
-                        self.timerForAlerting.invalidate()
-                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+//                        self.timerForAlerting.invalidate()
+//                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
                         self.present(self.customMainAlertVC, animated: true)
                     }
                 }
@@ -132,7 +134,7 @@ class UserSettingsVC: UIViewController {
     var baseSetttingData: BaseSettingModel?
     fileprivate let cellId="cellId"
     fileprivate let cellNotifyId = "cellNotifyId"
-    fileprivate var isLogin = true
+    fileprivate var isLogin = false
     fileprivate var isDataFetched = true
     
     
@@ -151,25 +153,26 @@ class UserSettingsVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
         showOrHideCustomTabBar(hide: true)
         
-        //        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
-        //            updateUserProfile()
-        //            isLogin = true
-        //            tableView.reloadData()
-        //        }
-        //
-        //        if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser != nil{
-        //            currentUser = cacheCurrentUserCodabe.storedValue
-        //            isLogin = true
-        //            tableView.reloadData()
-        //        }
-        //
-        //        if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-        //            currentUser=nil
-        //            isLogin = false
-        //            tableView.reloadData()
-        //        }
+                if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
+//                    updateUserProfile()
+                    currentUser = cacheCurrentUserCodabe.storedValue
+                    isLogin = true
+                    tableView.reloadData()
+                }
         
-        //        fetchData()
+//                if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser != nil{
+//                    currentUser = cacheCurrentUserCodabe.storedValue
+//                    isLogin = true
+//                    tableView.reloadData()
+//                }
+        
+                if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+                    currentUser=nil
+                    isLogin = false
+                    tableView.reloadData()
+                }
+        
+//                fetchData()
         //self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -181,39 +184,39 @@ class UserSettingsVC: UIViewController {
     
     //MARK:-User methods
     
-    fileprivate func updateUserProfile()  {
-        currentUser=cacheCurrentUserCodabe.storedValue
-        if currentUser != nil {
-            return
-        }
-        guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
-        //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-        progressHudProperties()
-        
-        let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        
-        UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
-            if let err=err{
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
-                    
-                }
-                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
-                self.activeViewsIfNoData();return
-            }
-            dispatchGroup.leave()
-            SVProgressHUD.dismiss()
-            self.activeViewsIfNoData() // disbale all events in the screen
-            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-            self.currentUser = user
-            
-            self.fetchInfo(user)
-            
-        }
-        
-    }
+//    fileprivate func updateUserProfile()  {
+//        currentUser=cacheCurrentUserCodabe.storedValue
+//        if currentUser != nil {
+//            return
+//        }
+//        guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
+//        //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+//        progressHudProperties()
+//
+//        let dispatchGroup = DispatchGroup()
+//        dispatchGroup.enter()
+//
+//        UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
+//            if let err=err{
+//                DispatchQueue.main.async {
+//                    SVProgressHUD.dismiss()
+//                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+//
+//                }
+//                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
+//                self.activeViewsIfNoData();return
+//            }
+//            dispatchGroup.leave()
+//            SVProgressHUD.dismiss()
+//            self.activeViewsIfNoData() // disbale all events in the screen
+//            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+//            self.currentUser = user
+//
+//            self.fetchInfo(user)
+//
+//        }
+//
+//    }
     
     fileprivate func fetchInfo(_ user:UserModel)  {
         guard let url = URL(string: user.photoURL) else{return}
@@ -378,7 +381,7 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         if !isLogin {
             return section == 2 ? 1 : section == 3 ? 4 : 0
         }else {
-            return section == 0 ? 1 : section == 2 ? 1 : section == 1 ? 2  :  5
+            return section == 0 ? 1 : section == 2 ? 1 : section == 1 ? 3  :  5
         }
         //        let ss = section == 3 && isLogin == true
         //        let dd = section == 3 && isLogin == false
@@ -404,8 +407,10 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 addCellValues(cell, section: 1, index: 0, text: "Edit Profile".localized, image: #imageLiteral(resourceName: "Group 3924-2"))
+            }else if indexPath.row == 1 {
+                addCellValues(cell, section: 2, index: 0, text: "Change Password".localized, image: #imageLiteral(resourceName: "Group 3925-2"))
             }else {
-                addCellValues(cell, section: 2, index: 1, text: "Change Password".localized, image: #imageLiteral(resourceName: "Group 3925-2"))
+                addCellValues(cell, section: 3, index: 0, text: "My Posts".localized, image: #imageLiteral(resourceName: "Group 3925-2"),hide: true,isMyPosts: true)
             }
         }else if indexPath.section == 3 {
             if indexPath.row == 0 {
@@ -434,9 +439,9 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if isLogin {
-            return section == 0 ? 130 :  60
+            return section == 0 ? 100 :  60
         }else {
-            return section == 0 ? 130 : section == 1 ? 0 : 60
+            return section == 0 ? 100 : section == 1 ? 0 : 60
         }
         
     }
@@ -483,15 +488,26 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(change, animated: true)
     }
     
+    func goToPosts()  {
+        let p = SecondUserPostsCollectionVC()
+        
+        navigationController?.pushViewController(p, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if !ConnectivityInternet.isConnectedToInternet {
+        if indexPath.section == 2 {
+            let cell = tableView.cellForRow(at: indexPath) as! NotificationSettingCell
+            cell.stateNotificationSwitcher.isOn = !cell.stateNotificationSwitcher.isOn
+            
+        }else if !ConnectivityInternet.isConnectedToInternet {
             customMainAlertVC.addCustomViewInCenter(views:customNoInternetView , height: 200)
             self.customNoInternetView.problemsView.play()
             
+//            self.customMainAlertVC.view.backgroundColor = .lightGray
             customNoInternetView.problemsView.loopMode = .loop
-            self.timerForAlerting.invalidate()
-            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+//            self.timerForAlerting.invalidate()
+//            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
             self.present(customMainAlertVC, animated: true)
         }else {
             
@@ -538,23 +554,25 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
                     //                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
                     //                        self.present(self.customMainAlertVC, animated: true)
                     //                    }
+                }else {
+                    goToPosts()
                 }
             }
             else if indexPath.section == 3 {
                 if indexPath.row == 0 {
                     //                tableView.deselectRow(at: indexPath, animated: false)
                     
-                    customMainAlertVC.addCustomViewInCenter(views: customChangeLanguage, height: 200)
+                    customMainAlertVC.addCustomViewInCenter(views: customChangeLanguage, height: 150)
                     self.present(self.customMainAlertVC, animated: true)
                 } else if indexPath.row == 1 {
-                    let help = HelpVC()
+                    let help = ContactUsVC()
                     //                    _ = MOLHLanguage.isRTLLanguage() ? baseSetttingData?.data[5] : baseSetttingData?.data[1]
                     //                    help.help = setting
                     navigationController?.pushViewController(help, animated: true)
                 }else if indexPath.row == 2 {
                     
                     
-                    let contact = ContactUsVC()
+                    let contact = HelpVC()
                     navigationController?.pushViewController(contact, animated: true)
                 }else if indexPath.row == 3 {
                     
@@ -602,7 +620,7 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         label.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
         let v = UIView(backgroundColor: .white)
         v.addSubview(label)
-        label.anchor(top: nil, leading: v.leadingAnchor, bottom: v.bottomAnchor, trailing: v.trailingAnchor,padding: .init(top: 0, left: 32, bottom: 0, right: 32))
+        label.anchor(top: nil, leading: v.leadingAnchor, bottom: v.bottomAnchor, trailing: v.trailingAnchor,padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         return v
     }
     
@@ -629,12 +647,20 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         navigationItem.title = "Setting".localized
     }
     
-    fileprivate func addCellValues(_ cell: BaseSettingCell,section:Int,index:Int,text:String,image:UIImage,hide:Bool? = false) {
+    fileprivate func addCellValues(_ cell: BaseSettingCell,section:Int,index:Int,text:String,image:UIImage,hide:Bool? = false,isMyPosts:Bool? = false) {
         cell.nameLabel.text = text
         cell.logoImageView.isHide(hide ?? false)
         cell.logoImageView.image = image
         cell.logo22ImageView.isHide(!(hide ?? true))
-//        [cell.nameLabel,cell.logoImageView].forEach({$0.isHide(hide ?? false)})
+        if isMyPosts == true  {
+            cell.whiteView.isHide(false)
+            cell.shareImageView.isHide(true)
+            cell.logo22ImageView.backgroundColor =  #colorLiteral(red: 0.01636079699, green: 0.4339088202, blue: 0.9952475429, alpha: 1)
+        }else {
+            cell.whiteView.isHide(true)
+            cell.shareImageView.isHide(false)
+            cell.logo22ImageView.backgroundColor =  #colorLiteral(red: 0.3691211641, green: 0.6540648937, blue: 0.02052302659, alpha: 1)
+        }
     }
     
     func shareApplciation()  {
@@ -653,4 +679,16 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     
     
+}
+
+
+extension UserSettingsVC:UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let x = scrollView.contentOffset.y
+      
+        if x < 0 {
+            scrollView.contentOffset.y =  0
+        }
+    }
 }

@@ -12,7 +12,7 @@
 //WelcomeVC
 
 "current location" = " الموقع الحالي ";
-"What do you want the application \n to open on the map ?" = " ما الموقع الذي تريد فتح التطبيق \n عليه؟  ";
+"What Location you want the application \n to opened on ?" = " ما الموقع الذي تريد فتح التطبيق \n عليه؟  ";
 "AQAR ZELO" = "AQAR ZELO";
 "Go location" = " اختر موقع ";
 

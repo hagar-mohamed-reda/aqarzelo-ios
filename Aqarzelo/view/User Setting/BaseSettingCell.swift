@@ -21,18 +21,30 @@ class BaseSettingCell: BaseTableViewCell {
         return i
     }()
     lazy var logo22ImageView:UIView = {
-        let i = UIView(backgroundColor: .green)
+        let i = UIView(backgroundColor: #colorLiteral(red: 0.3691211641, green: 0.6540648937, blue: 0.02052302659, alpha: 1))
         i.constrainWidth(constant: 42)
         i.layer.cornerRadius = 21
         i.clipsToBounds = true
         i.constrainHeight(constant: 42)
-        i.addSubview(shareImageView)
+        i.addSubViews(views: whiteView,shareImageView)
         shareImageView.centerInSuperview()
+        whiteView.centerInSuperview()
+        return i
+    }()
+   
+    lazy var whiteView:UIView = {
+        let i = UIView(backgroundColor: .white)
+        i.constrainWidth(constant: 22)
+        i.layer.cornerRadius = 11
+        i.clipsToBounds = true
+        i.constrainHeight(constant: 22)
+        i.isHide(false)
         return i
     }()
     lazy var shareImageView:UIImageView = {
        let i = UIImageView(image: UIImage(named: "share"))
         i.contentMode = .scaleAspectFit
+//        i.isHide(true)
         return i
     }()
     

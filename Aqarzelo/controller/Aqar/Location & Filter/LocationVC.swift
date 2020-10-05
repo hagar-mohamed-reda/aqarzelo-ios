@@ -24,6 +24,8 @@ class LocationVC: UIViewController {
     }()
     lazy var userProfileImage:UIImageView = {
         let la = UIImageView(image:UIImage(named: "settings"))
+        la.tintColor = .white
+        
         la.constrainWidth(constant: 30)
         la.constrainHeight(constant: 30)
         la.isUserInteractionEnabled = true
@@ -31,20 +33,13 @@ class LocationVC: UIViewController {
         return la
     }()
     lazy var filterImage:UIImageView = {
-        let la = UIImageView(image:UIImage(named: "funnel"))
-        la.constrainWidth(constant: 30)
-        la.constrainHeight(constant: 30)
+        let la = UIImageView(image:UIImage(named: "filter"))
+        la.constrainWidth(constant: 20)
+        la.constrainHeight(constant: 20)
         la.isUserInteractionEnabled = true
         la.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowMenu)))
         return la
     }()
-    lazy var closeImage:UIImageView = {
-        let la = UIImageView(image: #imageLiteral(resourceName: "×-1"))
-        la.isUserInteractionEnabled = true
-        la.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemvoeAds)))
-        return la
-    }()
-    
     lazy var customMainAlertVC:CustomMainAlertVC = {
         let t = CustomMainAlertVC()
         t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
@@ -132,8 +127,8 @@ class LocationVC: UIViewController {
     var aqarsArray = [AqarModel]()
     var adsArray = [AdsModel]()
     
-    var isCloseNavAppear: Int = 0
-    var timerForAlerting  = Timer()
+//    var isCloseNavAppear: Int = 0
+//    var timerForAlerting  = Timer()
     
     
     override func viewDidLoad() {
@@ -146,6 +141,7 @@ class LocationVC: UIViewController {
         getData()
         setupNavigation()
         getUserLocation()
+        fetchRecoomedPosts()
         //        statusBarBackgroundColor()
     }
     
@@ -188,9 +184,10 @@ class LocationVC: UIViewController {
                 currentUser=nil
             }
             
-            if userDefaults.bool(forKey: UserDefaultsConstants.isAllCachedHome) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts) {
-                fetchRecoomedPosts()
-            }else{}
+//            if userDefaults.bool(forKey: UserDefaultsConstants.isAllCachedHome) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts) {
+//                fetchRecoomedPosts()
+//            }
+            else{}
             
             
             
@@ -209,21 +206,21 @@ class LocationVC: UIViewController {
                 self.customNoInternetView.problemsView.play()
                 
                 self.customNoInternetView.problemsView.loopMode = .loop
-                timerForAlerting.invalidate()
-                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
-                self.present(customMainAlertVC, animated: true)
+//                timerForAlerting.invalidate()
+//                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customNoInternetView"], repeats: false)
+//                self.present(customMainAlertVC, animated: true)
             }else if ConnectivityInternet.isConnectedToInternet && userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {//|| isCheckUserLocation {
                 //            getUserLocation()
                 fetchUserProfile()
             }else if ConnectivityInternet.isConnectedToInternet && !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && userDefaults.bool(forKey: UserDefaultsConstants.fetchRecommendPosts)  {
                 fetchRecoomedPosts()
-                customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
-                self.customAlerLoginView.problemsView.play()
+//                customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
+//                self.customAlerLoginView.problemsView.play()
                 
-                customAlerLoginView.problemsView.loopMode = .loop
-                timerForAlerting.invalidate()
-                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
-                self.present(customMainAlertVC, animated: true)
+//                customAlerLoginView.problemsView.loopMode = .loop
+//                timerForAlerting.invalidate()
+//                timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+//                self.present(customMainAlertVC, animated: true)
                 
                 
             }else {
@@ -287,15 +284,15 @@ class LocationVC: UIViewController {
         
     }
     
-    @objc  func fireTimer(timer:Timer)  {
-        if  let userInfo = timerForAlerting.userInfo as? [String: String]   {
-            
-            removeViewWithAnimation(vvv: customNoInternetView)
-            removeViewWithAnimation(vvv: customAlerLoginView)
-            
-            customMainAlertVC.dismiss(animated: true)
-        }
-    }
+//    @objc  func fireTimer(timer:Timer)  {
+//        if  let userInfo = timerForAlerting.userInfo as? [String: String]   {
+//
+//            removeViewWithAnimation(vvv: customNoInternetView)
+//            removeViewWithAnimation(vvv: customAlerLoginView)
+//
+//            customMainAlertVC.dismiss(animated: true)
+//        }
+//    }
     
     fileprivate func handleOpenAqar(_ aqar:AqarModel)  {
         
@@ -502,7 +499,7 @@ class LocationVC: UIViewController {
     }
     
     fileprivate func fetchRecoomedPosts()  {
-        if aqarsArray != nil && aqarsArray.count < 0  {
+        if aqarsArray != nil && aqarsArray.count > 0  {
             return
         }
         //        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
@@ -654,15 +651,15 @@ class LocationVC: UIViewController {
         customMainAlertVC.dismiss(animated: true)
     }
     
-    @objc func handleRemvoeAds()  {
-        removeViewWithAnimation(vvv: customAqarView)
-        removeViewWithAnimation(vvv: discriptionAqarView)
-        customMainAlertVC.dismiss(animated: true)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
-        isCloseNavAppear = 2
-        
-        
-    }
+//    @objc func handleRemvoeAds()  {
+//        removeViewWithAnimation(vvv: customAqarView)
+//        removeViewWithAnimation(vvv: discriptionAqarView)
+//        customMainAlertVC.dismiss(animated: true)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "textfield").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShowMenu))
+//        isCloseNavAppear = 2
+//
+//
+//    }
 }
 
 // MARK: - UIScrollViewDelegate
@@ -757,6 +754,7 @@ extension LocationVC: UICollectionViewDelegate, UICollectionViewDataSource,UICol
             self.customLocationView.mapView.clear()
             self.addMarkerInMapView()
             self.customLocationView.collectionView.reloadData()
+            self.view.layoutIfNeeded()
         }
     }
 }
@@ -816,7 +814,7 @@ extension LocationVC:GMSMapViewDelegate {
             //            addCustomViewInCenter(views:customAqarView, height: 150)
             customMainAlertVC.addCustomViewInCenter(views:customAqarView, height: 150)
             addDiscriptionAqarView()
-            isCloseNavAppear = 1
+//            isCloseNavAppear = 1
             present(customMainAlertVC, animated: true, completion: nil)
             //            userDefaults.set(true, forKey: UserDefaultsConstants.isAdsAppeared)
             //            userDefaults.synchronize()

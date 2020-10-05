@@ -29,14 +29,19 @@ class ContactUsVC: UIViewController {
     }()
     
     lazy var logoImage:UIImageView = {
-        let i = UIImageView(image: #imageLiteral(resourceName: "يبير").withRenderingMode(.alwaysTemplate))
-        i.translatesAutoresizingMaskIntoConstraints = false
+        let i = UIImageView(image: #imageLiteral(resourceName: "يبير").withRenderingMode(.alwaysOriginal))
         i.contentMode = .scaleToFill
-        i.constrainHeight(constant: view.frame.height/3)
-        i.constrainWidth(constant: view.frame.width/3)
-        
-        //        i.clipsToBounds = true
         return i
+    }()
+    lazy var vv:UIView = {
+       let v = UIView(backgroundColor: #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1))
+        v.addSubview(logoImage)
+        logoImage.centerInSuperview()
+        v.constrainWidth(constant: 100)
+        v.constrainHeight(constant: 100)
+        v.layer.cornerRadius = 50
+        v.clipsToBounds=true
+        return v
     }()
     var images = [#imageLiteral(resourceName: "twitter (3)"),#imageLiteral(resourceName: "google-plus"),#imageLiteral(resourceName: "facebook (6)"),#imageLiteral(resourceName: "snapchat (1)")]
     
@@ -59,7 +64,7 @@ class ContactUsVC: UIViewController {
         return i
     }()
     lazy var telephoneImageView: UIImageView = {
-        let i = UIImageView(image: #imageLiteral(resourceName: "whatsapp (2)"))
+        let i = UIImageView(image: #imageLiteral(resourceName: "Group 3923"))
         i.translatesAutoresizingMaskIntoConstraints = false
         i.constrainHeight(constant: 40)
         i.constrainWidth(constant: 40)
@@ -96,35 +101,39 @@ class ContactUsVC: UIViewController {
     fileprivate func createImagesButton(image:UIImage,tag:Int) -> UIImageView  {
         let i = UIImageView(image: image)
         i.tag = tag
-        i.contentMode = .scaleAspectFit
+        i.contentMode = .scaleAspectFill
         i.isUserInteractionEnabled = true
+        i.constrainWidth(constant: 40)
+        i.constrainHeight(constant: 40)
         return i
     }
     
     fileprivate func setupViews()  {
         view.backgroundColor = #colorLiteral(red: 0.3416801989, green: 0.7294322848, blue: 0.6897809505, alpha: 1) //ColorConstant.mainBackgroundColor
-        let imageStack = getStack(views: UIView(),twitterImage,facebookImage,youtubImage,UIView(), spacing: 8, distribution: .fillEqually, axis: .horizontal)
-        
+        let imageStack = getStack(views: UIView(),twitterImage,facebookImage,youtubImage,UIView(), spacing: 16, distribution: .fillEqually, axis: .horizontal)
         let group = !MOLHLanguage.isRTLLanguage() ?  getStack(views: emailImageView,emailLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),emailLabel,emailImageView, spacing: 8, distribution: .fill, axis: .horizontal)
         
         let group2 = !MOLHLanguage.isRTLLanguage() ?  getStack(views: telephoneImageView,telphoneLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),telphoneLabel,telephoneImageView, spacing: 8, distribution: .fill, axis: .horizontal)
         
         let mainGroup = getStack(views: group,group2, spacing: 8, distribution: .fillEqually, axis: .vertical)
         
-        view.addSubViews(views: mainView,logoImage,followLabel,imageStack,contactLabel,mainGroup)
+        view.addSubViews(views: mainView,vv,followLabel,imageStack,contactLabel,mainGroup)
         
         
         mainView.fillSuperview(padding: .init(top: 16, left: 0, bottom: -16, right: 0))
         
         NSLayoutConstraint.activate([
-            logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            vv.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageStack.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
-        logoImage.anchor(top: nil, leading: nil, bottom: followLabel.topAnchor, trailing: nil,padding: .init(top: 0, left: 0, bottom: 16, right: 32))
-        followLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: imageStack.topAnchor, trailing: view.trailingAnchor,padding: .init(top: 0, left: 0, bottom: 16, right: 0))
-        imageStack.centerInSuperview(size: .init(width: view.frame.width - 64, height: 40))
-        contactLabel.anchor(top: imageStack.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 32, left: 0, bottom: 0, right: 0))
-        mainGroup.anchor(top: contactLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 32, left: 64, bottom: 0, right: 64))
+        vv.anchor(top:view.topAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 32, left: 0, bottom: 16, right: 32))
+        followLabel.anchor(top: vv.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        imageStack.anchor(top: followLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+
+//        imageStack.centerInSuperview(size: .init(width: view.frame.width - 64, height: 40))
+        contactLabel.anchor(top: imageStack.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        mainGroup.anchor(top: contactLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 0, left: 64, bottom: 0, right: 64))
     }
     
     fileprivate func setupNavigation()  {

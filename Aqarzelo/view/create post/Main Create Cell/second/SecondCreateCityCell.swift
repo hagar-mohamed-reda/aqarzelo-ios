@@ -19,7 +19,7 @@ class SecondCreateCityCell: BaseCollectionCell {
             iconImageView.image = #imageLiteral(resourceName: "Group 3938")
             iconImageView.isUserInteractionEnabled = true
             //            cityDrop.selectedIndex = aqar.cityID-1
-            cityDrop.text = MOLHLanguage.isRTLLanguage() ? aqar.city.nameAr :  aqar.city.nameEn
+            cityDrop.text = MOLHLanguage.isRTLLanguage() ? aqar.city?.nameAr :  aqar.city?.nameEn
             cityDrop.selectedIndex = aqar.cityID-1
             //            let cc = aqar.cityID
             //

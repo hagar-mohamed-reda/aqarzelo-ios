@@ -33,7 +33,7 @@ struct AqarModel:Codable {
     var distance: Double?
     var category: Area?
     let images: [ImageModel]
-    let city: Area
+    var city: Area?
     var area:Area?
     
     let rate, views, rates: Int

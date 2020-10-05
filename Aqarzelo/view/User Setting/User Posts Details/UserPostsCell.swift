@@ -48,7 +48,7 @@ class UserPostsCell: BaseCollectionCell {
     lazy var postTitleLabel = UILabel(text: "", font: .systemFont(ofSize: 14), textColor: .black)
     
     lazy var postInfoLabel = UILabel(text: "", font: .systemFont(ofSize: 12), textColor: .white,textAlignment: .center)
-    lazy var postStatusLabel = UILabel(text: "", font: .systemFont(ofSize: 12), textColor: .lightGray,textAlignment: .center)
+    lazy var postStatusLabel = UILabel(text: "", font: .systemFont(ofSize: 18), textColor: .brown,textAlignment: .center)
     
     var handleMoreOptions:((AqarModel,Int)->())?
     

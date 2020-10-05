@@ -25,12 +25,12 @@ class CustomWelcomeView: UIView {
     }()
     
     lazy var mainLabel:UILabel = UILabel(text: "AQAR ZELO".localized, font: .systemFont(ofSize: 44), textColor: .white, textAlignment: .center)
-    lazy var infoLabel = UILabel(text: "What do you want the application \n to open on the map ?".localized, font: .systemFont(ofSize: 12), textColor: .white,textAlignment: .center, numberOfLines: 2)
+    lazy var infoLabel = UILabel(text: "What Location you want the application \n to opened on ?".localized, font: .systemFont(ofSize: 20), textColor: .white,textAlignment: .center, numberOfLines: 2)
     lazy var currentLocationButton:UIButton = {
         let b = UIButton()
         b.setTitle("current location".localized, for: .normal)
         b.setTitleColor(.white, for: .normal)
-        b.backgroundColor = #colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1)
+        b.backgroundColor = #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1) //#colorLiteral(red: 0.2100089788, green: 0.8682586551, blue: 0.7271742225, alpha: 1)
         b.constrainHeight(constant: 60)
         b.layer.borderWidth = 4
         b.layer.borderColor = #colorLiteral(red: 0.2211710215, green: 0.7151315808, blue: 0.645074904, alpha: 1).cgColor
