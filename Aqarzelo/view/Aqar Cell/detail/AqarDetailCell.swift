@@ -28,13 +28,13 @@ class AqarDetailCell: BaseCollectionCell {
         didSet{
             guard let aqar = aqar else { return }
             
-            titleLabel.text = MOLHLanguage.isRTLLanguage() ? aqar.titleAr : aqar.title
-             let km = aqar.price >= 1000000 ? "M".localized :  "K".localized
+            titleLabel.text = MOLHLanguage.isRTLLanguage() ? aqar.titleAr :  aqar.title
+            let km = aqar.price >= 1000000 ? "M".localized :  "K".localized
                        let k = aqar.price >= 1000000 ? aqar.price / 1000000 : aqar.price / 1000
-            let space = aqar.space
+            let space = Int(aqar.space.toInt() ?? 0/1000)
             
-            priceLabel.text = "\(k) "+"EGY".localized
-            distanceLabel.text = "\(space) "+"K".localized
+            priceLabel.text = "\(k) \(km) "
+            distanceLabel.text = "\(space) "+"M²".localized
             reviewLabel.text = "\(aqar.userReview.count) "+"Reviews".localized
             
             for(index,view ) in starsStackView.arrangedSubviews.enumerated(){

@@ -61,7 +61,7 @@ class AqarDetailsInfoVC: UIViewController {
         return i
     }()
     lazy var bView:UIView = {
-        let v = UIView(backgroundColor: .gray)
+        let v = UIView(backgroundColor: UIColor(white: 0.6, alpha: 1))
         v.constrainWidth(constant: 30)
         v.constrainHeight(constant: 30)
         v.layer.cornerRadius = 15
@@ -69,7 +69,7 @@ class AqarDetailsInfoVC: UIViewController {
         v.layer.borderColor = UIColor.gray.cgColor
         v.clipsToBounds = true
         v.addSubview(backImageView)
-        backImageView.fillSuperview()
+        backImageView.centerInSuperview()
         v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBack)))
         return v
     }()

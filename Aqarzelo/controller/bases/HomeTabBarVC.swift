@@ -134,9 +134,9 @@ class HomeTabBarVC: UITabBarController {
             cart ,
             
             
-            
-            notification,
             love,
+            notification,
+           
         ]
         guard let items = tabBar.items else { return }
         var myDefaultFontSize: CGFloat = -8
@@ -215,8 +215,8 @@ class HomeTabBarVC: UITabBarController {
     
     func removeIconTitle()  {
         guard let tabs = tabBar.items else {return}
-        tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
-        tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
+        tabs[3].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
+        tabs[2].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
     }
     
     @objc fileprivate func handleDismiss()  {
@@ -240,20 +240,20 @@ extension HomeTabBarVC: UITabBarControllerDelegate {
             if tabBarController.selectedIndex == 2{
                 tabBarController.selectedIndex = self.selectedIndexxx
                 showAlertLogin()
-                tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
-                tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
+                tabs[3].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
+                tabs[2].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
                 return
             }
             if tabBarController.selectedIndex == 3{
                 tabBarController.selectedIndex = self.selectedIndexxx
-                tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysOriginal)
-                tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
+                tabs[2].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysOriginal)
+                tabs[3].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
                 showAlertLogin()
                 return
             }
             if tabBarController.selectedIndex == 0 || tabBarController.selectedIndex == 1 {
-                tabs[2].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
-                tabs[3].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
+                tabs[3].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
+                tabs[2].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
             }
         }else {}
         

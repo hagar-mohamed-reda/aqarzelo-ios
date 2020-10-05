@@ -19,16 +19,29 @@ class SecondUserPostsCollectionVC: UICollectionViewController, UICollectionViewD
         return refreshControl
         
     }()
+    lazy var customErrorView:CustomErrorView = {
+        let v = CustomErrorView()
+        v.setupAnimation(name: "4970-unapproved-cross")
+        v.okButton.addTarget(self, action: #selector(handleDoneError), for: .touchUpInside)
+        return v
+    }()
+    lazy var customMainAlertVC:CustomMainAlertVC = {
+        let t = CustomMainAlertVC()
+        t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        t.modalTransitionStyle = .crossDissolve
+        t.modalPresentationStyle = .overCurrentContext
+        return t
+    }()
     
     var user:UserModel?  {
         didSet{
             guard let user=user else{return}
+            handleRefreshCollections()
         }
     }
     
     fileprivate let cellId = "cellId"
     var postsArray:[AqarModel] = [ ]
-    var delgate: UserPostsCollectionVCProtocol?
     
     
     override func viewDidLoad() {
@@ -37,7 +50,7 @@ class SecondUserPostsCollectionVC: UICollectionViewController, UICollectionViewD
         setupCollections()
         setupNavigation()
         statusBarBackgroundColor()
-        handleRefreshCollection()
+        
         
         statusBarBackgroundColor()
         
@@ -85,7 +98,72 @@ class SecondUserPostsCollectionVC: UICollectionViewController, UICollectionViewD
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index   = indexPath.item
         let post = postsArray[indexPath.item]
-        self.delgate?.handleTakePost(post: post,index: index)
+        makePostAlert(post: post, index: index)
+    }
+    
+    func makePostAlert(post:AqarModel,index:Int)  {
+        let alert = UIAlertController(title: "Choose Options".localized, message: "What do you want to make?".localized, preferredStyle: .actionSheet)
+        let display = UIAlertAction(title: "Display".localized, style: .default) { (_) in
+            self.displayPost(aqar: post)
+        }
+        let edit = UIAlertAction(title: "Edit".localized, style: .default) { (_) in
+            self.updatePost(aqar: post)
+        }
+        let delete = UIAlertAction(title: "Delete".localized, style: .destructive) { (_) in
+            self.deletePost(post: post, index: index)
+        }
+        let cancel = UIAlertAction(title: "Cancel".localized, style: .default) { (_) in
+            alert.dismiss(animated: true)
+        }
+        alert.addAction(display)
+        alert.addAction(edit)
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+    
+    func deletePost(post:AqarModel,index:Int)  {
+        guard let user = user else { return  }
+        
+        view.isUserInteractionEnabled=false
+//        UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+        progressHudProperties()
+        PostServices.shared.deletePost(api_token: user.apiToken, post_id: post.id ) { (base, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.callMainError(err: error.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+                }
+                self.activeViewsIfNoData();return
+            }
+            SVProgressHUD.dismiss()
+            self.activeViewsIfNoData()
+            self.postsArray.remove(at: index)
+            DispatchQueue.main.async {
+                UIApplication.shared.endIgnoringInteractionEvents()
+                SVProgressHUD.dismiss()
+                
+                self.collectionView.reloadData()
+                
+            }
+        }
+    }
+    
+    func updatePost(aqar:AqarModel)  {
+        guard let user = user else { return  }
+        
+        let list = ListOfPhotoMainSecVC(currentUserToken:  user.apiToken, isFromUpdatePost: true)//ListOfPhotoCollectionVC( currentUserToken: user.apiToken)
+        list.aqar = aqar
+        navigationController?.pushViewController(list, animated: true)
+    }
+    
+    func displayPost(aqar: AqarModel)  {
+        guard let user = user else { return  }
+        
+        let detailAqar = AqarDetailsInfoVC(aqar: aqar)
+        //        detailAqar.aqarsArray = aqarsArray
+        detailAqar.userToken = user.apiToken
+        navigationController?.pushViewController(detailAqar, animated: true)
     }
     
     //MARK:-User methods
@@ -114,7 +192,7 @@ class SecondUserPostsCollectionVC: UICollectionViewController, UICollectionViewD
         collectionView.refreshControl = refreshControl
     }
     
-    func handleRefreshCollection()  {
+    func handleRefreshCollections()  {
         
         
         guard let user = user else { return  }
@@ -184,10 +262,17 @@ class SecondUserPostsCollectionVC: UICollectionViewController, UICollectionViewD
     }
     
     @objc func didPullToRefresh()  {
-        handleRefreshCollection()
+        handleRefreshCollections()
     }
     
+    @objc func handleDismiss()  {
+        dismiss(animated: true, completion: nil)
+    }
     
+    @objc func handleDoneError()  {
+        removeViewWithAnimation(vvv: customErrorView)
+        customMainAlertVC.dismiss(animated: true)
+    }
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
