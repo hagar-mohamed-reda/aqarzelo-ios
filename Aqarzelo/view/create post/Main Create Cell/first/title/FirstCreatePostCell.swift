@@ -38,7 +38,7 @@ class FirstCreatePostCell: BaseCollectionCell,UITextFieldDelegate {
         
         return v
     }()
-    lazy var titleLabel = UILabel(text: "Title".localized, font: .systemFont(ofSize: 20), textColor: .black)
+    lazy var titleLabel = UILabel(text: "Title in English".localized, font: .systemFont(ofSize: 20), textColor: .black)
     
     lazy var textView:UITextView = {
         let tx = UITextView()

@@ -133,6 +133,8 @@ extension FirstCreateSpaceCell: UITextViewDelegate {
             handleTextContents?(Int(priceString) ?? 0,true)
         }
     }
+    
+    
 }
     
     

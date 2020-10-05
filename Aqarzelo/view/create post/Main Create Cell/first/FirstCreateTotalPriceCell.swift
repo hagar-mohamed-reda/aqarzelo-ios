@@ -52,6 +52,8 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
         tx.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left
         tx.delegate = self
         tx.sizeToFit()
+        
+//        tx.addTarget(self, action:#selector(textFieldValDidChange), for: .editingChanged)
         return tx
     }()
     
@@ -106,6 +108,16 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
         
     }
     
+    @objc func textFieldValDidChange(_ textField: UITextField) {
+       let formatter = NumberFormatter()
+       formatter.numberStyle = NumberFormatter.Style.decimal
+       if textField.text!.count >= 1 {
+//          let number = Double(bottomView.balanceTxtField.text!.replacingOccurrences(of: ",", with: ""))
+//           let result = formatter.string(from: NSNumber(value: number!))
+//           textField.text = result!
+       }
+   }
+    
     deinit {
         NotificationCenter.default.removeObserver(self) //for avoiding retain cycle
     }
@@ -118,7 +130,10 @@ extension FirstCreateTotalPriceCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         mainView.layer.borderColor = UIColor.black.cgColor
-        guard var texts = textView.text else { return  }
+        guard var texts = textView.text,let xx=texts.toInt() else { return  }
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:xx))
         priceString = texts
         
         if  texts.count == 0 {
@@ -128,6 +143,66 @@ extension FirstCreateTotalPriceCell: UITextViewDelegate {
             priceString = texts
             handleTextContents?(Int(priceString) ?? 0,true)
         }
+    
     }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let textFieldHasText = (textView.text), !textFieldHasText.isEmpty else {
+            //early escape if nil
+            return true
+        }
+
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.decimal
+
+        //remove any existing commas
+        let textRemovedCommma = textFieldHasText.replacingOccurrences(of: ",", with: "")
+
+        //update the textField with commas
+        let formattedNum = formatter.string(from: NSNumber(value: Int(textRemovedCommma)!))
+        textView.text = formattedNum
+        return false
+    }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//            if ((string == "0" || string == "") && (textField.text! as NSString).range(of: ".").location < range.location) {
+//                return true
+//            }
+//
+//            // First check whether the replacement string's numeric...
+//            let cs = NSCharacterSet(charactersIn: "0123456789.").inverted
+//            let filtered = string.components(separatedBy: cs)
+//            let component = filtered.joined(separator: "")
+//            let isNumeric = string == component
+//
+//            // Then if the replacement string's numeric, or if it's
+//            // a backspace, or if it's a decimal point and the text
+//            // field doesn't already contain a decimal point,
+//            // reformat the new complete number using
+//            if isNumeric {
+//                let formatter = NumberFormatter()
+//                formatter.numberStyle = .decimal
+//                formatter.maximumFractionDigits = 8
+//                // Combine the new text with the old; then remove any
+//                // commas from the textField before formatting
+//                let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+//                let numberWithOutCommas = newString.replacingOccurrences(of: ",", with: "")
+//                let number = formatter.number(from: numberWithOutCommas)
+//                if number != nil {
+//                    var formattedString = formatter.string(from: number!)
+//                    // If the last entry was a decimal or a zero after a decimal,
+//                    // re-add it here because the formatter will naturally remove
+//                    // it.
+//                    if string == "." && range.location == textField.text?.count {
+//                        formattedString = formattedString?.appending(".")
+//                    }
+//                    textField.text = formattedString
+//                } else {
+//                    textField.text = nil
+//                }
+//            }
+//            return false
+//    }
+   
 }
     

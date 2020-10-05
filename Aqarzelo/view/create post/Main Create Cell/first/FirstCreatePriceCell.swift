@@ -135,5 +135,23 @@ extension FirstCreatePriceCell: UITextViewDelegate {
             handleTextContents?(Int(priceString) ?? 0,true)
         }
     }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let textFieldHasText = (textView.text), !textFieldHasText.isEmpty else {
+            //early escape if nil
+            return true
+        }
+
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.decimal
+
+        //remove any existing commas
+        let textRemovedCommma = textFieldHasText.replacingOccurrences(of: ",", with: "")
+
+        //update the textField with commas
+        let formattedNum = formatter.string(from: NSNumber(value: Int(textRemovedCommma)!))
+        textView.text = formattedNum
+        return false
+    }
 }
 
