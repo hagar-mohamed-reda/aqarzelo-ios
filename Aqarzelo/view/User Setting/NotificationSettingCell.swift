@@ -24,6 +24,7 @@ class NotificationSettingCell: BaseTableViewCell {
     lazy var stateNotificationSwitcher:UISwitch = {
        let s = UISwitch()
         s.isOn = true
+        s.onTintColor = #colorLiteral(red: 0.4288144112, green: 0.849390924, blue: 0.6894794703, alpha: 1)
         s.addTarget(self, action: #selector(handleOnOff), for: .valueChanged)
         return s
     }()

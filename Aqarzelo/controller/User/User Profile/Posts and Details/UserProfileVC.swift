@@ -91,6 +91,7 @@ class UserProfileVC: UIViewController {
         //        v.isUserInteractionEnabled = true
         v.postsButton.addTarget(self, action: #selector(handleShowPosts), for: .touchUpInside)
         v.detailsButton.addTarget(self, action: #selector(handleShowDetails), for: .touchUpInside)
+//        v.setupShadow(opacity: 1, radius: 16, offset: .zero, color: UIColor.black)
         return v
     }()
     
@@ -410,7 +411,7 @@ class UserProfileVC: UIViewController {
     
     @objc fileprivate func handleShowPosts(sender:UIButton)  {
         print(2356)
-        sender.setTitleColor(.blue, for: .normal)
+        sender.setTitleColor(#colorLiteral(red: 0.5761474967, green: 0.9580560327, blue: 0.9207853079, alpha: 1), for: .normal)
         postsDetailsView.detailsButton.setTitleColor(.black, for: .normal)
         userPostsCollectionView.view.isHide(false)
         userDetailsCollectionView.view.isHide(true)
@@ -418,7 +419,7 @@ class UserProfileVC: UIViewController {
     
     @objc fileprivate func handleShowDetails(sender:UIButton)  {
         print(365)
-        sender.setTitleColor(.blue, for: .normal)
+        sender.setTitleColor(#colorLiteral(red: 0.5761474967, green: 0.9580560327, blue: 0.9207853079, alpha: 1), for: .normal)
         postsDetailsView.postsButton.setTitleColor(.black, for: .normal)
         userDetailsCollectionView.view.isHide(false)
         userPostsCollectionView.view.isHide(true)

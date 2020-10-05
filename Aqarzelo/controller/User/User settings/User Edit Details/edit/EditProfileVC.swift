@@ -37,7 +37,23 @@ class EditProfileVC: UIViewController {
         t.modalPresentationStyle = .overCurrentContext
         return t
     }()
-    
+//    lazy var bView:UIView = {
+//        let v = UIView(backgroundColor: UIColor(white: 0.6, alpha: 1))
+//        v.constrainWidth(constant: 30)
+//        v.constrainHeight(constant: 30)
+//        v.layer.cornerRadius = 15
+//        v.layer.borderWidth = 3
+//        v.layer.borderColor = UIColor.gray.cgColor
+//        v.clipsToBounds = true
+//        v.addSubview(backImageView)
+//        backImageView.centerInSuperview()
+//        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBack)))
+//        return v
+//    }()
+//    lazy var backImageView:UIImageView = {
+//        let i =  UIImageView(image:  MOLHLanguage.isRTLLanguage() ?  #imageLiteral(resourceName: "left-arrow") : #imageLiteral(resourceName: "back button-2"))
+//        return i
+//    }()
     var delgate:EditProfileVCProtocol?
     
     fileprivate var currentUser:UserModel!
@@ -137,11 +153,12 @@ class EditProfileVC: UIViewController {
         let img:UIImage = (MOLHLanguage.isRTLLanguage() ?  UIImage(named:"back button-2") : #imageLiteral(resourceName: "back button-2")) ?? #imageLiteral(resourceName: "back button-2")
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: img.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
+//            UIBarButtonItem(customView:bView )
         //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back button-2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBack))
     }
     
     func changeButtonState(sender:UIButton)  {
-        sender.backgroundColor = #colorLiteral(red: 0.4301581085, green: 0.8535569906, blue: 0.6972886324, alpha: 1)//ColorConstant.mainBackgroundColor
+        sender.backgroundColor = #colorLiteral(red: 0.4301581085, green: 0.8535569906, blue: 0.6972886324, alpha: 1) //ColorConstant.mainBackgroundColor
         sender.setTitleColor(.white, for: .normal)
         customUpadteUserVview.cancelButton.backgroundColor = .white
         customUpadteUserVview.cancelButton.setTitleColor(.black, for: .normal)

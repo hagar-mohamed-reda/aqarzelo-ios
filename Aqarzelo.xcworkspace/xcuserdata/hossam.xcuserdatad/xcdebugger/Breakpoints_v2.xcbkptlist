@@ -2710,8 +2710,8 @@
             filePath = "Aqarzelo/view/User Setting/NotificationSettingCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "handleOnOff(sender:)"
             landmarkType = "7">
          </BreakpointContent>

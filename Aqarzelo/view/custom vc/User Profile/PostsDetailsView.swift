@@ -15,7 +15,7 @@ class PostsDetailsView: UIView {
     lazy var postsButton:UIButton = {
         let b = UIButton()
         b.setTitle("Posts".localized, for: .normal)
-        b.setTitleColor(.blue, for: .normal)
+        b.setTitleColor(#colorLiteral(red: 0.5761474967, green: 0.9580560327, blue: 0.9207853079, alpha: 1), for: .normal)
         b.backgroundColor = .white
         return b
     }()
@@ -40,10 +40,12 @@ class PostsDetailsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        layer.cornerRadius = 16
+        layer.cornerRadius = 24
         layer.borderWidth = 3
         layer.borderColor = #colorLiteral(red: 0.9761839509, green: 0.9763434529, blue: 0.9761499763, alpha: 1).cgColor
-        clipsToBounds = true
+       
+        dropShadow(color: .red, offSet: CGSize(width: 2.0, height: 2.0))
+//        clipsToBounds = true
         setupViews()
     }
     
