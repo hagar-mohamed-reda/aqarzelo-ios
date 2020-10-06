@@ -138,6 +138,8 @@ class HomeTabBarVC: UITabBarController {
         viewControllers = [
             location,
             cart ,
+           
+           
             
             
             love,

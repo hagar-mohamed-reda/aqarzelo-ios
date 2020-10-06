@@ -164,6 +164,11 @@ class UserProfileVC: UIViewController {
         statusBarBackgroundColor()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        postsDetailsView.setupShadow(opacity: 1.0, radius: 6, offset: .init(width: 0, height: 0), color: .lightGray)
+    }
+    
     
     //MARK: - override methods
     

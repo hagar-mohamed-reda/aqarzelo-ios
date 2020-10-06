@@ -70,7 +70,7 @@ class CustomAddPostView: UIView {
         
         v.layer.cornerRadius = 24
         v.clipsToBounds=true
-        v.constrainHeight(constant: 50)
+//        v.constrainHeight(constant: 50)
         let la = UILabel(text: title, font: .systemFont(ofSize: 16), textColor: .black, textAlignment: .center)
         
         let im = UIImageView(image: image)

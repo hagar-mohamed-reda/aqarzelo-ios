@@ -72,7 +72,7 @@ class ContactUsVC: UIViewController {
         return i
     }()
     lazy var addressImageView: UIImageView = {
-        let i = UIImageView(image: #imageLiteral(resourceName: "Group 3923"))
+        let i = UIImageView(image: #imageLiteral(resourceName: "Group 3925-3"))
         i.translatesAutoresizingMaskIntoConstraints = false
         i.constrainHeight(constant: 40)
         i.constrainWidth(constant: 40)
@@ -124,11 +124,13 @@ class ContactUsVC: UIViewController {
         
         let group2 = !MOLHLanguage.isRTLLanguage() ?  getStack(views: telephoneImageView,telphoneLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),telphoneLabel,telephoneImageView, spacing: 8, distribution: .fill, axis: .horizontal)
         
+//        let vv = getStack(views: addressImageView,UIView(backgroundColor: .red), spacing: 0, distribution: .fill, axis: .vertical)
+//
 //        let group3 = !MOLHLanguage.isRTLLanguage() ?  getStack(views: vv,addressLabel, spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),addressLabel,vv, spacing: 8, distribution: .fill, axis: .horizontal)
 //        group3.constrainHeight(constant: 60)
         let mainGroup = getStack(views: group,group2, spacing: 8, distribution: .fillEqually, axis: .vertical)
         
-        view.addSubViews(views: mainView,vv,followLabel,imageStack,contactLabel,addressLabel,mainGroup)
+        view.addSubViews(views: mainView,vv,followLabel,imageStack,contactLabel,addressImageView,addressLabel,mainGroup)
         
         
         mainView.fillSuperview(padding: .init(top: 16, left: 0, bottom: -16, right: 0))
@@ -144,9 +146,11 @@ class ContactUsVC: UIViewController {
 
 //        imageStack.centerInSuperview(size: .init(width: view.frame.width - 64, height: 40))
         contactLabel.anchor(top: imageStack.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
-        addressLabel.anchor(top: contactLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 64, bottom: 0, right: 32))
+        
 
-        mainGroup.anchor(top: addressLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 64, bottom: 0, right: 32))
+        mainGroup.anchor(top: contactLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 64, bottom: 0, right: 32))
+        addressImageView.anchor(top: mainGroup.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil,padding: .init(top: 16, left: 64, bottom: 0, right: 32))
+        addressLabel.anchor(top: mainGroup.bottomAnchor, leading: addressImageView.trailingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 8, bottom: 0, right: 32))
     }
     
     fileprivate func setupNavigation()  {

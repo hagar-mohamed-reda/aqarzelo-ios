@@ -170,6 +170,8 @@ class LocationVC: UIViewController {
         
         if   userDefaults.bool(forKey: UserDefaultsConstants.isFirstUserLogined)  {
             handleShowUser()
+            userDefaults.set(false, forKey: UserDefaultsConstants.isFirstUserLogined)
+            userDefaults.synchronize()
         }else {
         
 //        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {

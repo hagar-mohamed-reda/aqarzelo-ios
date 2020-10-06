@@ -85,13 +85,13 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
         s.progress = 0
         s.progressTintColor =  #colorLiteral(red: 0.3672481477, green: 0.8992366791, blue: 0.7968696356, alpha: 1)
         s.isHide(true)
-        s.constrainHeight(constant: 1)
+        s.constrainHeight(constant: 5)
         return s
     }()
     lazy var trueImageView:UIImageView = {
         let i = UIImageView(image: #imageLiteral(resourceName: "correct"))
-        i.constrainWidth(constant: 32)
-        i.constrainHeight(constant: 32)
+        i.constrainWidth(constant: 42)
+        i.constrainHeight(constant: 42)
         i.clipsToBounds = true
         i.isHide(true)
         return i
@@ -101,7 +101,7 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
     lazy var progressLabel = UILabel(text: "20", font: .systemFont(ofSize: 16), textColor: .black)
     lazy var closeButton:UIButton = {
         let b = UIButton()
-        b.setImage(UIImage(named: "×-1"), for: .normal)
+        b.setImage(UIImage(systemName: "xmark")?.withRenderingMode(.alwaysOriginal), for: .normal)
         b.constrainWidth(constant: 40)
         b.addTarget(self, action: #selector(handleClose), for: .touchUpInside)
         return b
@@ -121,11 +121,36 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
     fileprivate func setupCornerCell() {
         layer.cornerRadius = 16
         clipsToBounds = true
-        layer.borderWidth = 3
-        layer.borderColor = UIColor.gray.cgColor
+        progressLabel.constrainWidth(constant: 40)
+//        layer.borderWidth = 3
+//        layer.borderColor = UIColor.gray.cgColor
         
         [progressLabel,namePhotoLabel,sizePhotoLabel].forEach({$0.isHide(true)})
     }
+    
+    override func layoutSubviews() {
+            super.layoutSubviews()
+            print("Layout subviews!")
+            setupShadow()
+        setupShadow(opacity: 1.0, radius: 6, offset: .init(width: 0, height: 0), color: .lightGray)
+
+        }
+    
+    var setupShadowDone: Bool = false
+    
+    public func setupShadow() {
+        layer.cornerRadius = 10.0
+          layer.masksToBounds = true
+           
+           layer.shadowColor = UIColor.lightGray.cgColor
+           layer.shadowOffset = CGSize(width: 0, height: 0.0)
+           layer.shadowRadius = 10.0
+           layer.shadowOpacity = 1.0
+           layer.masksToBounds = false
+           layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+        self.clipsToBounds = false
+        self.layer.masksToBounds = false
+       }
     
     override func setupViews() {
         setupCornerCell()
@@ -202,6 +227,6 @@ struct ContentView : View {
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewLayout(.fixed(width: 400, height: 100))
+            .previewLayout(.fixed(width: 400, height: 180))
     }
 }

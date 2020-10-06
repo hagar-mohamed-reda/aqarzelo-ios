@@ -10,9 +10,16 @@ import UIKit
 import SVProgressHUD
 import NaturalLanguage
 import MOLH
+import SwiftUI
 
 class Tesxtcx: UIViewController {
     
+    lazy var vvvv:UIView = {
+        let v = UIView(backgroundColor: .red)
+        v.constrainHeight(constant: 120)
+        v.constrainWidth(constant: 200)
+        return v
+    }()
     
     
     lazy var asd = UILabel(text: "cutomtopView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 60, left: 0, bottom: 0, right: 0)) let ind = MyIndicator(frame: CGRect(x: 0, y: 0, width: 100, height: 100), image: #imageLiteral(resourceName: ))  view.addSubview(ind)  ind.startAnimating()  view.addSubview(logoImageView) logoImageView.centerInSuperview()", font: .systemFont(ofSize: 25), textColor: .black,numberOfLines: 0)
@@ -43,13 +50,30 @@ class Tesxtcx: UIViewController {
         return tx
     }()
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        vvvv.setupShadow(opacity: 1.0, radius: 6, offset: .init(width: 0, height: 0), color: .lightGray)
+    }
+    
+    func asd(v:UIView)  {
+        v.layer.cornerRadius = 10.0
+           v.layer.masksToBounds = true
+           
+           v.layer.shadowColor = UIColor.black.cgColor
+           v.layer.shadowOffset = CGSize(width: 0, height: 0.0)
+           v.layer.shadowRadius = 10.0
+           v.layer.shadowOpacity = 1.0
+           v.layer.masksToBounds = false
+           v.layer.shadowPath = UIBezierPath(roundedRect: v.bounds, cornerRadius: v.layer.cornerRadius).cgPath
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .white
        detectedLanguage(for: "asdfsafsaf")
-        view.addSubview(textView)
+        view.addSubview(vvvv)
         
-        textView.centerInSuperview(size: .init(width: view.frame.width-64, height: 60))
+        vvvv.centerInSuperview()
 //        ddd.addCustomViewInCenter(views: customAlerLoginView, height: 200)
 //        self.customAlerLoginView.problemsView.play()
 //
@@ -80,6 +104,32 @@ class Tesxtcx: UIViewController {
     
    
 }
+
+
+struct AAsA:UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+    
+    func makeUIViewController(context: Context) -> some UIViewController {
+        return Tesxtcx()
+    }
+}
+
+struct ContentViews : View {
+    
+    var body: some View {
+        AAsA()
+    }
+}
+
+struct SwiftUIView_Previewss: PreviewProvider {
+    static var previews: some View {
+        ContentViews()
+//            .previewLayout(.fixed(width: 400, height: 120))
+    }
+}
+
 
 class ASD: UIViewController {
     
