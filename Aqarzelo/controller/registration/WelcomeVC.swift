@@ -78,7 +78,7 @@ class WelcomeVC: UIViewController {
     }
     
     
-    fileprivate func reloadMainData(group1:[CityModel]?,group2:[AreaModel]?,group3:[CityModel]?)  {
+    fileprivate func reloadMainData(group0:[CountryModel],group1:[CityModel]?,group2:[AreaModel]?,group3:[CityModel]?)  {
         
         var categoryNameArray = [String]()
         var cityNameData = [String]()
@@ -145,6 +145,7 @@ class WelcomeVC: UIViewController {
         
         
         var group1: [CityModel]?
+        var group0: [CountryModel]?
         var group2: [AreaModel]?
         var group3 : [CityModel]?
         
@@ -156,6 +157,14 @@ class WelcomeVC: UIViewController {
         
         
         dispatchQueue.async {
+            
+            FilterServices.shared.getCountries(completion: { (base,error) in
+                
+                group0 = base?.data
+                semaphore.signal()
+            })
+            semaphore.wait()
+            
             // uget citites
             FilterServices.shared.getCities(completion: { (base,error) in
                 
@@ -180,7 +189,7 @@ class WelcomeVC: UIViewController {
             
             
             semaphore.signal()
-            self.reloadMainData(group1: group1,group2: group2,group3:group3)
+            self.reloadMainData(group0:group0,group1: group1,group2: group2,group3:group3)
             semaphore.wait()
         }
     }

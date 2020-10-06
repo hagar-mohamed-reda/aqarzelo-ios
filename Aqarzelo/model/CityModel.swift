@@ -13,6 +13,7 @@ struct CityModel:Codable {
     let id: Int
     let nameAr, nameEn: String
     var createdAt, updatedAt:String?
+    var countryId: Int
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -20,6 +21,7 @@ struct CityModel:Codable {
         case nameEn = "name_en"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case countryId = "country_id"
     }
 }
 
