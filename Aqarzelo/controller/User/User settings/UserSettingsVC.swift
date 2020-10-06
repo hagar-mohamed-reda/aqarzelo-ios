@@ -153,6 +153,10 @@ class UserSettingsVC: UIViewController {
         tabBarController?.tabBar.isHidden = true
         showOrHideCustomTabBar(hide: true)
         
+        if userDefaults.bool(forKey: UserDefaultsConstants.isFirstUserLogined) {
+            creatMainSnackBar(message: "You are logged in successfully...".localized)
+        }
+        
                 if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
 //                    updateUserProfile()
                     currentUser = cacheCurrentUserCodabe.storedValue
