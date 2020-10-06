@@ -19,7 +19,7 @@ class FilterServices {
         RegistrationServices.registerationGetMethodGenerics(urlString: urlString, completion: completion)
     }
     
-    func getCountries(completion: @escaping (BaseAqarCategoryModel?, Error?) -> ())  {
+    func getCountries(completion: @escaping (BaseAqarCountryyModel?, Error?) -> ())  {
         let urlString = "http://aqarzelo.com/public/api/country/get".toSecrueHttps()
         //        fetchGenericJSONData(urlString: urlString,completion: completion)
         RegistrationServices.registerationGetMethodGenerics(urlString: urlString, completion: completion)

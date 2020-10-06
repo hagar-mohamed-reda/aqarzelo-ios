@@ -78,7 +78,7 @@ class WelcomeVC: UIViewController {
     }
     
     
-    fileprivate func reloadMainData(group0:[CountryModel],group1:[CityModel]?,group2:[AreaModel]?,group3:[CityModel]?)  {
+    fileprivate func reloadMainData(group0:[CountryModel]?,group1:[CityModel]?,group2:[AreaModel]?,group3:[CategoryModel]?)  {
         
         var categoryNameArray = [String]()
         var cityNameData = [String]()
@@ -97,12 +97,16 @@ class WelcomeVC: UIViewController {
             
             
             //            SVProgressHUD.dismiss()
-            
-            group1?.forEach({ (city) in
+            group0?.forEach({ (city) in
                 cityNameData.append(city.nameEn)
                 cityNameArabicData.append(city.nameAr)
                 cityIdData.append(city.id)
             })
+//            group1?.forEach({ (city) in
+//                cityNameData.append(city.nameEn)
+//                cityNameArabicData.append(city.nameAr)
+//                cityIdData.append(city.id)
+//            })
             group2?.forEach({ (area) in
                 areaNameDatas.append( area.nameEn)
                 areaNameArabicDatas.append(area.nameAr)
@@ -111,12 +115,17 @@ class WelcomeVC: UIViewController {
             })
             
             group3?.forEach({ (categ) in
-                categoryNameArray.append(categ.nameEn)
-                categoryNameArabicArray.append(categ.nameAr)
-                categoryIdArray.append(categ.id)
+                categoryNameArray.append(categ.name_en ?? "")
+                categoryNameArabicArray.append(categ.name_ar ?? "")
+                categoryIdArray.append(categ.id ?? 1)
             })
+            
+            
+            cacheCityInCodabe.deleteFile(group1)
+            cacheCityInCodabe.save(group1 ?? nil)
             cacheAreaInCodabe.deleteFile(group2)
             cacheAreaInCodabe.save(group2 ?? nil)
+            
             
             userDefaults.set(categoryIdArray, forKey: UserDefaultsConstants.categoryIdsArray)
             userDefaults.set(cityIdData, forKey: UserDefaultsConstants.cityIdArray)
@@ -147,7 +156,7 @@ class WelcomeVC: UIViewController {
         var group1: [CityModel]?
         var group0: [CountryModel]?
         var group2: [AreaModel]?
-        var group3 : [CityModel]?
+        var group3 : [CategoryModel]?
         
         
         //        SVProgressHUD.show(withStatus: "Looding....".localized)

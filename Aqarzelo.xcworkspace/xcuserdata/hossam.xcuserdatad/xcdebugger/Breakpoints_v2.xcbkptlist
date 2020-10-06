@@ -14,8 +14,8 @@
             filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "cachedDropLists()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,9 +30,9 @@
             filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "reloadMainData(group1:group2:group3:)"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "reloadMainData(group0:group1:group2:group3:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,8 +46,8 @@
             filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "cachedDropLists()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "cachedDropLists()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "cachedDropLists()"
             landmarkType = "7">
          </BreakpointContent>
@@ -176,8 +176,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
             endingLineNumber = "167"
-            landmarkName = "removeDefaults()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -192,8 +192,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "457"
             endingLineNumber = "457"
-            landmarkName = "FilterVC"
-            landmarkType = "3">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -670,8 +670,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1004,8 +1004,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "customFilterView"
-            landmarkType = "24">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1068,8 +1068,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "266"
             endingLineNumber = "266"
-            landmarkName = "getAreasUsingAPI(index:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "64606ABE-59BC-4C76-9CBA-9AE1728582D6 - 12f34292773846fe"
@@ -1674,9 +1674,9 @@
             filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "reloadMainData(group1:group2:group3:)"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "reloadMainData(group0:group1:group2:group3:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2344,8 +2344,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "275"
             endingLineNumber = "275"
-            landmarkName = "putThese(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2360,8 +2360,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "280"
             endingLineNumber = "280"
-            landmarkName = "putThese(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2376,8 +2376,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
             endingLineNumber = "277"
-            landmarkName = "putThese(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2392,8 +2392,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "296"
             endingLineNumber = "296"
-            landmarkName = "getAreaLists(index:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2408,8 +2408,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "292"
             endingLineNumber = "292"
-            landmarkName = "getAreaLists(index:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2422,9 +2422,9 @@
             filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "reloadMainData(group1:group2:group3:)"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "reloadMainData(group0:group1:group2:group3:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2438,9 +2438,9 @@
             filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "reloadMainData(group1:group2:group3:)"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "reloadMainData(group0:group1:group2:group3:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3129,6 +3129,38 @@
             startingLineNumber = "216"
             endingLineNumber = "216"
             landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "062D14F3-EE1D-4132-88E3-06EEBDD328E0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "cachedDropLists()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "709BD151-585D-48D6-B27D-8DF86997C5A7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/registration/WelcomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "cachedDropLists()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

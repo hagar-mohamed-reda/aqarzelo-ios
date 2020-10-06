@@ -34,7 +34,7 @@ struct BaseAqarCategoryModel:Codable {
     
     let status: Int
     let messageEn, messageAr: String
-    let data: [CityModel]
+    let data: [CategoryModel]
     
     enum CodingKeys: String, CodingKey {
         case status
