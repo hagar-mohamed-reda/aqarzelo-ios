@@ -51,7 +51,7 @@ class FirstCreatePostCell: BaseCollectionCell,UITextFieldDelegate {
         tx.sizeToFit()
         return tx
     }()
-    lazy var placeHolderLabel = UILabel(text: "Enter Message".localized, font: .systemFont(ofSize: 16), textColor: .lightGray)
+    lazy var placeHolderLabel = UILabel(text: "Enter Title".localized, font: .systemFont(ofSize: 16), textColor: .lightGray)
     lazy var mainView:UIView = {
         let l = UIView(backgroundColor: .white)
         l.layer.cornerRadius = 8
@@ -121,6 +121,7 @@ class FirstCreatePostCell: BaseCollectionCell,UITextFieldDelegate {
 extension FirstCreatePostCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
+        mainView.layer.borderColor = UIColor.black.cgColor
         guard var texts = textView.text else { return  }
         titleString = texts
         

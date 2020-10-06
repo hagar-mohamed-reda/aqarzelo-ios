@@ -278,9 +278,9 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
         case 6:
             height = isNumberOfBathRoomHidden ? 0 : !is7CellIsOpen ? 80 : 150
         case 7:
-            height = !is8CellIsOpen ? 80 : 150
+            height = !is8CellIsOpen ? 80 : 120
         default:
-            height = !is9CellIsOpen ? 80 : 150
+            height = !is9CellIsOpen ? 80 : 110
         }
         
         

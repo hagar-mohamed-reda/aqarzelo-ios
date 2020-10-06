@@ -44,20 +44,16 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
     }()
     lazy var textView:UITextView = {
         let tx = UITextView()
-        tx.addSubview(placeHolderLabel)
-        tx.isScrollEnabled = false
         tx.keyboardType = .numberPad
         tx.font = UIFont.systemFont(ofSize: 16)
-        //        tx.isHide(true)
         tx.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left
         tx.delegate = self
         tx.sizeToFit()
         
-//        tx.addTarget(self, action:#selector(textFieldValDidChange), for: .editingChanged)
         return tx
     }()
     
-    lazy var placeHolderLabel = UILabel(text: "Enter Message".localized, font: .systemFont(ofSize: 16), textColor: .lightGray)
+        lazy var placeHolderLabel = UILabel(text: "Enter Total Price".localized, font: .systemFont(ofSize: 16), textColor: .lightGray)
     lazy var priceLabel = UILabel(text: "Total Price".localized, font: .systemFont(ofSize: 20), textColor: .black)
     
     
@@ -75,9 +71,8 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
         [categoryLabel,priceLabel].forEach{($0.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left)}
         
         let ss = stack(iconImageView,UIView(),alignment:.center)//,distribution:.fill
-        mainView.addSubViews(views: textView,placeHolderLabel)
-        textView.fillSuperview(padding: .init(top: 0, left: 16, bottom: 0, right: 0))
-        placeHolderLabel.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: nil,padding: .init(top: 0, left: 16, bottom: 0, right: 0))
+        mainView.addSubViews(views: textView)
+        textView.fillSuperview(padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         let second = stack(categoryLabel,mainView,priceLabel,UIView(),spacing:8)
         
         hstack(ss,second,UIView(),spacing:16).withMargins(.init(top: 0, left: 32, bottom: 0, right: 8))
@@ -93,34 +88,28 @@ class FirstCreateTotalPriceCell: BaseCollectionCell {
         handleHidePreviousCell?(index)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleTextChanged), name: UITextView.textDidChangeNotification, object: nil)
-        
-    }
+   
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            NotificationCenter.default.addObserver(self, selector: #selector(handleTextChanged), name: UITextView.textDidChangeNotification, object: nil)
     
-    @objc  func handleTextChanged()  {
-        placeHolderLabel.isHidden = textView.text.count != 0
-        
-    }
+        }
     
-    @objc func textFieldValDidChange(_ textField: UITextField) {
-       let formatter = NumberFormatter()
-       formatter.numberStyle = NumberFormatter.Style.decimal
-       if textField.text!.count >= 1 {
-//          let number = Double(bottomView.balanceTxtField.text!.replacingOccurrences(of: ",", with: ""))
-//           let result = formatter.string(from: NSNumber(value: number!))
-//           textField.text = result!
-       }
-   }
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self) //for avoiding retain cycle
-    }
+        @objc  func handleTextChanged()  {
+            placeHolderLabel.isHidden = textView.text.count != 0
+    
+        }
+    
+    
+    
+        deinit {
+            NotificationCenter.default.removeObserver(self) //for avoiding retain cycle
+        }
     
 }
 
@@ -130,10 +119,7 @@ extension FirstCreateTotalPriceCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         mainView.layer.borderColor = UIColor.black.cgColor
-        guard var texts = textView.text,let xx=texts.toInt() else { return  }
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        let formattedNumber = numberFormatter.string(from: NSNumber(value:xx))
+        guard var texts = textView.text else { return  }
         priceString = texts
         
         if  texts.count == 0 {
@@ -143,66 +129,67 @@ extension FirstCreateTotalPriceCell: UITextViewDelegate {
             priceString = texts
             handleTextContents?(Int(priceString) ?? 0,true)
         }
-    
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard let textFieldHasText = (textView.text), !textFieldHasText.isEmpty else {
-            //early escape if nil
+        let point = Locale.current.decimalSeparator!
+        let decSep = Locale.current.groupingSeparator!
+        
+        mainView.layer.borderColor = UIColor.black.cgColor
+        let textss = textView.text!
+        let textRange = Range(range, in: textss)!
+        
+        var fractionLength = 0
+        var isRangeUpperPoint = false
+        
+        if let startPoint = textss.lastIndex(of: point.first!) {
+            let end = textss.endIndex
+            let str = String(textss[startPoint..<end])
+            fractionLength = str.count
+            isRangeUpperPoint = textRange.lowerBound >= startPoint
+        }
+        
+        if  fractionLength == 3 && text != "" && isRangeUpperPoint {
+            return false
+        }
+        
+        let r = (textView.text! as NSString).range(of: point).location < range.location
+        if (text == "0" || text == "") && r {
             return true
         }
-
-        let formatter = NumberFormatter()
-        formatter.numberStyle = NumberFormatter.Style.decimal
-
-        //remove any existing commas
-        let textRemovedCommma = textFieldHasText.replacingOccurrences(of: ",", with: "")
-
-        //update the textField with commas
-        let formattedNum = formatter.string(from: NSNumber(value: Int(textRemovedCommma)!))
-        textView.text = formattedNum
+        
+        // First check whether the replacement string's numeric...
+        let cs = NSCharacterSet(charactersIn: "0123456789\(point)").inverted
+        let filtered = text.components(separatedBy: cs)
+        let component = filtered.joined(separator: "")
+        let isNumeric = text == component
+        
+        
+        if isNumeric {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.maximumFractionDigits = 2
+            
+            let newString = textss.replacingCharacters(in: textRange,  with: text)
+            
+            
+            let numberWithOutCommas = newString.replacingOccurrences(of: decSep, with: "")
+            let number = formatter.number(from: numberWithOutCommas)
+            if number != nil {
+                var formattedString = formatter.string(from: number!)
+                // If the last entry was a decimal or a zero after a decimal,
+                // re-add it here because the formatter will naturally remove
+                // it.
+                if text == point && range.location == textView.text?.count {
+                    formattedString = formattedString?.appending(point)
+                }
+                textView.text = formattedString
+                handleTextContents?(Int(formattedString!) ?? 0,true)
+            } else {
+                textView.text = nil
+                handleTextContents?(0,false)
+            }
+        }
         return false
     }
-    
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//            if ((string == "0" || string == "") && (textField.text! as NSString).range(of: ".").location < range.location) {
-//                return true
-//            }
-//
-//            // First check whether the replacement string's numeric...
-//            let cs = NSCharacterSet(charactersIn: "0123456789.").inverted
-//            let filtered = string.components(separatedBy: cs)
-//            let component = filtered.joined(separator: "")
-//            let isNumeric = string == component
-//
-//            // Then if the replacement string's numeric, or if it's
-//            // a backspace, or if it's a decimal point and the text
-//            // field doesn't already contain a decimal point,
-//            // reformat the new complete number using
-//            if isNumeric {
-//                let formatter = NumberFormatter()
-//                formatter.numberStyle = .decimal
-//                formatter.maximumFractionDigits = 8
-//                // Combine the new text with the old; then remove any
-//                // commas from the textField before formatting
-//                let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-//                let numberWithOutCommas = newString.replacingOccurrences(of: ",", with: "")
-//                let number = formatter.number(from: numberWithOutCommas)
-//                if number != nil {
-//                    var formattedString = formatter.string(from: number!)
-//                    // If the last entry was a decimal or a zero after a decimal,
-//                    // re-add it here because the formatter will naturally remove
-//                    // it.
-//                    if string == "." && range.location == textField.text?.count {
-//                        formattedString = formattedString?.appending(".")
-//                    }
-//                    textField.text = formattedString
-//                } else {
-//                    textField.text = nil
-//                }
-//            }
-//            return false
-//    }
-   
 }
-    

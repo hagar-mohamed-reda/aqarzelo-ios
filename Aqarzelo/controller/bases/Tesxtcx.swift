@@ -8,6 +8,8 @@
 
 import UIKit
 import SVProgressHUD
+import NaturalLanguage
+import MOLH
 
 class Tesxtcx: UIViewController {
     
@@ -30,26 +32,21 @@ class Tesxtcx: UIViewController {
 //        v.signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return v
     }()
-    lazy var textView:UITextField = {
-        let tx = UITextField()
-//        tx.addSubview(placeHolderLabel)
-//        tx.isScrollEnabled = false
-        tx.keyboardType = .numberPad
+    lazy var textView:UITextView = {
+        let tx = UITextView()
+        tx.isScrollEnabled = false
         tx.font = UIFont.systemFont(ofSize: 16)
-        tx.backgroundColor = .white
         //        tx.isHide(true)
-//        tx.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left
+        tx.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left
         tx.delegate = self
         tx.sizeToFit()
-        
-//        tx.addTarget(self, action:#selector(textFieldValDidChange), for: .editingChanged)
         return tx
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        
+       detectedLanguage(for: "asdfsafsaf")
         view.addSubview(textView)
         
         textView.centerInSuperview(size: .init(width: view.frame.width-64, height: 60))
@@ -59,6 +56,22 @@ class Tesxtcx: UIViewController {
 //        self.customAlerLoginView.problemsView.loopMode = .loop
 //        present(ddd, animated: true)
     }
+    
+    func detectedLanguage(for string: String) -> String? {
+        let recognizer = NLLanguageRecognizer()
+        recognizer.processString(string)
+        guard let languageCode = recognizer.dominantLanguage?.rawValue else { return nil }
+        let detectedLanguage = Locale.current.localizedString(forIdentifier: languageCode)
+        return detectedLanguage
+    }
+
+//    func detectLanguage<T: StringProtocol>(for text: T) -> String? {
+//        let tagger = NSLinguisticTagger.init(tagSchemes: [.language], options: 0)
+//        tagger.string = String(text)
+//
+//        guard let languageCode = tagger.tag(at: 0, scheme: .language, tokenRange: nil, sentenceRange: nil) else { return nil }
+//        return Locale.current.localizedString(forIdentifier: languageCode)
+//    }
     
     @objc fileprivate func handleDismiss()  {
         removeViewWithAnimation(vvv: customAlerLoginView)
@@ -74,106 +87,133 @@ class ASD: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .clear
         view.alpha = 0.5
-//        let blurFx = UIBlurEffect(style: UIBlurEffect.Style.dark)
-//        let blurFxView = UIVisualEffectView(effect: blurFx)
-//        blurFxView.frame = view.bounds
-//        blurFxView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        view.insertSubview(blurFxView, at: 0)
     }
 }
 
-extension String {
-var convertToPrice: String? {
-    guard let value = Double(self) else { return self }
-    let divided = value / 100
-    let currencyFormatter = NumberFormatter()
-    currencyFormatter.numberStyle = .currency
-    currencyFormatter.currencySymbol = ""
-    currencyFormatter.decimalSeparator = "."
-    if let priceString = currencyFormatter.string(for: divided) {
-        return priceString
-    }
-    return self
-}
-}
-
-extension Int {
-    func withCommas() -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        return numberFormatter.string(from: NSNumber(value:self))!
-    }
-}
-
-extension Tesxtcx: UITextFieldDelegate {
+extension Tesxtcx: UITextViewDelegate {
     
-    func textViewDidChange(_ textView: UITextField) {
-//        mainView.layer.borderColor = UIColor.black.cgColor
-        guard var texts = textView.text,let xx=texts.toInt() else { return  }
-//        textView.text = texts.convertToPrice
     
-    }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let point = Locale.current.decimalSeparator!
-           let decSep = Locale.current.groupingSeparator!
-           
-           
-           let text = textField.text!
-           let textRange = Range(range, in: text)!
-           
-           var fractionLength = 0
-           var isRangeUpperPoint = false
-           
-           if let startPoint = text.lastIndex(of: point.first!) {
-               let end = text.endIndex
-               let str = String(text[startPoint..<end])
-               fractionLength = str.count
-               isRangeUpperPoint = textRange.lowerBound >= startPoint
-           }
-           
-           if  fractionLength == 3 && string != "" && isRangeUpperPoint {
-               return false
-           }
-           
-           let r = (textField.text! as NSString).range(of: point).location < range.location
-           if (string == "0" || string == "") && r {
-               return true
-           }
-           
-           // First check whether the replacement string's numeric...
-           let cs = NSCharacterSet(charactersIn: "0123456789\(point)").inverted
-           let filtered = string.components(separatedBy: cs)
-           let component = filtered.joined(separator: "")
-           let isNumeric = string == component
-           
-           
-           if isNumeric {
-               let formatter = NumberFormatter()
-               formatter.numberStyle = .decimal
-               formatter.maximumFractionDigits = 2
-               
-               let newString = text.replacingCharacters(in: textRange,  with: string)
-               
-               
-               let numberWithOutCommas = newString.replacingOccurrences(of: decSep, with: "")
-               let number = formatter.number(from: numberWithOutCommas)
-               if number != nil {
-                   var formattedString = formatter.string(from: number!)
-                   // If the last entry was a decimal or a zero after a decimal,
-                   // re-add it here because the formatter will naturally remove
-                   // it.
-                   if string == point && range.location == textField.text?.count {
-                       formattedString = formattedString?.appending(point)
-                   }
-                   textField.text = formattedString
-               } else {
-                   textField.text = nil
-               }
-           }
+        let decSep = Locale.current.groupingSeparator!
+        
+        
+        let textss = textView.text!
+        let textRange = Range(range, in: textss)!
+        
+        var fractionLength = 0
+        var isRangeUpperPoint = false
+        
+        if let startPoint = textss.lastIndex(of: point.first!) {
+            let end = textss.endIndex
+            let str = String(textss[startPoint..<end])
+            fractionLength = str.count
+            isRangeUpperPoint = textRange.lowerBound >= startPoint
+        }
+        
+        if  fractionLength == 3 && text != "" && isRangeUpperPoint {
+            return false
+        }
+        
+        let r = (textView.text! as NSString).range(of: point).location < range.location
+        if (text == "0" || text == "") && r {
+            return true
+        }
+        
+        // First check whether the replacement string's numeric...
+        let cs = NSCharacterSet(charactersIn: "0123456789\(point)").inverted
+        let filtered = text.components(separatedBy: cs)
+        let component = filtered.joined(separator: "")
+        let isNumeric = text == component
+        
+        
+        if isNumeric {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.maximumFractionDigits = 2
+            
+            let newString = textss.replacingCharacters(in: textRange,  with: text)
+            
+            
+            let numberWithOutCommas = newString.replacingOccurrences(of: decSep, with: "")
+            let number = formatter.number(from: numberWithOutCommas)
+            if number != nil {
+                var formattedString = formatter.string(from: number!)
+                // If the last entry was a decimal or a zero after a decimal,
+                // re-add it here because the formatter will naturally remove
+                // it.
+                if text == point && range.location == textView.text?.count {
+                    formattedString = formattedString?.appending(point)
+                }
+                textView.text = formattedString
+            } else {
+                textView.text = nil
+            }
+        }
         return false
     }
+   
+//    func textView(_ textField: UITextView, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//
+//        let point = Locale.current.decimalSeparator!
+//           let decSep = Locale.current.groupingSeparator!
+//
+//
+//           let text = textField.text!
+//           let textRange = Range(range, in: text)!
+//
+//           var fractionLength = 0
+//           var isRangeUpperPoint = false
+//
+//           if let startPoint = text.lastIndex(of: point.first!) {
+//               let end = text.endIndex
+//               let str = String(text[startPoint..<end])
+//               fractionLength = str.count
+//               isRangeUpperPoint = textRange.lowerBound >= startPoint
+//           }
+//
+//           if  fractionLength == 3 && string != "" && isRangeUpperPoint {
+//               return false
+//           }
+//
+//           let r = (textField.text! as NSString).range(of: point).location < range.location
+//           if (string == "0" || string == "") && r {
+//               return true
+//           }
+//
+//           // First check whether the replacement string's numeric...
+//           let cs = NSCharacterSet(charactersIn: "0123456789\(point)").inverted
+//           let filtered = string.components(separatedBy: cs)
+//           let component = filtered.joined(separator: "")
+//           let isNumeric = string == component
+//
+//
+//           if isNumeric {
+//               let formatter = NumberFormatter()
+//               formatter.numberStyle = .decimal
+//               formatter.maximumFractionDigits = 2
+//
+//               let newString = text.replacingCharacters(in: textRange,  with: string)
+//
+//
+//               let numberWithOutCommas = newString.replacingOccurrences(of: decSep, with: "")
+//               let number = formatter.number(from: numberWithOutCommas)
+//               if number != nil {
+//                   var formattedString = formatter.string(from: number!)
+//                   // If the last entry was a decimal or a zero after a decimal,
+//                   // re-add it here because the formatter will naturally remove
+//                   // it.
+//                   if string == point && range.location == textField.text?.count {
+//                       formattedString = formattedString?.appending(point)
+//                   }
+//                   textField.text = formattedString
+//               } else {
+//                   textField.text = nil
+//               }
+//           }
+//        return false
+//    }
         //good solution
         
         //check if any numbers in the textField exist before editing
@@ -205,3 +245,7 @@ extension Tesxtcx: UITextFieldDelegate {
 //    }
     
 }
+
+
+
+
