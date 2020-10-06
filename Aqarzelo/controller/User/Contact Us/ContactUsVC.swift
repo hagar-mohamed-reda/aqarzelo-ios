@@ -54,7 +54,7 @@ class ContactUsVC: UIViewController {
     lazy var followLabel = UILabel(text: "Follow us".localized, font: .systemFont(ofSize: 16), textColor: .black,textAlignment: .center)
     
     lazy var contactLabel = UILabel(text: "Contact us".localized, font: .systemFont(ofSize: 16), textColor: .black,textAlignment: .center)
-    lazy var emailLabel = UILabel(text: "admin@aqarzelo.com" , font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var emailLabel = UILabel(text: "info@aqarzelo.com" , font: .systemFont(ofSize: 16), textColor: .black)
     lazy var emailImageView: UIImageView = {
         let i = UIImageView(image: #imageLiteral(resourceName: "Group 392s"))
         i.translatesAutoresizingMaskIntoConstraints = false
@@ -71,8 +71,17 @@ class ContactUsVC: UIViewController {
         i.clipsToBounds = true
         return i
     }()
-    lazy var telphoneLabel = UILabel(text: "01157891967" , font: .systemFont(ofSize: 16), textColor: .black)
-    
+    lazy var addressImageView: UIImageView = {
+        let i = UIImageView(image: #imageLiteral(resourceName: "Group 3923"))
+        i.translatesAutoresizingMaskIntoConstraints = false
+        i.constrainHeight(constant: 40)
+        i.constrainWidth(constant: 40)
+        i.clipsToBounds = true
+        return i
+    }()
+    lazy var telphoneLabel = UILabel(text: "01123904214" , font: .systemFont(ofSize: 16), textColor: .black)
+    lazy var addressLabel = UILabel(text: "37 Gamaet El Dowal El Arabeya St., El Fouad Building No. (1), 11th floor Mohandessin".localized , font: .systemFont(ofSize: 16), textColor: .black,numberOfLines: 0)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -115,9 +124,11 @@ class ContactUsVC: UIViewController {
         
         let group2 = !MOLHLanguage.isRTLLanguage() ?  getStack(views: telephoneImageView,telphoneLabel,UIView(), spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),telphoneLabel,telephoneImageView, spacing: 8, distribution: .fill, axis: .horizontal)
         
+//        let group3 = !MOLHLanguage.isRTLLanguage() ?  getStack(views: vv,addressLabel, spacing: 8, distribution: .fill, axis: .horizontal) : getStack(views: UIView(),addressLabel,vv, spacing: 8, distribution: .fill, axis: .horizontal)
+//        group3.constrainHeight(constant: 60)
         let mainGroup = getStack(views: group,group2, spacing: 8, distribution: .fillEqually, axis: .vertical)
         
-        view.addSubViews(views: mainView,vv,followLabel,imageStack,contactLabel,mainGroup)
+        view.addSubViews(views: mainView,vv,followLabel,imageStack,contactLabel,addressLabel,mainGroup)
         
         
         mainView.fillSuperview(padding: .init(top: 16, left: 0, bottom: -16, right: 0))
@@ -133,7 +144,9 @@ class ContactUsVC: UIViewController {
 
 //        imageStack.centerInSuperview(size: .init(width: view.frame.width - 64, height: 40))
         contactLabel.anchor(top: imageStack.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 0, bottom: 0, right: 0))
-        mainGroup.anchor(top: contactLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 0, left: 64, bottom: 0, right: 64))
+        addressLabel.anchor(top: contactLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 64, bottom: 0, right: 32))
+
+        mainGroup.anchor(top: addressLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 16, left: 64, bottom: 0, right: 32))
     }
     
     fileprivate func setupNavigation()  {

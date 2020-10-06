@@ -117,7 +117,7 @@ class LoginVC: UIViewController {
         customLoginView.loginViewModel.bindableIsLogging.bind(observer: {  [unowned self] (isReg) in
             if isReg == true {
                 view.isUserInteractionEnabled=false
-//                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+                //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
                 self.progressHudProperties()
                 
             }else {
@@ -312,7 +312,7 @@ extension LoginVC:  GIDSignInDelegate {
 
 extension LoginVC: ASAuthorizationControllerDelegate{
     
-//    @available(iOS 13.0, *)
+    //    @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
@@ -346,14 +346,14 @@ extension LoginVC: ASAuthorizationControllerDelegate{
         }
     }
     
-//    @available(iOS 13.0, *)
+    //    @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {// Handle error.}
     }
     
 }
 
 extension LoginVC: ASAuthorizationControllerPresentationContextProviding {
-//    @available(iOS 13.0, *)
+    //    @available(iOS 13.0, *)
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
