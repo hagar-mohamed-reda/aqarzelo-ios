@@ -133,8 +133,7 @@ class RegisterVC: UIViewController {
     fileprivate func goToMainTab()  {
         //        cacheCurrentUserCodabe.save(user)
         
-        userDefaults.set(true, forKey: UserDefaultsConstants.isUserLogined)
-        userDefaults.synchronize()
+       
         
         //        navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -144,6 +143,7 @@ class RegisterVC: UIViewController {
     fileprivate  func saveToken(token:String) {
         userDefaults.set(token, forKey: UserDefaultsConstants.userApiToken)
         userDefaults.set(true, forKey: UserDefaultsConstants.isFirstUserLogined)
+        userDefaults.set(true, forKey: UserDefaultsConstants.isUserLogined)
         //        userDefaults.set(true, forKey: UserDefaultsConstants.isUserWaitForSMSCode)
         
         userDefaults.synchronize()

@@ -58,9 +58,18 @@ class SecondUserPostsCollectionVC: UICollectionViewController, UICollectionViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        showOrHideCustomTabBar(hide: true)
+        
         if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
             user=cacheCurrentUserCodabe.storedValue
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+        //        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

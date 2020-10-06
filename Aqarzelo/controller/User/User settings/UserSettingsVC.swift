@@ -155,6 +155,8 @@ class UserSettingsVC: UIViewController {
         
         if userDefaults.bool(forKey: UserDefaultsConstants.isFirstUserLogined) {
             creatMainSnackBar(message: "You are logged in successfully...".localized)
+            userDefaults.set(false, forKey: UserDefaultsConstants.isFirstUserLogined)
+            userDefaults.synchronize()
         }
         
                 if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
