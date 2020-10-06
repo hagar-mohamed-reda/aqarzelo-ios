@@ -18,6 +18,7 @@
 		9FA7D2D025069FD300EF4166 /* CustomStarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */; };
 		9FB2437624FC13C0004F43FB /* ListOfPhotoMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */; };
 		9FB272F1252CCF5F00F8BD75 /* BaseAqarCountryyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB272F0252CCF5F00F8BD75 /* BaseAqarCountryyModel.swift */; };
+		9FBFC52F252CE9E700244964 /* SecondCreateCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFC52E252CE9E700244964 /* SecondCreateCountryCell.swift */; };
 		9FCC8733251A5A5900D3C799 /* EditProfileVCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCC8732251A5A5900D3C799 /* EditProfileVCS.swift */; };
 		9FD04E4024EDB2910077884A /* DropDownAllTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */; };
 		9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */; };
@@ -249,6 +250,7 @@
 		9FA7D2CF25069FD300EF4166 /* CustomStarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStarViews.swift; sourceTree = "<group>"; };
 		9FB2437524FC13C0004F43FB /* ListOfPhotoMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotoMainVC.swift; sourceTree = "<group>"; };
 		9FB272F0252CCF5F00F8BD75 /* BaseAqarCountryyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAqarCountryyModel.swift; sourceTree = "<group>"; };
+		9FBFC52E252CE9E700244964 /* SecondCreateCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCreateCountryCell.swift; sourceTree = "<group>"; };
 		9FCC8732251A5A5900D3C799 /* EditProfileVCS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVCS.swift; sourceTree = "<group>"; };
 		9FD04E3F24EDB2910077884A /* DropDownAllTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownAllTableViewVC.swift; sourceTree = "<group>"; };
 		9FD04E4124EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCityAndAreaTableViewVC.swift; sourceTree = "<group>"; };
@@ -1322,6 +1324,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE270C424E8871C008889AB /* SecondCreateLocationCell.swift */,
+				9FBFC52E252CE9E700244964 /* SecondCreateCountryCell.swift */,
 				9FE270C524E8871D008889AB /* SecondCreateCityCell.swift */,
 				9FE270C624E8871D008889AB /* SecondCreateAreaCell.swift */,
 				9FE270C124E8871A008889AB /* SecondCreateAddressCell.swift */,
@@ -1759,6 +1762,7 @@
 				9FE270EB24E88811008889AB /* ChatMessageCell.swift in Sources */,
 				9FD04E4224EDB2AA0077884A /* DropDownCityAndAreaTableViewVC.swift in Sources */,
 				9FE2708724E8857D008889AB /* EditProfileVC.swift in Sources */,
+				9FBFC52F252CE9E700244964 /* SecondCreateCountryCell.swift in Sources */,
 				9FE2705324E884A9008889AB /* ChooseLocationVC.swift in Sources */,
 				9FDDB74624E98F5B00AF8817 /* CustomHighlightedCollectionView.swift in Sources */,
 				9FE270A124E886BB008889AB /* AqarDetailCell.swift in Sources */,

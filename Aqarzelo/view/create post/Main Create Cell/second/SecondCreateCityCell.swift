@@ -163,11 +163,11 @@ class SecondCreateCityCell: BaseCollectionCell {
                 
                 
             }}else {
-            if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int] {
-                citName = cityArray
-                cityId = cityIds
+                if let cityArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int] {
+                    citName = cityArray
+                    cityId = cityIds
+                }
             }
-        }
         let ss = cityId.filter{$0 == index}
         let ff = ss.first ?? 1
         
