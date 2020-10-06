@@ -112,7 +112,7 @@
 "Create Post" = "عمل منشور جديد" ;
 "Error" = "خطا";
 "Yes" = "نعم";
-
+"Choose the Country"="اختر الدوله";"Country"="الدوله";
 //  ListOfPhotoCollectionVC
 "Wait until imagee uploaded..." = "من فضلك انتظر حتي يتم رفع الصورة٫٫٫";
 "Next" = "التالي";

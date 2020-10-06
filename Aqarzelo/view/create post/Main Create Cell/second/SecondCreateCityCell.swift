@@ -175,8 +175,8 @@ class SecondCreateCityCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
-        if self.createSecondListCollectionVC?.is1CellIError == false {
-            self.createSecondListCollectionVC?.creatMainSnackBar(message: "Location Should Be Filled First...".localized)
+        if self.createSecondListCollectionVC?.is2CellIsError == false {
+            self.createSecondListCollectionVC?.creatMainSnackBar(message: "Country Should Be Filled First...".localized)
             return
         }
         showHidingViews(views: categoryQuestionLabel,mainDrop1View, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3938"), seperator: seperatorView)

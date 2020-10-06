@@ -69,7 +69,7 @@ class MainCreatePostVC: UIViewController {
     lazy  var middleSecondPostCollection:CreateSecondListCollectionVC = {
         let vc =  CreateSecondListCollectionVC()
         vc.delgate = self
-//        vc.category_id = 2 //mainCcreatePostVviewModel.category?.toInt()
+//        vc.category_id = 4 //mainCcreatePostVviewModel.category?.toInt()
         vc.view.isHide(true)
         //        vc.handleOpenDropDown = {[unowned self] frame in
         //            self.handleOpenDropDown(frame)

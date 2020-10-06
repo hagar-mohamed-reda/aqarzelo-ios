@@ -232,7 +232,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
     }
     
     @objc func handleShowViews()  {
-        if self.createSecondListCollectionVC?.is2CellIsError == false {
+        if self.createSecondListCollectionVC?.is3CellIsError == false {
             self.createSecondListCollectionVC?.creatMainSnackBar(message: "City Should Be Filled First...".localized)
             return
         }

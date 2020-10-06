@@ -113,6 +113,7 @@
 "Create Post" = "Create Post";
 "Error" = "Error";
 "Yes" = "Yes";
+"Choose the Country"="Choose the Country";"Country"="Country";"Country Should Be Filled First..."="Country Should Be Filled First...";
 
 //  ListOfPhotoCollectionVC
 "Wait until imagee uploaded..." = "Wait until imagee uploaded...";

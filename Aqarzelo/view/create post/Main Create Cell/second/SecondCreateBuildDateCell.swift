@@ -104,7 +104,7 @@ class SecondCreateBuildDateCell: BaseCollectionCell {
     
     @objc func handleShowViews()  {
         if self.createSecondListCollectionVC?.is4CellIsError == false {
-            self.createSecondListCollectionVC?.creatMainSnackBar(message: "Address Should Be Filled First...".localized)
+            self.createSecondListCollectionVC?.creatMainSnackBar(message: "Area Should Be Filled First...".localized)
             return
         }
         showHidingViews(views: questionLabel,mainView,dateTextField, imageView: iconImageView, image: #imageLiteral(resourceName: "Group 3942"), seperator: seperatorView)
