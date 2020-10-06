@@ -152,6 +152,7 @@ class LoginVC: UIViewController {
     
     fileprivate func saveToken(token:String) {
         userDefaults.set(token, forKey: UserDefaultsConstants.userApiToken)
+        userDefaults.set(true, forKey: UserDefaultsConstants.isFirstUserLogined)
         userDefaults.synchronize()
         SVProgressHUD.dismiss()
     }

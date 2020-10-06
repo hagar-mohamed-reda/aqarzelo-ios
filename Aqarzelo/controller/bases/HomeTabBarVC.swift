@@ -71,10 +71,16 @@ class HomeTabBarVC: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
+            
             isUserLogined = true
         }else {
             isUserLogined = false
         }
+        
+        if userDefaults.bool(forKey: UserDefaultsConstants.isFirstUserLogined) {
+            self.selectedIndex = 0 // go to first item
+        }else {}
+                      //enter your tabbar no.
     }
     
     private func customizeTabBarView() {
@@ -240,14 +246,14 @@ extension HomeTabBarVC: UITabBarControllerDelegate {
             if tabBarController.selectedIndex == 2{
                 tabBarController.selectedIndex = self.selectedIndexxx
                 showAlertLogin()
-                tabs[3].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
-                tabs[2].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
+                tabs[3].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
+                tabs[2].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysOriginal)
                 return
             }
             if tabBarController.selectedIndex == 3{
                 tabBarController.selectedIndex = self.selectedIndexxx
-                tabs[2].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysOriginal)
-                tabs[3].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysTemplate)
+                tabs[2].image = #imageLiteral(resourceName: "favorite-heart-button (2)").withRenderingMode(.alwaysTemplate)
+                tabs[3].image = #imageLiteral(resourceName: "notification").withRenderingMode(.alwaysOriginal)
                 showAlertLogin()
                 return
             }

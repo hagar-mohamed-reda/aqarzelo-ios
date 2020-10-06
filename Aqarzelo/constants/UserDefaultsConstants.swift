@@ -31,6 +31,7 @@ static let isMessagedCahced="isMessagedCahced"
     
     static let categoryIdsArray = "categoryIdsArray"
     static let isUserLogined = "isUserLogined"
+    static let isFirstUserLogined = "isUserLogined"
     static let isFirstLoginedScreen = "isFirstLoginedScreen"
 
     static let isCachedDriopLists = "isCachedDriopLists"

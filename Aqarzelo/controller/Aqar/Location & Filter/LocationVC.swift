@@ -168,6 +168,9 @@ class LocationVC: UIViewController {
         print(topbarHeight)
         statusBarBackgroundColor()
         
+        if   userDefaults.bool(forKey: UserDefaultsConstants.isFirstUserLogined)  {
+            handleShowUser()
+        }else {
         
 //        if userDefaults.bool(forKey: UserDefaultsConstants.isWelcomeVCAppear) {
 //            let welcome = WelcomeVC()
@@ -226,6 +229,7 @@ class LocationVC: UIViewController {
             }else {
                 //                checkUserLogin()
             }
+        }
 //        }
         
         //                }

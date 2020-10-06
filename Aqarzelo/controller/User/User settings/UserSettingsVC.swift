@@ -456,7 +456,7 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
         userDefaults.set(false, forKey: UserDefaultsConstants.isFavoriteFetched)
         userDefaults.set(false, forKey: UserDefaultsConstants.isNotificationsFetched)
         userDefaults.set(false, forKey: UserDefaultsConstants.isAllUserPostsDetailsFetched)
-        
+        userDefaults.set(false, forKey: UserDefaultsConstants.isFirstUserLogined)
         userDefaults.synchronize()
         userDefaults.synchronize()
         self.currentUser = nil
