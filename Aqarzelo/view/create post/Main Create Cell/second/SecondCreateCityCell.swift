@@ -120,7 +120,17 @@ class SecondCreateCityCell: BaseCollectionCell {
     
     fileprivate func fetchData()  {
         
-        fetchEnglishData(isArabic: MOLHLanguage.isRTLLanguage())
+//        fetchEnglishData(isArabic: MOLHLanguage.isRTLLanguage())
+        guard  let ff = cacheCityInCodabe.storedValue,let f = ff else {return}
+        let xx = f.map({MOLHLanguage.isRTLLanguage() ? $0.nameAr : $0.nameEn});let ids = f.map({$0.id})
+        self.cityArray = xx
+        
+        self.cityIDSArray=ids
+        self.cityDrop.optionArray = cityArray
+        DispatchQueue.main.async {
+            self.layoutIfNeeded()
+        }
+        
     }
     
     fileprivate func fetchEnglishData(isArabic:Bool) {
