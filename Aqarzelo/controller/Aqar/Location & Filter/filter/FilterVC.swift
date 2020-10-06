@@ -13,7 +13,7 @@ import MOLH
 //import fluid_slider
 
 protocol FilterVCProtocol {
-    func getaqarsAccordingTo(citId:Int?,areaId:Int?,price1:Int,price2:Int,space1:Int,space2:Int,type:String?,bedroom_number:Int?,bathroom_number:Int?,categoryId:Int?)
+    func getaqarsAccordingTo(countryId:Int?,citId:Int?,areaId:Int?,price1:Int,price2:Int,space1:Int,space2:Int,type:String?,bedroom_number:Int?,bathroom_number:Int?,categoryId:Int?)
 }
 
 class FilterVC: UIViewController {
@@ -29,7 +29,7 @@ class FilterVC: UIViewController {
     }()
     lazy var mainView:UIView = {
         let v = UIView(backgroundColor: .white)
-        v.constrainHeight(constant: 820)
+        v.constrainHeight(constant: 880)
         v.layer.cornerRadius = 16
         v.clipsToBounds = true
         v.constrainWidth(constant: view.frame.width)
@@ -85,7 +85,12 @@ class FilterVC: UIViewController {
         //
         //        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeTransparentView)))
         
-        
+        v.countryDrop.didSelect(completion: {[unowned self] (ss, index, id) in
+            self.getCityAccordingToCountryId(index: index)
+            //            self.getAreasUsingAPI(index:index)
+            self.selectedCountryId = index == 0 ? nil : self.getCityFromIndex(index)
+            
+        })
         
         v.cityDrop.didSelect(completion: {[unowned self] (ss, index, id) in
             self.getAreaAccordingToCityId(index: index)
@@ -110,6 +115,8 @@ class FilterVC: UIViewController {
         return v
     }()
     
+    var finalFilteredCityNames = [String]()
+    var allCitySelectedArray = [Int]()
     var finalFilteredAreaNames = [String]()
     var allAreasSelectedArray = [Int]()
     var delgate:FilterVCProtocol?
@@ -117,6 +124,7 @@ class FilterVC: UIViewController {
     //    var categoriessArray = [CategoryModel]()
     var aresArray = [AreaModel]()
     
+    var countryStringArray = [String]()
     var citysStringArray = [String]()
     var categoryStringArray = [String]()
     
@@ -128,7 +136,7 @@ class FilterVC: UIViewController {
     var minimuSpace = 0
     var maximumSpace = 1000
     var selectedType:String?
-    var selectedCityId,selectedAreaId,selectedCategoryId,numberOfRooms,numberOfBaths:Int?
+    var selectedCountryId,selectedCityId,selectedAreaId,selectedCategoryId,numberOfRooms,numberOfBaths:Int?
     var allCategoriesSelectedArray = [Int]()
     var categoryIdsArray = [Int]()
     
@@ -215,41 +223,45 @@ class FilterVC: UIViewController {
             
             
             if let cityNameArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArabicArray) as? [String],let cityIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArabicArray) as? [String],let categoryNames = userDefaults.value(forKey: UserDefaultsConstants.categoryNameArabicArray) as? [String], let cateIds =  userDefaults.value(forKey: UserDefaultsConstants.categoryIdsArray) as? [Int] {
-                self.citysStringArray = cityNameArray
+                self.countryStringArray = cityNameArray
                 self.areasStringArray = cityIdArray
                 self.categoryStringArray = categoryNames
                 self.categoryIdsArray = cateIds
             }
         }else {
             if let cityNameArray = userDefaults.value(forKey: UserDefaultsConstants.cityNameArray) as? [String],let cityIdArray = userDefaults.value(forKey: UserDefaultsConstants.areaNameArray) as? [String],let categoryNames = userDefaults.value(forKey: UserDefaultsConstants.categoryNameArray) as? [String], let cateIds =  userDefaults.value(forKey: UserDefaultsConstants.categoryIdsArray) as? [Int] {
-                self.citysStringArray = cityNameArray
+                self.countryStringArray = cityNameArray
                 self.areasStringArray = cityIdArray
                 self.categoryStringArray = categoryNames
                 self.categoryIdsArray = cateIds
             }
         }
+        guard let ss = cacheCityInCodabe.storedValue,let ff = ss,let ww=cacheAreaInCodabe.storedValue,let g=ww else {return}
+        
+        let qq = ff.map({MOLHLanguage.isRTLLanguage() ?  $0.nameAr : $0.nameEn}); let tt = ff.map({$0.id})
+        let dd = ff.map({MOLHLanguage.isRTLLanguage() ?  $0.nameAr : $0.nameEn}); let aa = ff.map({$0.id})
+        self.citysStringArray=dd
+        self.areasStringArray=qq
+//        self.citysStringArray = cacheCityInCodabe.storedValue?.map{$0.}
+        self.countryStringArray.insert("All".localized, at: 0)
         self.citysStringArray.insert("All".localized, at: 0)
         self.areasStringArray.insert("All".localized, at: 0)
         self.categoryStringArray.insert("All".localized, at: 0)
         
+        self.customFilterView.countryDrop.optionArray = self.countryStringArray
         self.customFilterView.cityDrop.optionArray = self.citysStringArray
         self.customFilterView.areaDrop.optionArray = self.areasStringArray
         self.customFilterView.categoryDrop.optionArray = self.categoryStringArray
-        
-        //        self.dropDownTableViewVC.cityDataSource=citysStringArray
-        //        self.dropDownTableViewVC.areaDataSource=areasStringArray
         DispatchQueue.main.async {
             self.view.layoutIfNeeded()
         }
     }
     
     fileprivate func getCityFromIndex(_ index:Int) -> Int {
-        
-        var cityId = [Int]()
-        if  let cityIds = userDefaults.value(forKey: UserDefaultsConstants.cityIdArray) as? [Int]{
-            cityId = cityIds
-        }
-        return cityId[index-1 ]
+        guard let ss = cacheCityInCodabe.storedValue,let ff = ss else {return 1}
+
+        let tt = ff.map({$0.id})
+        return tt[index-1 ]
     }
     
     fileprivate func fetchData()  {
@@ -267,6 +279,7 @@ class FilterVC: UIViewController {
     
     func putThese(_ d:BaseAqarAreaModel?)  {
         guard let ss =  d?.data  else {return}
+        
         let dd = ss.map({MOLHLanguage.isRTLLanguage() ?  $0.nameAr : $0.nameEn}); let aa = ss.map({$0.id})
         finalFilteredAreaNames.removeAll()
         allAreasSelectedArray.removeAll()
@@ -276,6 +289,25 @@ class FilterVC: UIViewController {
         
         self.customFilterView.areaDrop.optionArray = finalFilteredAreaNames
         //            self.dropDownTableViewVC.areaDataSource=finalFilteredAreaNames
+        DispatchQueue.main.async {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func getCitiesLists(index:Int)  {
+        let ss = cacheCityInCodabe.storedValue
+        let ff = ss??.filter({$0.countryId == index})
+        let indexs = ff?.map{  $0.id}
+        
+        let names = MOLHLanguage.isRTLLanguage() ?  ff?.map{  $0.nameAr} : ff?.map{  $0.nameEn}
+        self.finalFilteredCityNames=names ?? []
+        self.allCitySelectedArray=indexs ?? []
+        
+        self.finalFilteredCityNames.removeAll(where: {$0=="All"})
+        self.finalFilteredCityNames.insert("All".localized, at: 0)
+        self.customFilterView.cityDrop.optionArray = finalFilteredCityNames
+        
+        
         DispatchQueue.main.async {
             self.view.layoutIfNeeded()
         }
@@ -305,6 +337,11 @@ class FilterVC: UIViewController {
     fileprivate func getAreaAccordingToCityId(index:Int)  {
         if index == 0 {return }
         getAreaLists(index:index)
+    }
+    
+    fileprivate func getCityAccordingToCountryId(index:Int)  {
+        if index == 0 {return }
+        getCitiesLists(index:index)
     }
     
     fileprivate func setupViews()  {
@@ -455,7 +492,7 @@ class FilterVC: UIViewController {
         print(65)
     }
     
-    @objc fileprivate func handleSubmit()  {   delgate?.getaqarsAccordingTo(citId:selectedCityId,areaId:selectedAreaId,price1:minimuPrice,price2:maximumPrice,space1:minimuSpace,space2:maximumSpace,type:selectedType,bedroom_number:numberOfRooms,bathroom_number:numberOfBaths, categoryId: selectedCategoryId)
+    @objc fileprivate func handleSubmit()  {   delgate?.getaqarsAccordingTo(countryId:selectedCountryId,citId:selectedCityId,areaId:selectedAreaId,price1:minimuPrice,price2:maximumPrice,space1:minimuSpace,space2:maximumSpace,type:selectedType,bedroom_number:numberOfRooms,bathroom_number:numberOfBaths, categoryId: selectedCategoryId)
         navigationController?.popViewController(animated: true)
     }
 }
@@ -486,7 +523,7 @@ extension FilterVC:UIScrollViewDelegate {
         let x = scrollView.contentOffset.y
         var dd = x+screenHeight
         
-        var ww:CGFloat = screenHeight < 760 ? 890 : 920
+        var ww:CGFloat = screenHeight < 760 ? 950 : 980//920 890
         
         
         if x < 0 {

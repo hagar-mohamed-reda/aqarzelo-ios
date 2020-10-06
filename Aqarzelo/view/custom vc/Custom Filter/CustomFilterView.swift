@@ -49,6 +49,17 @@ class CustomFilterView:CustomBaseView {
     //
     //        return i
     //    }()
+    lazy var mainDrop0View:UIView =  {
+        
+        let v = makeMainSubViewWithAppendView(vv: [countryDrop])
+        v.hstack(countryDrop).withMargins(.init(top: 8, left: 16, bottom: 8, right: 16))
+        return v
+    }()
+    lazy var countryDrop:DropDown = {
+        let i = returnMainDropDown(plcae: "Country".localized)
+        i.constrainHeight(constant: 50)
+        return i
+    }()
     lazy var mainDrop1View:UIView =  {
         
         let v = makeMainSubViewWithAppendView(vv: [cityDrop])
@@ -168,7 +179,7 @@ class CustomFilterView:CustomBaseView {
         return mainStackView
     }()
     lazy var dropStack:UIStackView = {
-        let dropStack = getStack(views: mainDrop1View,mainDrop2View,mainDrop3View,mainDrop4View, spacing: 16, distribution: .fillEqually, axis: .vertical)
+        let dropStack = getStack(views: mainDrop0View,mainDrop1View,mainDrop2View,mainDrop3View,mainDrop4View, spacing: 16, distribution: .fillEqually, axis: .vertical)
         return dropStack
     }()
     lazy var totalStack:UIStackView = {
