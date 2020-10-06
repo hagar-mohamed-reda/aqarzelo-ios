@@ -25,7 +25,7 @@ class SecondCcreatePostVviewModel {
     
     
     func checkFormValidity() {
-        let isFormValid = lat?.isEmpty == false && lng?.isEmpty == false && city?.isEmpty == false && area?.isEmpty == false && address?.isEmpty == false && buildDate?.isEmpty == false && fllorNum?.isEmpty == false
+        let isFormValid = lat?.isEmpty == false && lng?.isEmpty == false && city?.isEmpty == false && area?.isEmpty == false  && buildDate?.isEmpty == false && fllorNum?.isEmpty == false
         
         bindableIsFormValidate.value = isFormValid
         

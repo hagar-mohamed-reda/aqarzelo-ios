@@ -170,6 +170,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
             cell.aqar = aqar
             cell.createSecondListCollectionVC=self
             cell.index = 2
+            cell.categroy_id=category_id
             cell.finalFilteredAreaNames=finalFilteredAreaNames
             cell.allAreasSelectedArray=allAreasSelectedArray
 //            cell.cityId = cityId
@@ -180,7 +181,10 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
             cell.handleTextContents = {[unowned self] (tx,openNext) in
                 //                self.area_id = tx
                 self.secondCcreatePostVviewModel.area = openNext ? String(tx ?? 1) : String()
-                self.enableThirdCell(openNext, index: 3)
+//                self.enableThirdCell(openNext, index: 3)
+                self.secondCcreatePostVviewModel.address = String()
+                self.enableForthCell(openNext, index: 4)
+                self.hideCells(self.category_id ?? 0)
             }
             return cell
         } else if indexPath.item == 3 {
@@ -209,7 +213,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
             cell.createSecondListCollectionVC=self
             cell.aqar = aqar
             cell.handleHidePreviousCell = {[unowned self] (index) in
-                self.handleHidedViews(index: index)
+                self.handleHidedViews(index: index-1) //index
             }
             
             cell.handleTextContents = {[unowned self] (tx,openNext) in
@@ -259,7 +263,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         case 2:
             height = !is3CellIsOpen ? 80 : 150
         case 3:
-            height = !is4CellIsOpen ? 80 : firstHeight+150
+            height =  0 //!is4CellIsOpen ? 80 : firstHeight+150
         case 4:
             height = isYearOfBuilidingHiddern ? 0 :  !is5CellIsOpen ? 80 : 150
             
@@ -345,12 +349,12 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
         }
     }
     
-    fileprivate func enableThirdCell(_ openNext: Bool,index:Int) {
-        if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SecondCreateAddressCell  {
-            //            cell.iconImageView.isUserInteractionEnabled = openNext
-            self.is3CellIsError=openNext
-        }
-    }
+//    fileprivate func enableThirdCell(_ openNext: Bool,index:Int) {
+//        if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SecondCreateAddressCell  {
+//            //            cell.iconImageView.isUserInteractionEnabled = openNext
+//            self.is3CellIsError=openNext
+//        }
+//    }
     
     fileprivate func enableFirstCell(_ openNext: Bool,index:Int) {
         if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SecondCreateCityCell  {
@@ -401,6 +405,7 @@ class CreateSecondListCollectionVC: UICollectionViewController,UICollectionViewD
             if let cell = collectionView.cellForItem(at: IndexPath(item: index-1, section: 0)) as? SecondCreateAreaCell {
                 cell.hideViewsAgain(views: cell.categoryQuestionLabel,cell.mainDrop1View)
                 increaseAndDereaseCellSize(current: &is4CellIsOpen, previous: &is3CellIsOpen)
+                increaseAndDereaseCellSize(current: &is5CellIsOpen, previous: &is4CellIsOpen)
             }
         case 4:
             if isYearOfBuilidingHiddern {

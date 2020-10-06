@@ -42,6 +42,7 @@ extension UIView{
         
         b.backgroundColor = bg
         b.arrowSize = 20
+        b.selectedRowColor = .white
         b.textColor = .black
         b.rowBackgroundColor = .white//.gray
         b.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left

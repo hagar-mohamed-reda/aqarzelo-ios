@@ -57,7 +57,7 @@ class MainCreatePostVC: UIViewController {
     
     lazy var middleFirstPostCollection:CreateFirstListCollectionVC = {
         let vc = CreateFirstListCollectionVC()
-        vc.view.isHide(true)
+        vc.view.isHide(false)
         //         vc.view.isHide(true)
         vc.handleNextVC = { [unowned self] (isOpen,title,titleAr,category_id,type,spaceNum,roomNum,bathNum,priceMeter,totalPrice) in
             isOpen ? self.makeFirstOperation(title,titleAr, category_id, type, spaceNum,roomNum, bathNum, priceMeter, totalPrice, isOpen) : self.enableButton(isOpen, .white, second: false, third: false, last: false)
@@ -69,8 +69,8 @@ class MainCreatePostVC: UIViewController {
     lazy  var middleSecondPostCollection:CreateSecondListCollectionVC = {
         let vc =  CreateSecondListCollectionVC()
         vc.delgate = self
-//        vc.category_id = mainCcreatePostVviewModel.category?.toInt()
-        vc.view.isHide(false)
+//        vc.category_id = 2 //mainCcreatePostVviewModel.category?.toInt()
+        vc.view.isHide(true)
         //        vc.handleOpenDropDown = {[unowned self] frame in
         //            self.handleOpenDropDown(frame)
         //        }
@@ -198,7 +198,7 @@ class MainCreatePostVC: UIViewController {
     }
     
     func handleChageSecondData()  {
-        cutomtopView.first2View.backgroundColor = ColorConstant.mainBackgroundColor
+        cutomtopView.first2View.backgroundColor = #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1) //ColorConstant.mainBackgroundColor
         cutomtopView.first3View.backgroundColor = #colorLiteral(red: 0.9283686876, green: 0.9285209179, blue: 0.9283363223, alpha: 1)
         
         cutomtopView.first21Image.image =  UIImage(named: "221")
@@ -206,8 +206,8 @@ class MainCreatePostVC: UIViewController {
     }
     
     func handleChageThirdData()  {
-        cutomtopView.first3View.backgroundColor = ColorConstant.mainBackgroundColor
-        cutomtopView.first2View.backgroundColor = ColorConstant.mainBackgroundColor
+        cutomtopView.first3View.backgroundColor = #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1) //ColorConstant.mainBackgroundColor
+        cutomtopView.first2View.backgroundColor = #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1) //ColorConstant.mainBackgroundColor
         cutomtopView.first21Image.image =  UIImage(named: "221")
         cutomtopView.first31Image.image =  UIImage(named: "331")
     }
@@ -248,7 +248,7 @@ class MainCreatePostVC: UIViewController {
     fileprivate func presentFirstCell()  {
         firstSelectedTop = false
         //        secondSelectedTop = true
-        enableButton(true, ColorConstant.mainBackgroundColor, second: true,third: false,last: false)
+        enableButton(true, #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1) , second: true,third: false,last: false)
         hideMiddleCollectionViewFirst()
         
     }
@@ -257,7 +257,7 @@ class MainCreatePostVC: UIViewController {
     
     fileprivate func presentSecondCell()  {
         if aqar != nil {
-            enableButton(true, ColorConstant.mainBackgroundColor, second: false,third: true,last: false)
+            enableButton(true, #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1), second: false,third: true,last: false)
             secondSelectedTop = false
             thirdSelectedTop = true
         }else {
@@ -274,7 +274,7 @@ class MainCreatePostVC: UIViewController {
     fileprivate  func presentThirdCell()  {
         
         if aqar != nil {
-            enableButton(true, ColorConstant.mainBackgroundColor, second: false,third: false,last: true)
+            enableButton(true, #colorLiteral(red: 0.4325206876, green: 0.8569215536, blue: 0.6972793937, alpha: 1), second: false,third: false,last: true)
             secondSelectedTop = false
             thirdSelectedTop = false
             lastVC = true

@@ -876,8 +876,8 @@
             filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateAreaCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "mainDrop1View"
             landmarkType = "24">
          </BreakpointContent>
@@ -892,8 +892,8 @@
             filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateAreaCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "aqar"
             landmarkType = "24">
          </BreakpointContent>
@@ -908,8 +908,8 @@
             filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateAreaCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "SecondCreateAreaCell"
             landmarkType = "3">
             <Locations>
@@ -986,8 +986,8 @@
             filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateAreaCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "getAreassFromIndex(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1402,8 +1402,8 @@
             filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateAreaCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "aqar"
             landmarkType = "24">
          </BreakpointContent>
@@ -1610,8 +1610,8 @@
             filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2182,8 +2182,8 @@
             filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2326,8 +2326,8 @@
             filePath = "Aqarzelo/view/create post/Main Create Cell/second/SecondCreateAreaCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "fetchEnglishData(isArabic:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2470,8 +2470,8 @@
             filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "getAreaLists(index:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3096,6 +3096,38 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E916519-F09D-4A21-B626-1B8BFBE65E75"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0E116CE-F436-4EC1-BB5C-AF24BB5DAFCB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aqarzelo/controller/Create Post/Create Group/Create Second/CreateSecondListCollectionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>

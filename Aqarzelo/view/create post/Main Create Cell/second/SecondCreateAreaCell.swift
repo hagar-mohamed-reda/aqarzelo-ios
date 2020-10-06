@@ -14,6 +14,24 @@ import MOLH
 
 class SecondCreateAreaCell: BaseCollectionCell {
     
+    var categroy_id:Int? {
+        didSet{
+            guard let categroy_id = categroy_id else { return  }
+            let x = categroy_id == 4 ? true : false
+            
+            if x {
+                seperatorView.isHide(true)
+               ss =  stack(iconImageView,UIView(),alignment:.center)
+                setupViews()
+            }else {
+                seperatorView.isHide(false)
+                ss =  stack(iconImageView,seperatorView,alignment:.center)
+                setupViews()
+            }
+//            setupViews()
+        }
+    }
+    
     var finalFilteredAreaNames:[String]? {
         didSet{
             guard let finalFilteredAreaNames = finalFilteredAreaNames else { return  }
@@ -88,6 +106,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
         
         return i
     }()
+    lazy var ss = UIStackView()
     
     var index:Int!
     var handleHidePreviousCell:((Int)->Void)?
@@ -202,7 +221,7 @@ class SecondCreateAreaCell: BaseCollectionCell {
     override func setupViews() {
         categoryLabel.constrainHeight(constant: 30)
         backgroundColor = .white
-        let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
+//        let ss = stack(iconImageView,seperatorView,alignment:.center)//,distribution:.fill
         let dd = hstack(mainDrop1View,UIView())
         
         [categoryLabel,categoryQuestionLabel].forEach{($0.textAlignment = MOLHLanguage.isRTLLanguage()  ? .right : .left)}
