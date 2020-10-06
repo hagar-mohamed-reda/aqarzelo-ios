@@ -368,7 +368,7 @@ class CreateFirstListCollectionVC:   UICollectionViewController, UICollectionVie
             //            cell.iconImageView.isUserInteractionEnabled = openNext
             self.is5CellIsError=openNext
             is6CellIsError=self.category_id == 8 ? true : false
-            self.firstCcreatePostVviewModel.roomNum = self.category_id == 8 ? "0" : nil
+            self.firstCcreatePostVviewModel.roomNum = self.category_id == 8 ? "0" : self.firstCcreatePostVviewModel.roomNum //nil
         }
     }
     
