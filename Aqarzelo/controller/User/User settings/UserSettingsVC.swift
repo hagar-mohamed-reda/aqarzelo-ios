@@ -41,8 +41,8 @@ class UserSettingsVC: UIViewController {
         t.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
         t.modalTransitionStyle = .crossDissolve
         t.modalPresentationStyle = .overCurrentContext
-//        t.view.backgroundColor = .white
-//        t.view.alpha = 0.2
+        //        t.view.backgroundColor = .white
+        //        t.view.alpha = 0.2
         return t
     }()
     
@@ -91,8 +91,8 @@ class UserSettingsVC: UIViewController {
                         self.customAlerLoginView.problemsView.play()
                         self.customMainAlertVC.view.backgroundColor = .lightGray
                         self.customAlerLoginView.problemsView.loopMode = .loop
-//                        self.timerForAlerting.invalidate()
-//                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+                        //                        self.timerForAlerting.invalidate()
+                        //                        self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
                         self.present(self.customMainAlertVC, animated: true)
                     }
                 }
@@ -152,33 +152,41 @@ class UserSettingsVC: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
         showOrHideCustomTabBar(hide: true)
-        
+        currentUser = cacheCurrentUserCodabe.storedValue
         if userDefaults.bool(forKey: UserDefaultsConstants.isFirstUserLogined) {
-            creatMainSnackBar(message: "You are logged in successfully...".localized)
+            
             userDefaults.set(false, forKey: UserDefaultsConstants.isFirstUserLogined)
             userDefaults.synchronize()
+            currentUser = cacheCurrentUserCodabe.storedValue
+            
+            DispatchQueue.main.async {
+                self.isLogin = true
+                self.creatMainSnackBar(message: "You are logged in successfully...".localized)
+                self.tableView.reloadData()
+            }
+            
         }
         
-                if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
-//                    updateUserProfile()
-                    currentUser = cacheCurrentUserCodabe.storedValue
-                    isLogin = true
-                    tableView.reloadData()
-                }
+        //                if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil{
+        ////                    updateUserProfile()
+        //                    currentUser = cacheCurrentUserCodabe.storedValue
+        //                    isLogin = true
+        //                    tableView.reloadData()
+        //                }
         
-//                if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser != nil{
-//                    currentUser = cacheCurrentUserCodabe.storedValue
-//                    isLogin = true
-//                    tableView.reloadData()
-//                }
+        //                if userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser != nil{
+        //                    currentUser = cacheCurrentUserCodabe.storedValue
+        //                    isLogin = true
+        //                    tableView.reloadData()
+        //                }
         
-                if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) {
-                    currentUser=nil
-                    isLogin = false
-                    tableView.reloadData()
-                }
+        if !userDefaults.bool(forKey: UserDefaultsConstants.isUserLogined) && currentUser == nil {
+            currentUser=nil
+            isLogin = false
+            tableView.reloadData()
+        }
         
-//                fetchData()
+        //                fetchData()
         //self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -190,39 +198,39 @@ class UserSettingsVC: UIViewController {
     
     //MARK:-User methods
     
-//    fileprivate func updateUserProfile()  {
-//        currentUser=cacheCurrentUserCodabe.storedValue
-//        if currentUser != nil {
-//            return
-//        }
-//        guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
-//        //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
-//        progressHudProperties()
-//
-//        let dispatchGroup = DispatchGroup()
-//        dispatchGroup.enter()
-//
-//        UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
-//            if let err=err{
-//                DispatchQueue.main.async {
-//                    SVProgressHUD.dismiss()
-//                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
-//
-//                }
-//                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
-//                self.activeViewsIfNoData();return
-//            }
-//            dispatchGroup.leave()
-//            SVProgressHUD.dismiss()
-//            self.activeViewsIfNoData() // disbale all events in the screen
-//            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
-//            self.currentUser = user
-//
-//            self.fetchInfo(user)
-//
-//        }
-//
-//    }
+    //    fileprivate func updateUserProfile()  {
+    //        currentUser=cacheCurrentUserCodabe.storedValue
+    //        if currentUser != nil {
+    //            return
+    //        }
+    //        guard let api_Key = userDefaults.string(forKey: UserDefaultsConstants.userApiToken) else { return  }
+    //        //                UIApplication.shared.beginIgnoringInteractionEvents() // disbale all events in the screen
+    //        progressHudProperties()
+    //
+    //        let dispatchGroup = DispatchGroup()
+    //        dispatchGroup.enter()
+    //
+    //        UserServices.shared.getUserData(apiKey: api_Key) { (base, err) in
+    //            if let err=err{
+    //                DispatchQueue.main.async {
+    //                    SVProgressHUD.dismiss()
+    //                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+    //
+    //                }
+    //                //                SVProgressHUD.showError(withStatus: err.localizedDescription)
+    //                self.activeViewsIfNoData();return
+    //            }
+    //            dispatchGroup.leave()
+    //            SVProgressHUD.dismiss()
+    //            self.activeViewsIfNoData() // disbale all events in the screen
+    //            guard let user = base?.data else {SVProgressHUD.showError(withStatus: MOLHLanguage.isRTLLanguage() ? base?.messageAr : base?.messageEn); return}
+    //            self.currentUser = user
+    //
+    //            self.fetchInfo(user)
+    //
+    //        }
+    //
+    //    }
     
     fileprivate func fetchInfo(_ user:UserModel)  {
         guard let url = URL(string: user.photoURL) else{return}
@@ -510,10 +518,10 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
             customMainAlertVC.addCustomViewInCenter(views:customNoInternetView , height: 200)
             self.customNoInternetView.problemsView.play()
             
-//            self.customMainAlertVC.view.backgroundColor = .lightGray
+            //            self.customMainAlertVC.view.backgroundColor = .lightGray
             customNoInternetView.problemsView.loopMode = .loop
-//            self.timerForAlerting.invalidate()
-//            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
+            //            self.timerForAlerting.invalidate()
+            //            self.timerForAlerting = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fireTimer), userInfo: ["view": "customAlerLoginView"], repeats: false)
             self.present(customMainAlertVC, animated: true)
         }else {
             
@@ -672,14 +680,14 @@ extension UserSettingsVC: UITableViewDelegate, UITableViewDataSource {
     func shareApplciation()  {
         //Set the default sharing message.
         let message = "Share app with friends...".localized
-               //Set the link to share.
-               if let link = URL(string: "https://play.google.com/store/apps/details?id=com.aqarzelo.aqarzelo")
-               {
-                let objectsToShare = [message,link] as [Any]
-                   let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-                self.present(activityVC, animated: true, completion: nil)
-               }
+        //Set the link to share.
+        if let link = URL(string: "https://play.google.com/store/apps/details?id=com.aqarzelo.aqarzelo")
+        {
+            let objectsToShare = [message,link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
     
     
@@ -692,7 +700,7 @@ extension UserSettingsVC:UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let x = scrollView.contentOffset.y
-      
+        
         if x < 0 {
             scrollView.contentOffset.y =  0
         }
