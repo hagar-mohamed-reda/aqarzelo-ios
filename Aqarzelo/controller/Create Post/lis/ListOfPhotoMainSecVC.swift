@@ -276,9 +276,9 @@ class ListOfPhotoMainSecVC: UIViewController {
             if let err=err{
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                
-                self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
-            }
+                    
+                    self.callMainError(err: err.localizedDescription, vc: self.customMainAlertVC, views: self.customErrorView,height: 260)
+                }
                 //                SVProgressHUD.showError(withStatus: err.localizedDescription);return
             }
             self.photosArray.remove(at: index)
@@ -397,17 +397,17 @@ class ListOfPhotoMainSecVC: UIViewController {
     
     func addSadowToCells(cell:UICollectionViewCell)  {
         cell.contentView.layer.cornerRadius = 16
-            cell.contentView.layer.borderWidth = 1.0
-            cell.contentView.layer.borderColor = UIColor.clear.cgColor
-            cell.contentView.layer.masksToBounds = true
-
-            cell.layer.backgroundColor = UIColor.white.cgColor
-            cell.layer.shadowColor = UIColor.gray.cgColor
-            cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
-            cell.layer.shadowRadius = 2.0
-            cell.layer.shadowOpacity = 1.0
-            cell.layer.masksToBounds = false
-            cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        cell.contentView.layer.masksToBounds = true
+        
+        cell.layer.backgroundColor = UIColor.white.cgColor
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 2.0
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
     }
     
     func reloadDataAfterUploading()  {
@@ -604,7 +604,7 @@ extension ListOfPhotoMainSecVC: UICollectionViewDelegate, UICollectionViewDataSo
         return section == 0 ? 1 :   photosArray.count
     }
     
-   
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

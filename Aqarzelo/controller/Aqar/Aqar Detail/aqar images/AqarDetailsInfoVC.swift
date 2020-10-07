@@ -96,7 +96,7 @@ class AqarDetailsInfoVC: UIViewController {
         v.collectionView.reloadData()
         v.view.constrainHeight(constant: fixedGeight)
         v.handleRatesAction = {[unowned self] aqar in
-            if !self.checkIfUserLoginBefore() {
+            if cacheCurrentUserCodabe.storedValue == nil {//!self.checkIfUserLoginBefore() {
                 self.customMainAlertVC.addCustomViewInCenter(views: self.customAlerLoginView, height: 200)
                 self.customAlerLoginView.problemsView.play()
                 self.customAlerLoginView.problemsView.loopMode = .loop
@@ -152,7 +152,7 @@ class AqarDetailsInfoVC: UIViewController {
         v.sendButton.addTarget(self, action: #selector(handleShowContents), for: .touchUpInside)
         v.favoriteImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleFavoritePost)))
         v.textView.delegate = self
-        v.textView.isUserInteractionEnabled = self.checkIfUserLoginBefore()
+        v.textView.isUserInteractionEnabled =  cacheCurrentUserCodabe.storedValue == nil ? false : true //self.checkIfUserLoginBefore()
         return v
     }()
     lazy var mainView:UIView = {
@@ -372,7 +372,7 @@ class AqarDetailsInfoVC: UIViewController {
     @objc fileprivate func handleShowChatMessage()  {
         //        showHideViews(ishide: true)
         
-        if !checkIfUserLoginBefore() {
+        if cacheCurrentUserCodabe.storedValue == nil {//if !checkIfUserLoginBefore() {
             self.customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
             self.customAlerLoginView.problemsView.play()
             customAlerLoginView.problemsView.loopMode = .loop
@@ -492,7 +492,7 @@ class AqarDetailsInfoVC: UIViewController {
         
         //         favoriteImageView.image =   favorite.contains(aqar.id ) ? #imageLiteral(resourceName: "Group 3923-10") : #imageLiteral(resourceName: "Group 3923s")
         
-        if !checkIfUserLoginBefore() {
+        if cacheCurrentUserCodabe.storedValue == nil {//if !checkIfUserLoginBefore() {
             self.customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
             self.customAlerLoginView.problemsView.play()
             self.customAlerLoginView.problemsView.loopMode = .loop

@@ -167,7 +167,7 @@ class AddPostVC: UIViewController {
     
     @objc fileprivate func handleChooseImage()  {
         
-        if !checkIfUserLoginBefore() {
+        if  userToekn==nil { //!checkIfUserLoginBefore() {
             customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
             self.customAlerLoginView.problemsView.play()
             
@@ -186,7 +186,7 @@ class AddPostVC: UIViewController {
     }
     
     @objc fileprivate func handleTakeImage()  {
-        if !checkIfUserLoginBefore() {
+        if userToekn==nil { //!checkIfUserLoginBefore() {
             customMainAlertVC.addCustomViewInCenter(views: customAlerLoginView, height: 200)
             self.customAlerLoginView.problemsView.play()
             
