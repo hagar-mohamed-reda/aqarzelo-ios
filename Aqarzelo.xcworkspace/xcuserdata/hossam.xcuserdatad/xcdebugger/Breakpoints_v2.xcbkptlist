@@ -412,8 +412,8 @@
             filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
             landmarkName = "handleUploadNextProgress(notify:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -428,8 +428,8 @@
             filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "471"
-            endingLineNumber = "471"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "handleUploadNextComplete(notify:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -444,8 +444,8 @@
             filePath = "Aqarzelo/controller/Create Post/lis/ListOfPhotoMainSecVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "469"
-            endingLineNumber = "469"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "handleUploadNextComplete(notify:)"
             landmarkType = "7">
          </BreakpointContent>

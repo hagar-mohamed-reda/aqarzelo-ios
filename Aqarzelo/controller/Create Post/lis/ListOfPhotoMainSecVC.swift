@@ -395,6 +395,21 @@ class ListOfPhotoMainSecVC: UIViewController {
         }
     }
     
+    func addSadowToCells(cell:UICollectionViewCell)  {
+        cell.contentView.layer.cornerRadius = 16
+            cell.contentView.layer.borderWidth = 1.0
+            cell.contentView.layer.borderColor = UIColor.clear.cgColor
+            cell.contentView.layer.masksToBounds = true
+
+            cell.layer.backgroundColor = UIColor.white.cgColor
+            cell.layer.shadowColor = UIColor.gray.cgColor
+            cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
+            cell.layer.shadowRadius = 2.0
+            cell.layer.shadowOpacity = 1.0
+            cell.layer.masksToBounds = false
+            cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+    }
+    
     func reloadDataAfterUploading()  {
         if  self.photosArray.count == 0 || self.photosArray.count == 1 {
             DispatchQueue.main.async {
@@ -589,12 +604,13 @@ extension ListOfPhotoMainSecVC: UICollectionViewDelegate, UICollectionViewDataSo
         return section == 0 ? 1 :   photosArray.count
     }
     
-    
+   
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  cellMasterId, for: indexPath) as! ListOfPhotoMaseterCell
+            addSadowToCells(cell: cell)
             cell.photoSecond = mainMasterPhoto
             cell.handleInteruptUpload = {[unowned self]  (index) in
                 self.creatMainSnackBar(message: "Master Photo can't be deleted...".localized)
@@ -605,6 +621,7 @@ extension ListOfPhotoMainSecVC: UICollectionViewDelegate, UICollectionViewDataSo
         
         
         let  cell = collectionView.dequeueReusableCell(withReuseIdentifier:  cellId, for: indexPath) as! ListOfFhotoCell
+        addSadowToCells(cell: cell)
         let photo = photosArray[indexPath.item]
         cell.photoSecond = photo
         cell.index = indexPath.item

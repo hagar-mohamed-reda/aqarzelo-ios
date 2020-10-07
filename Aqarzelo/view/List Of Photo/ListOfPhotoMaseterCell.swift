@@ -119,8 +119,8 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
     
     
     fileprivate func setupCornerCell() {
-        layer.cornerRadius = 16
-        clipsToBounds = true
+//        layer.cornerRadius = 16
+//        clipsToBounds = true
         progressLabel.constrainWidth(constant: 40)
 //        layer.borderWidth = 3
 //        layer.borderColor = UIColor.gray.cgColor
@@ -128,30 +128,10 @@ class ListOfPhotoMaseterCell: BaseCollectionCell {
         [progressLabel,namePhotoLabel,sizePhotoLabel].forEach({$0.isHide(true)})
     }
     
-    override func layoutSubviews() {
-            super.layoutSubviews()
-            print("Layout subviews!")
-            setupShadow()
-        setupShadow(opacity: 1.0, radius: 6, offset: .init(width: 0, height: 0), color: .lightGray)
-
-        }
     
     var setupShadowDone: Bool = false
     
-    public func setupShadow() {
-        layer.cornerRadius = 10.0
-          layer.masksToBounds = true
-           
-           layer.shadowColor = UIColor.lightGray.cgColor
-           layer.shadowOffset = CGSize(width: 0, height: 0.0)
-           layer.shadowRadius = 10.0
-           layer.shadowOpacity = 1.0
-           layer.masksToBounds = false
-           layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
-        self.clipsToBounds = false
-        self.layer.masksToBounds = false
-       }
-    
+   
     override func setupViews() {
         setupCornerCell()
         progressLabel.constrainWidth(constant: 40)
